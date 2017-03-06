@@ -75,6 +75,7 @@
     <Compile Include="DAL\ClassDAL.cs" />
     <Compile Include="DAL\DataServices.cs" />
     <Compile Include="Entities\HOCSINH.cs" />
+    <Compile Include="Entities\LOP.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +157,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

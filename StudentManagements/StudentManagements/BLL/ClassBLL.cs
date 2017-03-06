@@ -18,6 +18,21 @@ namespace StudentManagements.BLL
         {
             return dal.getAllStudents();
         }
-
+        public DataTable getStudentBasedOnID(int MSHS)
+        {
+            return dal.getStudentBasedOnID(MSHS);
+        }
+        public DataTable getAllClass()
+        {
+            return dal.getAllClass();
+        }
+        public DataTable getClassID(int MALOP)
+        {
+            return dal.getClassID(MALOP);
+        }
+        public int getTotalOfClass(int MALOP)
+        {
+            return dal.getTotalOfClass(MALOP);
+        }
     }
 }
