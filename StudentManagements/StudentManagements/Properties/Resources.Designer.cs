@@ -123,9 +123,39 @@ namespace StudentManagements.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap findStudentTitle {
+            get {
+                object obj = ResourceManager.GetObject("findStudentTitle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap findStudentTitle1 {
+            get {
+                object obj = ResourceManager.GetObject("findStudentTitle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reportIcon {
             get {
                 object obj = ResourceManager.GetObject("reportIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap scoreBoardListTitle {
+            get {
+                object obj = ResourceManager.GetObject("scoreBoardListTitle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
