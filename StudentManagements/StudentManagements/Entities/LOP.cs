@@ -13,7 +13,12 @@ namespace StudentManagements.Entities
         int _SiSo;
         int _NamHoc;
         string _GhiChu;
-
+        public LOP(string TenLop, int SiSo, int NamHoc)
+        {
+            this.TenLop = TenLop;
+            this.SiSo = SiSo;
+            this.NamHoc = NamHoc;
+        }
         public string GhiChu
         {
             get { return _GhiChu; }

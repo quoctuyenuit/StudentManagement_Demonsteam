@@ -105,6 +105,34 @@ namespace StudentManagements.DAL
             return table;
         }
 
+        public DataTable getStudentForAddClass()
+        {
+            string query = "prd_HOCSINH_SelectHOCSINHTIMLOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+        }
+
         public bool insertStudent(Entities.HOCSINH student)
         {
             bool check = false;
@@ -284,6 +312,118 @@ namespace StudentManagements.DAL
             return ss;
         }
 
+        public int getClassID(string TENLOP, int NAMHOC)
+        {
+            int MALOP = new int();
+            string query = "SELECT LOP.MALOP FROM LOP WHERE TENLOP = @TENLOP AND NAMHOC = @NAMHOC";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = TENLOP;
+                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
+                MALOP = (int)command.ExecuteScalar();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return MALOP;
+        }
+
+        public bool insertClass(Entities.LOP myClass)
+        {
+            bool check = false;
+            string query = "prd_LOP_Insert";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = myClass.TenLop;
+                command.Parameters.Add("@SISO", SqlDbType.Int).Value = myClass.SiSo;
+                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = myClass.NamHoc;
+                command.Parameters.Add("@GHICHU", SqlDbType.NVarChar).Value = (myClass.GhiChu == null)? "":myClass.GhiChu;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool insertStudentForClass(int MSHS, int MALOP)
+        {
+            bool check = false;
+            string query = "prd_QLLOPHOC_Insert";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType =  CommandType.StoredProcedure;
+                command.Parameters.Add("@MSHS",SqlDbType.Int).Value = MSHS;
+                command.Parameters.Add("@MALOP",SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateClassTotal(int MALOP, int SISO)
+        {
+            bool check = false;
+            string query = "prd_LOP_Update_SISO";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MALOP",SqlDbType.Int).Value = MALOP;
+                command.Parameters.Add("@SISO",SqlDbType.Int).Value = SISO;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
         //==========================================================================================================
         //Subjects
 

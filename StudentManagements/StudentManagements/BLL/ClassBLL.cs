@@ -14,6 +14,8 @@ namespace StudentManagements.BLL
         {
             dal = new DAL.ClassDAL();
         }
+        //===================================================================
+        //Student
         public DataTable getAllStudents()
         {
             return dal.getAllStudents();
@@ -38,7 +40,12 @@ namespace StudentManagements.BLL
         {
             return dal.updateStudent(student);
         }
+        public DataTable getStudentForAddClass()
+        {
+            return dal.getStudentForAddClass();
+        }
         //===================================================================
+        //Class
         public DataTable getAllClass()
         {
             return dal.getAllClass();
@@ -51,8 +58,24 @@ namespace StudentManagements.BLL
         {
             return dal.getTotalOfClass(MALOP);
         }
-
+        public int getClassID(string TENLOP, int NAMHOC)
+        {
+            return dal.getClassID(TENLOP, NAMHOC);
+        }
+        public bool insertClass(Entities.LOP myClass)
+        {
+            return dal.insertClass(myClass);
+        }
+        public bool insertStudetForClass(int MSHS, int MALOP)
+        {
+            return dal.insertStudentForClass(MSHS, MALOP);
+        }
+        public bool updateClassTotal(int MALOP, int SISO)
+        {
+            return dal.updateClassTotal(MALOP, SISO);
+        }
         //===================================================================
+        //Subject
         public int getSubjectsID(string subjectName)
         {
             return dal.getSubjectsID(subjectName);
