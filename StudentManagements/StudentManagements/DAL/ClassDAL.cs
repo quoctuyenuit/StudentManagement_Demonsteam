@@ -424,6 +424,33 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+
+        public bool deleteClass(int MALOP)
+        {
+            string query = "prd_LOP_DeleteID";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
         //==========================================================================================================
         //Subjects
 

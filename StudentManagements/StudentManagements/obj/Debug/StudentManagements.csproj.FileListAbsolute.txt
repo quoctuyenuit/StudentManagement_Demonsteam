@@ -1,3 +1,4 @@
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\StudentManagements.exe.config
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\StudentManagements.exe
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\StudentManagements.pdb
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.csprojResolveAssemblyReference.cache
@@ -7,4 +8,4 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.exe.licenses
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.exe
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.pdb
-C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\StudentManagements.exe.config
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.demo.resources

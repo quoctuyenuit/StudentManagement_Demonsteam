@@ -23,11 +23,9 @@ namespace StudentManagements
 
         //==============================================================================
         //Actions
-        private void btn_Students_Actions_Click(object sender, EventArgs e)
+        public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_StudentsList;
-            btn_Detail_StudentList.Enabled = false;
-            btn_Delete_StudentList.Enabled = false;
             DataTable table = new DataTable();
             table = classBLL.getAllStudents();
             grd_StudentList.DataSource = table;
@@ -36,8 +34,6 @@ namespace StudentManagements
         private void btn_Class_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ClassList;
-            btn_Detail_ClassList.Enabled = false;
-            btn_Delete_ClassList.Enabled = false;
             DataTable table = new DataTable();
             table = classBLL.getAllClass();
             grd_ClassList.DataSource = table;
@@ -52,23 +48,13 @@ namespace StudentManagements
         }
         //==============================================================================
         //Event
-        private void grd_StudentList_Click(object sender, EventArgs e)
-        {
-            btn_Detail_StudentList.Enabled = true;
-            btn_Delete_StudentList.Enabled = true;
-        }
 
-        private void grd_ClassList_Click(object sender, EventArgs e)
-        {
-            btn_Detail_ClassList.Enabled = true;
-            btn_Delete_ClassList.Enabled = true;
-        }
         //==============================================================================
         //Student
 
         private void formatControls(Control panel)//Format controls for null
         {
-            foreach(Control ctrl in panel.Controls)
+            foreach (Control ctrl in panel.Controls)
             {
                 if (ctrl is TextEdit || ctrl is DateEdit || ctrl is System.Windows.Forms.ComboBox || ctrl is RichTextBox)
                     ctrl.Text = null;
@@ -111,7 +97,7 @@ namespace StudentManagements
 
         private void btn_Save_StudentInformation_Click(object sender, EventArgs e)
         {
-            Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text,cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex,txt_StudentAddress_StudentInformation_Edit.Text);
+            Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text, cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex, txt_StudentAddress_StudentInformation_Edit.Text);
             if (classBLL.updateStudent(student))//If updated successful -> Show message and update data for controls
             {
                 MessageBox.Show("You was updated successful!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -148,31 +134,72 @@ namespace StudentManagements
         {
             return grd_ClassList_View.GetRowCellDisplayText(grd_ClassList_View.GetSelectedRows().First(), columnName);
         }
+
+        //-------------------------------------------------------
+        //EditClass
+        private void btn_Delete_ClassList_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete this Class?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (classBLL.deleteClass(int.Parse(getTextFromClassList("MALOP"))))
+                    MessageBox.Show("Deleted successful!");
+                else
+                    MessageBox.Show("Deleted failure!");
+            }
+            grd_ClassList.DataSource = classBLL.getAllClass();
+        }
+
+        private void init_ClassDetail()//Khởi tạo và set giá trị ban đầu cho các control trước khi vào page thông tin chi tiết của lớp
+        {
+            txt_ClassName_ClassInformation.Text = getTextFromClassList("TENLOP");
+            txt_ClassTotal_ClassInformation.Text = getTextFromClassList("SISO");
+            btn_Edit_ClassInformation.Show();
+            btn_Save_ClassInformation.Hide();
+            btn_DeleteStudent_ClassInformation.Hide();
+            btn_AddStudentForClass_ClassInformation.Hide();
+        }
         private void btn_Detail_ClassList_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ClassInformation;//Show Page Class Information
             navFrame_ClassInformation.SelectedPage = navPage_ClassDetail;
-            txt_ClassName_ClassInformation.Text = getTextFromClassList("TENLOP");
-            txt_ClassTotal_ClassInformation.Text = getTextFromClassList("SISO");
-
+            init_ClassDetail();//Khởi tạo dữ liệu
             DataTable table = new DataTable();
             table = classBLL.getStudentForClass(int.Parse(getTextFromClassList("MALOP")));
             grd_ClassInformation.DataSource = table;
         }
 
-        private void btn_Edit_ClassInformation_Click(object sender, EventArgs e)
+        private void init_Edit_ClassInformation()//Khởi tạo các giá trị cho các control khi chọn edit
         {
-            navFrame_ClassInformation.SelectedPage = navPage_ClassDetail_Edit;
             txt_ClassName_ClassInformation_Edit.Text = txt_ClassName_ClassInformation.Text;
             txt_ClassTotal_ClassInformation_Edit.Text = txt_ClassTotal_ClassInformation.Text;
             btn_Edit_ClassInformation.Hide();
             btn_Save_ClassInformation.Show();
+            btn_DeleteStudent_ClassInformation.Show();
+            btn_AddStudentForClass_ClassInformation.Show();
+        }
+        private void btn_Edit_ClassInformation_Click(object sender, EventArgs e)
+        {
+            navFrame_ClassInformation.SelectedPage = navPage_ClassDetail_Edit;
+            init_Edit_ClassInformation();
         }
 
         private void btn_Save_ClassInformation_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btn_AddStudentForClass_ClassInformation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_OK_AddStudentForClass_Edit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //-------------------------------------------------------
+        //AddClass
         private void btn_AddStudentForClass_AddClass_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddStudentForClass;
@@ -181,10 +208,27 @@ namespace StudentManagements
             grd_AddStudentForClass.DataSource = table;
         }
 
+        private void init_AddClass()
+        {
+            btn_AddStudentForClass_AddClass.Enabled = false;
+            btn_Save_AddClass.Enabled = true;
+            txt_ClassName_AddClass.Enabled = true;
+            txt_Year_AddClass.Enabled = true;
+
+            txt_ClassName_AddClass.Text = "";
+            txt_Year_AddClass.Text = "";
+            txt_ClassTotal_AddClass.Text = "";
+            txt_ClassName_AddClass.Focus();
+            grd_StudentList_AddClass.DataSource = null;
+
+        }
+
         private void btn_AddClass_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddClass;
-            btn_AddStudentForClass_AddClass.Hide();
+            init_AddClass();
+
+
         }
 
         private void btn_Save_AddClass_Click(object sender, EventArgs e)
@@ -194,10 +238,15 @@ namespace StudentManagements
                 return;
             }
             StudentManagements.Entities.LOP newLOP = new Entities.LOP(txt_ClassName_AddClass.Text, 0, int.Parse(txt_Year_AddClass.Text));
+            if (!classBLL.checkExistenceClass(newLOP))
+            {
+                MessageBox.Show("Class already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (classBLL.insertClass(newLOP))
             {
                 MessageBox.Show("Create Class successful!");
-                btn_Save_AddClass.Show();
+                btn_AddStudentForClass_AddClass.Enabled = true;
             }
             else
             {
@@ -209,12 +258,19 @@ namespace StudentManagements
         {
             int MALOP = classBLL.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));//Get MALOP from navPage_AddClass
             int[] rows = grd_AddStudentForClass_View.GetSelectedRows();
-            foreach(int row in rows)
+            foreach (int row in rows)
             {
-                classBLL.insertStudetForClass((int)grd_AddStudentForClass_View.GetListSourceRowCellValue(row,"MSHS"), MALOP);
+                classBLL.insertStudetForClass((int)grd_AddStudentForClass_View.GetListSourceRowCellValue(row, "MSHS"), MALOP);
             }
-            classBLL.updateClassTotal(MALOP, rows.Length);
             MessageBox.Show("Insert Student for class Successful!");
+            navFrame_Main.SelectedPage = navPage_AddClass;
+            txt_ClassName_AddClass.Enabled = false;
+            txt_Year_AddClass.Enabled = false;
+            btn_Save_AddClass.Enabled = false;
+            DataTable table = new DataTable();
+            table = classBLL.getStudentForClass(MALOP);
+            grd_StudentList_AddClass.DataSource = table;
+            txt_ClassTotal_AddClass.Text = grd_StudentList_AddClass_View.RowCount.ToString();
         }
         //==============================================================================
         //Menubar
@@ -254,7 +310,7 @@ namespace StudentManagements
             else
                 MessageBox.Show("Insert fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-       
+
         //==============================================================================
         //ScoreBoard
         private string getTextFromScoreBoardList(string columnName)
@@ -311,18 +367,33 @@ namespace StudentManagements
             }
         }
 
-      
+
         private void grd_ScoreBoardDetail2_Click(object sender, EventArgs e)
         {
 
         }
 
-     
-
-     
-        
-
        
+
+
+
+
+
+        //==================================================================
+        //demo
+
+
+
+        private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navFrame_Main.SelectedPage = navPage_Home;
+            demo dm = new demo();
+            dm.actionActive = new demo.activeForm(btn_Students_Actions_Click);
+            navPage_Home.Controls.Add(dm);
+        }
+
+
+
 
 
     }
