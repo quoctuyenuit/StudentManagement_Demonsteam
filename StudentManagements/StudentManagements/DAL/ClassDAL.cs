@@ -15,7 +15,17 @@ namespace StudentManagements.DAL
         SqlCommand command;
         SqlDataAdapter dataAdapter;
         DataTable table;
+        private static ClassDAL instance;
 
+        internal static ClassDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new ClassDAL();
+                return ClassDAL.instance;
+            }
+        }
         public ClassDAL()
         {
             dataServices = new DataServices();
@@ -328,7 +338,7 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
                 MALOP = (int)command.ExecuteScalar();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -354,11 +364,11 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = myClass.TenLop;
                 command.Parameters.Add("@SISO", SqlDbType.Int).Value = myClass.SiSo;
                 command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = myClass.NamHoc;
-                command.Parameters.Add("@GHICHU", SqlDbType.NVarChar).Value = (myClass.GhiChu == null)? "":myClass.GhiChu;
+                command.Parameters.Add("@GHICHU", SqlDbType.NVarChar).Value = (myClass.GhiChu == null) ? "" : myClass.GhiChu;
                 command.ExecuteNonQuery();
                 check = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -380,13 +390,13 @@ namespace StudentManagements.DAL
                 command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandText = query;
-                command.CommandType =  CommandType.StoredProcedure;
-                command.Parameters.Add("@MSHS",SqlDbType.Int).Value = MSHS;
-                command.Parameters.Add("@MALOP",SqlDbType.Int).Value = MALOP;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MSHS", SqlDbType.Int).Value = MSHS;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
                 command.ExecuteNonQuery();
                 check = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -409,15 +419,41 @@ namespace StudentManagements.DAL
                 command.Connection = connection;
                 command.CommandText = query;
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@MALOP",SqlDbType.Int).Value = MALOP;
-                command.Parameters.Add("@SISO",SqlDbType.Int).Value = SISO;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.Parameters.Add("@SISO", SqlDbType.Int).Value = SISO;
                 command.ExecuteNonQuery();
                 check = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateClassNameAndClassYear(string TENLOP, int NAMHOC, int MALOP)
+        {
+            bool check = false;
+            string query = "UPDATE LOP SET TENLOP = @TENLOP, NAMHOC = @NAMHOC WHERE MALOP = @MALOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = TENLOP;
+                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
             finally
             {
                 connection.Close();
@@ -441,10 +477,35 @@ namespace StudentManagements.DAL
                 command.ExecuteNonQuery();
                 check = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteStudentInClass(int MSHS, int MALOP)
+        {
+            bool check = false;
+            string query = "prd_QLLOPHOC_DeleteStudentInClass";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.CommandText = query;
+                command.Connection = connection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MSHS", SqlDbType.Int).Value = MSHS;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
             finally
             {
                 connection.Close();

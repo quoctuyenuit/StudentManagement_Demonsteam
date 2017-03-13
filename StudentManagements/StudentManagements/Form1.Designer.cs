@@ -58,7 +58,7 @@
             this.grd_StudentList_View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdColumn_NgaySinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -114,8 +114,8 @@
             this.btn_AddStudentForClass_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.btn_DeleteStudent_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.grd_ClassInformation = new DevExpress.XtraGrid.GridControl();
-            this.grd_ClassInformation_View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grd_StudentList_ClassInformation = new DevExpress.XtraGrid.GridControl();
+            this.grd_StudentList_ClassInformation_View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -125,12 +125,16 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.navFrame_ClassInformation = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navPage_ClassDetail = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.txt_Year_ClassInformation = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txt_ClassTotal_ClassInformation = new DevExpress.XtraEditors.LabelControl();
             this.txt_ClassName_ClassInformation = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.navPage_ClassDetail_Edit = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.txt_Year_ClassInformation_Edit = new DevExpress.XtraEditors.TextEdit();
             this.txt_ClassTotal_ClassInformation_Edit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.txt_ClassName_ClassInformation_Edit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -181,6 +185,7 @@
             this.cb_StudentDateOfBirth_AddStudent = new DevExpress.XtraEditors.DateEdit();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.navPage_AddClass = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.btn_DeleteStudentInClass_AddClass = new DevExpress.XtraEditors.SimpleButton();
             this.btn_AddStudentForClass_AddClass = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_AddClass = new DevExpress.XtraEditors.SimpleButton();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -246,6 +251,10 @@
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdColumn_ = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -278,13 +287,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.navPage_ClassInformation.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ClassInformation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ClassInformation_View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_ClassInformation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_ClassInformation_View)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_ClassInformation)).BeginInit();
             this.navFrame_ClassInformation.SuspendLayout();
             this.navPage_ClassDetail.SuspendLayout();
             this.navPage_ClassDetail_Edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Year_ClassInformation_Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassTotal_ClassInformation_Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassName_ClassInformation_Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -329,6 +339,9 @@
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_Edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_Edit_View)).BeginInit();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -526,9 +539,9 @@
             this.navFrame_Main.Controls.Add(this.navPage_ScoreBoardDetail);
             this.navFrame_Main.Controls.Add(this.navPage_AddStudent);
             this.navFrame_Main.Controls.Add(this.navPage_AddClass);
-            this.navFrame_Main.Controls.Add(this.navPage_Home);
-            this.navFrame_Main.Controls.Add(this.navPage_CreateReports);
             this.navFrame_Main.Controls.Add(this.navPage_AddStudentForClass);
+            this.navFrame_Main.Controls.Add(this.navPage_CreateReports);
+            this.navFrame_Main.Controls.Add(this.navPage_Home);
             this.navFrame_Main.Controls.Add(this.navPage_ScoreBoardDetail2);
             this.navFrame_Main.Controls.Add(this.navPage_AddStudentForClass_Edit);
             this.navFrame_Main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -592,7 +605,7 @@
             this.grd_StudentList_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn3,
+            this.grdColumn_NgaySinh,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6});
@@ -620,15 +633,17 @@
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 214;
             // 
-            // gridColumn3
+            // grdColumn_NgaySinh
             // 
-            this.gridColumn3.Caption = "Ngày Sinh";
-            this.gridColumn3.FieldName = "NGSINH";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsColumn.FixedWidth = true;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 152;
+            this.grdColumn_NgaySinh.Caption = "Ngày Sinh";
+            this.grdColumn_NgaySinh.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.grdColumn_NgaySinh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.grdColumn_NgaySinh.FieldName = "NGSINH";
+            this.grdColumn_NgaySinh.Name = "grdColumn_NgaySinh";
+            this.grdColumn_NgaySinh.OptionsColumn.FixedWidth = true;
+            this.grdColumn_NgaySinh.Visible = true;
+            this.grdColumn_NgaySinh.VisibleIndex = 2;
+            this.grdColumn_NgaySinh.Width = 152;
             // 
             // gridColumn4
             // 
@@ -1013,12 +1028,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.DisplayFormat.FormatString = "";
+            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.EditFormat.FormatString = "";
             this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.Mask.EditMask = "";
-            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.cb_StudentDateOfBirth_StudentInformation_Edit.Size = new System.Drawing.Size(205, 28);
             this.cb_StudentDateOfBirth_StudentInformation_Edit.TabIndex = 5;
             // 
@@ -1160,6 +1175,7 @@
             // 
             // navPage_ClassInformation
             // 
+            this.navPage_ClassInformation.Controls.Add(this.panel14);
             this.navPage_ClassInformation.Controls.Add(this.btn_AddStudentForClass_ClassInformation);
             this.navPage_ClassInformation.Controls.Add(this.btn_DeleteStudent_ClassInformation);
             this.navPage_ClassInformation.Controls.Add(this.panel8);
@@ -1188,43 +1204,47 @@
             this.btn_DeleteStudent_ClassInformation.Name = "btn_DeleteStudent_ClassInformation";
             this.btn_DeleteStudent_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_DeleteStudent_ClassInformation.TabIndex = 5;
+            this.btn_DeleteStudent_ClassInformation.Click += new System.EventHandler(this.btn_DeleteStudent_ClassInformation_Click);
             // 
             // panel8
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.Controls.Add(this.grd_ClassInformation);
+            this.panel8.Controls.Add(this.grd_StudentList_ClassInformation);
             this.panel8.Location = new System.Drawing.Point(0, 195);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1188, 471);
+            this.panel8.Size = new System.Drawing.Size(931, 471);
             this.panel8.TabIndex = 1;
             // 
-            // grd_ClassInformation
+            // grd_StudentList_ClassInformation
             // 
-            this.grd_ClassInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_ClassInformation.Location = new System.Drawing.Point(0, 0);
-            this.grd_ClassInformation.MainView = this.grd_ClassInformation_View;
-            this.grd_ClassInformation.MenuManager = this.ribbonControl1;
-            this.grd_ClassInformation.Name = "grd_ClassInformation";
-            this.grd_ClassInformation.Size = new System.Drawing.Size(1188, 471);
-            this.grd_ClassInformation.TabIndex = 2;
-            this.grd_ClassInformation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grd_ClassInformation_View});
+            this.grd_StudentList_ClassInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grd_StudentList_ClassInformation.Location = new System.Drawing.Point(0, 0);
+            this.grd_StudentList_ClassInformation.MainView = this.grd_StudentList_ClassInformation_View;
+            this.grd_StudentList_ClassInformation.MenuManager = this.ribbonControl1;
+            this.grd_StudentList_ClassInformation.Name = "grd_StudentList_ClassInformation";
+            this.grd_StudentList_ClassInformation.Size = new System.Drawing.Size(931, 471);
+            this.grd_StudentList_ClassInformation.TabIndex = 2;
+            this.grd_StudentList_ClassInformation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grd_StudentList_ClassInformation_View});
             // 
-            // grd_ClassInformation_View
+            // grd_StudentList_ClassInformation_View
             // 
-            this.grd_ClassInformation_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grd_StudentList_ClassInformation_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn16,
             this.gridColumn17});
-            this.grd_ClassInformation_View.GridControl = this.grd_ClassInformation;
-            this.grd_ClassInformation_View.Name = "grd_ClassInformation_View";
-            this.grd_ClassInformation_View.OptionsBehavior.Editable = false;
-            this.grd_ClassInformation_View.OptionsView.ShowGroupPanel = false;
+            this.grd_StudentList_ClassInformation_View.GridControl = this.grd_StudentList_ClassInformation;
+            this.grd_StudentList_ClassInformation_View.Name = "grd_StudentList_ClassInformation_View";
+            this.grd_StudentList_ClassInformation_View.OptionsBehavior.Editable = false;
+            this.grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelect = true;
+            this.grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.grd_StudentList_ClassInformation_View.OptionsView.ShowGroupPanel = false;
+            this.grd_StudentList_ClassInformation_View.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.grd_StudentList_ClassInformation_View_SelectionChanged);
             // 
             // gridColumn12
             // 
@@ -1233,8 +1253,8 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.FixedWidth = true;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 0;
-            this.gridColumn12.Width = 86;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 63;
             // 
             // gridColumn13
             // 
@@ -1243,8 +1263,8 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.FixedWidth = true;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
-            this.gridColumn13.Width = 221;
+            this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.Width = 178;
             // 
             // gridColumn14
             // 
@@ -1253,8 +1273,8 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.FixedWidth = true;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
-            this.gridColumn14.Width = 164;
+            this.gridColumn14.VisibleIndex = 3;
+            this.gridColumn14.Width = 134;
             // 
             // gridColumn15
             // 
@@ -1262,8 +1282,8 @@
             this.gridColumn15.FieldName = "EMAIL";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 3;
-            this.gridColumn15.Width = 229;
+            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.Width = 144;
             // 
             // gridColumn16
             // 
@@ -1272,8 +1292,8 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.FixedWidth = true;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 4;
-            this.gridColumn16.Width = 80;
+            this.gridColumn16.VisibleIndex = 5;
+            this.gridColumn16.Width = 79;
             // 
             // gridColumn17
             // 
@@ -1281,8 +1301,8 @@
             this.gridColumn17.FieldName = "DIACHI";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 5;
-            this.gridColumn17.Width = 388;
+            this.gridColumn17.VisibleIndex = 6;
+            this.gridColumn17.Width = 263;
             // 
             // panel7
             // 
@@ -1312,6 +1332,8 @@
             // 
             // navPage_ClassDetail
             // 
+            this.navPage_ClassDetail.Controls.Add(this.txt_Year_ClassInformation);
+            this.navPage_ClassDetail.Controls.Add(this.labelControl25);
             this.navPage_ClassDetail.Controls.Add(this.labelControl12);
             this.navPage_ClassDetail.Controls.Add(this.txt_ClassTotal_ClassInformation);
             this.navPage_ClassDetail.Controls.Add(this.txt_ClassName_ClassInformation);
@@ -1319,10 +1341,28 @@
             this.navPage_ClassDetail.Name = "navPage_ClassDetail";
             this.navPage_ClassDetail.Size = new System.Drawing.Size(588, 43);
             // 
+            // txt_Year_ClassInformation
+            // 
+            this.txt_Year_ClassInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_Year_ClassInformation.Location = new System.Drawing.Point(484, 12);
+            this.txt_Year_ClassInformation.Name = "txt_Year_ClassInformation";
+            this.txt_Year_ClassInformation.Size = new System.Drawing.Size(36, 21);
+            this.txt_Year_ClassInformation.TabIndex = 0;
+            this.txt_Year_ClassInformation.Text = "2017";
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl25.Location = new System.Drawing.Point(394, 12);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(71, 21);
+            this.labelControl25.TabIndex = 0;
+            this.labelControl25.Text = "Năm học:";
+            // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl12.Location = new System.Drawing.Point(385, 13);
+            this.labelControl12.Location = new System.Drawing.Point(242, 12);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(41, 21);
             this.labelControl12.TabIndex = 0;
@@ -1331,7 +1371,7 @@
             // txt_ClassTotal_ClassInformation
             // 
             this.txt_ClassTotal_ClassInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txt_ClassTotal_ClassInformation.Location = new System.Drawing.Point(447, 13);
+            this.txt_ClassTotal_ClassInformation.Location = new System.Drawing.Point(305, 12);
             this.txt_ClassTotal_ClassInformation.Name = "txt_ClassTotal_ClassInformation";
             this.txt_ClassTotal_ClassInformation.Size = new System.Drawing.Size(18, 21);
             this.txt_ClassTotal_ClassInformation.TabIndex = 0;
@@ -1340,7 +1380,7 @@
             // txt_ClassName_ClassInformation
             // 
             this.txt_ClassName_ClassInformation.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txt_ClassName_ClassInformation.Location = new System.Drawing.Point(109, 13);
+            this.txt_ClassName_ClassInformation.Location = new System.Drawing.Point(109, 12);
             this.txt_ClassName_ClassInformation.Name = "txt_ClassName_ClassInformation";
             this.txt_ClassName_ClassInformation.Size = new System.Drawing.Size(38, 21);
             this.txt_ClassName_ClassInformation.TabIndex = 0;
@@ -1349,7 +1389,7 @@
             // labelControl10
             // 
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl10.Location = new System.Drawing.Point(19, 13);
+            this.labelControl10.Location = new System.Drawing.Point(19, 12);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(61, 21);
             this.labelControl10.TabIndex = 0;
@@ -1357,36 +1397,57 @@
             // 
             // navPage_ClassDetail_Edit
             // 
+            this.navPage_ClassDetail_Edit.Controls.Add(this.txt_Year_ClassInformation_Edit);
             this.navPage_ClassDetail_Edit.Controls.Add(this.txt_ClassTotal_ClassInformation_Edit);
+            this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl26);
             this.navPage_ClassDetail_Edit.Controls.Add(this.txt_ClassName_ClassInformation_Edit);
             this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl14);
             this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl15);
             this.navPage_ClassDetail_Edit.Name = "navPage_ClassDetail_Edit";
             this.navPage_ClassDetail_Edit.Size = new System.Drawing.Size(588, 43);
             // 
+            // txt_Year_ClassInformation_Edit
+            // 
+            this.txt_Year_ClassInformation_Edit.Location = new System.Drawing.Point(471, 9);
+            this.txt_Year_ClassInformation_Edit.Name = "txt_Year_ClassInformation_Edit";
+            this.txt_Year_ClassInformation_Edit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_Year_ClassInformation_Edit.Properties.Appearance.Options.UseFont = true;
+            this.txt_Year_ClassInformation_Edit.Size = new System.Drawing.Size(100, 28);
+            this.txt_Year_ClassInformation_Edit.TabIndex = 3;
+            // 
             // txt_ClassTotal_ClassInformation_Edit
             // 
-            this.txt_ClassTotal_ClassInformation_Edit.Location = new System.Drawing.Point(440, 10);
+            this.txt_ClassTotal_ClassInformation_Edit.Enabled = false;
+            this.txt_ClassTotal_ClassInformation_Edit.Location = new System.Drawing.Point(289, 9);
             this.txt_ClassTotal_ClassInformation_Edit.Name = "txt_ClassTotal_ClassInformation_Edit";
             this.txt_ClassTotal_ClassInformation_Edit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_ClassTotal_ClassInformation_Edit.Properties.Appearance.Options.UseFont = true;
-            this.txt_ClassTotal_ClassInformation_Edit.Size = new System.Drawing.Size(108, 28);
+            this.txt_ClassTotal_ClassInformation_Edit.Size = new System.Drawing.Size(85, 28);
             this.txt_ClassTotal_ClassInformation_Edit.TabIndex = 3;
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl26.Location = new System.Drawing.Point(394, 12);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(71, 21);
+            this.labelControl26.TabIndex = 1;
+            this.labelControl26.Text = "Năm học:";
             // 
             // txt_ClassName_ClassInformation_Edit
             // 
-            this.txt_ClassName_ClassInformation_Edit.Location = new System.Drawing.Point(98, 10);
+            this.txt_ClassName_ClassInformation_Edit.Location = new System.Drawing.Point(98, 9);
             this.txt_ClassName_ClassInformation_Edit.MenuManager = this.ribbonControl1;
             this.txt_ClassName_ClassInformation_Edit.Name = "txt_ClassName_ClassInformation_Edit";
             this.txt_ClassName_ClassInformation_Edit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_ClassName_ClassInformation_Edit.Properties.Appearance.Options.UseFont = true;
-            this.txt_ClassName_ClassInformation_Edit.Size = new System.Drawing.Size(190, 28);
+            this.txt_ClassName_ClassInformation_Edit.Size = new System.Drawing.Size(107, 28);
             this.txt_ClassName_ClassInformation_Edit.TabIndex = 3;
             // 
             // labelControl14
             // 
             this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl14.Location = new System.Drawing.Point(385, 13);
+            this.labelControl14.Location = new System.Drawing.Point(242, 12);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(41, 21);
             this.labelControl14.TabIndex = 1;
@@ -1395,7 +1456,7 @@
             // labelControl15
             // 
             this.labelControl15.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl15.Location = new System.Drawing.Point(19, 13);
+            this.labelControl15.Location = new System.Drawing.Point(19, 12);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(61, 21);
             this.labelControl15.TabIndex = 2;
@@ -1737,7 +1798,7 @@
             this.btn_Done_AddStudent.Location = new System.Drawing.Point(952, 192);
             this.btn_Done_AddStudent.Name = "btn_Done_AddStudent";
             this.btn_Done_AddStudent.Size = new System.Drawing.Size(75, 45);
-            this.btn_Done_AddStudent.TabIndex = 2;
+            this.btn_Done_AddStudent.TabIndex = 0;
             this.btn_Done_AddStudent.Click += new System.EventHandler(this.btn_Done_AddStudent_Click);
             // 
             // studentInformationPanel
@@ -1770,7 +1831,7 @@
             this.cb_StudentSex_AddStudent.Location = new System.Drawing.Point(557, 41);
             this.cb_StudentSex_AddStudent.Name = "cb_StudentSex_AddStudent";
             this.cb_StudentSex_AddStudent.Size = new System.Drawing.Size(121, 29);
-            this.cb_StudentSex_AddStudent.TabIndex = 1;
+            this.cb_StudentSex_AddStudent.TabIndex = 3;
             // 
             // txt_StudentAddress_AddStudent
             // 
@@ -1805,7 +1866,7 @@
             this.txt_StudentEmail_AddStudent.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_StudentEmail_AddStudent.Properties.Appearance.Options.UseFont = true;
             this.txt_StudentEmail_AddStudent.Size = new System.Drawing.Size(235, 28);
-            this.txt_StudentEmail_AddStudent.TabIndex = 1;
+            this.txt_StudentEmail_AddStudent.TabIndex = 2;
             // 
             // labelControl6
             // 
@@ -1834,7 +1895,7 @@
             this.txt_StudentName_AddStudent.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_StudentName_AddStudent.Properties.Appearance.Options.UseFont = true;
             this.txt_StudentName_AddStudent.Size = new System.Drawing.Size(235, 28);
-            this.txt_StudentName_AddStudent.TabIndex = 1;
+            this.txt_StudentName_AddStudent.TabIndex = 0;
             // 
             // labelControl2
             // 
@@ -1857,14 +1918,16 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cb_StudentDateOfBirth_AddStudent.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cb_StudentDateOfBirth_AddStudent.Properties.DisplayFormat.FormatString = "";
+            this.cb_StudentDateOfBirth_AddStudent.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista;
+            this.cb_StudentDateOfBirth_AddStudent.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.cb_StudentDateOfBirth_AddStudent.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.cb_StudentDateOfBirth_AddStudent.Properties.EditFormat.FormatString = "";
             this.cb_StudentDateOfBirth_AddStudent.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.cb_StudentDateOfBirth_AddStudent.Properties.Mask.EditMask = "";
-            this.cb_StudentDateOfBirth_AddStudent.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.cb_StudentDateOfBirth_AddStudent.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.cb_StudentDateOfBirth_AddStudent.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.cb_StudentDateOfBirth_AddStudent.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.True;
             this.cb_StudentDateOfBirth_AddStudent.Size = new System.Drawing.Size(235, 28);
-            this.cb_StudentDateOfBirth_AddStudent.TabIndex = 3;
+            this.cb_StudentDateOfBirth_AddStudent.TabIndex = 1;
             // 
             // pictureBox5
             // 
@@ -1879,6 +1942,7 @@
             // 
             // navPage_AddClass
             // 
+            this.navPage_AddClass.Controls.Add(this.btn_DeleteStudentInClass_AddClass);
             this.navPage_AddClass.Controls.Add(this.btn_AddStudentForClass_AddClass);
             this.navPage_AddClass.Controls.Add(this.btn_Save_AddClass);
             this.navPage_AddClass.Controls.Add(this.panel12);
@@ -1887,11 +1951,21 @@
             this.navPage_AddClass.Name = "navPage_AddClass";
             this.navPage_AddClass.Size = new System.Drawing.Size(1188, 665);
             // 
+            // btn_DeleteStudentInClass_AddClass
+            // 
+            this.btn_DeleteStudentInClass_AddClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteStudentInClass_AddClass.Image")));
+            this.btn_DeleteStudentInClass_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btn_DeleteStudentInClass_AddClass.Location = new System.Drawing.Point(744, 144);
+            this.btn_DeleteStudentInClass_AddClass.Name = "btn_DeleteStudentInClass_AddClass";
+            this.btn_DeleteStudentInClass_AddClass.Size = new System.Drawing.Size(75, 45);
+            this.btn_DeleteStudentInClass_AddClass.TabIndex = 8;
+            this.btn_DeleteStudentInClass_AddClass.Click += new System.EventHandler(this.btn_DeleteStudentInClass_AddClass_Click);
+            // 
             // btn_AddStudentForClass_AddClass
             // 
             this.btn_AddStudentForClass_AddClass.Image = global::StudentManagements.Properties.Resources.addStudentIcon;
             this.btn_AddStudentForClass_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_AddStudentForClass_AddClass.Location = new System.Drawing.Point(744, 144);
+            this.btn_AddStudentForClass_AddClass.Location = new System.Drawing.Point(825, 143);
             this.btn_AddStudentForClass_AddClass.Name = "btn_AddStudentForClass_AddClass";
             this.btn_AddStudentForClass_AddClass.Size = new System.Drawing.Size(75, 45);
             this.btn_AddStudentForClass_AddClass.TabIndex = 1;
@@ -1942,7 +2016,11 @@
             this.grd_StudentList_AddClass_View.GridControl = this.grd_StudentList_AddClass;
             this.grd_StudentList_AddClass_View.Name = "grd_StudentList_AddClass_View";
             this.grd_StudentList_AddClass_View.OptionsBehavior.Editable = false;
+            this.grd_StudentList_AddClass_View.OptionsSelection.MultiSelect = true;
+            this.grd_StudentList_AddClass_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.grd_StudentList_AddClass_View.OptionsView.ShowGroupPanel = false;
+            this.grd_StudentList_AddClass_View.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.grd_StudentList_AddClass_View_SelectionChanged);
+            this.grd_StudentList_AddClass_View.DataSourceChanged += new System.EventHandler(this.grd_StudentList_AddClass_View_DataSourceChanged);
             // 
             // gridColumn39
             // 
@@ -1951,7 +2029,7 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.OptionsColumn.FixedWidth = true;
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 0;
+            this.gridColumn39.VisibleIndex = 1;
             this.gridColumn39.Width = 86;
             // 
             // gridColumn40
@@ -1961,7 +2039,7 @@
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.OptionsColumn.FixedWidth = true;
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 1;
+            this.gridColumn40.VisibleIndex = 2;
             this.gridColumn40.Width = 221;
             // 
             // gridColumn41
@@ -1971,7 +2049,7 @@
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.FixedWidth = true;
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 2;
+            this.gridColumn41.VisibleIndex = 3;
             this.gridColumn41.Width = 164;
             // 
             // gridColumn42
@@ -1980,7 +2058,7 @@
             this.gridColumn42.FieldName = "EMAIL";
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
-            this.gridColumn42.VisibleIndex = 3;
+            this.gridColumn42.VisibleIndex = 4;
             this.gridColumn42.Width = 229;
             // 
             // gridColumn43
@@ -1990,7 +2068,7 @@
             this.gridColumn43.Name = "gridColumn43";
             this.gridColumn43.OptionsColumn.FixedWidth = true;
             this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 4;
+            this.gridColumn43.VisibleIndex = 5;
             this.gridColumn43.Width = 80;
             // 
             // gridColumn44
@@ -1999,7 +2077,7 @@
             this.gridColumn44.FieldName = "DIACHI";
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 5;
+            this.gridColumn44.VisibleIndex = 6;
             this.gridColumn44.Width = 388;
             // 
             // addClassPanel
@@ -2441,6 +2519,7 @@
             // 
             // pictureBox12
             // 
+            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox12.Image = global::StudentManagements.Properties.Resources.studentsListTitle;
             this.pictureBox12.Location = new System.Drawing.Point(396, 22);
             this.pictureBox12.Name = "pictureBox12";
@@ -2546,6 +2625,45 @@
             this.gridColumn56.VisibleIndex = 6;
             this.gridColumn56.Width = 388;
             // 
+            // panel14
+            // 
+            this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel14.Controls.Add(this.gridControl1);
+            this.panel14.Location = new System.Drawing.Point(931, 195);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(258, 471);
+            this.panel14.TabIndex = 7;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.ribbonControl1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(258, 471);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdColumn_});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // grdColumn_
+            // 
+            this.grdColumn_.Caption = "gridColumn3";
+            this.grdColumn_.Name = "grdColumn_";
+            this.grdColumn_.Visible = true;
+            this.grdColumn_.VisibleIndex = 0;
+            // 
             // Form1
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -2594,8 +2712,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.navPage_ClassInformation.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ClassInformation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ClassInformation_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_ClassInformation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_ClassInformation_View)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_ClassInformation)).EndInit();
             this.navFrame_ClassInformation.ResumeLayout(false);
@@ -2603,6 +2721,7 @@
             this.navPage_ClassDetail.PerformLayout();
             this.navPage_ClassDetail_Edit.ResumeLayout(false);
             this.navPage_ClassDetail_Edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Year_ClassInformation_Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassTotal_ClassInformation_Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassName_ClassInformation_Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -2650,6 +2769,9 @@
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_Edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_Edit_View)).EndInit();
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2691,7 +2813,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView grd_StudentList_View;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn grdColumn_NgaySinh;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
@@ -2739,8 +2861,8 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.RichTextBox txt_StudentAddress_AddStudent;
         private DevExpress.XtraEditors.SimpleButton btn_Done_AddStudent;
-        private DevExpress.XtraGrid.GridControl grd_ClassInformation;
-        private DevExpress.XtraGrid.Views.Grid.GridView grd_ClassInformation_View;
+        private DevExpress.XtraGrid.GridControl grd_StudentList_ClassInformation;
+        private DevExpress.XtraGrid.Views.Grid.GridView grd_StudentList_ClassInformation_View;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -2873,6 +2995,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn54;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn55;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn56;
+        private DevExpress.XtraEditors.LabelControl txt_Year_ClassInformation;
+        private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraEditors.TextEdit txt_Year_ClassInformation_Edit;
+        private DevExpress.XtraEditors.LabelControl labelControl26;
+        private DevExpress.XtraEditors.SimpleButton btn_DeleteStudentInClass_AddClass;
+        private System.Windows.Forms.Panel panel14;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn grdColumn_;
     }
 }
 

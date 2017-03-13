@@ -74,14 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ClassBLL.cs" />
+    <Compile Include="BLL\ClassBus.cs" />
     <Compile Include="DAL\ClassDAL.cs" />
     <Compile Include="DAL\DataServices.cs" />
-    <Compile Include="demo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="demo.Designer.cs">
-      <DependentUpon>demo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\HOCSINH.cs" />
     <Compile Include="Entities\LOP.cs" />
     <Compile Include="Form1.cs">
@@ -92,9 +87,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="demo.resx">
-      <DependentUpon>demo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
