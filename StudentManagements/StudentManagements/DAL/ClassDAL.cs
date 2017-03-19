@@ -407,6 +407,31 @@ namespace StudentManagements.DAL
             return check;
         }
 
+        public bool insertSubjectForClass(int MAMH, int MALOP)
+        {
+            bool check = false;
+            string query = "INSERT INTO QLMONHOC(MAMH, MALOP) VALUES(@MAMH, @MALOP)";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = MAMH;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
         public bool updateClassTotal(int MALOP, int SISO)
         {
             bool check = false;
@@ -541,9 +566,9 @@ namespace StudentManagements.DAL
             return subjectID;
         }
 
-        public DataTable getSubjectNameAccordingClassID(int MALOP)
+        public DataTable getSubjectForClass(int MALOP)
         {
-            string query = "SELECT MH.TENMH FROM MONHOC MH, QLMONHOC QL WHERE MH.MAMH = QL.MAMH AND QL.MALOP = @MALOP";
+            string query = "SELECT MH.MAMH, MH.TENMH FROM MONHOC MH, QLMONHOC QL WHERE MH.MAMH = QL.MAMH AND QL.MALOP = @MALOP";
             try
             {
                 connection = dataServices.getConnect();
@@ -567,6 +592,62 @@ namespace StudentManagements.DAL
             return table;
         }
 
+        public DataTable getAllSubject()
+        {
+            string query = "SELECT MONHOC.MAMH, MONHOC.TENMH FROM MONHOC";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+        }
+
+        public bool deleteSubjectInClass(int MAMH, int MALOP)
+        {
+            bool check = false;
+            string query = "DELETE QLMONHOC WHERE MAMH = @MAMH AND MALOP = @MALOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = MAMH;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
         //==========================================================================================================
         //ScoreBoard
 
@@ -598,7 +679,7 @@ namespace StudentManagements.DAL
             return table;
         }
 
-        public DataTable getScoreBoardAccordingRequire(int MALOP, int MAMH)
+        public DataTable getScoreBoardAccordingRequire(int MALOP, int MAMH, int HOCKY)
         {
             string query = "prd_KETQUA_Select_MALOP_MONHOC";
             try
@@ -611,6 +692,7 @@ namespace StudentManagements.DAL
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
                 command.Parameters.Add("@MAMH", SqlDbType.Int).Value = MAMH;
+                command.Parameters.Add("@HOCKY", SqlDbType.Int).Value = HOCKY;
                 dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = command;
                 table = new DataTable();
@@ -618,7 +700,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-
             }
             finally
             {
@@ -626,6 +707,39 @@ namespace StudentManagements.DAL
                 connection.Close();
             }
             return table;
+        }
+
+        public bool insertScoreBoard(Entities.KETQUA kq)
+        {
+            bool check = false;
+            string query = "prd_KETQUA_Insert";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Connection = connection;
+                command.Parameters.Add("@MSHS", SqlDbType.Int).Value = kq.MSHS;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = kq.MaMH;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = kq.MaLop;
+                command.Parameters.Add("@HOCKY", SqlDbType.Int).Value = kq.HocKy;
+                command.Parameters.Add("@DIEM15", SqlDbType.Int).Value = kq.Diem15;
+                command.Parameters.Add("@DIEM1TIET", SqlDbType.Int).Value = kq.Diem1Tiet;
+                command.Parameters.Add("@DIEMCUOIKY", SqlDbType.Int).Value = kq.DiemCuoiKy;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
         }
 
         public bool deleteScoreBoardCell(int MAKQ)
@@ -645,6 +759,59 @@ namespace StudentManagements.DAL
                 check = true;
             }
             catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteScoreBoardClass(int MALOP)
+        {
+            bool check = false;
+            string query = "DELETE KETQUA WHERE MALOP = @MALOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateScoreBoardCell(Entities.KETQUA kq)
+        {
+            bool check = false;
+            string query = "prd_KETQUA_Update";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MAKQ", SqlDbType.Int).Value = kq.MaKQ;
+                command.Parameters.Add("@DIEM15", SqlDbType.Float).Value = kq.Diem15;
+                command.Parameters.Add("@DIEM1TIET", SqlDbType.Float).Value = kq.Diem1Tiet;
+                command.Parameters.Add("@DIEMCUOIKY", SqlDbType.Float).Value = kq.DiemCuoiKy;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
             finally
             {
                 connection.Close();

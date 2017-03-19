@@ -7,9 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-namespace StudentManagements
+namespace StudentManagements 
 {
     public partial class Form1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -21,9 +20,19 @@ namespace StudentManagements
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2016 Colorful";
         }
 
+        private void navFrame_Main_SelectedPageIndexChanged(object sender, EventArgs e)
+        {
+            navPage_ScoreBoardDetail2.Controls.Clear();//Dùng để xoá các control mà các trang đang chứa hiện tại(Reset trang)
+        }
+
         private void grd_StudentList_ClassInformation_View_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
             btn_DeleteStudent_ClassInformation.Enabled = (grd_StudentList_ClassInformation_View.SelectedRowsCount != 0) ? true : false;
+        }
+
+        private void grd_SubjectList_ClassInformation_View_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            btn_DeleteStudent_ClassInformation.Enabled = (grd_SubjectList_ClassInformation_View.SelectedRowsCount != 0) ? true : false;
         }
 
         private void grd_StudentList_AddClass_View_DataSourceChanged(object sender, EventArgs e)
@@ -36,29 +45,38 @@ namespace StudentManagements
             btn_DeleteStudentInClass_AddClass.Enabled = (grd_StudentList_AddClass_View.SelectedRowsCount != 0) ? true : false;
         }
 
-        //==============================================================================
+        private void grd_SubjectList_AddClass_View_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            btn_DeleteStudentInClass_AddClass.Enabled = (grd_StudentList_AddClass_View.SelectedRowsCount != 0) ? true : false;
+        }
+
+        //
         //Actions
+        //
+        
         public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_StudentsList;
-            ClassBus.Instance.ShowStudentList(grd_StudentList);
+            ClassBus.Instance.showStudentList(grd_StudentList);
 
         }
 
         private void btn_Class_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ClassList;
-            ClassBus.Instance.ShowClassList(grd_ClassList);
+            ClassBus.Instance.showClassList(grd_ClassList);
         }
 
         private void btn_ScoreBoard_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ScoreBoardList;
-            ClassBus.Instance.ShowClassList(grd_ScoreBoardList);//Show ClassList to choose
+            ClassBus.Instance.showClassList(grd_ScoreBoardList);//Show ClassList to choose
         }
-
-        //==============================================================================
+        
+        //
         //Student
+        //
+
         private void btn_AddStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ClassBLL.Instance.formatControls(studentInformationPanel);
@@ -143,8 +161,10 @@ namespace StudentManagements
             btn_Save_StudentInformation.Show();
             btn_Edit_StudentInformation.Hide();
         }
-        //==============================================================================
+        
+        //
         //Class
+        //
         private void btn_Delete_ClassList_Click(object sender, EventArgs e)//Delete Class
         {
             if (MessageBox.Show("Do you want to delete this Class?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -156,8 +176,10 @@ namespace StudentManagements
             }
             grd_ClassList.DataSource = ClassBLL.Instance.getAllClass();
         }
-        //-------------------------------------------------------
+
+        //
         //EditClass
+        //
 
         private void init_ClassDetail()//Khởi tạo và set giá trị ban đầu cho các control trước khi vào page thông tin chi tiết của lớp
         {
@@ -169,6 +191,7 @@ namespace StudentManagements
             btn_DeleteStudent_ClassInformation.Hide();
             btn_AddStudentForClass_ClassInformation.Hide();
             grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
+            grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
             //Set away select for grd_StudentList_ClassInformation
         }
         private void btn_Detail_ClassList_Click(object sender, EventArgs e)
@@ -179,6 +202,11 @@ namespace StudentManagements
             DataTable table = new DataTable();
             table = ClassBLL.Instance.getStudentForClass(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP")));
             grd_StudentList_ClassInformation.DataSource = table;
+
+            DataTable subjectTable = new DataTable();
+            subjectTable = ClassBLL.Instance.getSubjectForClass(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP")));
+            grd_SubjectList_ClassInformation.DataSource = subjectTable;
+            btn_AddSubjectsForClass_ClassInformation.Hide();
         }
 
         private void init_Edit_ClassInformation()//Khởi tạo các giá trị cho các control khi chọn edit
@@ -191,18 +219,26 @@ namespace StudentManagements
             btn_Save_ClassInformation.Show();
             btn_DeleteStudent_ClassInformation.Show();
             btn_AddStudentForClass_ClassInformation.Show();
+            btn_AddSubjectsForClass_ClassInformation.Show();
+            grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelect = true;
+            grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            grd_StudentList_ClassInformation_View.ClearSelection();
+            grd_SubjectList_ClassInformation_View.ClearSelection();
             txt_ClassName_ClassInformation_Edit.Focus();
         }
         private void btn_Edit_ClassInformation_Click(object sender, EventArgs e)
         {
             navFrame_ClassInformation.SelectedPage = navPage_ClassDetail_Edit;
             init_Edit_ClassInformation();
-            grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            grd_StudentList_ClassInformation_View.ClearSelection();
         }
 
         private void btn_Save_ClassInformation_Click(object sender, EventArgs e)
         {
+            if (!ClassBLL.Instance.checkBeforeSave(navPage_ClassDetail_Edit))//If any control Empty => return;
+            {
+                return;
+            }
             //If don't have any change then return
             if (!txt_ClassName_ClassInformation_Edit.Text.Equals(txt_ClassName_ClassInformation.Text) || !txt_Year_ClassInformation_Edit.Text.Equals(txt_Year_ClassInformation.Text))
             {
@@ -223,38 +259,64 @@ namespace StudentManagements
             btn_Save_ClassInformation.Hide();
             btn_Edit_ClassInformation.Show();
             btn_AddStudentForClass_ClassInformation.Hide();
+            btn_AddSubjectsForClass_ClassInformation.Hide();
             grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
+            grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
             navFrame_ClassInformation.SelectedPage = navPage_ClassDetail;
         }
 
         private void btn_AddStudentForClass_ClassInformation_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddStudentForClass_Edit;
-            ClassBus.Instance.ShowStudentForAddClass(grd_AddStudentForClass_Edit);
+            ClassBus.Instance.showStudentForAddClass(grd_AddStudentForClass_Edit);
         }
 
         private void btn_OK_AddStudentForClass_Edit_Click(object sender, EventArgs e)
         {
             int MALOP = ClassBLL.Instance.getClassID(txt_ClassName_ClassInformation.Text, int.Parse(txt_Year_ClassInformation.Text));//Get MALOP from navPage_ClassInformation
-            ClassBus.Instance.ProcessClickAddStudentForClass_ClassInformation(MALOP, grd_AddStudentForClass_Edit_View, grd_StudentList_ClassInformation);
+            ClassBus.Instance.processClickAddStudentForClass_ClassInformation(MALOP, grd_AddStudentForClass_Edit_View, grd_StudentList_ClassInformation);
             navFrame_Main.SelectedPage = navPage_ClassInformation;
             txt_ClassTotal_ClassInformation_Edit.Text = grd_StudentList_ClassInformation_View.RowCount.ToString();
         }
 
         private void btn_DeleteStudent_ClassInformation_Click(object sender, EventArgs e)
         {
-            int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP")); ;//Get MALOP from navPage_ClassInformation
-            ClassBus.Instance.DeleteStudentInClass(grd_StudentList_ClassInformation_View, grd_StudentList_ClassInformation, MALOP);
-            txt_ClassTotal_ClassInformation_Edit.Text = grd_StudentList_ClassInformation_View.RowCount.ToString();
-
-            btn_DeleteStudent_ClassInformation.Enabled = false;//Set enabled for button after User click
+            if (MessageBox.Show("Do you want to Delete?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP")); ;//Get MALOP from navPage_ClassInformation
+                ClassBus.Instance.deleteStudentInClass(grd_StudentList_ClassInformation_View, grd_StudentList_ClassInformation, MALOP);
+                ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_ClassInformation_View, grd_SubjectList_ClassInformation, MALOP);
+                txt_ClassTotal_ClassInformation_Edit.Text = grd_StudentList_ClassInformation_View.RowCount.ToString();
+                btn_DeleteStudent_ClassInformation.Enabled = false;//Set enabled for button after User click
+            }
         }
-        //-------------------------------------------------------
+
+        void addSubjectForClass_EditClass(int[] subjectIDs)
+        {
+            int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View,"MALOP"));
+            foreach(int id in subjectIDs)
+            {
+                ClassBLL.Instance.insertSubjectForClass(id, MALOP);
+            }
+            DataTable subjectTable = new DataTable();
+            subjectTable = ClassBLL.Instance.getSubjectForClass(MALOP);
+            grd_SubjectList_ClassInformation.DataSource = subjectTable;
+        }
+        private void btn_AddSubjectsForClass_ClassInformation_Click(object sender, EventArgs e)
+        {
+            AddSubjectForm form = new AddSubjectForm();
+            form.returnData = new AddSubjectForm.callBack(addSubjectForClass_EditClass);
+            form.ShowDialog();
+        }
+
+        //
         //AddClass
+        //
+
         private void btn_AddStudentForClass_AddClass_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddStudentForClass;
-            ClassBus.Instance.ShowStudentForAddClass(grd_AddStudentForClass);
+            ClassBus.Instance.showStudentForAddClass(grd_AddStudentForClass);
         }
 
         private void init_AddClass()
@@ -269,7 +331,9 @@ namespace StudentManagements
             txt_ClassTotal_AddClass.Text = "";
             txt_ClassName_AddClass.Focus();
             grd_StudentList_AddClass.DataSource = null;
+            grd_SubjectList_AddClass.DataSource = null;
             btn_DeleteStudentInClass_AddClass.Enabled = false;
+            btn_AddSubjectsForClass_AddClass.Enabled = false;
 
         }
         private void btn_AddClass_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -281,13 +345,21 @@ namespace StudentManagements
 
         private void btn_Save_AddClass_Click(object sender, EventArgs e)
         {
-            ClassBus.Instance.SaveAddClass(addClassPanel, txt_ClassTotal_AddClass, txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text), ref btn_AddStudentForClass_AddClass);
+            if (!ClassBLL.Instance.checkBeforeSave(addClassPanel, txt_ClassTotal_AddClass))//If any Texbox is empty => Exit
+            {
+                return;
+            }
+            if (ClassBus.Instance.saveAddClass(addClassPanel, txt_ClassTotal_AddClass, txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text)))
+            {
+                btn_AddStudentForClass_AddClass.Enabled = true;
+                btn_AddSubjectsForClass_AddClass.Enabled = true;
+            }
         }
 
         private void btn_OK_AddStudentForClass_Click(object sender, EventArgs e)
         {
             int MALOP = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));//Get MALOP from navPage_AddClass
-            ClassBus.Instance.ProcessClickAddStudentForClass_ClassInformation(MALOP, grd_AddStudentForClass_View, grd_StudentList_AddClass);
+            ClassBus.Instance.processClickAddStudentForClass_ClassInformation(MALOP, grd_AddStudentForClass_View, grd_StudentList_AddClass);
             //Xử lý thêm học sinh vào cho lớp, lấy thông tin tất cả các học sinh có trong lớp ra grdView hiển thị
             navFrame_Main.SelectedPage = navPage_AddClass;
             txt_ClassName_AddClass.Enabled = false;
@@ -298,103 +370,69 @@ namespace StudentManagements
         private void btn_DeleteStudentInClass_AddClass_Click(object sender, EventArgs e)
         {
             int MALOP = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));//Get MALOP from navPage_ClassInformation
-            ClassBus.Instance.DeleteStudentInClass(grd_StudentList_AddClass_View, grd_StudentList_AddClass, MALOP);
-
+            ClassBus.Instance.deleteStudentInClass(grd_StudentList_AddClass_View, grd_StudentList_AddClass, MALOP);
+            ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_AddClass_View, grd_SubjectList_AddClass, MALOP);
             btn_DeleteStudentInClass_AddClass.Enabled = false;//Set enabled for button after User click
+            DataTable table = new DataTable();
+            table = ClassBLL.Instance.getSubjectForClass(MALOP);
+            grd_SubjectList_AddClass.DataSource = table;
         }
-        //==============================================================================
-        //Menubar
 
-
-        //==============================================================================
+        void addSubjectForClass_AddClass(int[] subjectIDs)
+        {
+            int MALOP = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));
+            foreach (int id in subjectIDs)
+            {
+                ClassBLL.Instance.insertSubjectForClass(id, MALOP);
+            }
+            grd_SubjectList_AddClass.DataSource = ClassBLL.Instance.getSubjectForClass(MALOP); ;
+        }
+        private void btn_AddSubjectsForClass_AddClass_Click(object sender, EventArgs e)
+        {
+            AddSubjectForm frm = new AddSubjectForm();
+            frm.returnData = new AddSubjectForm.callBack(addSubjectForClass_AddClass);
+            frm.ShowDialog();
+        }
+        
+        //
         //ScoreBoard
+        //
 
-
+        DataTable getTable()
+        {
+            return ClassBLL.Instance.getAllScoreBoard(); ;
+        }
         private void btn_All_ScoreBoardList_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ScoreBoardDetail;
-            DataTable table = new DataTable();
-            table = ClassBLL.Instance.getAllScoreBoard();
-            grd_ScoreBoardDetail.DataSource = table;
+            
+            GUI.uc_ScoreBoardList uc = new GUI.uc_ScoreBoardList();
+            uc.Dock = DockStyle.Fill;
+            uc.getTable = new GUI.uc_ScoreBoardList.getData(getTable);
+            navPage_ScoreBoardDetail.Controls.Add(uc);
         }
-
         private void btn_LookUp_ScoreBoardList_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ScoreBoardDetail2;//Show Page
-
-            txt_ClassName_ScoreBoardDetail2.Text = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "TENLOP");//Take ClassName I selected
-
-            DataTable table = new DataTable();
-            table = ClassBLL.Instance.getSubjectNameAccordingClassID(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP")));//Take table when know ClassID
-
-            cb_SelectSubject_ScoreBoardDetail.Items.Clear();//Clear Combobox before give data
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                cb_SelectSubject_ScoreBoardDetail.Items.Add(table.Rows[i][0]);
-            }
-            cb_SelectSubject_ScoreBoardDetail.Items.Add("--Select Subject--");
-            cb_SelectSubject_ScoreBoardDetail.SelectedItem = "--Select Subject--";
-            txt_ClassID.Text = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP");//Save MALOP into TextBox txt_ClassID
-            grd_ScoreBoardDetail2.DataSource = null;
+            string TENLOP = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "TENLOP");
+            int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP"));
+            GUI.uc_ScoreBoardOfClass uc = new GUI.uc_ScoreBoardOfClass(TENLOP, MALOP);
+            uc.Dock = DockStyle.Fill;
+            navPage_ScoreBoardDetail2.Controls.Add(uc);
         }
-
-        private void cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cb_SelectSubject_ScoreBoardDetail.SelectedItem.Equals("--Select Subject--"))
-            {
-                grd_ScoreBoardDetail2.DataSource = null;
-                return;
-            }
-            DataTable table = new DataTable();
-            int classBLLgetSubjectsID = ClassBLL.Instance.getSubjectsID(cb_SelectSubject_ScoreBoardDetail.SelectedItem.ToString());
-            table = ClassBLL.Instance.getScoreBoardAccordingRequire(int.Parse(txt_ClassID.Text), classBLLgetSubjectsID);
-            grd_ScoreBoardDetail2.DataSource = table;
-        }
-
-        private void btn_Delete_ScoreBoardDetail2_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you want to delete this row?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-                if (ClassBLL.Instance.deleteScoreBoardCell(int.Parse(grd_ScoreBoardDetail2_View.GetRowCellDisplayText(grd_ScoreBoardDetail2_View.GetSelectedRows().First(), "MAKQ"))))
-                {
-                    MessageBox.Show("Delete successful!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                    cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged(sender, e);
-                }
-                else
-                    MessageBox.Show("Delete fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-            }
-        }
-
-
-        private void grd_ScoreBoardDetail2_Click(object sender, EventArgs e)
-        {
-        }
-
-
-
-
-
-
-
-        //==================================================================
-        //demo
-
-
 
         private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
 
-
-
-
-
-
-
-
-
+        private void btn_Delete_ScoreBoardList_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("ScoreBoard will deleted\nDo you want to delete?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                ClassBLL.Instance.deleteScoreBoardClass((int)grd_ScoreBoardList_View.GetDataRow(grd_ScoreBoardList_View.GetSelectedRows().First())["MALOP"]);
+            }
+        }
     }
 
 }

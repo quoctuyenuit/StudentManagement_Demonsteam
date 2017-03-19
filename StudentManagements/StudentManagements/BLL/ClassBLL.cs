@@ -39,7 +39,7 @@ namespace StudentManagements.BLL
         {
             return gridView.GetRowCellDisplayText(gridView.GetSelectedRows().First(), columnName);
         }
-        public bool checkBeforeSave(Panel panel, TextEdit txt = null)//Check Are Controls empty
+        public bool checkBeforeSave(Control panel, TextEdit txt = null)//Check Are Controls empty
         {
             foreach (Control ctrl in panel.Controls)
             {
@@ -134,6 +134,11 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.insertStudentForClass(MSHS, MALOP);
         }
 
+        public bool insertSubjectForClass(int MAMH, int MALOP)
+        {
+            return ClassDAL.Instance.insertSubjectForClass(MAMH, MALOP);
+        }
+
         public bool updateClassTotal(int MALOP, int SISO)
         {
             return ClassDAL.Instance.updateClassTotal(MALOP, SISO);
@@ -160,20 +165,35 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getSubjectsID(subjectName);
         }
 
-        public DataTable getSubjectNameAccordingClassID(int MALOP)
+        public DataTable getSubjectForClass(int MALOP)
         {
-            return ClassDAL.Instance.getSubjectNameAccordingClassID(MALOP);
+            return ClassDAL.Instance.getSubjectForClass(MALOP);
         }
 
+        public DataTable getAllSubject()
+        {
+            return ClassDAL.Instance.getAllSubject();
+        }
+        
+        public bool deleteSubjectInClass(int MAMH, int MALOP)
+        {
+            return ClassDAL.Instance.deleteSubjectInClass(MAMH, MALOP);
+        }
         //===================================================================
+        //ScoreBoard
         public DataTable getAllScoreBoard()
         {
             return ClassDAL.Instance.getAllScoreBoard();
         }
 
-        public DataTable getScoreBoardAccordingRequire(int MALOP, int MAMH)
+        public DataTable getScoreBoardAccordingRequire(int MALOP, int MAMH, int HOCKY)
         {
-            return ClassDAL.Instance.getScoreBoardAccordingRequire(MALOP, MAMH);
+            return ClassDAL.Instance.getScoreBoardAccordingRequire(MALOP, MAMH, HOCKY);
+        }
+
+        public bool insertScoreBoard(Entities.KETQUA kq)
+        {
+            return ClassDAL.Instance.insertScoreBoard(kq);
         }
 
         public bool deleteScoreBoardCell(int MAKQ)
@@ -181,5 +201,14 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.deleteScoreBoardCell(MAKQ);
         }
 
+        public bool deleteScoreBoardClass(int MALOP)
+        {
+            return ClassDAL.Instance.deleteScoreBoardClass(MALOP);
+        }
+
+        public bool updateScoreBoardCell(Entities.KETQUA kq)
+        {
+            return ClassDAL.Instance.updateScoreBoardCell(kq);
+        }
     }
 }
