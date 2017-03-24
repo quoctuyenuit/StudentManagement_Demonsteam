@@ -20,10 +20,6 @@ namespace StudentManagements
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2016 Colorful";
         }
 
-        private void navFrame_Main_SelectedPageIndexChanged(object sender, EventArgs e)
-        {
-            navPage_ScoreBoardDetail2.Controls.Clear();//Dùng để xoá các control mà các trang đang chứa hiện tại(Reset trang)
-        }
 
         private void grd_StudentList_ClassInformation_View_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
@@ -53,6 +49,21 @@ namespace StudentManagements
         //
         //Actions
         //
+        private void btn_ChangeRules_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChangeRules f = new ChangeRules();
+            f.ShowDialog();
+        }
+
+        private void btn_CreateReport_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navFrame_Main.SelectedPage = navPage_CreateReports;
+            tabPane_Reports.SelectedPage = tab_Subject;
+            GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
+            uc.Dock = DockStyle.Fill;
+            tab_Subject.Controls.Clear();
+            tab_Subject.Controls.Add(uc);
+        }
         
         public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
@@ -76,6 +87,15 @@ namespace StudentManagements
         //
         //Student
         //
+        private void btn_LookUpStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navFrame_Main.SelectedPage = navPage_LookUpStudents;
+            GUI.uc_LookUpStudent uc = new GUI.uc_LookUpStudent();
+            uc.Dock = DockStyle.Fill;
+            navPage_LookUpStudents.Controls.Clear();//Dùng để xoá các control mà các trang đang chứa hiện tại(Reset trang)
+            navPage_LookUpStudents.Controls.Add(uc);
+
+        }
 
         private void btn_AddStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -409,16 +429,18 @@ namespace StudentManagements
             GUI.uc_ScoreBoardList uc = new GUI.uc_ScoreBoardList();
             uc.Dock = DockStyle.Fill;
             uc.getTable = new GUI.uc_ScoreBoardList.getData(getTable);
+            navPage_ScoreBoardDetail.Controls.Clear();
             navPage_ScoreBoardDetail.Controls.Add(uc);
         }
         private void btn_LookUp_ScoreBoardList_Click(object sender, EventArgs e)
         {
-            navFrame_Main.SelectedPage = navPage_ScoreBoardDetail2;//Show Page
+            navFrame_Main.SelectedPage = navPage_ScoreBoardDetail;//Show Page
             string TENLOP = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "TENLOP");
             int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP"));
             GUI.uc_ScoreBoardOfClass uc = new GUI.uc_ScoreBoardOfClass(TENLOP, MALOP);
             uc.Dock = DockStyle.Fill;
-            navPage_ScoreBoardDetail2.Controls.Add(uc);
+            navPage_ScoreBoardDetail.Controls.Clear();
+            navPage_ScoreBoardDetail.Controls.Add(uc);
         }
 
         private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -433,6 +455,33 @@ namespace StudentManagements
                 ClassBLL.Instance.deleteScoreBoardClass((int)grd_ScoreBoardList_View.GetDataRow(grd_ScoreBoardList_View.GetSelectedRows().First())["MALOP"]);
             }
         }
+
+
+        private void tabPane_Reports_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
+        {
+            if (tabPane_Reports.SelectedPage == tab_Subject)
+            {
+                GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
+                uc.Dock = DockStyle.Fill;
+                tab_Subject.Controls.Clear();
+                tab_Subject.Controls.Add(uc);
+            }
+            else if (tabPane_Reports.SelectedPage == tab_Semester)
+            {
+                GUI.uc_Report_Semester uc = new GUI.uc_Report_Semester();
+                uc.Dock = DockStyle.Fill;
+                tab_Semester.Controls.Clear();
+                tab_Semester.Controls.Add(uc);
+            }
+        }
+
+       
+
+      
+
+        
+
+        
     }
 
 }

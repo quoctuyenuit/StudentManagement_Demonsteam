@@ -11,3 +11,9 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.exe
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.pdb
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.csprojResolveAssemblyReference.cache
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_LookUpStudent.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_Report_Subject.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_Report_Semester.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_ChageRules.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.ChangeRules.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.AddForm.resources

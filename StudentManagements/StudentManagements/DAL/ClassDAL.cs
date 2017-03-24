@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -35,6 +36,8 @@ namespace StudentManagements.DAL
 
         public DataTable getAllStudents()
         {
+            WaitDialogForm f = new WaitDialogForm();
+            f.Show();
             string query = "prd_HOCSINH_SelectAll";
             try
             {
@@ -53,11 +56,13 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
         public DataTable getStudentAccordingID(int MSHS)
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_SelectID";
             try
             {
@@ -83,11 +88,13 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
         public DataTable getStudentForClass(int MALOP)
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_SelectMALOP";
             try
             {
@@ -112,11 +119,13 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
         public DataTable getStudentForAddClass()
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_SelectHOCSINHTIMLOP";
             try
             {
@@ -140,6 +149,37 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
+            return table;
+        }
+
+        public DataTable getStudentForLookUp()
+        {
+            WaitDialogForm f = new WaitDialogForm();
+            string query = "prd_HOCSINH_Select_ForLookUpStudent";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.CommandText = query;
+                command.Connection = connection;
+                command.CommandType = CommandType.StoredProcedure;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            f.Close();
             return table;
         }
 
@@ -240,6 +280,7 @@ namespace StudentManagements.DAL
 
         public DataTable getAllClass()
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_LOP_SelectAll";
             try
             {
@@ -263,11 +304,13 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
         public DataTable getClassAccordingID(int MALOP)
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_Lop_SelectID";
             try
             {
@@ -292,6 +335,7 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
@@ -568,6 +612,7 @@ namespace StudentManagements.DAL
 
         public DataTable getSubjectForClass(int MALOP)
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "SELECT MH.MAMH, MH.TENMH FROM MONHOC MH, QLMONHOC QL WHERE MH.MAMH = QL.MAMH AND QL.MALOP = @MALOP";
             try
             {
@@ -589,6 +634,7 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
@@ -648,11 +694,88 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+
+        public bool insertSubject(string TenMH)
+        {
+            string query = "prd_MONHOC_Insert";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@TenMH", SqlDbType.NVarChar).Value = TenMH;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateSubject(string TenMH1, string TenMH2)
+        {
+            string query = "UPDATE MONHOC SET TENMH = @TenMH1 WHERE TENMH = @TenMH2";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TenMH1", SqlDbType.NVarChar).Value = TenMH1;
+                command.Parameters.Add("@TenMH2", SqlDbType.NVarChar).Value = TenMH2;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteSubject(string TenLop)
+        {
+            string query = "DELETE MONHOC WHERE TENMH = @TenLop";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
         //==========================================================================================================
         //ScoreBoard
 
         public DataTable getAllScoreBoard()
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_KETQUA_SelectAll";
             try
             {
@@ -676,11 +799,13 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
         public DataTable getScoreBoardAccordingRequire(int MALOP, int MAMH, int HOCKY)
         {
+            WaitDialogForm f = new WaitDialogForm();
             string query = "prd_KETQUA_Select_MALOP_MONHOC";
             try
             {
@@ -706,6 +831,7 @@ namespace StudentManagements.DAL
                 dataAdapter.Dispose();
                 connection.Close();
             }
+            f.Close();
             return table;
         }
 
@@ -818,5 +944,372 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+        //==========================================================================================================
+        //Report
+
+        public DataTable getReport_MONHOC(int MAMH, int HOCKY)
+        {
+            WaitDialogForm f = new WaitDialogForm();
+            string query = "prd_KETQUA_Select_MONHOC";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = MAMH;
+                command.Parameters.Add("@HOCKY", SqlDbType.Int).Value = HOCKY;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            f.Close();
+            return table;
+        }
+
+        public DataTable getReport_HOCKY(int HOCKY)
+        {
+            WaitDialogForm f = new WaitDialogForm();
+            string query = "prd_KETQUA_Select_HocKy";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@HOCKY", SqlDbType.Int).Value = HOCKY;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            f.Close();
+            return table;
+        }
+
+        //==========================================================================================================
+        //ChangeRules
+
+        //
+        //Rules StudentAge
+        //
+        public DataRow getRulesStudentAge()
+        {
+            string query = "SELECT TuoiToiThieu, TuoiToiDa FROM QD1 WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            
+            DataRow row = table.Rows[0];
+            return row;
+        }
+
+        public bool updateRulesStudentAge(int MinAge, int MaxAge)
+        {
+            bool check = false;
+            string query = "UPDATE QD1 SET TuoiToiThieu = @MinAge, TuoiToiDa = @MaxAge WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MinAge", SqlDbType.Int).Value = MinAge;
+                command.Parameters.Add("@MaxAge", SqlDbType.Int).Value = MaxAge;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+        //
+        //Rules Score
+        //
+        public DataRow getRulesScore()
+        {
+            string query = "SELECT DiemDatMon FROM QD5 WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table.Rows[0];
+        }
+
+        public bool updateRulesScore(float MinScore)
+        {
+            bool check = false;
+            string query = "UPDATE QD5 SET DIEMDATMON = @MinScore WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MinScore", SqlDbType.Float).Value = MinScore;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+        //
+        //Rules Class
+        //
+        public int getRulesClassSize()
+        {
+            int classSize = new int();
+            string query = "SELECT SISO FROM QD2_SISO WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                classSize = (int)command.ExecuteScalar();
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return classSize;
+        }
+
+        public DataTable getRulesAllClass()
+        {
+            string query = "SELECT TENLOP FROM QD2_LOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch {}
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+
+        }
+
+        public bool updateRulesClassSize(int classSize)
+        {
+            bool check = false;
+            string query = "UPDATE QD2_SISO SET SISO = @SISO WHERE MAQD = 1";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@SISO", SqlDbType.Int).Value = classSize;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateRulesClassName(string newClassName, string oldClassName)
+        {
+            bool check = false;
+            string query = "UPDATE QD2_LOP SET TENLOP = @newClassName WHERE TENLOP = @oldClassName";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@newClassName", SqlDbType.NVarChar).Value = newClassName;
+                command.Parameters.Add("@oldClassName", SqlDbType.NVarChar).Value = oldClassName;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+        
+        public bool insertRulesClass(string TenLop)
+        {
+            bool check = false;
+            string query = "INSERT INTO QD2_LOP VALUES(@TenLop)";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateRulesCLass(string TenLop, int MaQD)
+        {
+            bool check = false;
+            string query = "UPDATE QD2_LOP SET TENLOP = @TenLop WHERE MaQD = @MaQD";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.Parameters.Add("@MaQD", SqlDbType.Int).Value = MaQD;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteRulesClass(string TenLop)
+        {
+            bool check = false;
+            string query = "DELETE QD2_LOP WHERE TenLop = @TenLop";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+        //
+        //Rules Subjects
+        //
+       
     }
 }

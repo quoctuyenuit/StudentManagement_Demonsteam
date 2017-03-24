@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm.Designer.cs">
+      <DependentUpon>AddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="BLL\ClassBLL.cs" />
     <Compile Include="BLL\ClassBus.cs" />
+    <Compile Include="ChangeRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeRules.Designer.cs">
+      <DependentUpon>ChangeRules.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\ClassDAL.cs" />
     <Compile Include="DAL\DataServices.cs" />
     <Compile Include="Entities\HOCSINH.cs" />
@@ -92,6 +104,30 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\uc_ChageRules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_ChageRules.Designer.cs">
+      <DependentUpon>uc_ChageRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\uc_LookUpStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_LookUpStudent.Designer.cs">
+      <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\uc_Report_Semester.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_Report_Semester.Designer.cs">
+      <DependentUpon>uc_Report_Semester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\uc_Report_Subject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_Report_Subject.Designer.cs">
+      <DependentUpon>uc_Report_Subject.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\uc_ScoreBoardList.cs">
       <SubType>UserControl</SubType>
@@ -107,11 +143,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddForm.resx">
+      <DependentUpon>AddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSubjectForm.resx">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangeRules.resx">
+      <DependentUpon>ChangeRules.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_ChageRules.resx">
+      <DependentUpon>uc_ChageRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_LookUpStudent.resx">
+      <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_Report_Semester.resx">
+      <DependentUpon>uc_Report_Semester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_Report_Subject.resx">
+      <DependentUpon>uc_Report_Subject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\uc_ScoreBoardList.resx">
       <DependentUpon>uc_ScoreBoardList.cs</DependentUpon>
@@ -204,6 +258,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\addStudentTitle.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rulesTitle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -146,7 +146,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.FixedWidth = true;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 2;
             this.gridColumn5.Width = 152;
             // 
             // gridColumn6
@@ -156,7 +156,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.FixedWidth = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 3;
             this.gridColumn6.Width = 152;
             // 
             // gridColumn7
@@ -166,7 +166,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.FixedWidth = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.VisibleIndex = 4;
             this.gridColumn7.Width = 152;
             // 
             // gridColumn8
@@ -177,7 +177,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.FixedWidth = true;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
+            this.gridColumn8.VisibleIndex = 5;
             this.gridColumn8.Width = 165;
             // 
             // btn_Save
@@ -208,7 +208,7 @@
             this.cb_SelectSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cb_SelectSubject.Location = new System.Drawing.Point(194, 160);
             this.cb_SelectSubject.Name = "cb_SelectSubject";
-            this.cb_SelectSubject.Size = new System.Drawing.Size(142, 26);
+            this.cb_SelectSubject.Size = new System.Drawing.Size(155, 26);
             this.cb_SelectSubject.TabIndex = 25;
             this.cb_SelectSubject.SelectedIndexChanged += new System.EventHandler(this.cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged);
             // 
@@ -238,7 +238,7 @@
             this.cb_Semester.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(342, 160);
+            this.cb_Semester.Location = new System.Drawing.Point(355, 160);
             this.cb_Semester.Name = "cb_Semester";
             this.cb_Semester.Size = new System.Drawing.Size(104, 26);
             this.cb_Semester.TabIndex = 26;
@@ -247,7 +247,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl1.Location = new System.Drawing.Point(342, 139);
+            this.labelControl1.Location = new System.Drawing.Point(355, 139);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(70, 21);
             this.labelControl1.TabIndex = 24;

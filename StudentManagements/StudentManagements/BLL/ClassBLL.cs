@@ -72,6 +72,11 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getStudentForClass(MALOP);
         }
 
+        public DataTable getStudentForLookUp()
+        {
+            return ClassDAL.Instance.getStudentForLookUp();
+        }
+
         public bool deleteStudent(int MSHS)
         {
             return ClassDAL.Instance.deleteStudent(MSHS);
@@ -179,6 +184,21 @@ namespace StudentManagements.BLL
         {
             return ClassDAL.Instance.deleteSubjectInClass(MAMH, MALOP);
         }
+
+        public bool insertSubject(string TenMH)
+        {
+            return ClassDAL.Instance.insertSubject(TenMH);
+        }
+
+        public bool updateSubject(string TenMH1, string TenMH2)
+        {
+            return ClassDAL.Instance.updateSubject(TenMH1, TenMH2);
+        }
+
+        public bool deleteSubject(string TenLop)
+        {
+            return ClassDAL.Instance.deleteSubject(TenLop);
+        }
         //===================================================================
         //ScoreBoard
         public DataTable getAllScoreBoard()
@@ -209,6 +229,67 @@ namespace StudentManagements.BLL
         public bool updateScoreBoardCell(Entities.KETQUA kq)
         {
             return ClassDAL.Instance.updateScoreBoardCell(kq);
+        }
+        //===================================================================
+        //Report
+        public DataTable getReport_MONHOC(int MAMH, int HOCKY)
+        {
+            return ClassDAL.Instance.getReport_MONHOC(MAMH, HOCKY);
+        }
+        public DataTable getReport_HOCKY(int HOCKY)
+        {
+            return ClassDAL.Instance.getReport_HOCKY(HOCKY);
+        }
+        //===================================================================
+        //ChangeRules
+        public DataRow getRulesStudentAge()
+        {
+            return ClassDAL.Instance.getRulesStudentAge();
+        }
+
+        public bool updateRulesStudentAge(int MinAge, int MaxAge)
+        {
+            return ClassDAL.Instance.updateRulesStudentAge(MinAge, MaxAge);
+        }
+
+        public DataRow getRulesScore()
+        {
+            return ClassDAL.Instance.getRulesScore();
+        }
+
+        public bool updateRulesScore(float MinScore)
+        {
+            return ClassDAL.Instance.updateRulesScore(MinScore);
+        }
+
+        public int getRulesClassSize()
+        {
+            return ClassDAL.Instance.getRulesClassSize();
+        }
+
+        public DataTable getRulesAllClass()
+        {
+            return ClassDAL.Instance.getRulesAllClass();
+        }
+
+        public bool insertRulesClass(string TenLop)
+        {
+            return ClassDAL.Instance.insertRulesClass(TenLop);
+        }
+
+        public bool updateRulesClassName(string newClassName, string oldClassName)
+        {
+            return ClassDAL.Instance.updateRulesClassName(newClassName, oldClassName);
+        }
+
+        public bool updateRulesClassSize(int classSize)
+        {
+            return ClassDAL.Instance.updateRulesClassSize(classSize);
+        }
+
+        public bool deleteRulesClass(string TenLop)
+        {
+            return ClassDAL.Instance.deleteRulesClass(TenLop);
         }
     }
 }

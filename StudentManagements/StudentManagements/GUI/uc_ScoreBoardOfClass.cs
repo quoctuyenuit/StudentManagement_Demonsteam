@@ -34,6 +34,7 @@ namespace StudentManagements.GUI
         {
             txt_ClassName = new DevExpress.XtraEditors.LabelControl();
             txt_ClassName.Text = TENLOP;
+
             this.MaLop = MALOP;
             InitializeComponent();
             DataTable table = ClassBLL.Instance.getSubjectForClass(MALOP);//Take subjects when know ClassID

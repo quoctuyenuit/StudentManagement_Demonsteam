@@ -35,13 +35,14 @@
             this.btn_AddStudent_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_AddClass_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_FindStudents_Main = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_AddReport_Main = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_CreateReport_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_ChangeRules_Main = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.skinButton = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btn_FindStudent_Main = new DevExpress.XtraBars.BarSubItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.btn_LookUpStudent_Main = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -213,10 +214,11 @@
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.navPage_ScoreBoardDetail = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navPage_CreateReports = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navPage_Home = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navPage_ScoreBoardDetail2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.tabPane_Reports = new DevExpress.XtraBars.Navigation.TabPane();
+            this.tab_Subject = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tab_Semester = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.navPage_AddStudentForClass_Edit = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.btn_OK_AddStudentForClass_Edit = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -229,7 +231,10 @@
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.navPage_Home = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navPage_ScoreBoardDetail = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navPage_AddSubjectForClass = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navPage_LookUpStudents = new DevExpress.XtraBars.Navigation.NavigationPage();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -305,6 +310,10 @@
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_View)).BeginInit();
+            this.navPage_CreateReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabPane_Reports)).BeginInit();
+            this.tabPane_Reports.SuspendLayout();
             this.navPage_AddStudentForClass_Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.panel13.SuspendLayout();
@@ -322,15 +331,16 @@
             this.btn_AddStudent_Main,
             this.btn_AddClass_Main,
             this.btn_FindStudents_Main,
-            this.btn_AddReport_Main,
+            this.btn_CreateReport_Main,
             this.btn_ChangeRules_Main,
             this.barButtonItem1,
             this.skinButton,
             this.btn_FindStudent_Main,
-            this.barWorkspaceMenuItem1});
+            this.barWorkspaceMenuItem1,
+            this.btn_LookUpStudent_Main});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 16;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -371,19 +381,21 @@
             this.btn_FindStudents_Main.Id = 14;
             this.btn_FindStudents_Main.Name = "btn_FindStudents_Main";
             // 
-            // btn_AddReport_Main
+            // btn_CreateReport_Main
             // 
-            this.btn_AddReport_Main.Caption = "Add Report";
-            this.btn_AddReport_Main.Id = 5;
-            this.btn_AddReport_Main.LargeGlyph = global::StudentManagements.Properties.Resources.reportIcon;
-            this.btn_AddReport_Main.Name = "btn_AddReport_Main";
+            this.btn_CreateReport_Main.Caption = "Create_Report";
+            this.btn_CreateReport_Main.Id = 5;
+            this.btn_CreateReport_Main.LargeGlyph = global::StudentManagements.Properties.Resources.reportIcon;
+            this.btn_CreateReport_Main.Name = "btn_CreateReport_Main";
+            this.btn_CreateReport_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_CreateReport_Main_ItemClick);
             // 
             // btn_ChangeRules_Main
             // 
-            this.btn_ChangeRules_Main.Caption = "Change Rules";
+            this.btn_ChangeRules_Main.Caption = "Change_Rules";
             this.btn_ChangeRules_Main.Id = 6;
             this.btn_ChangeRules_Main.LargeGlyph = global::StudentManagements.Properties.Resources.changeRulesIcon;
             this.btn_ChangeRules_Main.Name = "btn_ChangeRules_Main";
+            this.btn_ChangeRules_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ChangeRules_Main_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -414,6 +426,14 @@
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
             // 
+            // btn_LookUpStudent_Main
+            // 
+            this.btn_LookUpStudent_Main.Caption = "Look up";
+            this.btn_LookUpStudent_Main.Id = 16;
+            this.btn_LookUpStudent_Main.LargeGlyph = global::StudentManagements.Properties.Resources.findStudentIcon;
+            this.btn_LookUpStudent_Main.Name = "btn_LookUpStudent_Main";
+            this.btn_LookUpStudent_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_LookUpStudent_Main_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -426,7 +446,8 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Home_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddStudent_Main, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddClass_Main);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddReport_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_LookUpStudent_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_CreateReport_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_ChangeRules_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.skinButton, true);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -467,6 +488,7 @@
             // 
             // btn_Students_Actions
             // 
+            this.btn_Students_Actions.Expanded = true;
             this.btn_Students_Actions.Name = "btn_Students_Actions";
             this.btn_Students_Actions.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.btn_Students_Actions.Text = "Students";
@@ -506,12 +528,12 @@
             this.navFrame_Main.Controls.Add(this.navPage_AddStudent);
             this.navFrame_Main.Controls.Add(this.navPage_AddClass);
             this.navFrame_Main.Controls.Add(this.navPage_AddStudentForClass);
-            this.navFrame_Main.Controls.Add(this.navPage_ScoreBoardDetail);
-            this.navFrame_Main.Controls.Add(this.navPage_Home);
             this.navFrame_Main.Controls.Add(this.navPage_CreateReports);
-            this.navFrame_Main.Controls.Add(this.navPage_ScoreBoardDetail2);
             this.navFrame_Main.Controls.Add(this.navPage_AddStudentForClass_Edit);
+            this.navFrame_Main.Controls.Add(this.navPage_Home);
+            this.navFrame_Main.Controls.Add(this.navPage_ScoreBoardDetail);
             this.navFrame_Main.Controls.Add(this.navPage_AddSubjectForClass);
+            this.navFrame_Main.Controls.Add(this.navPage_LookUpStudents);
             this.navFrame_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navFrame_Main.Location = new System.Drawing.Point(0, 0);
             this.navFrame_Main.Name = "navFrame_Main";
@@ -525,18 +547,17 @@
             this.navPage_AddStudentForClass_Edit,
             this.navPage_ScoreBoardList,
             this.navPage_ScoreBoardDetail,
-            this.navPage_ScoreBoardDetail2,
             this.navPage_AddStudent,
             this.navPage_AddClass,
             this.navPage_AddStudentForClass,
-            this.navPage_CreateReports});
-            this.navFrame_Main.SelectedPage = this.navPage_ScoreBoardDetail2;
+            this.navPage_CreateReports,
+            this.navPage_LookUpStudents});
+            this.navFrame_Main.SelectedPage = this.navPage_CreateReports;
             this.navFrame_Main.Size = new System.Drawing.Size(1188, 665);
             this.navFrame_Main.TabIndex = 0;
             this.navFrame_Main.Text = "navigationFrame1";
             this.navFrame_Main.TransitionAnimationProperties.FrameCount = 0;
             this.navFrame_Main.TransitionAnimationProperties.FrameInterval = 0;
-            this.navFrame_Main.SelectedPageIndexChanged += new System.EventHandler(this.navFrame_Main_SelectedPageIndexChanged);
             // 
             // navPage_StudentsList
             // 
@@ -2218,26 +2239,56 @@
             this.gridColumn50.VisibleIndex = 6;
             this.gridColumn50.Width = 388;
             // 
-            // navPage_ScoreBoardDetail
-            // 
-            this.navPage_ScoreBoardDetail.Name = "navPage_ScoreBoardDetail";
-            this.navPage_ScoreBoardDetail.Size = new System.Drawing.Size(1188, 665);
-            // 
             // navPage_CreateReports
             // 
+            this.navPage_CreateReports.Controls.Add(this.pictureBox8);
+            this.navPage_CreateReports.Controls.Add(this.tabPane_Reports);
             this.navPage_CreateReports.Name = "navPage_CreateReports";
             this.navPage_CreateReports.Size = new System.Drawing.Size(1188, 665);
             // 
-            // navPage_Home
+            // pictureBox8
             // 
-            this.navPage_Home.Name = "navPage_Home";
-            this.navPage_Home.Size = new System.Drawing.Size(1188, 665);
+            this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox8.Image = global::StudentManagements.Properties.Resources.reportTitle;
+            this.pictureBox8.Location = new System.Drawing.Point(382, 40);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(424, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 1;
+            this.pictureBox8.TabStop = false;
             // 
-            // navPage_ScoreBoardDetail2
+            // tabPane_Reports
             // 
-            this.navPage_ScoreBoardDetail2.AccessibleDescription = "";
-            this.navPage_ScoreBoardDetail2.Name = "navPage_ScoreBoardDetail2";
-            this.navPage_ScoreBoardDetail2.Size = new System.Drawing.Size(1188, 665);
+            this.tabPane_Reports.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabPane_Reports.Controls.Add(this.tab_Subject);
+            this.tabPane_Reports.Controls.Add(this.tab_Semester);
+            this.tabPane_Reports.Location = new System.Drawing.Point(0, 146);
+            this.tabPane_Reports.Name = "tabPane_Reports";
+            this.tabPane_Reports.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.tab_Subject,
+            this.tab_Semester});
+            this.tabPane_Reports.RegularSize = new System.Drawing.Size(1189, 519);
+            this.tabPane_Reports.SelectedPage = this.tab_Subject;
+            this.tabPane_Reports.Size = new System.Drawing.Size(1189, 519);
+            this.tabPane_Reports.TabIndex = 0;
+            this.tabPane_Reports.Text = "a";
+            this.tabPane_Reports.TransitionAnimationProperties.FrameCount = 0;
+            this.tabPane_Reports.TransitionAnimationProperties.FrameInterval = 0;
+            this.tabPane_Reports.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane_Reports_SelectedPageChanged);
+            // 
+            // tab_Subject
+            // 
+            this.tab_Subject.Caption = "Subject";
+            this.tab_Subject.Name = "tab_Subject";
+            this.tab_Subject.Size = new System.Drawing.Size(1167, 463);
+            // 
+            // tab_Semester
+            // 
+            this.tab_Semester.Caption = "Semester";
+            this.tab_Semester.Name = "tab_Semester";
+            this.tab_Semester.Size = new System.Drawing.Size(1167, 463);
             // 
             // navPage_AddStudentForClass_Edit
             // 
@@ -2365,10 +2416,25 @@
             this.gridColumn56.VisibleIndex = 6;
             this.gridColumn56.Width = 388;
             // 
+            // navPage_Home
+            // 
+            this.navPage_Home.Name = "navPage_Home";
+            this.navPage_Home.Size = new System.Drawing.Size(1188, 665);
+            // 
+            // navPage_ScoreBoardDetail
+            // 
+            this.navPage_ScoreBoardDetail.Name = "navPage_ScoreBoardDetail";
+            this.navPage_ScoreBoardDetail.Size = new System.Drawing.Size(1188, 665);
+            // 
             // navPage_AddSubjectForClass
             // 
             this.navPage_AddSubjectForClass.Name = "navPage_AddSubjectForClass";
             this.navPage_AddSubjectForClass.Size = new System.Drawing.Size(1188, 665);
+            // 
+            // navPage_LookUpStudents
+            // 
+            this.navPage_LookUpStudents.Name = "navPage_LookUpStudents";
+            this.navPage_LookUpStudents.Size = new System.Drawing.Size(1188, 665);
             // 
             // Form1
             // 
@@ -2465,6 +2531,10 @@
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_AddStudentForClass_View)).EndInit();
+            this.navPage_CreateReports.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabPane_Reports)).EndInit();
+            this.tabPane_Reports.ResumeLayout(false);
             this.navPage_AddStudentForClass_Edit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.panel13.ResumeLayout(false);
@@ -2487,7 +2557,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraBars.BarButtonItem btn_FindStudents_Main;
-        private DevExpress.XtraBars.BarButtonItem btn_AddReport_Main;
+        private DevExpress.XtraBars.BarButtonItem btn_CreateReport_Main;
         private DevExpress.XtraBars.BarButtonItem btn_ChangeRules_Main;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinButton;
@@ -2598,7 +2668,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraEditors.SimpleButton btn_All_ScoreBoardList;
-        private DevExpress.XtraBars.Navigation.NavigationPage navPage_ScoreBoardDetail2;
         private System.Windows.Forms.ComboBox cb_StudentSex_StudentInformation_Edit;
         private DevExpress.XtraEditors.TextEdit txt_StudentEmail_StudentInformation_Edit;
         private DevExpress.XtraEditors.TextEdit txt_StudentAddress_StudentInformation_Edit;
@@ -2677,6 +2746,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdColumn_MAMH;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn57;
         private DevExpress.XtraEditors.SimpleButton btn_AddSubjectsForClass_AddClass;
+        private DevExpress.XtraBars.BarButtonItem btn_LookUpStudent_Main;
+        private DevExpress.XtraBars.Navigation.NavigationPage navPage_LookUpStudents;
+        private DevExpress.XtraBars.Navigation.TabPane tabPane_Reports;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tab_Subject;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tab_Semester;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
 
