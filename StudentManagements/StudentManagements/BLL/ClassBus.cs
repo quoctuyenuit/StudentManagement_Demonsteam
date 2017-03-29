@@ -65,7 +65,11 @@ namespace StudentManagements.BLL
             int[] rows = grd.GetSelectedRows();
             foreach (int row in rows)
             {
-                ClassBLL.Instance.insertStudetForClass((int)grd.GetListSourceRowCellValue(row, "MSHS"), MALOP);
+                if (!ClassBLL.Instance.insertStudetForClass((int)grd.GetListSourceRowCellValue(row, "MSHS"), MALOP))
+                {
+                    MessageBox.Show("Quantity exceeds the limit", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                }
             }
             DataTable table = new DataTable();
             table = ClassBLL.Instance.getStudentForClass(MALOP);

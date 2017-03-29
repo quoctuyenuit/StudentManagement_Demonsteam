@@ -115,7 +115,10 @@ namespace StudentManagements
                 MessageBox.Show("Insert into database successful!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
             }
             else
-                MessageBox.Show("Insert fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                DataRow r = ClassBLL.Instance.getRulesStudentAge();
+                MessageBox.Show("Insert fail!, Student Age must be between "+r[0]+" and "+r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_Detail_StudentList_Click(object sender, EventArgs e)
@@ -137,7 +140,7 @@ namespace StudentManagements
             {
                 if (ClassBLL.Instance.deleteStudent(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "MSHS"))))
                 {
-                    MessageBox.Show("Delete successful!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                    int[] index = grd_StudentList_View.GetSelectedRows();
                     btn_Students_Actions_Click(sender, e);
                 }
                 else
@@ -150,7 +153,6 @@ namespace StudentManagements
             Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text, cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex, txt_StudentAddress_StudentInformation_Edit.Text);
             if (ClassBLL.Instance.updateStudent(student))//If updated successful -> Show message and update data for controls
             {
-                MessageBox.Show("You was updated successful!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txt_StudentID_StudentInformation_Detail.Text = txt_StudentID_StudentInformation_Edit.Text;
                 txt_StudentName_StudentInformation_Detail.Text = txt_StudentName_StudentInformation_Edit.Text;
                 txt_StudentDateOfBirth_StudentInformation_Detail.Text = cb_StudentDateOfBirth_StudentInformation_Edit.Text;
@@ -161,6 +163,11 @@ namespace StudentManagements
 
                 btn_Save_StudentInformation.Hide();
                 btn_Edit_StudentInformation.Show();
+            }
+            else
+            {
+                DataRow r = ClassBLL.Instance.getRulesStudentAge();
+                MessageBox.Show("Insert fail!, Student Age must be between " + r[0] + " and " + r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
