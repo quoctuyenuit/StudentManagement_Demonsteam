@@ -393,6 +393,30 @@ namespace StudentManagements.DAL
             return MALOP;
         }
 
+        public string getClassName(int MALOP)
+        {
+            string TENLOP = "";
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = @MALOP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = query;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                TENLOP = (string)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return TENLOP;
+        }
+
         public bool insertClass(Entities.LOP myClass)
         {
             bool check = false;

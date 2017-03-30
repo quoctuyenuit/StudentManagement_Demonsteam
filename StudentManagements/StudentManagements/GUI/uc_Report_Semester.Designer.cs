@@ -100,7 +100,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Sỉ Số";
-            this.gridColumn3.FieldName = "SÍO";
+            this.gridColumn3.FieldName = "SISO";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -126,6 +126,7 @@
             // 
             // cb_Semester
             // 
+            this.cb_Semester.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Semester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Semester.Items.AddRange(new object[] {
@@ -140,6 +141,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(503, 11);
             this.label2.Name = "label2";

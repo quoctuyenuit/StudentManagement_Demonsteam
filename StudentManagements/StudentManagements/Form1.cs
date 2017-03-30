@@ -1,14 +1,11 @@
-﻿using DevExpress.XtraEditors;
-using StudentManagements.BLL;
+﻿using StudentManagements.BLL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-namespace StudentManagements 
+namespace StudentManagements
 {
     public partial class Form1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -17,7 +14,7 @@ namespace StudentManagements
             InitializeComponent();
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2016 Colorful";
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Style";
         }
 
 
@@ -46,6 +43,16 @@ namespace StudentManagements
             btn_DeleteStudentInClass_AddClass.Enabled = (grd_StudentList_AddClass_View.SelectedRowsCount != 0) ? true : false;
         }
 
+        private void navFrame_Main_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
+        {
+            if (navFrame_Main.SelectedPage == navPage_StudentsList || navFrame_Main.SelectedPage == navPage_ClassList
+                || navFrame_Main.SelectedPage == navPage_ClassInformation || navFrame_Main.SelectedPage == navPage_LookUpStudents)
+            {
+                btn_ExportFile_Main.Enabled = true;
+            }
+            else
+                btn_ExportFile_Main.Enabled = false;
+        }
         //
         //Actions
         //
@@ -61,15 +68,16 @@ namespace StudentManagements
             tabPane_Reports.SelectedPage = tab_Subject;
             GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
             uc.Dock = DockStyle.Fill;
+            uc.setVisible = new GUI.uc_Report_Subject.CallBack(setVisibleExportFile);
+            uc.getDelegateData = new GUI.uc_Report_Subject.getDelegate(getDelegateTable);
             tab_Subject.Controls.Clear();
             tab_Subject.Controls.Add(uc);
         }
-        
+
         public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_StudentsList;
             ClassBus.Instance.showStudentList(grd_StudentList);
-
         }
 
         private void btn_Class_Actions_Click(object sender, EventArgs e)
@@ -83,7 +91,7 @@ namespace StudentManagements
             navFrame_Main.SelectedPage = navPage_ScoreBoardList;
             ClassBus.Instance.showClassList(grd_ScoreBoardList);//Show ClassList to choose
         }
-        
+
         //
         //Student
         //
@@ -106,8 +114,14 @@ namespace StudentManagements
 
         private void btn_Done_AddStudent_Click(object sender, EventArgs e)//Insert a student into database
         {
-            if (!ClassBLL.Instance.checkBeforeSave(studentInformationPanel, txt_StudentEmail_AddStudent))
+            if (!ClassBLL.Instance.IsEmpty(studentInformationPanel, txt_StudentEmail_AddStudent))
                 return;
+
+            if (!ClassBLL.Instance.IsEmail(txt_StudentEmail_AddStudent.Text))
+            {
+                MessageBox.Show("Invalid email!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (ClassBLL.Instance.insertStudent(new Entities.HOCSINH(txt_StudentName_AddStudent.Text, txt_StudentEmail_AddStudent.Text, cb_StudentDateOfBirth_AddStudent.DateTime, cb_StudentSex_AddStudent.SelectedIndex, txt_StudentAddress_AddStudent.Text)))
             {
                 //If insert successful
@@ -117,7 +131,8 @@ namespace StudentManagements
             else
             {
                 DataRow r = ClassBLL.Instance.getRulesStudentAge();
-                MessageBox.Show("Insert fail!, Student Age must be between "+r[0]+" and "+r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Insert fail!, Student Age must be between " + r[0] + " and " + r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cb_StudentDateOfBirth_AddStudent.Focus();
             }
         }
 
@@ -150,6 +165,12 @@ namespace StudentManagements
 
         private void btn_Save_StudentInformation_Click(object sender, EventArgs e)
         {
+            if (!ClassBLL.Instance.IsEmail(txt_StudentEmail_StudentInformation_Edit.Text))
+            {
+                MessageBox.Show("Invalid email!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_StudentEmail_StudentInformation_Edit.Focus();
+                return;
+            }
             Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text, cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex, txt_StudentAddress_StudentInformation_Edit.Text);
             if (ClassBLL.Instance.updateStudent(student))//If updated successful -> Show message and update data for controls
             {
@@ -168,6 +189,7 @@ namespace StudentManagements
             {
                 DataRow r = ClassBLL.Instance.getRulesStudentAge();
                 MessageBox.Show("Insert fail!, Student Age must be between " + r[0] + " and " + r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cb_StudentDateOfBirth_StudentInformation_Edit.DateTime = DateTime.ParseExact(txt_StudentDateOfBirth_StudentInformation_Detail.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
         }
 
@@ -188,7 +210,7 @@ namespace StudentManagements
             btn_Save_StudentInformation.Show();
             btn_Edit_StudentInformation.Hide();
         }
-        
+
         //
         //Class
         //
@@ -262,7 +284,7 @@ namespace StudentManagements
 
         private void btn_Save_ClassInformation_Click(object sender, EventArgs e)
         {
-            if (!ClassBLL.Instance.checkBeforeSave(navPage_ClassDetail_Edit))//If any control Empty => return;
+            if (!ClassBLL.Instance.IsEmpty(navPage_ClassDetail_Edit))//If any control Empty => return;
             {
                 return;
             }
@@ -320,8 +342,8 @@ namespace StudentManagements
 
         void addSubjectForClass_EditClass(int[] subjectIDs)
         {
-            int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View,"MALOP"));
-            foreach(int id in subjectIDs)
+            int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP"));
+            foreach (int id in subjectIDs)
             {
                 ClassBLL.Instance.insertSubjectForClass(id, MALOP);
             }
@@ -372,7 +394,7 @@ namespace StudentManagements
 
         private void btn_Save_AddClass_Click(object sender, EventArgs e)
         {
-            if (!ClassBLL.Instance.checkBeforeSave(addClassPanel, txt_ClassTotal_AddClass))//If any Texbox is empty => Exit
+            if (!ClassBLL.Instance.IsEmpty(addClassPanel, txt_ClassTotal_AddClass))//If any Texbox is empty => Exit
             {
                 return;
             }
@@ -420,24 +442,33 @@ namespace StudentManagements
             frm.returnData = new AddSubjectForm.callBack(addSubjectForClass_AddClass);
             frm.ShowDialog();
         }
-        
+
         //
         //ScoreBoard
         //
 
-        DataTable getTable()
+        DataTable getTableForScoreBoard()
         {
             return ClassBLL.Instance.getAllScoreBoard(); ;
         }
         private void btn_All_ScoreBoardList_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_ScoreBoardDetail;
-            
+
             GUI.uc_ScoreBoardList uc = new GUI.uc_ScoreBoardList();
             uc.Dock = DockStyle.Fill;
-            uc.getTable = new GUI.uc_ScoreBoardList.getData(getTable);
+            uc.getTable = new GUI.uc_ScoreBoardList.getData(getTableForScoreBoard);
+            uc.setVisible = new GUI.uc_ScoreBoardList.CallBack(setVisibleExportFile);
             navPage_ScoreBoardDetail.Controls.Clear();
             navPage_ScoreBoardDetail.Controls.Add(uc);
+        }
+        DgetString getClassName;
+        public void getDelegateForScoreBoard(DgetData getTable, DgetString getClassName, DgetString getSubjectName, DgetInteger getSemester)
+        {
+            this.getTableForExport = getTable;
+            this.getClassName = getClassName;
+            this.getSubjectName = getSubjectName;
+            this.getSemester = getSemester;
         }
         private void btn_LookUp_ScoreBoardList_Click(object sender, EventArgs e)
         {
@@ -445,14 +476,11 @@ namespace StudentManagements
             string TENLOP = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "TENLOP");
             int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP"));
             GUI.uc_ScoreBoardOfClass uc = new GUI.uc_ScoreBoardOfClass(TENLOP, MALOP);
+            uc.setVisible = new GUI.uc_ScoreBoardOfClass.CallBack(setVisibleExportFile);
+            uc.getDelegateData = new GUI.uc_ScoreBoardOfClass.getDelegate(getDelegateForScoreBoard);
             uc.Dock = DockStyle.Fill;
             navPage_ScoreBoardDetail.Controls.Clear();
             navPage_ScoreBoardDetail.Controls.Add(uc);
-        }
-
-        private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void btn_Delete_ScoreBoardList_Click(object sender, EventArgs e)
@@ -463,6 +491,32 @@ namespace StudentManagements
             }
         }
 
+        private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        //=================================================================================================================
+        //=================================================================================================================
+        //=================================================================================================================
+        public delegate DataTable DgetData();
+        public delegate string DgetString();
+        public delegate int DgetInteger();
+        public DgetData getTableForExport;
+        public DgetString getSubjectName;
+        public DgetInteger getSemester;
+
+        private void setVisibleExportFile(bool values)
+        {
+            btn_ExportFile_Main.Enabled = values;
+
+        }
+        private void getDelegateTable(DgetData data, DgetString subject, DgetInteger semester)
+        {
+            getTableForExport = data;
+            getSubjectName = subject;
+            getSemester = semester;
+        }
 
         private void tabPane_Reports_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
         {
@@ -470,6 +524,8 @@ namespace StudentManagements
             {
                 GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
                 uc.Dock = DockStyle.Fill;
+                uc.setVisible = new GUI.uc_Report_Subject.CallBack(setVisibleExportFile);
+                uc.getDelegateData = new GUI.uc_Report_Subject.getDelegate(getDelegateTable);
                 tab_Subject.Controls.Clear();
                 tab_Subject.Controls.Add(uc);
             }
@@ -477,18 +533,45 @@ namespace StudentManagements
             {
                 GUI.uc_Report_Semester uc = new GUI.uc_Report_Semester();
                 uc.Dock = DockStyle.Fill;
+                uc.setVisible = new GUI.uc_Report_Semester.CallBack(setVisibleExportFile);
+                uc.getDelegateTable = new GUI.uc_Report_Semester.getDelegate(getDelegateTable);
                 tab_Semester.Controls.Clear();
                 tab_Semester.Controls.Add(uc);
             }
         }
 
-       
+        //===========================================================================================================
+        //===========================================================================================================
+        //===========================================================================================================
+        //Export to file
 
-      
+        private void btn_ExportFile_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //DAL.ExportToExcel.Instance.Export_AllStudent(ClassBLL.Instance.getAllStudents(), "Danh sách học sinh", "DANH SÁCH HỌC SINH");
+            //MessageBox.Show("Export file successful!");
+            if (navFrame_Main.SelectedPage == navPage_CreateReports)
+            {
+                string title = "";
+                if (tabPane_Reports.SelectedPage == tab_Subject)
+                {
+                    title = "Báo Cáo Tổng Kết Môn Học";
+                    if (getTableForExport != null && getSubjectName != null && getSemester != null)
+                        DAL.ExportToExcel.Instance.Export_Report_Subject(getTableForExport(), getSubjectName(), getSemester(), "Lop", title);
+                }
+                else
+                {
+                    title = "Báo Cáo Tổng Kế Học Kỳ";
+                    if (getTableForExport != null&& getSemester != null)
+                        DAL.ExportToExcel.Instance.Export_Report_Semester(getTableForExport(),  getSemester(), "Lop", title);
+                }
+            }
+            else if (navFrame_Main.SelectedPage == navPage_ScoreBoardDetail)
+            {
+                if (getTableForExport!=null && getClassName != null && getSubjectName != null && getSemester != null)
+                    DAL.ExportToExcel.Instance.Export_ScoreBoard(getTableForExport(), getClassName(), getSubjectName(), getSemester(), "Bang Điểm", "BẢNG ĐIỂM MÔN HỌC");
+            }   
 
-        
-
-        
+        }
     }
 
 }

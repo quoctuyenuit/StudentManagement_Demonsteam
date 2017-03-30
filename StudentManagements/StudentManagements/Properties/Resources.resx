@@ -121,8 +121,14 @@
   <data name="findStudentTitle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\findStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rulesTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rulesTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="changeRulesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\changeRulesIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="studentsListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\studentsListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="studentInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\studentInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,17 +151,14 @@
   <data name="addStudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addStudentIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="classListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\classListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="addClassIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addClassIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="classInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\classInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="studentsListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\studentsListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="classListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\classListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addStudentTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,7 +169,10 @@
   <data name="reportTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reportTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rulesTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rulesTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="title_demons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\title_demons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excelIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excelIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

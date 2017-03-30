@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace StudentManagements.BLL
@@ -39,7 +40,7 @@ namespace StudentManagements.BLL
         {
             return gridView.GetRowCellDisplayText(gridView.GetSelectedRows().First(), columnName);
         }
-        public bool checkBeforeSave(Control panel, TextEdit txt = null)//Check Are Controls empty
+        public bool IsEmpty(Control panel, TextEdit txt = null)//Check Are Controls empty
         {
             foreach (Control ctrl in panel.Controls)
             {
@@ -55,6 +56,16 @@ namespace StudentManagements.BLL
             }
             return true;
         }
+        
+        public bool IsEmail(string email)
+        {
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex regex = new Regex(strRegex);
+            return (regex.IsMatch(email));
+        }
+
         //===================================================================
         //Student
         public DataTable getAllStudents()
@@ -116,6 +127,11 @@ namespace StudentManagements.BLL
         public int getClassID(string TENLOP, int NAMHOC)
         {
             return ClassDAL.Instance.getClassID(TENLOP, NAMHOC);
+        }
+
+        public string getClassName(int MALOP)
+        {
+            return ClassDAL.Instance.getClassName(MALOP);
         }
 
         public bool checkExistenceClass(Entities.LOP LOP)

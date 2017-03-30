@@ -52,6 +52,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::StudentManagements.Properties.Resources.scoreBoardListTitle;
             this.pictureBox1.Location = new System.Drawing.Point(353, 23);
             this.pictureBox1.Name = "pictureBox1";
@@ -232,6 +233,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "uc_ScoreBoardList";
             this.Size = new System.Drawing.Size(1188, 665);
+            this.Load += new System.EventHandler(this.uc_ScoreBoardList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard)).EndInit();

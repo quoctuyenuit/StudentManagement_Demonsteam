@@ -49,6 +49,11 @@ namespace StudentManagements.GUI
             this.cb_Semester.SelectedIndex = 0;
         }
 
+        public delegate void CallBack(bool values);
+        public CallBack setVisible;
+        public delegate void getDelegate(Form1.DgetData getTable, Form1.DgetString className, Form1.DgetString subjectName, Form1.DgetInteger semester);//Truyền một delegate chứa hàm GetTable về cho hàm trong Form1
+        public getDelegate getDelegateData;
+
         void rowUpdatedEvent()
         {
             int row = grd_ScoreBoard_View.GetSelectedRows().First();
@@ -77,6 +82,23 @@ namespace StudentManagements.GUI
             btn_Save.Enabled = true;
         }
 
+        public string geClassName()
+        {
+            return ClassBLL.Instance.getClassName(MaLop);
+        }
+        public string getSubjectName()
+        {
+            return cb_SelectSubject.SelectedItem.ToString();
+        }
+        public int getSemester()
+        {
+            return HocKy;
+        }
+        public DataTable getTable()
+        {
+            return ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
+        }
+
         private void cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
@@ -84,8 +106,14 @@ namespace StudentManagements.GUI
                 btn_Save.Enabled = false;
                 btn_Delete.Enabled = false;
                 grd_ScoreBoard.DataSource = null;
+                if (setVisible != null)
+                    setVisible(false);
                 return;
             }
+            if (setVisible != null)
+                setVisible(true);
+            if (getDelegateData != null)
+                getDelegateData(getTable, geClassName, getSubjectName, getSemester);
 
             this.MaMH = ClassBLL.Instance.getSubjectsID(cb_SelectSubject.SelectedItem.ToString());
             grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
@@ -128,7 +156,6 @@ namespace StudentManagements.GUI
             }
         }
 
-
         private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.HocKy = int.Parse(cb_Semester.SelectedItem.ToString());
@@ -144,7 +171,5 @@ namespace StudentManagements.GUI
             btn_Delete.Enabled = true;
             btn_Save.Enabled = true;
         }
-
-        
     }
 }

@@ -47,8 +47,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(397, 10);
+            this.label1.Location = new System.Drawing.Point(387, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 1;
@@ -56,15 +57,16 @@
             // 
             // cb_SelectSubject
             // 
+            this.cb_SelectSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_SelectSubject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cb_SelectSubject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_SelectSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_SelectSubject.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cb_SelectSubject.FormattingEnabled = true;
             this.cb_SelectSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cb_SelectSubject.Location = new System.Drawing.Point(462, 5);
+            this.cb_SelectSubject.Location = new System.Drawing.Point(452, 5);
             this.cb_SelectSubject.Name = "cb_SelectSubject";
-            this.cb_SelectSubject.Size = new System.Drawing.Size(142, 26);
+            this.cb_SelectSubject.Size = new System.Drawing.Size(162, 26);
             this.cb_SelectSubject.TabIndex = 26;
             this.cb_SelectSubject.SelectedIndexChanged += new System.EventHandler(this.cb_SelectSubject_SelectedIndexChanged);
             // 
@@ -151,8 +153,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(610, 10);
+            this.label2.Location = new System.Drawing.Point(620, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 1;
@@ -160,12 +163,13 @@
             // 
             // cb_Semester
             // 
+            this.cb_Semester.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cb_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Semester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Semester.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(688, 5);
+            this.cb_Semester.Location = new System.Drawing.Point(698, 5);
             this.cb_Semester.Name = "cb_Semester";
             this.cb_Semester.Size = new System.Drawing.Size(104, 26);
             this.cb_Semester.TabIndex = 28;

@@ -20,10 +20,10 @@ namespace StudentManagements.GUI
             get { return rows; }
             set { rows = value; }
         }
-
-        
         public delegate DataTable getData();
         public getData getTable;
+        public delegate void CallBack(bool values);
+        public CallBack setVisible;
         
         public uc_ScoreBoardList()
         {
@@ -75,6 +75,12 @@ namespace StudentManagements.GUI
                 ClassBLL.Instance.deleteScoreBoardCell(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoard_View, "MAKQ")));
                 grd_ScoreBoard.DataSource = getTable();
             }
+        }
+
+        private void uc_ScoreBoardList_Load(object sender, EventArgs e)
+        {
+            if (setVisible != null)
+                setVisible(true);
         }
 
     }

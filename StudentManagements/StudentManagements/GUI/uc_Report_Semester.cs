@@ -19,13 +19,33 @@ namespace StudentManagements.GUI
             cb_Semester.SelectedIndex = 0;
         }
 
+        public delegate void CallBack(bool values);
+        public CallBack setVisible;
+        public delegate void getDelegate(Form1.DgetData data, Form1.DgetString subject, Form1.DgetInteger semester);//Tuyền Delegate
+        public getDelegate getDelegateTable;
+
+        public DataTable getTable()
+        {
+            return BLL.ClassBLL.Instance.getReport_HOCKY(HocKy);
+        }
+        public int getSemester()
+        {
+            return HocKy;
+        }
         private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_Semester.SelectedIndex == 0)
             {
                 grd_Report.DataSource = null;
+                if (setVisible != null)
+                    setVisible(false);
                 return;
             }
+            if (setVisible != null)
+                setVisible(true);
+            if (getDelegateTable != null)
+                getDelegateTable(getTable, null, getSemester);
+
             this.HocKy = int.Parse(cb_Semester.SelectedItem.ToString());
             grd_Report.DataSource = BLL.ClassBLL.Instance.getReport_HOCKY(HocKy);
         }
