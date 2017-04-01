@@ -300,6 +300,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\background.jpg" />
+    <None Include="Resources\appsIcon.ico" />
     <None Include="Data\STUDENTMANAGEMENT.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

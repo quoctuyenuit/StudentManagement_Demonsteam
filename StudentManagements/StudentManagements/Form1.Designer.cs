@@ -2479,6 +2479,8 @@
             // 
             // navPage_Home
             // 
+            this.navPage_Home.BackgroundImage = global::StudentManagements.Properties.Resources.background;
+            this.navPage_Home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.navPage_Home.Name = "navPage_Home";
             this.navPage_Home.Size = new System.Drawing.Size(1188, 665);
             // 
@@ -2506,10 +2508,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ribbonControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "Student Managements";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
