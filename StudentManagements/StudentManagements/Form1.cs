@@ -11,12 +11,15 @@ namespace StudentManagements
     {
         delegate void back();
 
-        Stack<back> listBack;
+        Stack<back> listBack;//Danh sách để back
+        bool checkBack;//Tín hiệu back1
 
         public Form1()
         {
             InitializeComponent();
             listBack = new Stack<back>();
+            checkBack = true;
+            btn_Back_Main.Enabled = false;
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Style";
@@ -25,6 +28,7 @@ namespace StudentManagements
         //----------------------------------------------------------------------------
         private void btn_Home_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            checkBack = true;
             btn_Home_Main_ItemClick_back();
         }
 
@@ -71,15 +75,29 @@ namespace StudentManagements
 
         private void navFrame_Main_SelectedPageChanging(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangingEventArgs e)
         {
+            if (!checkBack)
+                return;
             btn_Back_Main.Enabled = true;
-            if (navFrame_Main.SelectedPage == navPage_StudentsList)
-                listBack.Push(new back(btn_Students_Actions_Click_back));
-            else if (navFrame_Main.SelectedPage == navPage_Home)
+            if (navFrame_Main.SelectedPage == navPage_Home)
                 listBack.Push(new back(btn_Home_Main_ItemClick_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_StudentsList)
+                listBack.Push(new back(btn_Students_Actions_Click_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_StudentInformation)
+                listBack.Push(new back(btn_Detail_StudentList_Click_back));
+
             else if (navFrame_Main.SelectedPage == navPage_ClassList)
                 listBack.Push(new back(btn_Class_Actions_Click_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_ClassInformation)
+                listBack.Push(new back(btn_Detail_ClassList_Click_back));
+
             else if (navFrame_Main.SelectedPage == navPage_ScoreBoardList)
                 listBack.Push(new back(btn_ScoreBoard_Actions_Click_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_ScoreBoardDetail)
+                listBack.Push(new back(btn_LookUp_ScoreBoardList_Click_back));
         }
 
         
@@ -101,10 +119,7 @@ namespace StudentManagements
         //----------------------------------------------------------------------------
         public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
-            //btn_Back_Main.Enabled = true;
-            //back b = new back(btn_Students_Actions_Click);
-            //if (listBack.Count == 0 || !(listBack.Peek() == b))
-            //    listBack.Push(b);
+            checkBack = true;
             btn_Students_Actions_Click_back();
         }
         private void btn_Students_Actions_Click_back()
@@ -116,6 +131,7 @@ namespace StudentManagements
         //----------------------------------------------------------------------------
         private void btn_Class_Actions_Click(object sender, EventArgs e)
         {
+            checkBack = true;
             btn_Class_Actions_Click_back();
         }
 
@@ -129,6 +145,7 @@ namespace StudentManagements
         //----------------------------------------------------------------------------
         private void btn_ScoreBoard_Actions_Click(object sender, EventArgs e)
         {
+            checkBack = true;
             btn_ScoreBoard_Actions_Click_back();
         }
 
@@ -156,10 +173,18 @@ namespace StudentManagements
             ClassBus.Instance.btn_Done_AddStudent_Click(studentInformationPanel, txt_StudentEmail_AddStudent, txt_StudentName_AddStudent, cb_StudentDateOfBirth_AddStudent, cb_StudentSex_AddStudent, txt_StudentAddress_AddStudent);
         }
 
+        //----------------------------------------------------------------------------
         private void btn_Detail_StudentList_Click(object sender, EventArgs e)
+        {
+            checkBack = true;
+            btn_Detail_StudentList_Click_back();
+        }
+
+        private void btn_Detail_StudentList_Click_back()
         {
             ClassBus.Instance.btn_Detail_StudentList_Click(navFrame_Main, navFrame_StudentInformation, navPage_StudentInformation, navPage_StudentDetail_StudentInformation, navPage_StudentEdit_StudentInformation, grd_StudentList_View, txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail, txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail);
         }
+        //----------------------------------------------------------------------------
 
         private void btn_Delete_StudentList_Click(object sender, EventArgs e)
         {
@@ -189,13 +214,21 @@ namespace StudentManagements
             ClassBus.Instance.btn_Delete_ClassList_Click(grd_ClassList_View, grd_ClassList);
         }
 
+        //----------------------------------------------------------------------------
         private void btn_Detail_ClassList_Click(object sender, EventArgs e)
         {
-            ClassBus.Instance.btn_Detail_ClassList_Click(navFrame_Main, navPage_ClassInformation, navFrame_ClassInformation, navPage_ClassDetail, grd_ClassList_View, grd_StudentList_ClassInformation,
-                grd_SubjectList_ClassInformation, btn_AddSubjectsForClass_ClassInformation,
-                txt_ClassName_ClassInformation, txt_ClassTotal_ClassInformation, txt_Year_ClassInformation, btn_Edit_ClassInformation, btn_Save_ClassInformation, btn_DeleteStudent_ClassInformation,
-                btn_AddStudentForClass_ClassInformation, grd_StudentList_ClassInformation_View, grd_SubjectList_ClassInformation_View);
+            checkBack = true;
+            btn_Detail_ClassList_Click_back();
         }
+
+        private void btn_Detail_ClassList_Click_back()
+        {
+            ClassBus.Instance.btn_Detail_ClassList_Click(navFrame_Main, navPage_ClassInformation, navFrame_ClassInformation, navPage_ClassDetail, grd_ClassList_View, grd_StudentList_ClassInformation,
+                 grd_SubjectList_ClassInformation, btn_AddSubjectsForClass_ClassInformation,
+                 txt_ClassName_ClassInformation, txt_ClassTotal_ClassInformation, txt_Year_ClassInformation, btn_Edit_ClassInformation, btn_Save_ClassInformation, btn_DeleteStudent_ClassInformation,
+                 btn_AddStudentForClass_ClassInformation, grd_StudentList_ClassInformation_View, grd_SubjectList_ClassInformation_View);
+        }
+        //----------------------------------------------------------------------------
 
         private void init_Edit_ClassInformation()//Khởi tạo các giá trị cho các control khi chọn edit
         {
@@ -370,10 +403,18 @@ namespace StudentManagements
         }
         //--------------------------------------------------------------------------------
 
+        //--------------------------------------------------------------------------------
         private void btn_LookUp_ScoreBoardList_Click(object sender, EventArgs e)
+        {
+            checkBack = true;
+            btn_LookUp_ScoreBoardList_Click_back();
+        }
+
+        private void btn_LookUp_ScoreBoardList_Click_back()
         {
             ClassBus.Instance.btn_LookUp_ScoreBoardList_Click(navFrame_Main, navPage_ScoreBoardDetail, grd_ScoreBoardList_View, setVisibleExportFile, getDelegateForScoreBoard);
         }
+        //--------------------------------------------------------------------------------
 
         private void btn_Delete_ScoreBoardList_Click(object sender, EventArgs e)
         {
@@ -420,6 +461,7 @@ namespace StudentManagements
 
         private void btn_Back_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            checkBack = false;
             if (listBack.Count == 1)
                 btn_Back_Main.Enabled = false;
             if (listBack.Count > 0)
