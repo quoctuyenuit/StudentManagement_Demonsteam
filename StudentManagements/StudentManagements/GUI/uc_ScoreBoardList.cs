@@ -80,7 +80,7 @@ namespace StudentManagements.GUI
         private void uc_ScoreBoardList_Load(object sender, EventArgs e)
         {
             if (setVisible != null)
-                setVisible(true);
+                setVisible(false);
         }
 
     }

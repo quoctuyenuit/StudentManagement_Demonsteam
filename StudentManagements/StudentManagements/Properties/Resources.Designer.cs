@@ -231,6 +231,26 @@ namespace StudentManagements.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] STUDENTMANAGEMENT {
+            get {
+                object obj = ResourceManager.GetObject("STUDENTMANAGEMENT", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] STUDENTMANAGEMENT_log {
+            get {
+                object obj = ResourceManager.GetObject("STUDENTMANAGEMENT_log", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap studentsListTitle {

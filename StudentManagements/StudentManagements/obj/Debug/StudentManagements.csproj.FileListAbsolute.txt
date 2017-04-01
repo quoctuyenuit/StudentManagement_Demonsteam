@@ -18,3 +18,5 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.ChangeRules.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.AddForm.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.csproj.ResolveComReference.cache
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT_log.ldf
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT.mdf

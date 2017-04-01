@@ -47,6 +47,7 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.btn_ExportFile_Main = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Back_Main = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -345,10 +346,11 @@
             this.barWorkspaceMenuItem1,
             this.btn_LookUpStudent_Main,
             this.barEditItem1,
-            this.btn_ExportFile_Main});
+            this.btn_ExportFile_Main,
+            this.btn_Back_Main});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 19;
+            this.ribbonControl1.MaxItemId = 20;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -465,6 +467,15 @@
             this.btn_ExportFile_Main.Name = "btn_ExportFile_Main";
             this.btn_ExportFile_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ExportFile_Main_ItemClick);
             // 
+            // btn_Back_Main
+            // 
+            this.btn_Back_Main.Caption = "Back";
+            this.btn_Back_Main.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_Back_Main.Glyph")));
+            this.btn_Back_Main.Id = 19;
+            this.btn_Back_Main.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_Back_Main.LargeGlyph")));
+            this.btn_Back_Main.Name = "btn_Back_Main";
+            this.btn_Back_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Back_Main_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -475,7 +486,8 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Home_Main);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddStudent_Main, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_Back_Main, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddStudent_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddClass_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_LookUpStudent_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_CreateReport_Main);
@@ -496,7 +508,6 @@
             // 
             // accordionControl1
             // 
-            this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
@@ -584,13 +595,14 @@
             this.navPage_AddStudentForClass,
             this.navPage_CreateReports,
             this.navPage_LookUpStudents});
-            this.navFrame_Main.SelectedPage = this.navPage_CreateReports;
+            this.navFrame_Main.SelectedPage = this.navPage_Home;
             this.navFrame_Main.Size = new System.Drawing.Size(1188, 665);
             this.navFrame_Main.TabIndex = 0;
             this.navFrame_Main.Text = "navigationFrame1";
             this.navFrame_Main.TransitionAnimationProperties.FrameCount = 0;
             this.navFrame_Main.TransitionAnimationProperties.FrameInterval = 0;
             this.navFrame_Main.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.navFrame_Main_SelectedPageChanged);
+            this.navFrame_Main.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.navFrame_Main_SelectedPageChanging);
             // 
             // navPage_StudentsList
             // 
@@ -1357,6 +1369,8 @@
             // gridColumn14
             // 
             this.gridColumn14.Caption = "Ngày Sinh";
+            this.gridColumn14.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn14.FieldName = "NGSINH";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.FixedWidth = true;
@@ -2039,6 +2053,8 @@
             // gridColumn41
             // 
             this.gridColumn41.Caption = "Ngày Sinh";
+            this.gridColumn41.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn41.FieldName = "NGSINH";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.FixedWidth = true;
@@ -2245,6 +2261,8 @@
             // gridColumn47
             // 
             this.gridColumn47.Caption = "Ngày Sinh";
+            this.gridColumn47.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn47.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn47.FieldName = "NGSINH";
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.OptionsColumn.FixedWidth = true;
@@ -2305,14 +2323,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane_Reports.Controls.Add(this.tab_Subject);
             this.tabPane_Reports.Controls.Add(this.tab_Semester);
-            this.tabPane_Reports.Location = new System.Drawing.Point(0, 146);
+            this.tabPane_Reports.Location = new System.Drawing.Point(0, 145);
             this.tabPane_Reports.Name = "tabPane_Reports";
             this.tabPane_Reports.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tab_Subject,
             this.tab_Semester});
-            this.tabPane_Reports.RegularSize = new System.Drawing.Size(1189, 519);
+            this.tabPane_Reports.RegularSize = new System.Drawing.Size(1189, 520);
             this.tabPane_Reports.SelectedPage = this.tab_Subject;
-            this.tabPane_Reports.Size = new System.Drawing.Size(1189, 519);
+            this.tabPane_Reports.Size = new System.Drawing.Size(1189, 520);
             this.tabPane_Reports.TabIndex = 0;
             this.tabPane_Reports.Text = "a";
             this.tabPane_Reports.TransitionAnimationProperties.FrameCount = 0;
@@ -2323,13 +2341,13 @@
             // 
             this.tab_Subject.Caption = "Subject";
             this.tab_Subject.Name = "tab_Subject";
-            this.tab_Subject.Size = new System.Drawing.Size(1167, 463);
+            this.tab_Subject.Size = new System.Drawing.Size(1167, 464);
             // 
             // tab_Semester
             // 
             this.tab_Semester.Caption = "Semester";
             this.tab_Semester.Name = "tab_Semester";
-            this.tab_Semester.Size = new System.Drawing.Size(1167, 463);
+            this.tab_Semester.Size = new System.Drawing.Size(1167, 464);
             // 
             // navPage_AddStudentForClass_Edit
             // 
@@ -2422,6 +2440,8 @@
             // gridColumn53
             // 
             this.gridColumn53.Caption = "Ngày Sinh";
+            this.gridColumn53.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn53.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn53.FieldName = "NGSINH";
             this.gridColumn53.Name = "gridColumn53";
             this.gridColumn53.OptionsColumn.FixedWidth = true;
@@ -2798,6 +2818,7 @@
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraBars.BarButtonItem btn_ExportFile_Main;
+        private DevExpress.XtraBars.BarButtonItem btn_Back_Main;
     }
 }
 
