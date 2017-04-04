@@ -3,7 +3,6 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\StudentManagements.pdb
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.AddSubjectForm.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.Form1.resources
-C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_ScoreBoardList.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_ScoreBoardOfClass.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.Properties.Resources.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.csproj.GenerateResource.Cache
@@ -20,3 +19,4 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.csproj.ResolveComReference.cache
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT_log.ldf
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT.mdf
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.LoginForm.resources

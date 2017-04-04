@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace StudentManagements.Entities
 {
-    class KETQUA:IComparable<KETQUA>
+    class KETQUA : IComparable<KETQUA>
     {
         int maKQ, hocKy;
         int maMH, maLop, mSHS;
+        float diemMieng1, diemMieng2, diem15, diem1Tiet, diemCuoiKy;
+
+        public float DiemMieng1
+        {
+            get { return diemMieng1; }
+            set { diemMieng1 = value; }
+        }
+
+        public float DiemMieng2
+        {
+            get { return diemMieng2; }
+            set { diemMieng2 = value; }
+        }
 
         public int MSHS
         {
@@ -28,7 +41,6 @@ namespace StudentManagements.Entities
             get { return maMH; }
             set { maMH = value; }
         }
-        float diem15, diem1Tiet, diemCuoiKy;
 
         public float Diem15
         {
@@ -60,15 +72,19 @@ namespace StudentManagements.Entities
             set { maKQ = value; }
         }
 
-        public KETQUA(int MaKQ,  float Diem15, float Diem1Tiet, float DiemCuoiKy)
+        public KETQUA(int MaKQ, float DiemMieng1, float DiemMieng2, float Diem15, float Diem1Tiet, float DiemCuoiKy)
         {
+            this.DiemMieng1 = DiemMieng1;
+            this.DiemMieng2 = DiemMieng2;
             this.MaKQ = MaKQ;
             this.Diem15 = Diem15;
             this.Diem1Tiet = Diem1Tiet;
             this.DiemCuoiKy = DiemCuoiKy;
         }
-        public KETQUA(int MaKQ, int HocKy, float Diem15, float Diem1Tiet, float DiemCuoiKy)
+        public KETQUA(int MaKQ, int HocKy, float DiemMieng1, float DiemMieng2, float Diem15, float Diem1Tiet, float DiemCuoiKy)
         {
+            this.DiemMieng1 = DiemMieng1;
+            this.DiemMieng2 = DiemMieng2;
             this.HocKy = HocKy;
             this.MaKQ = MaKQ;
             this.Diem15 = Diem15;
@@ -76,8 +92,10 @@ namespace StudentManagements.Entities
             this.DiemCuoiKy = DiemCuoiKy;
         }
 
-        public KETQUA(int MSHS, int MaMH, int HocKy, int MaLop,  float Diem15, float Diem1Tiet, float DiemCuoiKy)
+        public KETQUA(int MSHS, int MaMH, int HocKy, int MaLop, float DiemMieng1, float DiemMieng2, float Diem15, float Diem1Tiet, float DiemCuoiKy)
         {
+            this.DiemMieng1 = DiemMieng1;
+            this.DiemMieng2 = DiemMieng2;
             this.MSHS = MSHS;
             this.MaMH = MaMH;
             this.HocKy = HocKy;

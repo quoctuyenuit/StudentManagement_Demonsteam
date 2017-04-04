@@ -37,6 +37,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_Detail = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_View)).BeginInit();
@@ -135,10 +137,30 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // btn_Detail
+            // 
+            this.btn_Detail.Location = new System.Drawing.Point(0, 156);
+            this.btn_Detail.Name = "btn_Detail";
+            this.btn_Detail.Size = new System.Drawing.Size(91, 33);
+            this.btn_Detail.TabIndex = 5;
+            this.btn_Detail.Text = "Detail";
+            this.btn_Detail.Click += new System.EventHandler(this.btn_Detail_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(97, 156);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(91, 33);
+            this.btn_Delete.TabIndex = 5;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
             // uc_LookUpStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Detail);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "uc_LookUpStudent";
@@ -163,5 +185,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraEditors.SimpleButton btn_Detail;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
     }
 }

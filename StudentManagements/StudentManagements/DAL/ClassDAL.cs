@@ -123,7 +123,7 @@ namespace StudentManagements.DAL
             return table;
         }
 
-        public DataTable getStudentForAddClass()
+        public DataTable getStudentForAddClass(int NAMHOC)
         {
             WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_SelectHOCSINHTIMLOP";
@@ -135,6 +135,7 @@ namespace StudentManagements.DAL
                 command.Connection = connection;
                 command.CommandText = query;
                 command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
                 dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = command;
                 table = new DataTable();
@@ -875,6 +876,8 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@MAMH", SqlDbType.Int).Value = kq.MaMH;
                 command.Parameters.Add("@MALOP", SqlDbType.Int).Value = kq.MaLop;
                 command.Parameters.Add("@HOCKY", SqlDbType.Int).Value = kq.HocKy;
+                command.Parameters.Add("@DIEMMIENG1", SqlDbType.Float).Value = kq.DiemMieng1;
+                command.Parameters.Add("@DIEMMIENG2", SqlDbType.Float).Value = kq.DiemMieng1;
                 command.Parameters.Add("@DIEM15", SqlDbType.Int).Value = kq.Diem15;
                 command.Parameters.Add("@DIEM1TIET", SqlDbType.Int).Value = kq.Diem1Tiet;
                 command.Parameters.Add("@DIEMCUOIKY", SqlDbType.Int).Value = kq.DiemCuoiKy;
@@ -952,6 +955,8 @@ namespace StudentManagements.DAL
                 command.CommandText = query;
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@MAKQ", SqlDbType.Int).Value = kq.MaKQ;
+                command.Parameters.Add("@DIEMMIENG1", SqlDbType.Float).Value = kq.DiemMieng1;
+                command.Parameters.Add("@DIEMMIENG2", SqlDbType.Float).Value = kq.DiemMieng2;
                 command.Parameters.Add("@DIEM15", SqlDbType.Float).Value = kq.Diem15;
                 command.Parameters.Add("@DIEM1TIET", SqlDbType.Float).Value = kq.Diem1Tiet;
                 command.Parameters.Add("@DIEMCUOIKY", SqlDbType.Float).Value = kq.DiemCuoiKy;

@@ -32,7 +32,7 @@
             this.cb_SelectSubject = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grd_Report = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grd_Report_View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,7 +42,7 @@
             this.cb_Semester = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_Report_View)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,25 +85,25 @@
             // 
             this.grd_Report.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd_Report.Location = new System.Drawing.Point(0, 0);
-            this.grd_Report.MainView = this.gridView1;
+            this.grd_Report.MainView = this.grd_Report_View;
             this.grd_Report.Name = "grd_Report";
             this.grd_Report.Size = new System.Drawing.Size(1188, 481);
             this.grd_Report.TabIndex = 0;
             this.grd_Report.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.grd_Report_View});
             // 
-            // gridView1
+            // grd_Report_View
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grd_Report_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5});
-            this.gridView1.GridControl = this.grd_Report;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.grd_Report_View.GridControl = this.grd_Report;
+            this.grd_Report_View.Name = "grd_Report_View";
+            this.grd_Report_View.OptionsBehavior.Editable = false;
+            this.grd_Report_View.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
@@ -189,7 +189,7 @@
             this.Load += new System.EventHandler(this.uc_Report_Subject_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_Report_View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +201,7 @@
         private System.Windows.Forms.ComboBox cb_SelectSubject;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl grd_Report;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView grd_Report_View;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;

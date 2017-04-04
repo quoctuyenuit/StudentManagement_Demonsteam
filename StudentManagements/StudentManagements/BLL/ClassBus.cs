@@ -110,11 +110,17 @@ namespace StudentManagements.BLL
             navFrame_StudentInformation.SelectedPage = navPage_StudentDetail_StudentInformation;
             ClassBLL.Instance.formatControls(navPage_StudentEdit_StudentInformation);
             txt_StudentID_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "MSHS");
-            txt_StudentName_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "HOTEN");
-            txt_StudentDateOfBirth_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "NGSINH");
-            txt_StudentEmail_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "EMAIL");
-            txt_StudentSex_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "GIOITINH");
-            txt_StudentAddress_StudentInformation_Detail.Text = ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "DIACHI");
+            DataRow row = ClassBLL.Instance.getStudentAccordingID(int.Parse(txt_StudentID_StudentInformation_Detail.Text)).Rows[0];
+
+            txt_StudentName_StudentInformation_Detail.Text = row["HOTEN"].ToString();
+            string[] temp = row["NGSINH"].ToString().Split(' ');
+            temp = temp[0].Split('/');
+            string day = (temp[1].Length == 1) ? "0" + temp[1] : temp[1];
+            string month = (temp[0].Length == 1) ? "0" + temp[0] : temp[0];
+            txt_StudentDateOfBirth_StudentInformation_Detail.Text = day + "/" + month + "/" + temp[2];
+            txt_StudentEmail_StudentInformation_Detail.Text = row["EMAIL"].ToString();
+            txt_StudentSex_StudentInformation_Detail.Text = (row["GIOITINH"].ToString().Equals("True")) ? "Nam" : "Nữ";
+            txt_StudentAddress_StudentInformation_Detail.Text = row["DIACHI"].ToString();
         }
 
         internal void btn_Done_AddStudent_Click(Panel studentInformationPanel, TextEdit txt_StudentEmail_AddStudent, TextEdit txt_StudentName_AddStudent, DateEdit cb_StudentDateOfBirth_AddStudent, System.Windows.Forms.ComboBox cb_StudentSex_AddStudent, RichTextBox txt_StudentAddress_AddStudent)
@@ -148,11 +154,12 @@ namespace StudentManagements.BLL
             txt_StudentName_AddStudent.Focus();
         }
 
-        internal void btn_LookUpStudent_Main_ItemClick(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_LookUpStudents)
+        internal void btn_LookUpStudent_Main_ItemClick(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_LookUpStudents, Action<GridView> btn_Detail_StudentList_Click_back)
         {
             navFrame_Main.SelectedPage = navPage_LookUpStudents;
             GUI.uc_LookUpStudent uc = new GUI.uc_LookUpStudent();
             uc.Dock = DockStyle.Fill;
+            uc.detailClick = new GUI.uc_LookUpStudent.detailEvent(btn_Detail_StudentList_Click_back);
             navPage_LookUpStudents.Controls.Clear();//Dùng để xoá các control mà các trang đang chứa hiện tại(Reset trang)
             navPage_LookUpStudents.Controls.Add(uc);
         }
@@ -208,7 +215,7 @@ namespace StudentManagements.BLL
             txt_StudentID_StudentInformation_Edit.Text = txt_StudentID_StudentInformation_Detail.Text;
             txt_StudentName_StudentInformation_Edit.Text = txt_StudentName_StudentInformation_Detail.Text;
 
-            cb_StudentDateOfBirth_StudentInformation_Edit.DateTime = DateTime.ParseExact(txt_StudentDateOfBirth_StudentInformation_Detail.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            cb_StudentDateOfBirth_StudentInformation_Edit.DateTime = DateTime.ParseExact(txt_StudentDateOfBirth_StudentInformation_Detail.Text, "d/MM/yyyy", CultureInfo.InvariantCulture);
 
             txt_StudentAddress_StudentInformation_Edit.Text = txt_StudentAddress_StudentInformation_Detail.Text;
             cb_StudentSex_StudentInformation_Edit.SelectedIndex = (txt_StudentSex_StudentInformation_Detail.Text.Equals("Nam")) ? 1 : 0;
@@ -375,18 +382,6 @@ namespace StudentManagements.BLL
         //=================================================================================================================
         //=================================================================================================================
         //ScoreBoard
-
-        internal void btn_All_ScoreBoardList_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_ScoreBoardDetail, Func<DataTable> getTableForScoreBoard, Action<bool> setVisibleExportFile)
-        {
-            navFrame_Main.SelectedPage = navPage_ScoreBoardDetail;
-
-            GUI.uc_ScoreBoardList uc = new GUI.uc_ScoreBoardList();
-            uc.Dock = DockStyle.Fill;
-            uc.getTable = new GUI.uc_ScoreBoardList.getData(getTableForScoreBoard);
-            uc.setVisible = new GUI.uc_ScoreBoardList.CallBack(setVisibleExportFile);
-            navPage_ScoreBoardDetail.Controls.Clear();
-            navPage_ScoreBoardDetail.Controls.Add(uc);
-        }
 
         internal void btn_LookUp_ScoreBoardList_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_ScoreBoardDetail, GridView grd_ScoreBoardList_View, Action<bool> setVisibleExportFile, Action<Form1.DgetData, Form1.DgetString, Form1.DgetString, Form1.DgetInteger> getDelegateForScoreBoard)
         {

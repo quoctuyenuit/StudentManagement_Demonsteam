@@ -47,6 +47,8 @@
             this.txt_ClassName = new DevExpress.XtraEditors.LabelControl();
             this.cb_Semester = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard)).BeginInit();
@@ -102,6 +104,8 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn9,
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn7,
@@ -120,14 +124,14 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Mã số học sinh";
+            this.gridColumn2.Caption = "Mã số";
             this.gridColumn2.FieldName = "MSHS";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.FixedWidth = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 101;
+            this.gridColumn2.Width = 110;
             // 
             // gridColumn3
             // 
@@ -137,7 +141,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 494;
+            this.gridColumn3.Width = 262;
             // 
             // gridColumn5
             // 
@@ -146,8 +150,8 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.FixedWidth = true;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
-            this.gridColumn5.Width = 152;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 132;
             // 
             // gridColumn6
             // 
@@ -156,8 +160,8 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.FixedWidth = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 3;
-            this.gridColumn6.Width = 152;
+            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.Width = 107;
             // 
             // gridColumn7
             // 
@@ -166,8 +170,8 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.FixedWidth = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
-            this.gridColumn7.Width = 152;
+            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.Width = 117;
             // 
             // gridColumn8
             // 
@@ -177,7 +181,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.FixedWidth = true;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 5;
+            this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 165;
             // 
             // btn_Save
@@ -253,6 +257,26 @@
             this.labelControl1.TabIndex = 24;
             this.labelControl1.Text = "Semester";
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Điểm miệng 1";
+            this.gridColumn4.FieldName = "DIEMMIENG1";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.FixedWidth = true;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 133;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Điểm miệng 2";
+            this.gridColumn9.FieldName = "DIEMMIENG2";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.FixedWidth = true;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 3;
+            this.gridColumn9.Width = 142;
+            // 
             // uc_ScoreBoardOfClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -301,5 +325,7 @@
         private DevExpress.XtraEditors.LabelControl txt_ClassName;
         private System.Windows.Forms.ComboBox cb_Semester;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

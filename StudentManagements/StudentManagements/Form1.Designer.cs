@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_Home_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_AddStudent_Main = new DevExpress.XtraBars.BarButtonItem();
@@ -154,7 +153,6 @@
             this.btn_Edit_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.navPage_ScoreBoardList = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.btn_All_ScoreBoardList = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete_ScoreBoardList = new DevExpress.XtraEditors.SimpleButton();
             this.btn_LookUp_ScoreBoardList = new DevExpress.XtraEditors.SimpleButton();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -240,7 +238,7 @@
             this.navPage_AddSubjectForClass = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navPage_ScoreBoardDetail = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navPage_LookUpStudents = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.tt1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tt1 = new System.Windows.Forms.ToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -350,7 +348,7 @@
             this.btn_Back_Main});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 20;
+            this.ribbonControl1.MaxItemId = 21;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -436,7 +434,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // btn_LookUpStudent_Main
             // 
@@ -1598,22 +1596,12 @@
             // 
             // navPage_ScoreBoardList
             // 
-            this.navPage_ScoreBoardList.Controls.Add(this.btn_All_ScoreBoardList);
             this.navPage_ScoreBoardList.Controls.Add(this.btn_Delete_ScoreBoardList);
             this.navPage_ScoreBoardList.Controls.Add(this.btn_LookUp_ScoreBoardList);
             this.navPage_ScoreBoardList.Controls.Add(this.panel9);
             this.navPage_ScoreBoardList.Controls.Add(this.pictureBox7);
             this.navPage_ScoreBoardList.Name = "navPage_ScoreBoardList";
             this.navPage_ScoreBoardList.Size = new System.Drawing.Size(1188, 665);
-            // 
-            // btn_All_ScoreBoardList
-            // 
-            this.btn_All_ScoreBoardList.Location = new System.Drawing.Point(194, 155);
-            this.btn_All_ScoreBoardList.Name = "btn_All_ScoreBoardList";
-            this.btn_All_ScoreBoardList.Size = new System.Drawing.Size(91, 33);
-            this.btn_All_ScoreBoardList.TabIndex = 8;
-            this.btn_All_ScoreBoardList.Text = "All";
-            this.btn_All_ScoreBoardList.Click += new System.EventHandler(this.btn_All_ScoreBoardList_Click);
             // 
             // btn_Delete_ScoreBoardList
             // 
@@ -1667,6 +1655,7 @@
             this.grd_ScoreBoardList_View.GridControl = this.grd_ScoreBoardList;
             this.grd_ScoreBoardList_View.Name = "grd_ScoreBoardList_View";
             this.grd_ScoreBoardList_View.OptionsBehavior.Editable = false;
+            this.grd_ScoreBoardList_View.OptionsFind.AlwaysVisible = true;
             this.grd_ScoreBoardList_View.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn18
@@ -2732,7 +2721,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
-        private DevExpress.XtraEditors.SimpleButton btn_All_ScoreBoardList;
         private System.Windows.Forms.ComboBox cb_StudentSex_StudentInformation_Edit;
         private DevExpress.XtraEditors.TextEdit txt_StudentEmail_StudentInformation_Edit;
         private DevExpress.XtraEditors.TextEdit txt_StudentAddress_StudentInformation_Edit;

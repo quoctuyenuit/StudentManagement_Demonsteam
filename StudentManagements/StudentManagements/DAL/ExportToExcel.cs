@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -207,7 +208,7 @@ namespace StudentManagements.DAL
         
         }
 
-        public void Export_ScoreBoard(System.Data.DataTable table, string ClassName, string SubjectName, int Semester, string sheetName, string title)
+        public void Export_ScoreBoard(DataTable table, string ClassName, string SubjectName, int Semester, string sheetName, string title)
         {
             //Tạo các đối tượng Excel
 
@@ -271,27 +272,39 @@ namespace StudentManagements.DAL
 
             Microsoft.Office.Interop.Excel.Range col3 = oSheet.get_Range("C5", "C5");
 
-            col3.Value2 = "Điểm 15'";
+            col3.Value2 = "Điểm miệng 1";
 
-            col3.ColumnWidth = 10;
+            col3.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range col4 = oSheet.get_Range("D5", "D5");
 
-            col4.Value2 = "Điểm 1 Tiết";
+            col4.Value2 = "Điểm miệng 2";
 
             col4.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range col5 = oSheet.get_Range("E5", "E5");
 
-            col5.Value2 = "Điểm Cuối Kỳ";
+            col5.Value2 = "Điểm 15'";
 
             col5.ColumnWidth = 15;
 
             Microsoft.Office.Interop.Excel.Range col6 = oSheet.get_Range("F5", "F5");
 
-            col6.Value2 = "Điểm TB";
+            col6.Value2 = "Điểm 1 tiết";
 
             col6.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range col7 = oSheet.get_Range("G5", "G5");
+
+            col7.Value2 = "Điểm cuối kỳ";
+
+            col7.ColumnWidth = 15;
+
+            Microsoft.Office.Interop.Excel.Range col8 = oSheet.get_Range("H5", "H5");
+
+            col8.Value2 = "Điểm TB";
+
+            col8.ColumnWidth = 15;
 
             //-----------------------------------------------------
             //-----------------------------------------------------
@@ -321,7 +334,7 @@ namespace StudentManagements.DAL
             // colSemester.ColumnWidth = 15;
 
 
-            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A5", "F5");
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A5", "H5");
 
             rowHead.Font.Bold = true;
 

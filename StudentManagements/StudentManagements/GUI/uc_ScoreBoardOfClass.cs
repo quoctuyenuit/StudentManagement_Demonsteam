@@ -57,13 +57,16 @@ namespace StudentManagements.GUI
         void rowUpdatedEvent()
         {
             int row = grd_ScoreBoard_View.GetSelectedRows().First();
+            float DiemMieng1 = float.Parse(grd_ScoreBoard_View.GetDataRow(row)["DIEMMIENG1"].ToString());
+            float DiemMieng2 = float.Parse(grd_ScoreBoard_View.GetDataRow(row)["DIEMMIENG2"].ToString());
+
             float Diem15 = float.Parse(grd_ScoreBoard_View.GetDataRow(row)["DIEM15"].ToString());
             float Diem1Tiet = float.Parse(grd_ScoreBoard_View.GetDataRow(row)["DIEM1TIET"].ToString());
             float DiemCuoiKy = float.Parse(grd_ScoreBoard_View.GetDataRow(row)["DIEMCUOIKY"].ToString());
             try
             {
                 int MaKQ = (int)grd_ScoreBoard_View.GetDataRow(row)["MAKQ"];//Nếu kết quả tồn tại
-                Entities.KETQUA kq = new Entities.KETQUA(MaKQ, Diem15, Diem1Tiet, DiemCuoiKy);
+                Entities.KETQUA kq = new Entities.KETQUA(MaKQ, DiemMieng1, DiemMieng2, Diem15, Diem1Tiet, DiemCuoiKy);
                 if (this.Rows.ContainsKey(kq.MaKQ))
                     this.Rows[kq.MaKQ] = kq;
                 else
@@ -72,7 +75,7 @@ namespace StudentManagements.GUI
             catch (Exception ex)
             {
                 int MSHS = (int)grd_ScoreBoard_View.GetListSourceRowCellValue(row, "MSHS");
-                Entities.KETQUA kq = new Entities.KETQUA(MSHS, MaMH, HocKy, MaLop, Diem15, Diem1Tiet, DiemCuoiKy);
+                Entities.KETQUA kq = new Entities.KETQUA(MSHS, MaMH, HocKy, MaLop, DiemMieng1, DiemMieng2, Diem15, Diem1Tiet, DiemCuoiKy);
                 this.NewRows.Add(kq.MaKQ, kq);
             }
         }

@@ -103,9 +103,9 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.updateStudent(student);
         }
 
-        public DataTable getStudentForAddClass()
+        public DataTable getStudentForAddClass(int NAMHOC)
         {
-            return ClassDAL.Instance.getStudentForAddClass();
+            return ClassDAL.Instance.getStudentForAddClass(NAMHOC);
         }
         //===================================================================
         //Class

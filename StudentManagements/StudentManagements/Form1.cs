@@ -98,6 +98,19 @@ namespace StudentManagements
 
             else if (navFrame_Main.SelectedPage == navPage_ScoreBoardDetail)
                 listBack.Push(new back(btn_LookUp_ScoreBoardList_Click_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_AddStudent)
+                listBack.Push(new back(btn_AddStudent_Main_ItemClick_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_AddClass)
+                listBack.Push(new back(btn_AddClass_Main_ItemClick_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_LookUpStudents)
+                listBack.Push(new back(btn_LookUpStudent_Main_ItemClick_back));
+
+            else if (navFrame_Main.SelectedPage == navPage_CreateReports)
+                listBack.Push(new back(btn_CreateReport_Main_ItemClick_back));
+            
         }
 
         
@@ -111,10 +124,18 @@ namespace StudentManagements
             f.ShowDialog();
         }
 
+        //----------------------------------------------------------------------------
         private void btn_CreateReport_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            checkBack = true;
+            btn_CreateReport_Main_ItemClick_back();
+        }
+
+        private void btn_CreateReport_Main_ItemClick_back()
         {
             ClassBus.Instance.btn_CreateReport_Main_ItemClick(navFrame_Main, navPage_CreateReports, tabPane_Reports, tab_Subject, setVisibleExportFile, getDelegateTable);
         }
+        //----------------------------------------------------------------------------
 
         //----------------------------------------------------------------------------
         public void btn_Students_Actions_Click(object sender, EventArgs e)
@@ -158,15 +179,31 @@ namespace StudentManagements
         //=================================================================================================================
         //=================================================================================================================
         //Student
+        //----------------------------------------------------------------------------
         private void btn_LookUpStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ClassBus.Instance.btn_LookUpStudent_Main_ItemClick(navFrame_Main, navPage_LookUpStudents);
+            checkBack = true;
+            btn_LookUpStudent_Main_ItemClick_back();
         }
 
+        private void btn_LookUpStudent_Main_ItemClick_back()
+        {
+            ClassBus.Instance.btn_LookUpStudent_Main_ItemClick(navFrame_Main, navPage_LookUpStudents, btn_Detail_StudentList_Click_back_callBack);
+        }
+        //----------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------
         private void btn_AddStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            checkBack = true;
+            btn_AddStudent_Main_ItemClick_back();
+        }
+
+        private void btn_AddStudent_Main_ItemClick_back()
         {
             ClassBus.Instance.btn_AddStudent_Main_ItemClick(studentInformationPanel, navFrame_Main, navPage_AddStudent, txt_StudentName_AddStudent);
         }
+        //----------------------------------------------------------------------------
 
         private void btn_Done_AddStudent_Click(object sender, EventArgs e)//Insert a student into database
         {
@@ -181,6 +218,11 @@ namespace StudentManagements
         }
 
         private void btn_Detail_StudentList_Click_back()
+        {
+            btn_Detail_StudentList_Click_back_callBack(grd_StudentList_View);
+        }
+
+        private void btn_Detail_StudentList_Click_back_callBack(DevExpress.XtraGrid.Views.Grid.GridView grd_StudentList_View)
         {
             ClassBus.Instance.btn_Detail_StudentList_Click(navFrame_Main, navFrame_StudentInformation, navPage_StudentInformation, navPage_StudentDetail_StudentInformation, navPage_StudentEdit_StudentInformation, grd_StudentList_View, txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail, txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail);
         }
@@ -279,7 +321,7 @@ namespace StudentManagements
         private void btn_AddStudentForClass_ClassInformation_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddStudentForClass_Edit;
-            grd_AddStudentForClass_Edit.DataSource = ClassBLL.Instance.getStudentForAddClass();
+            grd_AddStudentForClass_Edit.DataSource = ClassBLL.Instance.getStudentForAddClass(int.Parse(txt_Year_ClassInformation.Text));
         }
 
         private void btn_OK_AddStudentForClass_Edit_Click(object sender, EventArgs e)
@@ -319,9 +361,10 @@ namespace StudentManagements
         private void btn_AddStudentForClass_AddClass_Click(object sender, EventArgs e)
         {
             navFrame_Main.SelectedPage = navPage_AddStudentForClass;
-            grd_AddStudentForClass.DataSource = ClassBLL.Instance.getStudentForAddClass();
+            grd_AddStudentForClass.DataSource = ClassBLL.Instance.getStudentForAddClass(int.Parse(txt_Year_AddClass.Text));
         }
 
+        //--------------------------------------------------------------------------------
         private void init_AddClass()
         {
             btn_AddStudentForClass_AddClass.Enabled = false;
@@ -341,10 +384,16 @@ namespace StudentManagements
         }
         private void btn_AddClass_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            checkBack = true;
+            btn_AddClass_Main_ItemClick_back();
+        }
+
+        private void btn_AddClass_Main_ItemClick_back()
+        {
             navFrame_Main.SelectedPage = navPage_AddClass;
             init_AddClass();
-
         }
+        //--------------------------------------------------------------------------------
 
         private void btn_Save_AddClass_Click(object sender, EventArgs e)
         {
@@ -386,10 +435,6 @@ namespace StudentManagements
         DataTable getTableForScoreBoard()
         {
             return ClassBLL.Instance.getAllScoreBoard(); ;
-        }
-        private void btn_All_ScoreBoardList_Click(object sender, EventArgs e)
-        {
-            ClassBus.Instance.btn_All_ScoreBoardList_Click(navFrame_Main, navPage_ScoreBoardDetail, getTableForScoreBoard, setVisibleExportFile);
         }
 
         //--------------------------------------------------------------------------------
