@@ -42,6 +42,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ChangeRules";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChangeRules_FormClosed);
             this.Load += new System.EventHandler(this.ChangeRules_Load);
             this.ResumeLayout(false);
 

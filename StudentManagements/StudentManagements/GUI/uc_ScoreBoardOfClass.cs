@@ -40,7 +40,7 @@ namespace StudentManagements.GUI
             DataTable table = ClassBLL.Instance.getSubjectForClass(MALOP);//Take subjects when know ClassID
             cb_SelectSubject.Items.Clear();
             for (int i = 0; i < table.Rows.Count; i++)
-                cb_SelectSubject.Items.Add(table.Rows[i][1]);
+                cb_SelectSubject.Items.Add(table.Rows[i]["TENMH"]);
             cb_SelectSubject.Items.Add("--Select subject--");
             cb_SelectSubject.SelectedItem = "--Select subject--";
 

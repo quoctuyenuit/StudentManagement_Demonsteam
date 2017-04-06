@@ -43,11 +43,14 @@ namespace StudentManagements.GUI
             }
             if (setVisible != null)
                 setVisible(true);
-            if (getDelegateTable != null)
-                getDelegateTable(getTable, null, getSemester);
-
             this.HocKy = int.Parse(cb_Semester.SelectedItem.ToString());
             grd_Report.DataSource = BLL.ClassBLL.Instance.getReport_HOCKY(HocKy);
+        }
+
+        private void uc_Report_Semester_Load(object sender, EventArgs e)
+        {
+            if (getDelegateTable != null)
+                getDelegateTable(getTable, null, getSemester);
         }
     }
 }

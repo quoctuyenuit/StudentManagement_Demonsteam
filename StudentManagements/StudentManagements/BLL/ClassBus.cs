@@ -4,7 +4,9 @@ using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,7 +106,7 @@ namespace StudentManagements.BLL
         //=================================================================================================================
         //=================================================================================================================
         //Student
-        internal void btn_Detail_StudentList_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationFrame navFrame_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentDetail_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentEdit_StudentInformation, GridView grd_StudentList_View, LabelControl txt_StudentID_StudentInformation_Detail, LabelControl txt_StudentName_StudentInformation_Detail, LabelControl txt_StudentDateOfBirth_StudentInformation_Detail, LabelControl txt_StudentEmail_StudentInformation_Detail, LabelControl txt_StudentSex_StudentInformation_Detail, LabelControl txt_StudentAddress_StudentInformation_Detail)
+        internal void btn_Detail_StudentList_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationFrame navFrame_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentDetail_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentEdit_StudentInformation, GridView grd_StudentList_View, LabelControl txt_StudentID_StudentInformation_Detail, LabelControl txt_StudentName_StudentInformation_Detail, LabelControl txt_StudentDateOfBirth_StudentInformation_Detail, LabelControl txt_StudentEmail_StudentInformation_Detail, LabelControl txt_StudentSex_StudentInformation_Detail, LabelControl txt_StudentAddress_StudentInformation_Detail, PictureBox pic_StudentInformation)
         {
             navFrame_Main.SelectedPage = navPage_StudentInformation;
             navFrame_StudentInformation.SelectedPage = navPage_StudentDetail_StudentInformation;
@@ -119,13 +121,20 @@ namespace StudentManagements.BLL
             string month = (temp[0].Length == 1) ? "0" + temp[0] : temp[0];
             txt_StudentDateOfBirth_StudentInformation_Detail.Text = day + "/" + month + "/" + temp[2];
             txt_StudentEmail_StudentInformation_Detail.Text = row["EMAIL"].ToString();
-            txt_StudentSex_StudentInformation_Detail.Text = (row["GIOITINH"].ToString().Equals("True")) ? "Nam" : "Nữ";
+            txt_StudentSex_StudentInformation_Detail.Text = row["GIOITINH"].ToString();
             txt_StudentAddress_StudentInformation_Detail.Text = row["DIACHI"].ToString();
+            if (!String.IsNullOrEmpty(row["ANH"].ToString()))
+            {
+                Byte[] data = new Byte[0];
+                data = (Byte[])(row["ANH"]);
+                MemoryStream mem = new MemoryStream(data);
+                pic_StudentInformation.Image = Image.FromStream(mem);
+            }
         }
 
-        internal void btn_Done_AddStudent_Click(Panel studentInformationPanel, TextEdit txt_StudentEmail_AddStudent, TextEdit txt_StudentName_AddStudent, DateEdit cb_StudentDateOfBirth_AddStudent, System.Windows.Forms.ComboBox cb_StudentSex_AddStudent, RichTextBox txt_StudentAddress_AddStudent)
+        internal void btn_Done_AddStudent_Click(Panel studentInformationPanel, TextEdit txt_StudentEmail_AddStudent, TextEdit txt_StudentName_AddStudent, DateEdit cb_StudentDateOfBirth_AddStudent, System.Windows.Forms.ComboBox cb_StudentSex_AddStudent, RichTextBox txt_StudentAddress_AddStudent, string urlImage)
         {
-            if (!ClassBLL.Instance.IsEmpty(studentInformationPanel, txt_StudentEmail_AddStudent))
+            if (!ClassBLL.Instance.IsNotEmpty(studentInformationPanel, txt_StudentEmail_AddStudent))
                 return;
 
             if (!string.IsNullOrEmpty(txt_StudentEmail_AddStudent.Text) && !ClassBLL.Instance.IsEmail(txt_StudentEmail_AddStudent.Text))
@@ -133,7 +142,8 @@ namespace StudentManagements.BLL
                 MessageBox.Show("Invalid email!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (ClassBLL.Instance.insertStudent(new Entities.HOCSINH(txt_StudentName_AddStudent.Text, txt_StudentEmail_AddStudent.Text, cb_StudentDateOfBirth_AddStudent.DateTime, cb_StudentSex_AddStudent.SelectedIndex, txt_StudentAddress_AddStudent.Text)))
+
+            if (ClassBLL.Instance.insertStudent(new Entities.HOCSINH(txt_StudentName_AddStudent.Text, txt_StudentEmail_AddStudent.Text, cb_StudentDateOfBirth_AddStudent.DateTime, cb_StudentSex_AddStudent.SelectedIndex, txt_StudentAddress_AddStudent.Text, urlImage)))
             {
                 //If insert successful
                 ClassBLL.Instance.formatControls(studentInformationPanel);
@@ -177,7 +187,7 @@ namespace StudentManagements.BLL
             }
         }
 
-        internal void btn_Save_StudentInformation_Click(TextEdit txt_StudentEmail_StudentInformation_Edit, TextEdit txt_StudentID_StudentInformation_Edit, TextEdit txt_StudentName_StudentInformation_Edit, DateEdit cb_StudentDateOfBirth_StudentInformation_Edit, System.Windows.Forms.ComboBox cb_StudentSex_StudentInformation_Edit, TextEdit txt_StudentAddress_StudentInformation_Edit, LabelControl txt_StudentID_StudentInformation_Detail, LabelControl txt_StudentName_StudentInformation_Detail, LabelControl txt_StudentDateOfBirth_StudentInformation_Detail, LabelControl txt_StudentEmail_StudentInformation_Detail, LabelControl txt_StudentSex_StudentInformation_Detail, LabelControl txt_StudentAddress_StudentInformation_Detail, DevExpress.XtraBars.Navigation.NavigationFrame navFrame_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentDetail_StudentInformation, SimpleButton btn_Save_StudentInformation, SimpleButton btn_Edit_StudentInformation)
+        internal void btn_Save_StudentInformation_Click(TextEdit txt_StudentEmail_StudentInformation_Edit, TextEdit txt_StudentID_StudentInformation_Edit, TextEdit txt_StudentName_StudentInformation_Edit, DateEdit cb_StudentDateOfBirth_StudentInformation_Edit, System.Windows.Forms.ComboBox cb_StudentSex_StudentInformation_Edit, TextEdit txt_StudentAddress_StudentInformation_Edit, LabelControl txt_StudentID_StudentInformation_Detail, LabelControl txt_StudentName_StudentInformation_Detail, LabelControl txt_StudentDateOfBirth_StudentInformation_Detail, LabelControl txt_StudentEmail_StudentInformation_Detail, LabelControl txt_StudentSex_StudentInformation_Detail, LabelControl txt_StudentAddress_StudentInformation_Detail, DevExpress.XtraBars.Navigation.NavigationFrame navFrame_StudentInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentDetail_StudentInformation, SimpleButton btn_Save_StudentInformation, SimpleButton btn_Edit_StudentInformation,string  urlImage_EditStudent)
         {
             if (!string.IsNullOrEmpty(txt_StudentEmail_StudentInformation_Edit.Text) && !ClassBLL.Instance.IsEmail(txt_StudentEmail_StudentInformation_Edit.Text))
             {
@@ -185,7 +195,7 @@ namespace StudentManagements.BLL
                 txt_StudentEmail_StudentInformation_Edit.Focus();
                 return;
             }
-            Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text, cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex, txt_StudentAddress_StudentInformation_Edit.Text);
+            Entities.HOCSINH student = new Entities.HOCSINH(int.Parse(txt_StudentID_StudentInformation_Edit.Text), txt_StudentName_StudentInformation_Edit.Text, txt_StudentEmail_StudentInformation_Edit.Text, cb_StudentDateOfBirth_StudentInformation_Edit.DateTime, cb_StudentSex_StudentInformation_Edit.SelectedIndex, txt_StudentAddress_StudentInformation_Edit.Text, urlImage_EditStudent);
             if (ClassBLL.Instance.updateStudent(student))//If updated successful -> Show message and update data for controls
             {
                 txt_StudentID_StudentInformation_Detail.Text = txt_StudentID_StudentInformation_Edit.Text;
@@ -305,7 +315,7 @@ namespace StudentManagements.BLL
 
         internal void btn_Save_ClassInformation_Click(DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassDetail_Edit, TextEdit txt_ClassName_ClassInformation_Edit, LabelControl txt_ClassName_ClassInformation, TextEdit txt_Year_ClassInformation_Edit, LabelControl txt_Year_ClassInformation, TextEdit txt_ClassTotal_ClassInformation_Edit, DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassDetail_Edit2, GridView grd_ClassList_View)
         {
-            if (!ClassBLL.Instance.IsEmpty(navPage_ClassDetail_Edit))//If any control Empty => return;
+            if (!ClassBLL.Instance.IsNotEmpty(navPage_ClassDetail_Edit))//If any control Empty => return;
             {
                 return;
             }
@@ -348,7 +358,7 @@ namespace StudentManagements.BLL
 
         internal void btn_Save_AddClass_Click(Panel addClassPanel, TextEdit txt_ClassTotal_AddClass, TextEdit txt_ClassName_AddClass, TextEdit txt_Year_AddClass, SimpleButton btn_AddStudentForClass_AddClass, SimpleButton btn_AddSubjectsForClass_AddClass)
         {
-            if (!ClassBLL.Instance.IsEmpty(addClassPanel, txt_ClassTotal_AddClass))//If any Texbox is empty => Exit
+            if (!ClassBLL.Instance.IsNotEmpty(addClassPanel, txt_ClassTotal_AddClass))//If any Texbox is empty => Exit
             {
                 return;
             }
@@ -469,6 +479,23 @@ namespace StudentManagements.BLL
                 DAL.ExportToExcel.Instance.Export_Student(ClassBLL.Instance.getAllStudents(), "Học Sinh", "DANH SÁCH HỌC SINH");
             }
 
+        }
+        //=================================================================================================================
+        //=================================================================================================================
+        //=================================================================================================================
+        //Teacher
+        DataTable getTeacherList()
+        {
+            return BLL.ClassBLL.Instance.getTeacherList();
+        }
+        internal void btn_Teachers_Actions_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_TeachersList, Action detailTeacher)
+        {
+            navFrame_Main.SelectedPage = navPage_TeachersList;
+            GUI.uc_TeacherList uc = new GUI.uc_TeacherList(true);
+            uc.Dock = DockStyle.Fill;
+            uc.detail = new GUI.uc_TeacherList.Ddetail(detailTeacher);
+            uc.getTable = new GUI.uc_TeacherList.DgetTable(getTeacherList);
+            navPage_TeachersList.Controls.Add(uc);
         }
     }
 }

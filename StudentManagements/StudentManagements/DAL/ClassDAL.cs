@@ -201,6 +201,7 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@EMAIL", SqlDbType.NVarChar).Value = student.Email;
                 command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = student.GioiTinh;
                 command.Parameters.Add("@DIACHI", SqlDbType.NVarChar).Value = student.DiaChi;
+                command.Parameters.Add("@ANH", SqlDbType.NVarChar).Value = student.UrlAnh;
                 command.ExecuteNonQuery();
                 check = true;
             }
@@ -262,6 +263,7 @@ namespace StudentManagements.DAL
                     command.Parameters.Add("@EMAIL", SqlDbType.NVarChar).Value = student.Email;
                     command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = student.GioiTinh;
                     command.Parameters.Add("@DIACHI", SqlDbType.NVarChar).Value = student.DiaChi;
+                    command.Parameters.Add("@ANH", SqlDbType.NVarChar).Value = (student.UrlAnh ==null)? "":student.UrlAnh;
                     command.ExecuteNonQuery();
                     check = true;
                 }
@@ -638,7 +640,7 @@ namespace StudentManagements.DAL
         public DataTable getSubjectForClass(int MALOP)
         {
             WaitDialogForm f = new WaitDialogForm();
-            string query = "SELECT MH.MAMH, MH.TENMH FROM MONHOC MH, QLMONHOC QL WHERE MH.MAMH = QL.MAMH AND QL.MALOP = @MALOP";
+            string query = "prd_MONHOC_GIAOVIEN_Select";
             try
             {
                 connection = dataServices.getConnect();
@@ -646,7 +648,7 @@ namespace StudentManagements.DAL
                 command = new SqlCommand();
                 command.CommandText = query;
                 command.Connection = connection;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
                 dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = command;
@@ -1041,7 +1043,6 @@ namespace StudentManagements.DAL
 
         //==========================================================================================================
         //ChangeRules
-
         //
         //Rules StudentAge
         //
@@ -1339,6 +1340,224 @@ namespace StudentManagements.DAL
         //
         //Rules Subjects
         //
-       
+        //==========================================================================================================
+        //Teaching
+
+        public DataRow getTeacherFromID(int MAGV)
+        {
+            string query = "SELECT GV.MAGV, HOTEN, GIOITINH, NGSINH, NAMKINHNGHIEM, HOCHAM FROM GIAOVIEN GV WHERE GV.MAGV = @MAGV";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = MAGV;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            if (table.Rows.Count == 0)
+                return null;
+            return table.Rows[0];
+        }
+
+        public DataTable getTeacherList()
+        {
+            string query = "SELECT MAGV, HOTEN, NGSINH, CASE WHEN GIOITINH = 1 THEN 'Nam' WHEN GIOITINH = 0 THEN N'Nữ' END AS GIOITINH, HOCHAM, NAMKINHNGHIEM FROM GIAOVIEN";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+        }
+
+        public int getTeacherIDLast()
+        {
+            int teacherID = new int();
+            string query = "SELECT TOP 1 MAGV FROM GIAOVIEN ORDER BY MAGV DESC";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                teacherID = (int)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return teacherID;
+        }
+
+        public bool updateTeacher(Entities.GIAOVIEN teacher)
+        {
+            string query = "UPDATE GIAOVIEN SET HOTEN = @HOTEN, GIOITINH = @GIOITINH, NGSINH = @NGAYSINH, HOCHAM = @HOCHAM, NAMKINHNGHIEM = @NAMKINHNGHIEM WHERE MAGV = @MAGV";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = teacher.MaGV;
+                command.Parameters.Add("@HOTEN", SqlDbType.NVarChar).Value = teacher.HoTen;
+                command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = teacher.GioiTinh;
+                command.Parameters.Add("@NGAYSINH", SqlDbType.Date).Value = teacher.NgaySinh;
+                command.Parameters.Add("@HOCHAM", SqlDbType.NVarChar).Value = teacher.HocHam;
+                command.Parameters.Add("@NAMKINHNGHIEM", SqlDbType.Int).Value = teacher.NamKinhNghiem;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+        
+        public bool insertTeacher(Entities.GIAOVIEN teacher)
+        {
+            string query = "INSERT INTO GIAOVIEN(HOTEN, GIOITINH, NGSINH, HOCHAM, NAMKINHNGHIEM) VALUES(@HOTEN, @GIOITINH, @NGSINH, @HOCHAM, @NAMKINHNGHIEM)";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@HOTEN", SqlDbType.NVarChar).Value = teacher.HoTen;
+                command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = teacher.GioiTinh;
+                command.Parameters.Add("@NGSINH", SqlDbType.Date).Value = teacher.NgaySinh;
+                command.Parameters.Add("@HOCHAM", SqlDbType.NVarChar).Value = teacher.HocHam;
+                command.Parameters.Add("@NAMKINHNGHIEM", SqlDbType.Int).Value = teacher.NamKinhNghiem;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool insertTeaching(Entities.GIANGDAY teaching)
+        {
+            string query = "INSERT INTO GIANGDAY(MAGV, MALOP, MAMH) VALUES(@MAGV, @MALOP, @MAMH)";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = teaching.MaGV;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = teaching.MaLop;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = teaching.MaMH;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateTeaching(Entities.GIANGDAY teaching)
+        {
+            string query = "UPDATE GIANGDAY SET MAGV = @MAGV WHERE MALOP = @MALOP AND MAMH = @MAMH";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = teaching.MaGV;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = teaching.MaLop;
+                command.Parameters.Add("@MAMH", SqlDbType.Int).Value = teaching.MaMH;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteTeacher(int MAGV)
+        {
+            string query = "prd_GIAOVIEN_Delete";
+            bool check = false;
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = MAGV;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
     }
 }

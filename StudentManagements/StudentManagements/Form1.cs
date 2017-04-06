@@ -1,7 +1,9 @@
 ﻿using StudentManagements.BLL;
+using StudentManagements.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -110,32 +112,17 @@ namespace StudentManagements
 
             else if (navFrame_Main.SelectedPage == navPage_CreateReports)
                 listBack.Push(new back(btn_CreateReport_Main_ItemClick_back));
-            
+
+            else if (navFrame_Main.SelectedPage == navPage_TeachersList)
+                listBack.Push(new back(btn_Teachers_Actions_Click_back));
         }
 
-        
+
         //=================================================================================================================
         //=================================================================================================================
         //=================================================================================================================
         //Actions
-        private void btn_ChangeRules_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChangeRules f = new ChangeRules();
-            f.ShowDialog();
-        }
 
-        //----------------------------------------------------------------------------
-        private void btn_CreateReport_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            checkBack = true;
-            btn_CreateReport_Main_ItemClick_back();
-        }
-
-        private void btn_CreateReport_Main_ItemClick_back()
-        {
-            ClassBus.Instance.btn_CreateReport_Main_ItemClick(navFrame_Main, navPage_CreateReports, tabPane_Reports, tab_Subject, setVisibleExportFile, getDelegateTable);
-        }
-        //----------------------------------------------------------------------------
 
         //----------------------------------------------------------------------------
         public void btn_Students_Actions_Click(object sender, EventArgs e)
@@ -175,6 +162,50 @@ namespace StudentManagements
             ClassBus.Instance.btn_ScoreBoard_Actions_Click(navFrame_Main, navPage_ScoreBoardList, grd_ScoreBoardList);
         }
         //----------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------
+        private void btn_Teachers_Actions_Click(object sender, EventArgs e)
+        {
+            checkBack = true;
+            btn_Teachers_Actions_Click_back();
+        }
+
+        void teacherDetail()
+        {
+            navFrame_Main.SelectedPage = navPage_TeacherDetail;
+            if (getRow != null)
+            {
+                GUI.uc_TeacherDetail uc = new GUI.uc_TeacherDetail(getRow());
+                uc.Dock = DockStyle.Fill;
+                navPage_TeacherDetail.Controls.Clear();
+                navPage_TeacherDetail.Controls.Add(uc);
+            }
+        }
+        DataTable getTeacherList()
+        {
+            return BLL.ClassBLL.Instance.getTeacherList();
+        }
+
+        public TeacherListForm.DgetRow getRow;
+
+        public void getDelegate(TeacherListForm.DgetRow getRow)
+        {
+            this.getRow = getRow;
+        }
+        private void btn_Teachers_Actions_Click_back()
+        {
+            //ClassBus.Instance.btn_Teachers_Actions_Click(navFrame_Main, navPage_TeachersList, teacherDetail);
+            navFrame_Main.SelectedPage = navPage_TeachersList;
+            GUI.uc_TeacherList uc = new GUI.uc_TeacherList(true);
+            uc.Dock = DockStyle.Fill;
+            uc.detail = new GUI.uc_TeacherList.Ddetail(teacherDetail);
+            uc.getTable = new GUI.uc_TeacherList.DgetTable(getTeacherList);
+            uc.giveRow = new GUI.uc_TeacherList.DgiveRow(getDelegate);
+            navPage_TeachersList.Controls.Clear();
+            navPage_TeachersList.Controls.Add(uc);
+
+        }
+        //----------------------------------------------------------------------------
         //=================================================================================================================
         //=================================================================================================================
         //=================================================================================================================
@@ -196,6 +227,8 @@ namespace StudentManagements
         private void btn_AddStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             checkBack = true;
+            pic_StudentInformation_AddStudent.Image = Resources.StudentIcon;
+            pic_StudentInformation_AddStudent.BackColor = Color.CornflowerBlue;
             btn_AddStudent_Main_ItemClick_back();
         }
 
@@ -205,15 +238,65 @@ namespace StudentManagements
         }
         //----------------------------------------------------------------------------
 
+        private string urlImage;
         private void btn_Done_AddStudent_Click(object sender, EventArgs e)//Insert a student into database
         {
-            ClassBus.Instance.btn_Done_AddStudent_Click(studentInformationPanel, txt_StudentEmail_AddStudent, txt_StudentName_AddStudent, cb_StudentDateOfBirth_AddStudent, cb_StudentSex_AddStudent, txt_StudentAddress_AddStudent);
+            pic_StudentInformation_AddStudent.Image = Resources.StudentIcon;
+            pic_StudentInformation_AddStudent.BackColor = Color.CornflowerBlue;
+            ClassBus.Instance.btn_Done_AddStudent_Click(studentInformationPanel, txt_StudentEmail_AddStudent, txt_StudentName_AddStudent, cb_StudentDateOfBirth_AddStudent, cb_StudentSex_AddStudent, txt_StudentAddress_AddStudent, urlImage);
         }
 
+        private void link_EditImage_AddStudent_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "All Image Files|*.bmp;*.ico;*.gif;*.jpeg;*.jpg;" + "*.jfif;*.png;*.tif;*.tiff;*.wmf;*.emf|" +
+                            "Windows Bitmap (*.bmp)|*.bmp|" +
+                            "All Files (*.*)|*.*";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    pic_StudentInformation_AddStudent.Image = Image.FromFile(dialog.FileName);
+                    this.urlImage = dialog.FileName;
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Error");
+                    return;
+                }
+            }
+        }
         //----------------------------------------------------------------------------
+        private string urlImage_EditStudent;
+        private void link_Edit_StudentInformation_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "All Image Files|*.bmp;*.ico;*.gif;*.jpeg;*.jpg;" + "*.jfif;*.png;*.tif;*.tiff;*.wmf;*.emf|" +
+                            "Windows Bitmap (*.bmp)|*.bmp|" +
+                            "All Files (*.*)|*.*";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    pic_StudentInformation.Image = Image.FromFile(dialog.FileName);
+                    this.urlImage_EditStudent = dialog.FileName;
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Error");
+                    return;
+                }
+            }
+        }
+
         private void btn_Detail_StudentList_Click(object sender, EventArgs e)
         {
             checkBack = true;
+            btn_Edit_StudentInformation.Show();
+            btn_Apply_StudentInformation.Hide();
+            link_EditImage_StudentInformation.Hide();
+            pic_StudentInformation.Image = Resources.StudentIcon;
+            pic_StudentInformation.BackColor = Color.CornflowerBlue;
             btn_Detail_StudentList_Click_back();
         }
 
@@ -224,7 +307,7 @@ namespace StudentManagements
 
         private void btn_Detail_StudentList_Click_back_callBack(DevExpress.XtraGrid.Views.Grid.GridView grd_StudentList_View)
         {
-            ClassBus.Instance.btn_Detail_StudentList_Click(navFrame_Main, navFrame_StudentInformation, navPage_StudentInformation, navPage_StudentDetail_StudentInformation, navPage_StudentEdit_StudentInformation, grd_StudentList_View, txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail, txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail);
+            ClassBus.Instance.btn_Detail_StudentList_Click(navFrame_Main, navFrame_StudentInformation, navPage_StudentInformation, navPage_StudentDetail_StudentInformation, navPage_StudentEdit_StudentInformation, grd_StudentList_View, txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail, txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail, pic_StudentInformation);
         }
         //----------------------------------------------------------------------------
 
@@ -233,19 +316,21 @@ namespace StudentManagements
             ClassBus.Instance.btn_Delete_StudentList_Click(grd_StudentList_View, grd_StudentList);
         }
 
-        private void btn_Save_StudentInformation_Click(object sender, EventArgs e)
+        private void btn_Apply_StudentInformation_Click(object sender, EventArgs e)
         {
+            link_EditImage_StudentInformation.Hide();
             ClassBus.Instance.btn_Save_StudentInformation_Click(txt_StudentEmail_StudentInformation_Edit, txt_StudentID_StudentInformation_Edit, txt_StudentName_StudentInformation_Edit, cb_StudentDateOfBirth_StudentInformation_Edit, cb_StudentSex_StudentInformation_Edit, txt_StudentAddress_StudentInformation_Edit,
                txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail,
-               txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail, navFrame_StudentInformation, navPage_StudentDetail_StudentInformation, btn_Save_StudentInformation, btn_Edit_StudentInformation);
+               txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail, navFrame_StudentInformation, navPage_StudentDetail_StudentInformation, btn_Apply_StudentInformation, btn_Edit_StudentInformation, urlImage_EditStudent);
         }
 
         private void btn_Edit_StudentInformation_Click(object sender, EventArgs e)//EditButon in StudentInformation
         {
+            link_EditImage_StudentInformation.Show();//Hiển thị button để thay đổi ảnh
             ClassBus.Instance.btn_Edit_StudentInformation_Click(navFrame_StudentInformation, navPage_StudentEdit_StudentInformation, txt_StudentID_StudentInformation_Edit, txt_StudentID_StudentInformation_Detail,
                 txt_StudentName_StudentInformation_Edit, txt_StudentName_StudentInformation_Detail, cb_StudentDateOfBirth_StudentInformation_Edit, txt_StudentDateOfBirth_StudentInformation_Detail,
                 txt_StudentAddress_StudentInformation_Edit, txt_StudentAddress_StudentInformation_Detail, cb_StudentSex_StudentInformation_Edit, txt_StudentSex_StudentInformation_Detail,
-                txt_StudentEmail_StudentInformation_Edit, txt_StudentEmail_StudentInformation_Detail, btn_Save_StudentInformation, btn_Edit_StudentInformation);
+                txt_StudentEmail_StudentInformation_Edit, txt_StudentEmail_StudentInformation_Detail, btn_Apply_StudentInformation, btn_Edit_StudentInformation);
         }
         //=================================================================================================================
         //=================================================================================================================
@@ -491,7 +576,7 @@ namespace StudentManagements
         private void tabPane_Reports_SelectedPageChanged(object sender, DevExpress.XtraBars.Navigation.SelectedPageChangedEventArgs e)
         {
             ClassBus.Instance.tabPane_Reports_SelectedPageChanged(tabPane_Reports, tab_Subject, setVisibleExportFile, getDelegateTable, tab_Semester);
-            
+
         }
         //===========================================================================================================
         //===========================================================================================================
@@ -504,6 +589,30 @@ namespace StudentManagements
                 getClassName, grd_ClassList_View, txt_ClassName_ClassInformation, txt_ClassTotal_ClassInformation, txt_Year_ClassInformation);
         }
 
+
+        //===========================================================================================================
+        //===========================================================================================================
+        //===========================================================================================================
+        //Ribb
+        private void btn_ChangeRules_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChangeRules frm = new ChangeRules();
+            frm.callBack = new ChangeRules.DcallBack(btn_Home_Main_ItemClick_back);
+            frm.ShowDialog();
+        }
+
+        //----------------------------------------------------------------------------
+        private void btn_CreateReport_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            checkBack = true;
+            btn_CreateReport_Main_ItemClick_back();
+        }
+
+        private void btn_CreateReport_Main_ItemClick_back()
+        {
+            ClassBus.Instance.btn_CreateReport_Main_ItemClick(navFrame_Main, navPage_CreateReports, tabPane_Reports, tab_Subject, setVisibleExportFile, getDelegateTable);
+        }
+        //----------------------------------------------------------------------------
         private void btn_Back_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             checkBack = false;
@@ -513,7 +622,19 @@ namespace StudentManagements
                 listBack.Pop()();
         }
 
-      
+        private void btn_TeachingDivision_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TeachingDivision frm = new TeachingDivision();
+            frm.callBack = new TeachingDivision.DcallBack(btn_Home_Main_ItemClick_back);//Khi kết thúc sẽ phải quay lại page home
+            frm.ShowDialog();
+        }
+
+       
+        
+
+
+
+
 
     }
 }

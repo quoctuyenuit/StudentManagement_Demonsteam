@@ -40,7 +40,7 @@ namespace StudentManagements.BLL
         {
             return gridView.GetRowCellDisplayText(gridView.GetSelectedRows().First(), columnName);
         }
-        public bool IsEmpty(Control panel, TextEdit txt = null)//Check Are Controls empty
+        public bool IsNotEmpty(Control panel, TextEdit txt = null)//Check Are Controls empty
         {
             foreach (Control ctrl in panel.Controls)
             {
@@ -306,6 +306,49 @@ namespace StudentManagements.BLL
         public bool deleteRulesClass(string TenLop)
         {
             return ClassDAL.Instance.deleteRulesClass(TenLop);
+        }
+
+        //==========================================================================================================
+        //Teaching
+
+        public DataRow getTeacherFromID(int MAGV)
+        {
+            return ClassDAL.Instance.getTeacherFromID(MAGV);
+        }
+
+        public DataTable getTeacherList()
+        {
+            return ClassDAL.Instance.getTeacherList();
+        }
+
+        public int getTeacherIDLast()
+        {
+            return ClassDAL.Instance.getTeacherIDLast();
+        }
+
+        public bool updateTeacher(Entities.GIAOVIEN teacher)
+        {
+            return ClassDAL.Instance.updateTeacher(teacher);
+        }
+
+        public bool insertTeacher(Entities.GIAOVIEN teacher)
+        {
+            return ClassDAL.Instance.insertTeacher(teacher);
+        }
+
+        public bool insertTeaching(Entities.GIANGDAY teaching)
+        {
+            return ClassDAL.Instance.insertTeaching(teaching);
+        }
+
+        public bool updateTeaching(Entities.GIANGDAY teaching)
+        {
+            return ClassDAL.Instance.updateTeaching(teaching);
+        }
+
+        public bool deleteTeacher(int MAGV)
+        {
+            return ClassDAL.Instance.deleteTeacher(MAGV);
         }
     }
 }

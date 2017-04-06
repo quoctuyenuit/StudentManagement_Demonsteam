@@ -20,3 +20,7 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT_log.ldf
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Debug\Data\STUDENTMANAGEMENT.mdf
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.LoginForm.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.TeachingDivision.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_TeacherDetail.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.GUI.uc_TeacherList.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Debug\StudentManagements.TeacherListForm.resources

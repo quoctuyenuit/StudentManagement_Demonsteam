@@ -54,6 +54,9 @@ namespace StudentManagements.GUI
             cb_SelectSubject.SelectedItem = "--Select subject--";
             cb_Semester.SelectedIndex = 0;
             this.HocKy = 1;
+
+            if (getDelegateData != null)
+                getDelegateData(getTable, getSubject, getSemester);//Truyền delegate ngược về cho ParentForm
         }
 
         private void cb_SelectSubject_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,8 +71,7 @@ namespace StudentManagements.GUI
             if (setVisible != null)
                 setVisible(true);
 
-            if (getDelegateData != null)
-                getDelegateData(getTable, getSubject, getSemester);
+           
 
             this.MaMH = ClassBLL.Instance.getSubjectsID(cb_SelectSubject.SelectedItem.ToString());
             grd_Report.DataSource = ClassBLL.Instance.getReport_MONHOC(MaMH, HocKy);

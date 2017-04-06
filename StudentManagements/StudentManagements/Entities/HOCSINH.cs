@@ -14,7 +14,13 @@ namespace StudentManagements.Entities
         DateTime _NgSinh;
         int _GioiTinh;
         string _DiaChi;
+        string urlAnh;
 
+        public string UrlAnh
+        {
+            get { return urlAnh; }
+            set { urlAnh = value; }
+        }
         public HOCSINH()
         {
 
@@ -27,7 +33,18 @@ namespace StudentManagements.Entities
             this.GioiTinh = GioiTinh;
             this.DiaChi = DiaChi;
         }
-        public HOCSINH(int MSHS, string HoTen, string Email, DateTime NgSinh, int GioiTinh, string DiaChi)
+
+        public HOCSINH(string HoTen, string Email, DateTime NgSinh, int GioiTinh, string DiaChi, string UrlAnh)
+        {
+            this.HoTen = HoTen;
+            this.Email = Email;
+            this.NgSinh = NgSinh;
+            this.GioiTinh = GioiTinh;
+            this.DiaChi = DiaChi;
+            this.UrlAnh = UrlAnh;
+        }
+
+        public HOCSINH(int MSHS, string HoTen, string Email, DateTime NgSinh, int GioiTinh, string DiaChi, string UrlAnh)
         {
             this.MSHS = MSHS;
             this.HoTen = HoTen;
@@ -35,6 +52,7 @@ namespace StudentManagements.Entities
             this.NgSinh = NgSinh;
             this.GioiTinh = GioiTinh;
             this.DiaChi = DiaChi;
+            this.UrlAnh = UrlAnh;
         }
         public int MSHS
         {

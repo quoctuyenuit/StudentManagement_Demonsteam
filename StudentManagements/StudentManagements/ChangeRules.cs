@@ -16,6 +16,8 @@ namespace StudentManagements
         {
             InitializeComponent();
         }
+        public delegate void DcallBack();
+        public DcallBack callBack;
         void Exit()
         {
             this.Close();
@@ -27,6 +29,12 @@ namespace StudentManagements
             uc.Exit = new GUI.uc_ChageRules.exit(Exit);
             this.Controls.Clear();
             this.Controls.Add(uc);
+        }
+
+        private void ChangeRules_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (callBack != null)
+                callBack();
         }
     }
 }

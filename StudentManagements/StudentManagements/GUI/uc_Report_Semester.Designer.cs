@@ -158,6 +158,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "uc_Report_Semester";
             this.Size = new System.Drawing.Size(1189, 519);
+            this.Load += new System.EventHandler(this.uc_Report_Semester_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

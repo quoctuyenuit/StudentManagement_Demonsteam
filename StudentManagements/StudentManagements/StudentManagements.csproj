@@ -96,6 +96,8 @@
     <Compile Include="DAL\ClassDAL.cs" />
     <Compile Include="DAL\DataServices.cs" />
     <Compile Include="DAL\ExportToExcel.cs" />
+    <Compile Include="Entities\GIANGDAY.cs" />
+    <Compile Include="Entities\GIAOVIEN.cs" />
     <Compile Include="Entities\HOCSINH.cs" />
     <Compile Include="Entities\KETQUA.cs" />
     <Compile Include="Entities\LOP.cs" />
@@ -136,6 +138,18 @@
     <Compile Include="GUI\uc_ScoreBoardOfClass.Designer.cs">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\uc_TeacherDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_TeacherDetail.Designer.cs">
+      <DependentUpon>uc_TeacherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\uc_TeacherList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\uc_TeacherList.Designer.cs">
+      <DependentUpon>uc_TeacherList.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +158,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeacherListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherListForm.Designer.cs">
+      <DependentUpon>TeacherListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeachingDivision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeachingDivision.Designer.cs">
+      <DependentUpon>TeachingDivision.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +197,12 @@
     <EmbeddedResource Include="GUI\uc_ScoreBoardOfClass.resx">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_TeacherDetail.resx">
+      <DependentUpon>uc_TeacherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\uc_TeacherList.resx">
+      <DependentUpon>uc_TeacherList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +217,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TeacherListForm.resx">
+      <DependentUpon>TeacherListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeachingDivision.resx">
+      <DependentUpon>TeachingDivision.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -300,6 +338,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\division.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\appsIcon.ico" />
     <None Include="Data\STUDENTMANAGEMENT.mdf">
