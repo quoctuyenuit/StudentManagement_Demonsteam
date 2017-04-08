@@ -1375,7 +1375,7 @@ namespace StudentManagements.DAL
 
         public DataTable getTeacherList()
         {
-            string query = "SELECT MAGV, HOTEN, NGSINH, CASE WHEN GIOITINH = 1 THEN 'Nam' WHEN GIOITINH = 0 THEN N'Nữ' END AS GIOITINH, HOCHAM, NAMKINHNGHIEM FROM GIAOVIEN";
+            string query = "SELECT MAGV, HOTEN, NGSINH, CASE WHEN GIOITINH = 1 THEN 'Nam' WHEN GIOITINH = 0 THEN N'Nữ' END AS GIOITINH, HOCHAM, NAMKINHNGHIEM, ANH FROM GIAOVIEN";
             try
             {
                 connection = dataServices.getConnect();
@@ -1424,7 +1424,7 @@ namespace StudentManagements.DAL
 
         public bool updateTeacher(Entities.GIAOVIEN teacher)
         {
-            string query = "UPDATE GIAOVIEN SET HOTEN = @HOTEN, GIOITINH = @GIOITINH, NGSINH = @NGAYSINH, HOCHAM = @HOCHAM, NAMKINHNGHIEM = @NAMKINHNGHIEM WHERE MAGV = @MAGV";
+            string query = "prd_GIAOVIEN_Update";
             bool check = false;
             try
             {
@@ -1433,13 +1433,14 @@ namespace StudentManagements.DAL
                 command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandText = query;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@MAGV", SqlDbType.Int).Value = teacher.MaGV;
                 command.Parameters.Add("@HOTEN", SqlDbType.NVarChar).Value = teacher.HoTen;
                 command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = teacher.GioiTinh;
-                command.Parameters.Add("@NGAYSINH", SqlDbType.Date).Value = teacher.NgaySinh;
-                command.Parameters.Add("@HOCHAM", SqlDbType.NVarChar).Value = teacher.HocHam;
+                command.Parameters.Add("@NGSINH", SqlDbType.Date).Value = teacher.NgaySinh;
                 command.Parameters.Add("@NAMKINHNGHIEM", SqlDbType.Int).Value = teacher.NamKinhNghiem;
+                command.Parameters.Add("@HOCHAM", SqlDbType.NVarChar).Value = teacher.HocHam;
+                command.Parameters.Add("@URLANH", SqlDbType.NVarChar).Value = (teacher.UrlAnh == null) ? "" : teacher.UrlAnh;
                 command.ExecuteNonQuery();
                 check = true;
             }

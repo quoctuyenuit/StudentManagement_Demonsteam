@@ -293,6 +293,26 @@ namespace StudentManagements.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap teacherInformation_title {
+            get {
+                object obj = ResourceManager.GetObject("teacherInformation_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap teacherList_title {
+            get {
+                object obj = ResourceManager.GetObject("teacherList_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap title_demons {
             get {
                 object obj = ResourceManager.GetObject("title_demons", resourceCulture);

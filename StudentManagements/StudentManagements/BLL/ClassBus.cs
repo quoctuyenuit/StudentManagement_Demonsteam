@@ -442,7 +442,7 @@ namespace StudentManagements.BLL
         //=================================================================================================================
         //=================================================================================================================
         //Export to Excel
-        internal void btn_ExportFile_Main_ItemClick(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_CreateReports, DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_ScoreBoardDetail, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentsList, DevExpress.XtraBars.Navigation.TabPane tabPane_Reports, DevExpress.XtraBars.Navigation.TabNavigationPage tab_Subject, Form1.DgetData getTableForExport, Form1.DgetString getSubjectName, Form1.DgetInteger getSemester, Form1.DgetString getClassName, GridView grd_ClassList_View, LabelControl txt_ClassName_ClassInformation, LabelControl txt_ClassTotal_ClassInformation, LabelControl txt_Year_ClassInformation)
+        internal void btn_ExportFile_Main_ItemClick(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_CreateReports, DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_ScoreBoardDetail, DevExpress.XtraBars.Navigation.NavigationPage navPage_StudentsList, DevExpress.XtraBars.Navigation.NavigationPage navPage_LookUpStudents, DevExpress.XtraBars.Navigation.TabPane tabPane_Reports, DevExpress.XtraBars.Navigation.TabNavigationPage tab_Subject, Form1.DgetData getTableForExport, Form1.DgetString getSubjectName, Form1.DgetInteger getSemester, Form1.DgetString getClassName, GridView grd_ClassList_View, LabelControl txt_ClassName_ClassInformation, LabelControl txt_ClassTotal_ClassInformation, LabelControl txt_Year_ClassInformation)
         {
             if (navFrame_Main.SelectedPage == navPage_CreateReports)
             {
@@ -478,6 +478,9 @@ namespace StudentManagements.BLL
             {
                 DAL.ExportToExcel.Instance.Export_Student(ClassBLL.Instance.getAllStudents(), "Học Sinh", "DANH SÁCH HỌC SINH");
             }
+            else if (navFrame_Main.SelectedPage == navPage_LookUpStudents)
+                DAL.ExportToExcel.Instance.Export_LookUpStudent(ClassBLL.Instance.getStudentForLookUp(), "Truy vấn", "DANH SÁCH HỌC SINH");
+
 
         }
         //=================================================================================================================

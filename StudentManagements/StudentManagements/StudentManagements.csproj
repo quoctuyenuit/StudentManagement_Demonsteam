@@ -338,6 +338,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\teacherList_title.PNG" />
+    <None Include="Resources\teacherInformation_title.PNG" />
     <None Include="Resources\division.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\appsIcon.ico" />

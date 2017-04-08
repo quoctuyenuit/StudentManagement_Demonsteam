@@ -36,10 +36,13 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btn_Detail = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList_View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grd_TeacherList
@@ -63,7 +66,8 @@
             this.gridColumn4,
             this.gridColumn3,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn7});
             this.grd_TeacherList_View.GridControl = this.grd_TeacherList;
             this.grd_TeacherList_View.Name = "grd_TeacherList_View";
             this.grd_TeacherList_View.OptionsBehavior.Editable = false;
@@ -127,6 +131,12 @@
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 201;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Anh";
+            this.gridColumn7.FieldName = "ANH";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
             // btn_Detail
             // 
             this.btn_Detail.Enabled = false;
@@ -146,10 +156,23 @@
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = global::StudentManagements.Properties.Resources.teacherList_title;
+            this.pictureBox1.Location = new System.Drawing.Point(398, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(393, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // uc_TeacherList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Detail);
             this.Controls.Add(this.grd_TeacherList);
@@ -158,6 +181,7 @@
             this.Load += new System.EventHandler(this.uc_TeacherList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +198,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.SimpleButton btn_Detail;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }

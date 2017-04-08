@@ -585,7 +585,7 @@ namespace StudentManagements
 
         private void btn_ExportFile_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ClassBus.Instance.btn_ExportFile_Main_ItemClick(navFrame_Main, navPage_CreateReports, navPage_ClassInformation, navPage_ScoreBoardDetail, navPage_StudentsList, tabPane_Reports, tab_Subject, getTableForExport, getSubjectName, getSemester,
+            ClassBus.Instance.btn_ExportFile_Main_ItemClick(navFrame_Main, navPage_CreateReports, navPage_ClassInformation, navPage_ScoreBoardDetail, navPage_StudentsList, navPage_LookUpStudents, tabPane_Reports, tab_Subject, getTableForExport, getSubjectName, getSemester,
                 getClassName, grd_ClassList_View, txt_ClassName_ClassInformation, txt_ClassTotal_ClassInformation, txt_Year_ClassInformation);
         }
 

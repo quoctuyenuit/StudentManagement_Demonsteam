@@ -35,6 +35,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.link_SelectTeacher = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.txt_TeacherQualification_TeachingDivision = new DevExpress.XtraEditors.TextEdit();
@@ -55,7 +56,6 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClassList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClassList_View)).BeginInit();
             this.panel2.SuspendLayout();
@@ -146,8 +146,20 @@
             this.panel2.Size = new System.Drawing.Size(1041, 207);
             this.panel2.TabIndex = 1;
             // 
+            // btn_Close
+            // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.Location = new System.Drawing.Point(954, 166);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(75, 29);
+            this.btn_Close.TabIndex = 4;
+            this.btn_Close.Text = "Close";
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            // 
             // panelControl1
             // 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.link_SelectTeacher);
             this.panelControl1.Controls.Add(this.txt_TeacherQualification_TeachingDivision);
             this.panelControl1.Controls.Add(this.cb_TeacherSex_TeachingDivision);
@@ -281,6 +293,7 @@
             // 
             // btn_Save
             // 
+            this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Save.Location = new System.Drawing.Point(873, 166);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 29);
@@ -359,15 +372,6 @@
             this.gridColumn5.Caption = "MAGV";
             this.gridColumn5.FieldName = "MAGV";
             this.gridColumn5.Name = "gridColumn5";
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Location = new System.Drawing.Point(954, 166);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(75, 29);
-            this.btn_Close.TabIndex = 4;
-            this.btn_Close.Text = "Close";
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // TeachingDivision
             // 

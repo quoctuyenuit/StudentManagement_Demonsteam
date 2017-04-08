@@ -15,6 +15,23 @@ namespace StudentManagements.Entities
         DateTime ngaySinh;
         string hocHam;
         int namKinhNghiem;
+        string urlAnh;
+
+        public string UrlAnh
+        {
+            get { return urlAnh; }
+            set { urlAnh = value; }
+        }
+        public GIAOVIEN(int MaGV, string HoTen, bool GioiTinh, DateTime NgaySinh, string HocHam, int NamKinhNghiem, string urlAnh)
+        {
+            this.MaGV = MaGV;
+            this.HoTen = HoTen;
+            this.GioiTinh = GioiTinh;
+            this.NgaySinh = NgaySinh;
+            this.HocHam = HocHam;
+            this.NamKinhNghiem = NamKinhNghiem;
+            this.urlAnh = urlAnh;
+        }
 
         public GIAOVIEN(int MaGV, string HoTen, bool GioiTinh, DateTime NgaySinh, string HocHam, int NamKinhNghiem)
         {

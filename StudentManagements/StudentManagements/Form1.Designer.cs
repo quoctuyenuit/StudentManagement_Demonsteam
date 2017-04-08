@@ -87,10 +87,10 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navPage_StudentInformation = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.link_EditImage_StudentInformation = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.btn_Edit_StudentInformation = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Apply_StudentInformation = new DevExpress.XtraEditors.SimpleButton();
             this.pic_StudentInformation = new System.Windows.Forms.PictureBox();
+            this.link_EditImage_StudentInformation = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.btn_Apply_StudentInformation = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.navFrame_StudentInformation = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navPage_StudentEdit_StudentInformation = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -119,7 +119,7 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btn_Edit_StudentInformation = new DevExpress.XtraEditors.SimpleButton();
             this.navPage_ClassInformation = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.btn_AddSubjectsForClass_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -267,6 +267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClassList_View)).BeginInit();
             this.navPage_StudentInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_StudentInformation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_StudentInformation)).BeginInit();
             this.navFrame_StudentInformation.SuspendLayout();
@@ -278,7 +279,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties)).BeginInit();
             this.navPage_StudentDetail_StudentInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.navPage_ClassInformation.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_SubjectList_ClassInformation)).BeginInit();
@@ -901,47 +901,14 @@
             // 
             // navPage_StudentInformation
             // 
-            this.navPage_StudentInformation.Controls.Add(this.link_EditImage_StudentInformation);
-            this.navPage_StudentInformation.Controls.Add(this.btn_Edit_StudentInformation);
-            this.navPage_StudentInformation.Controls.Add(this.btn_Apply_StudentInformation);
             this.navPage_StudentInformation.Controls.Add(this.pic_StudentInformation);
-            this.navPage_StudentInformation.Controls.Add(this.panel5);
+            this.navPage_StudentInformation.Controls.Add(this.link_EditImage_StudentInformation);
+            this.navPage_StudentInformation.Controls.Add(this.btn_Apply_StudentInformation);
             this.navPage_StudentInformation.Controls.Add(this.pictureBox3);
+            this.navPage_StudentInformation.Controls.Add(this.panel5);
+            this.navPage_StudentInformation.Controls.Add(this.btn_Edit_StudentInformation);
             this.navPage_StudentInformation.Name = "navPage_StudentInformation";
             this.navPage_StudentInformation.Size = new System.Drawing.Size(1188, 665);
-            // 
-            // link_EditImage_StudentInformation
-            // 
-            this.link_EditImage_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.link_EditImage_StudentInformation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.link_EditImage_StudentInformation.Location = new System.Drawing.Point(673, 268);
-            this.link_EditImage_StudentInformation.Name = "link_EditImage_StudentInformation";
-            this.link_EditImage_StudentInformation.Size = new System.Drawing.Size(21, 16);
-            this.link_EditImage_StudentInformation.TabIndex = 5;
-            this.link_EditImage_StudentInformation.Text = "Edit";
-            this.link_EditImage_StudentInformation.Click += new System.EventHandler(this.link_Edit_StudentInformation_Click);
-            // 
-            // btn_Edit_StudentInformation
-            // 
-            this.btn_Edit_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Edit_StudentInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Edit_StudentInformation.Image")));
-            this.btn_Edit_StudentInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Edit_StudentInformation.Location = new System.Drawing.Point(866, 253);
-            this.btn_Edit_StudentInformation.Name = "btn_Edit_StudentInformation";
-            this.btn_Edit_StudentInformation.Size = new System.Drawing.Size(75, 45);
-            this.btn_Edit_StudentInformation.TabIndex = 4;
-            this.btn_Edit_StudentInformation.Click += new System.EventHandler(this.btn_Edit_StudentInformation_Click);
-            // 
-            // btn_Apply_StudentInformation
-            // 
-            this.btn_Apply_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Apply_StudentInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Apply_StudentInformation.Image")));
-            this.btn_Apply_StudentInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Apply_StudentInformation.Location = new System.Drawing.Point(866, 254);
-            this.btn_Apply_StudentInformation.Name = "btn_Apply_StudentInformation";
-            this.btn_Apply_StudentInformation.Size = new System.Drawing.Size(75, 45);
-            this.btn_Apply_StudentInformation.TabIndex = 4;
-            this.btn_Apply_StudentInformation.Click += new System.EventHandler(this.btn_Apply_StudentInformation_Click);
             // 
             // pic_StudentInformation
             // 
@@ -949,19 +916,52 @@
             this.pic_StudentInformation.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pic_StudentInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic_StudentInformation.Image = global::StudentManagements.Properties.Resources.StudentIcon;
-            this.pic_StudentInformation.Location = new System.Drawing.Point(524, 118);
+            this.pic_StudentInformation.Location = new System.Drawing.Point(524, 130);
             this.pic_StudentInformation.Name = "pic_StudentInformation";
-            this.pic_StudentInformation.Size = new System.Drawing.Size(140, 166);
+            this.pic_StudentInformation.Size = new System.Drawing.Size(140, 186);
             this.pic_StudentInformation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_StudentInformation.TabIndex = 2;
             this.pic_StudentInformation.TabStop = false;
+            // 
+            // link_EditImage_StudentInformation
+            // 
+            this.link_EditImage_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.link_EditImage_StudentInformation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.link_EditImage_StudentInformation.Location = new System.Drawing.Point(673, 300);
+            this.link_EditImage_StudentInformation.Name = "link_EditImage_StudentInformation";
+            this.link_EditImage_StudentInformation.Size = new System.Drawing.Size(21, 16);
+            this.link_EditImage_StudentInformation.TabIndex = 5;
+            this.link_EditImage_StudentInformation.Text = "Edit";
+            this.link_EditImage_StudentInformation.Click += new System.EventHandler(this.link_Edit_StudentInformation_Click);
+            // 
+            // btn_Apply_StudentInformation
+            // 
+            this.btn_Apply_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Apply_StudentInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Apply_StudentInformation.Image")));
+            this.btn_Apply_StudentInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btn_Apply_StudentInformation.Location = new System.Drawing.Point(866, 286);
+            this.btn_Apply_StudentInformation.Name = "btn_Apply_StudentInformation";
+            this.btn_Apply_StudentInformation.Size = new System.Drawing.Size(75, 45);
+            this.btn_Apply_StudentInformation.TabIndex = 4;
+            this.btn_Apply_StudentInformation.Click += new System.EventHandler(this.btn_Apply_StudentInformation_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox3.Image = global::StudentManagements.Properties.Resources.studentInformationTitle;
+            this.pictureBox3.Location = new System.Drawing.Point(284, 62);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(621, 44);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.navFrame_StudentInformation);
-            this.panel5.Location = new System.Drawing.Point(247, 304);
+            this.panel5.Location = new System.Drawing.Point(247, 336);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(694, 267);
             this.panel5.TabIndex = 1;
@@ -1251,16 +1251,16 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "MSHS: ";
             // 
-            // pictureBox3
+            // btn_Edit_StudentInformation
             // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = global::StudentManagements.Properties.Resources.studentInformationTitle;
-            this.pictureBox3.Location = new System.Drawing.Point(284, 44);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(621, 44);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
+            this.btn_Edit_StudentInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Edit_StudentInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Edit_StudentInformation.Image")));
+            this.btn_Edit_StudentInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btn_Edit_StudentInformation.Location = new System.Drawing.Point(866, 285);
+            this.btn_Edit_StudentInformation.Name = "btn_Edit_StudentInformation";
+            this.btn_Edit_StudentInformation.Size = new System.Drawing.Size(75, 45);
+            this.btn_Edit_StudentInformation.TabIndex = 4;
+            this.btn_Edit_StudentInformation.Click += new System.EventHandler(this.btn_Edit_StudentInformation_Click);
             // 
             // navPage_ClassInformation
             // 
@@ -1796,9 +1796,9 @@
             this.pic_StudentInformation_AddStudent.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pic_StudentInformation_AddStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic_StudentInformation_AddStudent.Image = global::StudentManagements.Properties.Resources.StudentIcon;
-            this.pic_StudentInformation_AddStudent.Location = new System.Drawing.Point(524, 104);
+            this.pic_StudentInformation_AddStudent.Location = new System.Drawing.Point(524, 84);
             this.pic_StudentInformation_AddStudent.Name = "pic_StudentInformation_AddStudent";
-            this.pic_StudentInformation_AddStudent.Size = new System.Drawing.Size(140, 166);
+            this.pic_StudentInformation_AddStudent.Size = new System.Drawing.Size(140, 186);
             this.pic_StudentInformation_AddStudent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_StudentInformation_AddStudent.TabIndex = 4;
             this.pic_StudentInformation_AddStudent.TabStop = false;
@@ -2622,6 +2622,7 @@
             this.navPage_StudentInformation.ResumeLayout(false);
             this.navPage_StudentInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_StudentInformation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_StudentInformation)).EndInit();
             this.navFrame_StudentInformation.ResumeLayout(false);
@@ -2635,7 +2636,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cb_StudentDateOfBirth_StudentInformation_Edit.Properties)).EndInit();
             this.navPage_StudentDetail_StudentInformation.ResumeLayout(false);
             this.navPage_StudentDetail_StudentInformation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.navPage_ClassInformation.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_SubjectList_ClassInformation)).EndInit();
