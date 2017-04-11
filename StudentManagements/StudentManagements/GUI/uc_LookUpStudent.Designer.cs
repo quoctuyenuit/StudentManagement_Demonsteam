@@ -79,6 +79,7 @@
             this.grd_StudentList_View.Name = "grd_StudentList_View";
             this.grd_StudentList_View.OptionsBehavior.Editable = false;
             this.grd_StudentList_View.OptionsFind.AlwaysVisible = true;
+            this.grd_StudentList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_StudentList_View.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1

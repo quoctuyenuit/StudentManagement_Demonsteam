@@ -350,5 +350,76 @@ namespace StudentManagements.BLL
         {
             return ClassDAL.Instance.deleteTeacher(MAGV);
         }
+
+        //==========================================================================================================
+        //Login
+
+        public bool checkUser(Entities.NGUOIDUNG user)
+        {
+            DataTable table = ClassDAL.Instance.getAllUser();
+            foreach(DataRow row in table.Rows)
+                if (row["TENDANGNHAP"].ToString().Equals(user.TenDangNhap) && row["MATKHAU"].ToString().Equals(user.MatKhau))
+                    return true;
+            return false;
+        }
+
+        public DataTable getAllUser()
+        {
+            return ClassDAL.Instance.getAllUser();
+        }
+
+        public List<string> getPermissionName()
+        {
+            List<string> list = new List<string>();
+            foreach (DataRow row in ClassDAL.Instance.getAllPermission().Rows)
+                list.Add(row["TENPQ"].ToString());
+            return list;
+        }
+
+        public bool updateUserInformation(Entities.NGUOIDUNG user)
+        {
+            return ClassDAL.Instance.updateUserInformation(user);
+        }
+
+        public bool insertUser(Entities.NGUOIDUNG user)
+        {
+            return ClassDAL.Instance.insertUser(user);
+        }
+
+        public bool deleteUser(int MaND)
+        {
+            return ClassDAL.Instance.deleteUser(MaND);
+        }
+
+        public int coutAdmin()
+        {
+            int cout = 0;
+            foreach (DataRow row in ClassDAL.Instance.getAllUser().Rows)
+                if (row["TENPQ"].ToString().Equals("Admin"))
+                    cout++;
+            return cout;
+        }
+
+        //Lấy mã phân quyền
+        public int getPermissionID(string userName)
+        {
+            foreach (DataRow row in ClassDAL.Instance.getAllUser().Rows)
+                if (userName.Equals(row["TENDANGNHAP"].ToString()))
+                    return (int)row["MAPQ"];
+            return 0;
+        }
+
+        public string getEmail(string userName)
+        {
+            foreach (DataRow row in ClassDAL.Instance.getAllUser().Rows)
+                if (userName.Equals(row["TENDANGNHAP"].ToString()))
+                    return row["EMAIL"].ToString();
+            return null;
+        }
+
+        public bool updateUserPassword(string newPassword, string userName)
+        {
+            return ClassDAL.Instance.updateUserPassword(newPassword, userName);
+        }
     }
 }

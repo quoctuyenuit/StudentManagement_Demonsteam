@@ -36,6 +36,8 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,8 +49,6 @@
             this.txt_ClassName = new DevExpress.XtraEditors.LabelControl();
             this.cb_Semester = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard)).BeginInit();
@@ -113,6 +113,7 @@
             this.grd_ScoreBoard_View.GridControl = this.grd_ScoreBoard;
             this.grd_ScoreBoard_View.Name = "grd_ScoreBoard_View";
             this.grd_ScoreBoard_View.OptionsFind.AlwaysVisible = true;
+            this.grd_ScoreBoard_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_ScoreBoard_View.OptionsView.ShowGroupPanel = false;
             this.grd_ScoreBoard_View.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grd_ScoreBoard_View_RowUpdated);
             // 
@@ -142,6 +143,26 @@
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 262;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Điểm miệng 1";
+            this.gridColumn4.FieldName = "DIEMMIENG1";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.FixedWidth = true;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 133;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Điểm miệng 2";
+            this.gridColumn9.FieldName = "DIEMMIENG2";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.FixedWidth = true;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 3;
+            this.gridColumn9.Width = 142;
             // 
             // gridColumn5
             // 
@@ -256,26 +277,6 @@
             this.labelControl1.Size = new System.Drawing.Size(70, 21);
             this.labelControl1.TabIndex = 24;
             this.labelControl1.Text = "Semester";
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Điểm miệng 1";
-            this.gridColumn4.FieldName = "DIEMMIENG1";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.FixedWidth = true;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 133;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Điểm miệng 2";
-            this.gridColumn9.FieldName = "DIEMMIENG2";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.OptionsColumn.FixedWidth = true;
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 3;
-            this.gridColumn9.Width = 142;
             // 
             // uc_ScoreBoardOfClass
             // 

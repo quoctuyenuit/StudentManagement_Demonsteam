@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_Home_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_AddStudent_Main = new DevExpress.XtraBars.BarButtonItem();
@@ -49,6 +49,7 @@
             this.btn_ExportFile_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Back_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_TeachingDivision_Main = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Permission_Main = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -356,10 +357,11 @@
             this.barEditItem1,
             this.btn_ExportFile_Main,
             this.btn_Back_Main,
-            this.btn_TeachingDivision_Main});
+            this.btn_TeachingDivision_Main,
+            this.btn_Permission_Main});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 22;
+            this.ribbonControl1.MaxItemId = 25;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -445,7 +447,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // btn_LookUpStudent_Main
             // 
@@ -493,6 +495,14 @@
             this.btn_TeachingDivision_Main.Name = "btn_TeachingDivision_Main";
             this.btn_TeachingDivision_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_TeachingDivision_Main_ItemClick);
             // 
+            // btn_Permission_Main
+            // 
+            this.btn_Permission_Main.Caption = "Permission";
+            this.btn_Permission_Main.Id = 22;
+            this.btn_Permission_Main.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_Permission_Main.LargeGlyph")));
+            this.btn_Permission_Main.Name = "btn_Permission_Main";
+            this.btn_Permission_Main.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Permission_Main_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -510,6 +520,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_CreateReport_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_ChangeRules_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_TeachingDivision_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_Permission_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_ExportFile_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.skinButton, true);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -2602,6 +2613,7 @@
             this.Ribbon = this.ribbonControl1;
             this.Text = "Student Managements";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -2920,6 +2932,7 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl link_EditImage_AddStudent;
         private System.Windows.Forms.PictureBox pic_StudentInformation_AddStudent;
         private DevExpress.XtraEditors.HyperlinkLabelControl link_EditImage_StudentInformation;
+        private DevExpress.XtraBars.BarButtonItem btn_Permission_Main;
     }
 }
 

@@ -73,24 +73,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForm.cs">
+    <Compile Include="Entities\NGUOIDUNG.cs" />
+    <Compile Include="Form\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm.Designer.cs">
+    <Compile Include="Form\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddSubjectForm.cs">
+    <Compile Include="Form\AddSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddSubjectForm.Designer.cs">
+    <Compile Include="Form\AddSubjectForm.Designer.cs">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BLL\ClassBLL.cs" />
     <Compile Include="BLL\ClassBus.cs" />
-    <Compile Include="ChangeRules.cs">
+    <Compile Include="Form\ChangeRules.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeRules.Designer.cs">
+    <Compile Include="Form\ChangeRules.Designer.cs">
       <DependentUpon>ChangeRules.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\ClassDAL.cs" />
@@ -150,37 +151,46 @@
     <Compile Include="GUI\uc_TeacherList.Designer.cs">
       <DependentUpon>uc_TeacherList.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Form\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Form\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PermissionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PermissionForm.Designer.cs">
+      <DependentUpon>PermissionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeacherListForm.cs">
+    <Compile Include="Form\TeacherListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeacherListForm.Designer.cs">
+    <Compile Include="Form\TeacherListForm.Designer.cs">
       <DependentUpon>TeacherListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TeachingDivision.cs">
+    <Compile Include="Form\TeachingDivision.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeachingDivision.Designer.cs">
+    <Compile Include="Form\TeachingDivision.Designer.cs">
       <DependentUpon>TeachingDivision.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddForm.resx">
+    <EmbeddedResource Include="Form\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddSubjectForm.resx">
+    <EmbeddedResource Include="Form\AddSubjectForm.resx">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeRules.resx">
+    <EmbeddedResource Include="Form\ChangeRules.resx">
       <DependentUpon>ChangeRules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PermissionForm.resx">
+      <DependentUpon>PermissionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\uc_ChageRules.resx">
       <DependentUpon>uc_ChageRules.cs</DependentUpon>
@@ -203,7 +213,7 @@
     <EmbeddedResource Include="GUI\uc_TeacherList.resx">
       <DependentUpon>uc_TeacherList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Form\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -217,10 +227,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TeacherListForm.resx">
+    <EmbeddedResource Include="Form\TeacherListForm.resx">
       <DependentUpon>TeacherListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeachingDivision.resx">
+    <EmbeddedResource Include="Form\TeachingDivision.resx">
       <DependentUpon>TeachingDivision.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
@@ -338,6 +348,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\permissionIcon.ico" />
+    <None Include="Resources\permissionIcon.png" />
+    <None Include="Resources\book3.png" />
+    <None Include="Resources\book.PNG" />
     <None Include="Resources\teacherList_title.PNG" />
     <None Include="Resources\teacherInformation_title.PNG" />
     <None Include="Resources\division.png" />

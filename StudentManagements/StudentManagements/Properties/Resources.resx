@@ -118,68 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="findStudentTitle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\findStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rulesTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rulesTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="changeRulesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\changeRulesIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="studentsListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\studentsListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="studentInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\studentInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StudentIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reportIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reportIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="scoreBoardListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scoreBoardListTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="findStudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\findStudentIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addClassTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addClassTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="addStudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addStudentIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addClassIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addClassIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="book3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="classInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\classInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="permissionIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\permissionIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="classListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\classListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addStudentTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="findStudentTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\findStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reportTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reportTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="title_demons" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\title_demons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="excelIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excelIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="STUDENTMANAGEMENT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Data\STUDENTMANAGEMENT.mdf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="STUDENTMANAGEMENT_log" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Data\STUDENTMANAGEMENT_log.ldf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="StudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StudentIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="appsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\appsIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,13 +139,73 @@
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="division" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\division.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reportTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reportTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scoreBoardListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scoreBoardListTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="findStudentTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\findStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="changeRulesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\changeRulesIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reportIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reportIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rulesTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rulesTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="studentInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\studentInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="teacherInformation_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teacherInformation_title.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="teacherList_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teacherList_title.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="title_demons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\title_demons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STUDENTMANAGEMENT_log" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Data\STUDENTMANAGEMENT_log.ldf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="studentsListTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\studentsListTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="division" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\division.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addClassTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addClassTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excelIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excelIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="classInformationTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\classInformationTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STUDENTMANAGEMENT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Data\STUDENTMANAGEMENT.mdf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="book" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addStudentTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="findStudentTitle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\findStudentTitle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="findStudentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\findStudentIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addClassIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addClassIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="permissionIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\permissionIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

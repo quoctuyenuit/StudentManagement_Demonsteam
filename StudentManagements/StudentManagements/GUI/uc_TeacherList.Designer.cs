@@ -74,6 +74,7 @@
             this.grd_TeacherList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_TeacherList_View.OptionsView.ShowGroupPanel = false;
             this.grd_TeacherList_View.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grd_TeacherList_View_RowClick);
+            this.grd_TeacherList_View.DoubleClick += new System.EventHandler(this.grd_TeacherList_View_DoubleClick);
             // 
             // gridColumn1
             // 

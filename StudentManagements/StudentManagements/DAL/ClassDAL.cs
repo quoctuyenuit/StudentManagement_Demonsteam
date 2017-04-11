@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StudentManagements.DAL
 {
@@ -207,7 +208,7 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message.ToString());
             }
             finally
             {
@@ -269,6 +270,7 @@ namespace StudentManagements.DAL
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message.ToString());
                 }
                 finally
                 {
@@ -1554,6 +1556,183 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             { }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        //==========================================================================================================
+        //User
+        public DataTable getAllUser()
+        {
+            string query = "SELECT MAND, TENNGUOIDUNG, TENDANGNHAP, MATKHAU, TENPQ, ND.MAPQ, EMAIL FROM NGUOIDUNG ND, PHANQUYEN PQ WHERE ND.MAPQ = PQ.MAPQ";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+        }
+
+        public DataTable getAllPermission()
+        {
+            string query = "SELECT *FROM PHANQUYEN";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+                table = new DataTable();
+                dataAdapter.Fill(table);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                dataAdapter.Dispose();
+                connection.Close();
+            }
+            return table;
+        }
+
+        public bool updateUserInformation(Entities.NGUOIDUNG user)
+        {
+            bool check = false;
+            string query = "UPDATE NGUOIDUNG SET TENNGUOIDUNG = @TENNGUOIDUNG, TENDANGNHAP = @TENDANGNHAP, MAPQ = (SELECT MAPQ FROM PHANQUYEN WHERE TENPQ = @TENPQ), MATKHAU = @MATKHAU, EMAIL = @EMAIL WHERE MAND = @MAND";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TENNGUOIDUNG", SqlDbType.NVarChar).Value = user.TenNguoiDung;
+                command.Parameters.Add("@TENDANGNHAP", SqlDbType.NVarChar).Value = user.TenDangNhap;
+                command.Parameters.Add("@TENPQ", SqlDbType.NVarChar).Value = user.TenPQ;
+                command.Parameters.Add("@MAND", SqlDbType.Int).Value = user.MaND;
+                command.Parameters.Add("@MATKHAU", SqlDbType.NVarChar).Value = user.MatKhau;
+                command.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = user.Email;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool insertUser(Entities.NGUOIDUNG user)
+        {
+            bool check = false;
+            string query = "INSERT INTO NGUOIDUNG(TENNGUOIDUNG, TENDANGNHAP, MATKHAU, MAPQ, EMAIL) VALUES(@TENNGUOIDUNG, @TENDANGNHAP, @MATKHAU, (SELECT MAPQ FROM PHANQUYEN WHERE TENPQ = @TENPQ), @EMAIL)";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TENNGUOIDUNG", SqlDbType.NVarChar).Value = user.TenNguoiDung;
+                command.Parameters.Add("@TENDANGNHAP", SqlDbType.NVarChar).Value = user.TenDangNhap;
+                command.Parameters.Add("@TENPQ", SqlDbType.NVarChar).Value = user.TenPQ;
+                command.Parameters.Add("@MAND", SqlDbType.Int).Value = user.MaND;
+                command.Parameters.Add("@MATKHAU", SqlDbType.NVarChar).Value = user.MatKhau;
+                command.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = user.Email;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool deleteUser(int MaND)
+        {
+            bool check = false;
+            string query = "DELETE NGUOIDUNG WHERE MAND = @MAND";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@MAND", SqlDbType.Int).Value = MaND;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool updateUserPassword(string newPassword, string userName)
+        {
+            bool check = false;
+            string query = "UPDATE NGUOIDUNG SET MATKHAU = @MATKHAU WHERE TENDANGNHAP = @TENDANGNHAP";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@TENDANGNHAP", SqlDbType.NVarChar).Value = userName;
+                command.Parameters.Add("@MATKHAU", SqlDbType.NVarChar).Value = newPassword;
+                command.ExecuteNonQuery();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
             finally
             {
                 connection.Close();

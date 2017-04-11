@@ -79,28 +79,24 @@ namespace StudentManagements.BLL
             }
         }
 
-        public void deleteStudentInClass(GridView grd_StudentList_View, GridControl grd_StudentList, int MALOP)
+        public void deleteStudentInClass(GridView grd_StudentList_View, int MALOP)
         {
             int[] rows = grd_StudentList_View.GetSelectedRows();//Take rows of Table in GridControl StudentList
             foreach (int row in rows)
             {
                 ClassBLL.Instance.deleteStudentInClass((int)grd_StudentList_View.GetListSourceRowCellValue(row, "MSHS"), MALOP);
             }
-            DataTable table = new DataTable();
-            table = ClassBLL.Instance.getStudentForClass(MALOP);
-            grd_StudentList.DataSource = table;
+            grd_StudentList_View.DeleteSelectedRows();
         }
 
-        public void deleteSubjectInClass(GridView grd_SubjectList_View, GridControl grd_SubjectList, int MALOP)
+        public void deleteSubjectInClass(GridView grd_SubjectList_View, int MALOP)
         {
             int[] rows = grd_SubjectList_View.GetSelectedRows();
             foreach (int row in rows)
             {
                 ClassBLL.Instance.deleteSubjectInClass((int)grd_SubjectList_View.GetListSourceRowCellValue(row, "MAMH"), MALOP);
             }
-            DataTable table = new DataTable();
-            table = ClassBLL.Instance.getSubjectForClass(MALOP);
-            grd_SubjectList.DataSource = table;
+            grd_SubjectList_View.DeleteSelectedRows();
         }
         //=================================================================================================================
         //=================================================================================================================
@@ -174,13 +170,13 @@ namespace StudentManagements.BLL
             navPage_LookUpStudents.Controls.Add(uc);
         }
 
-        internal void btn_Delete_StudentList_Click(GridView grd_StudentList_View, GridControl grd_StudentList)
+        internal void btn_Delete_StudentList_Click(GridView grd_StudentList_View)
         {
             if (MessageBox.Show("Do you want to delete this Student?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 if (ClassBLL.Instance.deleteStudent(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "MSHS"))))
                 {
-                    grd_StudentList.DataSource = ClassBLL.Instance.getAllStudents();
+                    grd_StudentList_View.DeleteSelectedRows();
                 }
                 else
                     MessageBox.Show("Delete fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
@@ -274,14 +270,14 @@ namespace StudentManagements.BLL
         //=================================================================================================================
         //=================================================================================================================
         //Class
-        internal void btn_Delete_ClassList_Click(GridView grd_ClassList_View, GridControl grd_ClassList)
+        internal void btn_Delete_ClassList_Click(GridView grd_ClassList_View)
         {
             if (MessageBox.Show("Do you want to delete this Class?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 if (!ClassBLL.Instance.deleteClass(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP"))))
                     MessageBox.Show("Deleted failure!");
             }
-            grd_ClassList.DataSource = ClassBLL.Instance.getAllClass();
+            grd_ClassList_View.DeleteSelectedRows();
         }
 
         internal void btn_Detail_ClassList_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassInformation, DevExpress.XtraBars.Navigation.NavigationFrame navFrame_ClassInformation, DevExpress.XtraBars.Navigation.NavigationPage navPage_ClassDetail, GridView grd_ClassList_View, GridControl grd_StudentList_ClassInformation, GridControl grd_SubjectList_ClassInformation, SimpleButton btn_AddSubjectsForClass_ClassInformation, LabelControl txt_ClassName_ClassInformation, LabelControl txt_ClassTotal_ClassInformation, LabelControl txt_Year_ClassInformation, SimpleButton btn_Edit_ClassInformation, SimpleButton btn_Save_ClassInformation, SimpleButton btn_DeleteStudent_ClassInformation, SimpleButton btn_AddStudentForClass_ClassInformation, GridView grd_StudentList_ClassInformation_View, GridView grd_SubjectList_ClassInformation_View)
@@ -349,8 +345,8 @@ namespace StudentManagements.BLL
             if (MessageBox.Show("Do you want to Delete?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ClassList_View, "MALOP")); ;//Get MALOP from navPage_ClassInformation
-                ClassBus.Instance.deleteStudentInClass(grd_StudentList_ClassInformation_View, grd_StudentList_ClassInformation, MALOP);
-                ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_ClassInformation_View, grd_SubjectList_ClassInformation, MALOP);
+                ClassBus.Instance.deleteStudentInClass(grd_StudentList_ClassInformation_View, MALOP);
+                ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_ClassInformation_View, MALOP);
                 txt_ClassTotal_ClassInformation_Edit.Text = grd_StudentList_ClassInformation_View.RowCount.ToString();
                 btn_DeleteStudent_ClassInformation.Enabled = false;//Set enabled for button after User click
             }
@@ -383,8 +379,8 @@ namespace StudentManagements.BLL
         internal void btn_DeleteStudentInClass_AddClass_Click(TextEdit txt_ClassName_AddClass, TextEdit txt_Year_AddClass, GridView grd_StudentList_AddClass_View, GridControl grd_StudentList_AddClass, GridView grd_SubjectList_AddClass_View, GridControl grd_SubjectList_AddClass1, SimpleButton btn_DeleteStudentInClass_AddClass, GridControl grd_SubjectList_AddClass)
         {
             int MALOP = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));//Get MALOP from navPage_ClassInformation
-            ClassBus.Instance.deleteStudentInClass(grd_StudentList_AddClass_View, grd_StudentList_AddClass, MALOP);
-            ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_AddClass_View, grd_SubjectList_AddClass, MALOP);
+            ClassBus.Instance.deleteStudentInClass(grd_StudentList_AddClass_View, MALOP);
+            ClassBus.Instance.deleteSubjectInClass(grd_SubjectList_AddClass_View, MALOP);
             btn_DeleteStudentInClass_AddClass.Enabled = false;//Set enabled for button after User click
             grd_SubjectList_AddClass.DataSource = ClassBLL.Instance.getSubjectForClass(MALOP);
         }
@@ -411,6 +407,7 @@ namespace StudentManagements.BLL
             if (MessageBox.Show("ScoreBoard will deleted\nDo you want to delete?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 ClassBLL.Instance.deleteScoreBoardClass((int)grd_ScoreBoardList_View.GetDataRow(grd_ScoreBoardList_View.GetSelectedRows().First())["MALOP"]);
+                MessageBox.Show("Delete successful!");
             }
         }
         //=================================================================================================================

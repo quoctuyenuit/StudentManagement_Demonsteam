@@ -16,12 +16,17 @@ namespace StudentManagements
         Stack<back> listBack;//Danh sách để back
         bool checkBack;//Tín hiệu back1
 
-        public Form1()
+        string userName;
+
+
+        public Form1(string userName)
         {
             InitializeComponent();
             listBack = new Stack<back>();
             checkBack = true;
             btn_Back_Main.Enabled = false;
+
+            this.userName = userName;
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Style";
@@ -291,12 +296,6 @@ namespace StudentManagements
 
         private void btn_Detail_StudentList_Click(object sender, EventArgs e)
         {
-            checkBack = true;
-            btn_Edit_StudentInformation.Show();
-            btn_Apply_StudentInformation.Hide();
-            link_EditImage_StudentInformation.Hide();
-            pic_StudentInformation.Image = Resources.StudentIcon;
-            pic_StudentInformation.BackColor = Color.CornflowerBlue;
             btn_Detail_StudentList_Click_back();
         }
 
@@ -307,13 +306,19 @@ namespace StudentManagements
 
         private void btn_Detail_StudentList_Click_back_callBack(DevExpress.XtraGrid.Views.Grid.GridView grd_StudentList_View)
         {
+            checkBack = true;
+            btn_Edit_StudentInformation.Show();
+            btn_Apply_StudentInformation.Hide();
+            link_EditImage_StudentInformation.Hide();
+            pic_StudentInformation.Image = Resources.StudentIcon;
+            pic_StudentInformation.BackColor = Color.CornflowerBlue;
             ClassBus.Instance.btn_Detail_StudentList_Click(navFrame_Main, navFrame_StudentInformation, navPage_StudentInformation, navPage_StudentDetail_StudentInformation, navPage_StudentEdit_StudentInformation, grd_StudentList_View, txt_StudentID_StudentInformation_Detail, txt_StudentName_StudentInformation_Detail, txt_StudentDateOfBirth_StudentInformation_Detail, txt_StudentEmail_StudentInformation_Detail, txt_StudentSex_StudentInformation_Detail, txt_StudentAddress_StudentInformation_Detail, pic_StudentInformation);
         }
         //----------------------------------------------------------------------------
 
         private void btn_Delete_StudentList_Click(object sender, EventArgs e)
         {
-            ClassBus.Instance.btn_Delete_StudentList_Click(grd_StudentList_View, grd_StudentList);
+            ClassBus.Instance.btn_Delete_StudentList_Click(grd_StudentList_View);
         }
 
         private void btn_Apply_StudentInformation_Click(object sender, EventArgs e)
@@ -338,7 +343,7 @@ namespace StudentManagements
         //Class
         private void btn_Delete_ClassList_Click(object sender, EventArgs e)//Delete Class
         {
-            ClassBus.Instance.btn_Delete_ClassList_Click(grd_ClassList_View, grd_ClassList);
+            ClassBus.Instance.btn_Delete_ClassList_Click(grd_ClassList_View);
         }
 
         //----------------------------------------------------------------------------
@@ -629,12 +634,16 @@ namespace StudentManagements
             frm.ShowDialog();
         }
 
-       
-        
+        private void btn_Permission_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PermissionForm frm = new PermissionForm(userName);
+            frm.ShowDialog();
+        }
 
-
-
-
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }
