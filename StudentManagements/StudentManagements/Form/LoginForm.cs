@@ -55,7 +55,10 @@ namespace StudentManagements
         private void link_ForgotPassword_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_UserName.Text))
+            {
                 MessageBox.Show("Please enter the username", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             string userEmail = BLL.ClassBLL.Instance.getEmail(txt_UserName.Text);
 
