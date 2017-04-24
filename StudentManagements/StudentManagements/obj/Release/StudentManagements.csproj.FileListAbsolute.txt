@@ -16,8 +16,6 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.exe.licenses
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.exe
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.pdb
-C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Release\Data\STUDENTMANAGEMENT_log.ldf
-C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Release\Data\STUDENTMANAGEMENT.mdf
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.LoginForm.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.TeachingDivision.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.csprojResolveAssemblyReference.cache
@@ -25,3 +23,5 @@ C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\Stu
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.TeacherListForm.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.GUI.uc_TeacherDetail.resources
 C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\obj\Release\StudentManagements.PermissionForm.resources
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Release\STUDENTMANAGEMENT_log.ldf
+C:\Users\QuocTuyen\Documents\StudentManagement_Demonsteam\StudentManagements\StudentManagements\bin\Release\STUDENTMANAGEMENT.mdf

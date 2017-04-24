@@ -102,5 +102,13 @@ namespace StudentManagements
             }
 
         }
+
+        private void txt_UserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Back)
+            {
+                txt_UserName.Text = "";
+            }
+        }
     }
 }

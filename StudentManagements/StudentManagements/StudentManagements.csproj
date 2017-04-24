@@ -273,7 +273,15 @@
   <ItemGroup>
     <None Include="Resources\studentsListTitle.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="STUDENTMANAGEMENT.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="STUDENTMANAGEMENT_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>STUDENTMANAGEMENT.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
@@ -357,13 +365,6 @@
     <None Include="Resources\division.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\appsIcon.ico" />
-    <None Include="Data\STUDENTMANAGEMENT.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Data\STUDENTMANAGEMENT_log.ldf">
-      <DependentUpon>STUDENTMANAGEMENT.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

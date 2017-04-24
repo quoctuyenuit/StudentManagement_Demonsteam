@@ -52,6 +52,7 @@
             this.txt_UserName.Properties.Appearance.Options.UseFont = true;
             this.txt_UserName.Size = new System.Drawing.Size(186, 24);
             this.txt_UserName.TabIndex = 0;
+            this.txt_UserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_UserName_KeyDown);
             // 
             // labelControl1
             // 
@@ -151,6 +152,7 @@
             this.Controls.Add(this.txt_UserName);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";

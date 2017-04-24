@@ -13,92 +13,118 @@ namespace StudentManagements
     public partial class PermissionForm : Form
     {
         Entities.NGUOIDUNG user;
+
+        //Biến nhận biết để insert hay update dữ liệu
         bool isNew;
 
         public PermissionForm(string userName)
         {
             InitializeComponent();
+
             user = new Entities.NGUOIDUNG();
+
+            //Lấy tên đăng nhập
             this.user.TenDangNhap = userName;
+            
+            //Lấy mã phân quyền
             this.user.MaPQ = BLL.ClassBLL.Instance.getPermissionID(this.user.TenDangNhap);
 
             grd_User.DataSource = BLL.ClassBLL.Instance.getAllUser();
-            cb_Permission.DataSource = BLL.ClassBLL.Instance.getPermissionName();
-
-
-            DataRow row = grd_User_View.GetDataRow(grd_User_View.GetSelectedRows().First());
-
             
+            //Lấy danh sách các phân quyền cho vào Combobox
+            cb_Permission.DataSource = BLL.ClassBLL.Instance.getPermissionName();
 
             process();
 
         }
 
-        private void grd_User_View_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        private void grd_User_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             DataRow row = grd_User_View.GetDataRow(grd_User_View.GetSelectedRows().First());
 
             process();
+
             isNew = false;
         }
 
+        //Hàm xử lý hiển thị theo phân quyền
         void process()
         {
-            
-
+            //Lấy dữ liệu của hàng đang được chọn
             DataRow row = grd_User_View.GetDataRow(grd_User_View.GetSelectedRows().First());
 
-            if (row["TENDANGNHAP"].ToString().Equals(user.TenDangNhap))//Người dùng không được phép tự xóa bản thân
-                btn_Delete.Enabled = false;
-            else
-                btn_Delete.Enabled = true;
-
-            if (user.MaPQ != 1)//Nếu là thành viên thì ko được xem mật khẩu của người khác
+            if (user.MaPQ != 1)//Nếu là thành viên thì ko được xem mật khẩu của người khác (Mã phân quyền bằng 1 tương ứng với member)
             {
+                //Ẩn cột mật khẩu trong DataGridView
                 grdColumn_Password.Visible = false;
 
-                labelPassword.Hide();
-                txt_Password.Hide();
+                //Ẩn cột email trong DataGridView
+                grdColumn_Email.Visible = false;
 
                 btn_NewUser.Hide();
+
                 btn_Delete.Hide();
 
                 cb_Permission.Enabled = false;
+
+                //Cho người dùng tự xem và sửa được mật khẩu của mình
+                if (user.TenDangNhap.Equals(row["TENDANGNHAP"].ToString()))
+                {
+                    labelEmail.Show();
+
+                    txt_Email.Show();
+
+                    labelPassword.Show();
+
+                    txt_Password.Show();
+                }
+                else
+                {
+                    labelEmail.Hide();
+
+                    txt_Email.Hide();
+
+                    labelPassword.Hide();
+
+                    txt_Password.Hide();
+                }
             }
             else
             {
+                //Ẩn cột mật khẩu trong DataGridView
                 grdColumn_Password.Visible = true;
-                labelPassword.Show();
-                txt_Password.Show();
+
+                //Ẩn cột email trong DataGridView
+                grdColumn_Email.Visible = true;
+
                 btn_NewUser.Show();
+
                 btn_Delete.Show();
 
                 cb_Permission.Enabled = true;
-            }
 
-            if (user.TenDangNhap.Equals(row["TENDANGNHAP"].ToString()))
-            {
-                txt_Name.Enabled = true;
-                txt_UserName.Enabled = true;
-                txt_Email.Enabled = true;
-                txt_Password.Enabled = true;
-            }
-            else
-            {
-                txt_Name.Enabled = false;
-                txt_UserName.Enabled = false;
-                txt_Email.Enabled = false;
-                txt_Password.Enabled = false;
+                labelEmail.Show();
+
+                txt_Email.Show();
+
+                labelPassword.Show();
+
+                txt_Password.Show();
             }
 
             txt_Name.Text = row["TENNGUOIDUNG"].ToString();
 
             txt_UserName.Text = row["TENDANGNHAP"].ToString();
+
             cb_Permission.SelectedItem = row["TENPQ"].ToString();
+
             txt_Email.Text = row["EMAIL"].ToString();
+
             txt_Password.Text = row["MATKHAU"].ToString();
 
         }
+
+        #region Button Event
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -127,6 +153,7 @@ namespace StudentManagements
                 return;
             }
 
+            //Nếu đối tượng đang xét không phải là thêm mới thì sử dụng chức năng update, ngược lại là insert 
             if (!isNew)
                 BLL.ClassBLL.Instance.updateUserInformation(_user);
             else
@@ -164,5 +191,7 @@ namespace StudentManagements
             BLL.ClassBLL.Instance.deleteUser((int)row["MAND"]);
             grd_User_View.DeleteSelectedRows();
         }
+
+        #endregion
     }
 }

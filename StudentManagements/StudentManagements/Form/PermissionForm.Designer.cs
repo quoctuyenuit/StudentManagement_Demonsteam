@@ -36,7 +36,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdColumn_Password = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.EMAIL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdColumn_Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.btn_NewUser = new DevExpress.XtraEditors.SimpleButton();
@@ -44,7 +44,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_Email = new DevExpress.XtraEditors.TextEdit();
             this.txt_Password = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelEmail = new DevExpress.XtraEditors.LabelControl();
             this.labelPassword = new DevExpress.XtraEditors.LabelControl();
             this.cb_Permission = new System.Windows.Forms.ComboBox();
             this.txt_UserName = new DevExpress.XtraEditors.TextEdit();
@@ -106,14 +106,14 @@
             this.gridColumn2,
             this.gridColumn3,
             this.grdColumn_Password,
-            this.EMAIL,
+            this.grdColumn_Email,
             this.gridColumn5});
             this.grd_User_View.GridControl = this.grd_User;
             this.grd_User_View.Name = "grd_User_View";
             this.grd_User_View.OptionsBehavior.Editable = false;
             this.grd_User_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_User_View.OptionsView.ShowGroupPanel = false;
-            this.grd_User_View.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grd_User_View_RowClick);
+            this.grd_User_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_User_View_FocusedRowChanged);
             // 
             // gridColumn1
             // 
@@ -152,14 +152,14 @@
             this.grdColumn_Password.VisibleIndex = 3;
             this.grdColumn_Password.Width = 98;
             // 
-            // EMAIL
+            // grdColumn_Email
             // 
-            this.EMAIL.Caption = "Email";
-            this.EMAIL.FieldName = "EMAIL";
-            this.EMAIL.Name = "EMAIL";
-            this.EMAIL.Visible = true;
-            this.EMAIL.VisibleIndex = 4;
-            this.EMAIL.Width = 242;
+            this.grdColumn_Email.Caption = "Email";
+            this.grdColumn_Email.FieldName = "EMAIL";
+            this.grdColumn_Email.Name = "grdColumn_Email";
+            this.grdColumn_Email.Visible = true;
+            this.grdColumn_Email.VisibleIndex = 4;
+            this.grdColumn_Email.Width = 242;
             // 
             // gridColumn5
             // 
@@ -199,7 +199,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.txt_Email);
             this.panel1.Controls.Add(this.txt_Password);
-            this.panel1.Controls.Add(this.labelControl4);
+            this.panel1.Controls.Add(this.labelEmail);
             this.panel1.Controls.Add(this.labelPassword);
             this.panel1.Controls.Add(this.cb_Permission);
             this.panel1.Controls.Add(this.txt_UserName);
@@ -230,14 +230,14 @@
             this.txt_Password.Size = new System.Drawing.Size(236, 24);
             this.txt_Password.TabIndex = 3;
             // 
-            // labelControl4
+            // labelEmail
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl4.Location = new System.Drawing.Point(33, 147);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(38, 18);
-            this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "Email:";
+            this.labelEmail.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelEmail.Location = new System.Drawing.Point(33, 147);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(38, 18);
+            this.labelEmail.TabIndex = 3;
+            this.labelEmail.Text = "Email:";
             // 
             // labelPassword
             // 
@@ -353,9 +353,9 @@
         private DevExpress.XtraEditors.LabelControl labelPassword;
         private DevExpress.XtraEditors.SimpleButton btn_NewUser;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
-        private DevExpress.XtraGrid.Columns.GridColumn EMAIL;
+        private DevExpress.XtraGrid.Columns.GridColumn grdColumn_Email;
         private DevExpress.XtraEditors.TextEdit txt_Email;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelEmail;
 
     }
 }
