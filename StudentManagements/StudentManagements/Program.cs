@@ -20,7 +20,7 @@ namespace StudentManagements
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new LoginForm());
+            Application.Run(new Login.LoginForm());
         }
     }
 }

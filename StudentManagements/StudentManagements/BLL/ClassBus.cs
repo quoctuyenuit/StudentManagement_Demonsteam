@@ -163,9 +163,9 @@ namespace StudentManagements.BLL
         internal void btn_LookUpStudent_Main_ItemClick(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_LookUpStudents, Action<GridView> btn_Detail_StudentList_Click_back)
         {
             navFrame_Main.SelectedPage = navPage_LookUpStudents;
-            GUI.uc_LookUpStudent uc = new GUI.uc_LookUpStudent();
+            LookUpStudents.uc_LookUpStudent uc = new LookUpStudents.uc_LookUpStudent();
             uc.Dock = DockStyle.Fill;
-            uc.detailClick = new GUI.uc_LookUpStudent.detailEvent(btn_Detail_StudentList_Click_back);
+            uc.detailClick = new LookUpStudents.uc_LookUpStudent.detailEvent(btn_Detail_StudentList_Click_back);
             navPage_LookUpStudents.Controls.Clear();//Dùng để xoá các control mà các trang đang chứa hiện tại(Reset trang)
             navPage_LookUpStudents.Controls.Add(uc);
         }
@@ -259,10 +259,10 @@ namespace StudentManagements.BLL
         {
             navFrame_Main.SelectedPage = navPage_CreateReports;
             tabPane_Reports.SelectedPage = tab_Subject;
-            GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
+            Report.uc_Report_Subject uc = new Report.uc_Report_Subject();
             uc.Dock = DockStyle.Fill;
-            uc.setVisible = new GUI.uc_Report_Subject.CallBack(setVisibleExportFile);
-            uc.getDelegateData = new GUI.uc_Report_Subject.getDelegate(getDelegateTable);
+            uc.setVisible = new Report.uc_Report_Subject.CallBack(setVisibleExportFile);
+            uc.getDelegateData = new Report.uc_Report_Subject.getDelegate(getDelegateTable);
             tab_Subject.Controls.Clear();
             tab_Subject.Controls.Add(uc);
         }
@@ -394,9 +394,9 @@ namespace StudentManagements.BLL
             navFrame_Main.SelectedPage = navPage_ScoreBoardDetail;//Show Page
             string TENLOP = ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "TENLOP");
             int MALOP = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoardList_View, "MALOP"));
-            GUI.uc_ScoreBoardOfClass uc = new GUI.uc_ScoreBoardOfClass(TENLOP, MALOP);
-            uc.setVisible = new GUI.uc_ScoreBoardOfClass.CallBack(setVisibleExportFile);
-            uc.getDelegateData = new GUI.uc_ScoreBoardOfClass.getDelegate(getDelegateForScoreBoard);
+            LookUpStudents.uc_ScoreBoardOfClass uc = new LookUpStudents.uc_ScoreBoardOfClass(TENLOP, MALOP);
+            uc.setVisible = new LookUpStudents.uc_ScoreBoardOfClass.CallBack(setVisibleExportFile);
+            uc.getDelegateData = new LookUpStudents.uc_ScoreBoardOfClass.getDelegate(getDelegateForScoreBoard);
             uc.Dock = DockStyle.Fill;
             navPage_ScoreBoardDetail.Controls.Clear();
             navPage_ScoreBoardDetail.Controls.Add(uc);
@@ -418,19 +418,19 @@ namespace StudentManagements.BLL
         {
             if (tabPane_Reports.SelectedPage == tab_Subject)
             {
-                GUI.uc_Report_Subject uc = new GUI.uc_Report_Subject();
+                Report.uc_Report_Subject uc = new Report.uc_Report_Subject();
                 uc.Dock = DockStyle.Fill;
-                uc.setVisible = new GUI.uc_Report_Subject.CallBack(setVisibleExportFile);
-                uc.getDelegateData = new GUI.uc_Report_Subject.getDelegate(getDelegateTable);
+                uc.setVisible = new Report.uc_Report_Subject.CallBack(setVisibleExportFile);
+                uc.getDelegateData = new Report.uc_Report_Subject.getDelegate(getDelegateTable);
                 tab_Subject.Controls.Clear();
                 tab_Subject.Controls.Add(uc);
             }
             else if (tabPane_Reports.SelectedPage == tab_Semester)
             {
-                GUI.uc_Report_Semester uc = new GUI.uc_Report_Semester();
+                Report.uc_Report_Semester uc = new Report.uc_Report_Semester();
                 uc.Dock = DockStyle.Fill;
-                uc.setVisible = new GUI.uc_Report_Semester.CallBack(setVisibleExportFile);
-                uc.getDelegateTable = new GUI.uc_Report_Semester.getDelegate(getDelegateTable);
+                uc.setVisible = new Report.uc_Report_Semester.CallBack(setVisibleExportFile);
+                uc.getDelegateTable = new Report.uc_Report_Semester.getDelegate(getDelegateTable);
                 tab_Semester.Controls.Clear();
                 tab_Semester.Controls.Add(uc);
             }
@@ -459,7 +459,7 @@ namespace StudentManagements.BLL
             }
             else if (navFrame_Main.SelectedPage == navPage_ScoreBoardDetail)
             {
-                if (navPage_ScoreBoardDetail.Controls[0] is GUI.uc_ScoreBoardOfClass)
+                if (navPage_ScoreBoardDetail.Controls[0] is LookUpStudents.uc_ScoreBoardOfClass)
                     if (getTableForExport != null && getClassName != null && getSubjectName != null && getSemester != null)
                         DAL.ExportToExcel.Instance.Export_ScoreBoard(getTableForExport(), getClassName(), getSubjectName(), getSemester(), "Bang Điểm", "BẢNG ĐIỂM MÔN HỌC");
             }
@@ -491,10 +491,10 @@ namespace StudentManagements.BLL
         internal void btn_Teachers_Actions_Click(DevExpress.XtraBars.Navigation.NavigationFrame navFrame_Main, DevExpress.XtraBars.Navigation.NavigationPage navPage_TeachersList, Action detailTeacher)
         {
             navFrame_Main.SelectedPage = navPage_TeachersList;
-            GUI.uc_TeacherList uc = new GUI.uc_TeacherList(true);
+            Teacher.uc_TeacherList uc = new Teacher.uc_TeacherList(true);
             uc.Dock = DockStyle.Fill;
-            uc.detail = new GUI.uc_TeacherList.Ddetail(detailTeacher);
-            uc.getTable = new GUI.uc_TeacherList.DgetTable(getTeacherList);
+            uc.detail = new Teacher.uc_TeacherList.Ddetail(detailTeacher);
+            uc.getTable = new Teacher.uc_TeacherList.DgetTable(getTeacherList);
             navPage_TeachersList.Controls.Add(uc);
         }
     }

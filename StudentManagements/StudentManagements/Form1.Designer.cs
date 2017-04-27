@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_Home_Main = new DevExpress.XtraBars.BarButtonItem();
             this.btn_AddStudent_Main = new DevExpress.XtraBars.BarButtonItem();
@@ -447,7 +447,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // btn_LookUpStudent_Main
             // 
@@ -699,6 +699,7 @@
             this.grd_StudentList_View.OptionsFind.AlwaysVisible = true;
             this.grd_StudentList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_StudentList_View.OptionsView.ShowGroupPanel = false;
+            this.grd_StudentList_View.DoubleClick += new System.EventHandler(this.grd_StudentList_View_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -863,6 +864,7 @@
             this.grd_ClassList_View.OptionsFind.AlwaysVisible = true;
             this.grd_ClassList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_ClassList_View.OptionsView.ShowGroupPanel = false;
+            this.grd_ClassList_View.DoubleClick += new System.EventHandler(this.grd_ClassList_View_DoubleClick);
             // 
             // gridColumn7
             // 
@@ -1734,6 +1736,7 @@
             this.grd_ScoreBoardList_View.OptionsFind.AlwaysVisible = true;
             this.grd_ScoreBoardList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_ScoreBoardList_View.OptionsView.ShowGroupPanel = false;
+            this.grd_ScoreBoardList_View.DoubleClick += new System.EventHandler(this.grd_ScoreBoardList_View_DoubleClick);
             // 
             // gridColumn18
             // 

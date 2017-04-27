@@ -73,25 +73,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\NGUOIDUNG.cs" />
-    <Compile Include="Form\AddForm.cs">
+    <Compile Include="Rules\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\AddForm.Designer.cs">
+    <Compile Include="Rules\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\AddSubjectForm.cs">
+    <Compile Include="Entities\NGUOIDUNG.cs" />
+    <Compile Include="AddSubject\AddSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\AddSubjectForm.Designer.cs">
+    <Compile Include="AddSubject\AddSubjectForm.Designer.cs">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BLL\ClassBLL.cs" />
     <Compile Include="BLL\ClassBus.cs" />
-    <Compile Include="Form\ChangeRules.cs">
+    <Compile Include="Rules\ChangeRules.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\ChangeRules.Designer.cs">
+    <Compile Include="Rules\ChangeRules.Designer.cs">
       <DependentUpon>ChangeRules.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\ClassDAL.cs" />
@@ -109,111 +109,111 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_ChageRules.cs">
+    <Compile Include="Rules\uc_ChageRules.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_ChageRules.Designer.cs">
+    <Compile Include="Rules\uc_ChageRules.Designer.cs">
       <DependentUpon>uc_ChageRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_LookUpStudent.cs">
+    <Compile Include="LookUpStudents\uc_LookUpStudent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_LookUpStudent.Designer.cs">
+    <Compile Include="LookUpStudents\uc_LookUpStudent.Designer.cs">
       <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_Report_Semester.cs">
+    <Compile Include="Report\uc_Report_Semester.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_Report_Semester.Designer.cs">
+    <Compile Include="Report\uc_Report_Semester.Designer.cs">
       <DependentUpon>uc_Report_Semester.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_Report_Subject.cs">
+    <Compile Include="Report\uc_Report_Subject.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_Report_Subject.Designer.cs">
+    <Compile Include="Report\uc_Report_Subject.Designer.cs">
       <DependentUpon>uc_Report_Subject.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_ScoreBoardOfClass.cs">
+    <Compile Include="ScoreBoard\uc_ScoreBoardOfClass.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_ScoreBoardOfClass.Designer.cs">
+    <Compile Include="ScoreBoard\uc_ScoreBoardOfClass.Designer.cs">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_TeacherDetail.cs">
+    <Compile Include="Teacher\uc_TeacherDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_TeacherDetail.Designer.cs">
+    <Compile Include="Teacher\uc_TeacherDetail.Designer.cs">
       <DependentUpon>uc_TeacherDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\uc_TeacherList.cs">
+    <Compile Include="Teacher\uc_TeacherList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\uc_TeacherList.Designer.cs">
+    <Compile Include="Teacher\uc_TeacherList.Designer.cs">
       <DependentUpon>uc_TeacherList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\LoginForm.cs">
+    <Compile Include="PermissionUser\PermissionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form\PermissionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\PermissionForm.Designer.cs">
+    <Compile Include="PermissionUser\PermissionForm.Designer.cs">
       <DependentUpon>PermissionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Form\TeacherListForm.cs">
+    <Compile Include="TeachingDivision\TeacherListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\TeacherListForm.Designer.cs">
+    <Compile Include="TeachingDivision\TeacherListForm.Designer.cs">
       <DependentUpon>TeacherListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\TeachingDivision.cs">
+    <Compile Include="TeachingDivision\TeachingDivision.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\TeachingDivision.Designer.cs">
+    <Compile Include="TeachingDivision\TeachingDivision.Designer.cs">
       <DependentUpon>TeachingDivision.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\AddForm.resx">
+    <EmbeddedResource Include="Rules\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\AddSubjectForm.resx">
+    <EmbeddedResource Include="AddSubject\AddSubjectForm.resx">
       <DependentUpon>AddSubjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\ChangeRules.resx">
+    <EmbeddedResource Include="Rules\ChangeRules.resx">
       <DependentUpon>ChangeRules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\PermissionForm.resx">
+    <EmbeddedResource Include="PermissionUser\PermissionForm.resx">
       <DependentUpon>PermissionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_ChageRules.resx">
+    <EmbeddedResource Include="Rules\uc_ChageRules.resx">
       <DependentUpon>uc_ChageRules.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_LookUpStudent.resx">
+    <EmbeddedResource Include="LookUpStudents\uc_LookUpStudent.resx">
       <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_Report_Semester.resx">
+    <EmbeddedResource Include="Report\uc_Report_Semester.resx">
       <DependentUpon>uc_Report_Semester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_Report_Subject.resx">
+    <EmbeddedResource Include="Report\uc_Report_Subject.resx">
       <DependentUpon>uc_Report_Subject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_ScoreBoardOfClass.resx">
+    <EmbeddedResource Include="ScoreBoard\uc_ScoreBoardOfClass.resx">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_TeacherDetail.resx">
+    <EmbeddedResource Include="Teacher\uc_TeacherDetail.resx">
       <DependentUpon>uc_TeacherDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\uc_TeacherList.resx">
+    <EmbeddedResource Include="Teacher\uc_TeacherList.resx">
       <DependentUpon>uc_TeacherList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\LoginForm.resx">
+    <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -227,10 +227,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Form\TeacherListForm.resx">
+    <EmbeddedResource Include="TeachingDivision\TeacherListForm.resx">
       <DependentUpon>TeacherListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\TeachingDivision.resx">
+    <EmbeddedResource Include="TeachingDivision\TeachingDivision.resx">
       <DependentUpon>TeachingDivision.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
@@ -366,6 +366,7 @@
     <None Include="Resources\background.jpg" />
     <None Include="Resources\appsIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

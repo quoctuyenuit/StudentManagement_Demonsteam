@@ -1,4 +1,5 @@
-﻿using StudentManagements.BLL;
+﻿using StudentManagements.AddSubject;
+using StudentManagements.BLL;
 using StudentManagements.Properties;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,8 @@ namespace StudentManagements
         }
         //----------------------------------------------------------------------------
         #endregion
-
+        //===========================================================================================================
+        //==================================================GridView Events==========================================
         #region GridView Events
 
         private void grd_StudentList_ClassInformation_View_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
@@ -128,10 +130,8 @@ namespace StudentManagements
                 listBack.Push(new back(btn_Teachers_Actions_Click_back));
         }
 
-        //=================================================================================================================
-        //=================================================================================================================
-        //=================================================================================================================
-        //Student
+        //===========================================================================================================
+        //===================================================Student=================================================
         #region Students
         //----------------------------------------------------------------------------
         public void btn_Students_Actions_Click(object sender, EventArgs e)
@@ -223,6 +223,11 @@ namespace StudentManagements
             }
         }
 
+        private void grd_StudentList_View_DoubleClick(object sender, EventArgs e)
+        {
+            btn_Detail_StudentList_Click(null, null);
+        }
+
         private void btn_Detail_StudentList_Click(object sender, EventArgs e)
         {
             btn_Detail_StudentList_Click_back();
@@ -267,10 +272,8 @@ namespace StudentManagements
                 txt_StudentEmail_StudentInformation_Edit, txt_StudentEmail_StudentInformation_Detail, btn_Apply_StudentInformation, btn_Edit_StudentInformation);
         }
         #endregion
-        //=================================================================================================================
-        //=================================================================================================================
-        //=================================================================================================================
-        //Class
+        //===========================================================================================================
+        //=====================================================Class=================================================
         #region Class
         //----------------------------------------------------------------------------
         private void btn_Class_Actions_Click(object sender, EventArgs e)
@@ -305,6 +308,12 @@ namespace StudentManagements
                  btn_AddStudentForClass_ClassInformation, grd_StudentList_ClassInformation_View, grd_SubjectList_ClassInformation_View);
         }
         //----------------------------------------------------------------------------
+
+        private void grd_ClassList_View_DoubleClick(object sender, EventArgs e)
+        {
+            btn_Detail_ClassList_Click(null, null);
+        }
+
 
         private void init_Edit_ClassInformation()//Khởi tạo các giá trị cho các control khi chọn edit
         {
@@ -462,10 +471,8 @@ namespace StudentManagements
             frm.ShowDialog();
         }
         #endregion
-        //=================================================================================================================
-        //=================================================================================================================
-        //=================================================================================================================
-        //ScoreBoard
+        //===========================================================================================================
+        //==================================================ScoreBoard===============================================
         #region ScoreBoard
         //----------------------------------------------------------------------------
         private void btn_ScoreBoard_Actions_Click(object sender, EventArgs e)
@@ -512,6 +519,11 @@ namespace StudentManagements
         {
             ClassBus.Instance.btn_Delete_ScoreBoardList_Click(grd_ScoreBoardList_View);
         }
+
+        private void grd_ScoreBoardList_View_DoubleClick(object sender, EventArgs e)
+        {
+            btn_LookUp_ScoreBoardList_Click(null, null);
+        }
         #endregion
 
         #region Teacher
@@ -527,7 +539,7 @@ namespace StudentManagements
             navFrame_Main.SelectedPage = navPage_TeacherDetail;
             if (getRow != null)
             {
-                GUI.uc_TeacherDetail uc = new GUI.uc_TeacherDetail(getRow());
+                Teacher.uc_TeacherDetail uc = new Teacher.uc_TeacherDetail(getRow());
                 uc.Dock = DockStyle.Fill;
                 navPage_TeacherDetail.Controls.Clear();
                 navPage_TeacherDetail.Controls.Add(uc);
@@ -539,9 +551,9 @@ namespace StudentManagements
             return BLL.ClassBLL.Instance.getTeacherList();
         }
 
-        public TeacherListForm.DgetRow getRow;
+        public TeachingDivision.TeacherListForm.DgetRow getRow;
 
-        public void getDelegate(TeacherListForm.DgetRow getRow)
+        public void getDelegate(TeachingDivision.TeacherListForm.DgetRow getRow)
         {
             this.getRow = getRow;
         }
@@ -550,21 +562,19 @@ namespace StudentManagements
         {
             //ClassBus.Instance.btn_Teachers_Actions_Click(navFrame_Main, navPage_TeachersList, teacherDetail);
             navFrame_Main.SelectedPage = navPage_TeachersList;
-            GUI.uc_TeacherList uc = new GUI.uc_TeacherList(true);
+            Teacher.uc_TeacherList uc = new Teacher.uc_TeacherList(true);
             uc.Dock = DockStyle.Fill;
-            uc.detail = new GUI.uc_TeacherList.Ddetail(teacherDetail);
-            uc.getTable = new GUI.uc_TeacherList.DgetTable(getTeacherList);
-            uc.giveRow = new GUI.uc_TeacherList.DgiveRow(getDelegate);
+            uc.detail = new Teacher.uc_TeacherList.Ddetail(teacherDetail);
+            uc.getTable = new Teacher.uc_TeacherList.DgetTable(getTeacherList);
+            uc.giveRow = new Teacher.uc_TeacherList.DgiveRow(getDelegate);
             navPage_TeachersList.Controls.Clear();
             navPage_TeachersList.Controls.Add(uc);
 
         }
         //----------------------------------------------------------------------------
         #endregion
-        //=================================================================================================================
-        //=================================================================================================================
-        //=================================================================================================================
-        //Report
+        //===========================================================================================================
+        //=====================================================Report================================================
         #region Report
         //----------------------------------------------------------------------------
         private void btn_CreateReport_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -604,9 +614,7 @@ namespace StudentManagements
         }
         #endregion
         //===========================================================================================================
-        //===========================================================================================================
-        //===========================================================================================================
-        //Export to file
+        //================================================Export to file=============================================
         #region Export To Excel File
         private void btn_ExportFile_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -614,16 +622,18 @@ namespace StudentManagements
                 getClassName, grd_ClassList_View, txt_ClassName_ClassInformation, txt_ClassTotal_ClassInformation, txt_Year_ClassInformation);
         }
         #endregion
-
+        //===========================================================================================================
+        //=================================================Change Rules==============================================
         #region Change Rules
         private void btn_ChangeRules_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChangeRules frm = new ChangeRules();
-            frm.callBack = new ChangeRules.DcallBack(btn_Home_Main_ItemClick_back);
+            Rules.ChangeRules frm = new Rules.ChangeRules();
+            frm.callBack = new Rules.ChangeRules.DcallBack(btn_Home_Main_ItemClick_back);
             frm.ShowDialog();
         }
         #endregion
-
+        //===========================================================================================================
+        //=================================================Back Button===============================================
         #region Back Button
         private void btn_Back_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -634,20 +644,22 @@ namespace StudentManagements
                 listBack.Pop()();
         }
         #endregion
-
+        //===========================================================================================================
+        //===============================================Teaching Division===========================================
         #region Teaching Division
         private void btn_TeachingDivision_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            TeachingDivision frm = new TeachingDivision();
-            frm.callBack = new TeachingDivision.DcallBack(btn_Home_Main_ItemClick_back);//Khi kết thúc sẽ phải quay lại page home
+            TeachingDivision.TeachingDivision frm = new TeachingDivision.TeachingDivision();
+            frm.callBack = new TeachingDivision.TeachingDivision.DcallBack(btn_Home_Main_ItemClick_back);//Khi kết thúc sẽ phải quay lại page home
             frm.ShowDialog();
         }
         #endregion
-
+        //===========================================================================================================
+        //=================================================Permission================================================
         #region Permission
         private void btn_Permission_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PermissionForm frm = new PermissionForm(userName);
+            PermissionUser.PermissionForm frm = new PermissionUser.PermissionForm(userName);
             frm.ShowDialog();
         }
         #endregion
@@ -656,6 +668,11 @@ namespace StudentManagements
         {
             Application.Exit();
         }
+
+       
+       
+
+       
 
     }
 }

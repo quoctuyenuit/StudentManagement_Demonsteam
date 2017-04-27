@@ -354,6 +354,15 @@ namespace StudentManagements.BLL
         //==========================================================================================================
         //Login
 
+        public string getUserNameFromEmail(string Email)
+        {
+            DataTable table = ClassDAL.Instance.getAllUser();
+            foreach (DataRow row in table.Rows)
+                if (row["EMAIL"].ToString().Equals(Email))
+                    return row["TENDANGNHAP"].ToString();
+            return null;
+        }
+
         public bool checkUser(Entities.NGUOIDUNG user)
         {
             DataTable table = ClassDAL.Instance.getAllUser();
