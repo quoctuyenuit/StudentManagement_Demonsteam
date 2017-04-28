@@ -12,45 +12,32 @@ namespace StudentManagements.Report
 {
     public partial class uc_Report_Semester : UserControl
     {
-        private int HocKy;
+        public int semester { get; set; }
         public uc_Report_Semester()
         {
             InitializeComponent();
             cb_Semester.SelectedIndex = 0;
         }
 
-        public delegate void CallBack(bool values);
-        public CallBack setVisible;
-        public delegate void getDelegate(Form1.DgetData data, Form1.DgetString subject, Form1.DgetInteger semester);//Tuyền Delegate
-        public getDelegate getDelegateTable;
-
-        public DataTable getTable()
-        {
-            return BLL.ClassBLL.Instance.getReport_HOCKY(HocKy);
-        }
-        public int getSemester()
-        {
-            return HocKy;
-        }
         private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_Semester.SelectedIndex == 0)
             {
                 grd_Report.DataSource = null;
-                if (setVisible != null)
-                    setVisible(false);
+                this.tableData = null;
                 return;
             }
-            if (setVisible != null)
-                setVisible(true);
-            this.HocKy = int.Parse(cb_Semester.SelectedItem.ToString());
-            grd_Report.DataSource = BLL.ClassBLL.Instance.getReport_HOCKY(HocKy);
+          
+            this.semester = int.Parse(cb_Semester.SelectedItem.ToString());
+            grd_Report.DataSource = BLL.ClassBLL.Instance.getReport_HOCKY(semester);
+            this.tableData = (DataTable)grd_Report.DataSource;
         }
 
-        private void uc_Report_Semester_Load(object sender, EventArgs e)
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (getDelegateTable != null)
-                getDelegateTable(getTable, null, getSemester);
+            this.tableData = (DataTable)grd_Report.DataSource;
         }
+
+        public DataTable tableData { get; set; }
     }
 }

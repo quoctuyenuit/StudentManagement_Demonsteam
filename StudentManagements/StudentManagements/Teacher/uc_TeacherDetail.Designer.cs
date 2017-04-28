@@ -378,7 +378,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.navFrame);
-            this.panel1.Location = new System.Drawing.Point(247, 308);
+            this.panel1.Location = new System.Drawing.Point(247, 336);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(694, 267);
             this.panel1.TabIndex = 3;
@@ -387,7 +387,7 @@
             // 
             this.link_EditImage_TeacherDetail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.link_EditImage_TeacherDetail.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.link_EditImage_TeacherDetail.Location = new System.Drawing.Point(670, 268);
+            this.link_EditImage_TeacherDetail.Location = new System.Drawing.Point(670, 300);
             this.link_EditImage_TeacherDetail.Name = "link_EditImage_TeacherDetail";
             this.link_EditImage_TeacherDetail.Size = new System.Drawing.Size(21, 16);
             this.link_EditImage_TeacherDetail.TabIndex = 4;
@@ -398,7 +398,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::StudentManagements.Properties.Resources.teacherInformation_title;
-            this.pictureBox1.Location = new System.Drawing.Point(290, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(290, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(609, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -411,7 +411,7 @@
             this.pic_ImageTeacher.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pic_ImageTeacher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic_ImageTeacher.Image = global::StudentManagements.Properties.Resources.StudentIcon;
-            this.pic_ImageTeacher.Location = new System.Drawing.Point(524, 98);
+            this.pic_ImageTeacher.Location = new System.Drawing.Point(524, 130);
             this.pic_ImageTeacher.Name = "pic_ImageTeacher";
             this.pic_ImageTeacher.Size = new System.Drawing.Size(140, 186);
             this.pic_ImageTeacher.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -423,7 +423,7 @@
             this.btn_Apply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_Apply.Image = ((System.Drawing.Image)(resources.GetObject("btn_Apply.Image")));
             this.btn_Apply.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Apply.Location = new System.Drawing.Point(865, 248);
+            this.btn_Apply.Location = new System.Drawing.Point(866, 285);
             this.btn_Apply.Name = "btn_Apply";
             this.btn_Apply.Size = new System.Drawing.Size(75, 45);
             this.btn_Apply.TabIndex = 1;
@@ -434,7 +434,7 @@
             this.btn_Edit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_Edit.Image = ((System.Drawing.Image)(resources.GetObject("btn_Edit.Image")));
             this.btn_Edit.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Edit.Location = new System.Drawing.Point(865, 248);
+            this.btn_Edit.Location = new System.Drawing.Point(866, 285);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(75, 45);
             this.btn_Edit.TabIndex = 1;

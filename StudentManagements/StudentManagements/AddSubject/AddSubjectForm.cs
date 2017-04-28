@@ -17,8 +17,6 @@ namespace StudentManagements.AddSubject
         {
             InitializeComponent();
         }
-        public delegate void callBack(int[] subjectIDs);
-        public callBack returnData;
 
         private void AddSubjectForm_Load(object sender, EventArgs e)
         {
@@ -30,13 +28,11 @@ namespace StudentManagements.AddSubject
         private void btn_OK_AddSubjectForm_Click(object sender, EventArgs e)
         {
             int[] rows = grd_Subjects_View.GetSelectedRows();
-            int[] subjectIDs = new int[rows.Length];
+            subjectIDs = new int[rows.Length];
             for (int i = 0; i < subjectIDs.Length; i++)
             {
                 subjectIDs[i] = (int)grd_Subjects_View.GetListSourceRowCellValue(rows[i], grdColumn_MAMH.FieldName);
             }
-            if (returnData != null)
-                returnData(subjectIDs);
             this.Close();
         }
 
@@ -44,5 +40,7 @@ namespace StudentManagements.AddSubject
         {
             this.Close();
         }
+
+        public int[] subjectIDs { get; set; }
     }
 }

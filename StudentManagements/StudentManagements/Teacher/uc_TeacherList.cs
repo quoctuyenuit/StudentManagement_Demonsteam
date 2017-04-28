@@ -17,33 +17,22 @@ namespace StudentManagements.Teacher
         {
             InitializeComponent();
             btn_Detail.Enabled = enable;
+            grd_TeacherList.DataSource = BLL.ClassBLL.Instance.getTeacherList();
         }
-        public delegate DataTable DgetTable();
-        public DgetTable getTable;
 
-        public delegate void DgiveRow(TeachingDivision.TeacherListForm.DgetRow getRow);
-        public DgiveRow giveRow;
-        public delegate void Ddetail();
-        public Ddetail detail;
+        public delegate void DgetFrameForDetail(Teacher.uc_TeacherDetail detail);
+        public DgetFrameForDetail getFrameForDetail;
 
         public delegate void DreturnData(object sender, EventArgs e);
         public DreturnData returnData;
 
         private void btn_Detail_Click(object sender, EventArgs e)
         {
-            if (detail != null)
-                detail();
-        }
+            string MAGV = grd_TeacherList_View.GetDataRow(grd_TeacherList_View.GetSelectedRows().First())["MAGV"].ToString();
+            Teacher.uc_TeacherDetail detail = new uc_TeacherDetail(MAGV);
 
-        private void uc_TeacherList_Load(object sender, EventArgs e)
-        {
-            if (getTable != null)
-            {
-                grd_TeacherList.DataSource = null;
-                grd_TeacherList.DataSource = getTable();
-            }
-            if (giveRow != null)
-                giveRow(new TeachingDivision.TeacherListForm.DgetRow(getSelected));
+            if (getFrameForDetail != null)
+                getFrameForDetail(detail);
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -57,21 +46,19 @@ namespace StudentManagements.Teacher
             }
         }
 
-        public DataRow getSelected()
-        {
-            return grd_TeacherList_View.GetDataRow(grd_TeacherList_View.GetSelectedRows().First());
-        }
-
-        private void grd_TeacherList_View_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            //if (giveRow != null)
-            //    giveRow(new TeacherListForm.DgetRow(getSelected));
-        }
-
         private void grd_TeacherList_View_DoubleClick(object sender, EventArgs e)
         {
-            if (returnData != null)
+            if (returnData != null && btn_Detail.Enabled)//Nếu delegate returnData != null và UI đang ở trong phần tìm giáo viên trong TeachingDivision
                 returnData(new object(), new EventArgs());
+            else
+                btn_Detail_Click(null, null);
         }
+
+        private void grd_TeacherList_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            this.row = grd_TeacherList_View.GetDataRow(grd_TeacherList_View.GetSelectedRows().First());
+        }
+
+        public DataRow row { get; set; }
     }
 }

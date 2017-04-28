@@ -50,10 +50,10 @@
             this.grd_TeacherList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grd_TeacherList.Location = new System.Drawing.Point(0, 194);
+            this.grd_TeacherList.Location = new System.Drawing.Point(0, 204);
             this.grd_TeacherList.MainView = this.grd_TeacherList_View;
             this.grd_TeacherList.Name = "grd_TeacherList";
-            this.grd_TeacherList.Size = new System.Drawing.Size(1188, 471);
+            this.grd_TeacherList.Size = new System.Drawing.Size(1188, 461);
             this.grd_TeacherList.TabIndex = 0;
             this.grd_TeacherList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grd_TeacherList_View});
@@ -73,7 +73,7 @@
             this.grd_TeacherList_View.OptionsBehavior.Editable = false;
             this.grd_TeacherList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_TeacherList_View.OptionsView.ShowGroupPanel = false;
-            this.grd_TeacherList_View.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.grd_TeacherList_View_RowClick);
+            this.grd_TeacherList_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_TeacherList_View_FocusedRowChanged);
             this.grd_TeacherList_View.DoubleClick += new System.EventHandler(this.grd_TeacherList_View_DoubleClick);
             // 
             // gridColumn1
@@ -141,7 +141,7 @@
             // btn_Detail
             // 
             this.btn_Detail.Enabled = false;
-            this.btn_Detail.Location = new System.Drawing.Point(0, 155);
+            this.btn_Detail.Location = new System.Drawing.Point(0, 165);
             this.btn_Detail.Name = "btn_Detail";
             this.btn_Detail.Size = new System.Drawing.Size(91, 33);
             this.btn_Detail.TabIndex = 1;
@@ -150,7 +150,7 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(97, 155);
+            this.btn_Delete.Location = new System.Drawing.Point(97, 165);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(91, 33);
             this.btn_Delete.TabIndex = 1;
@@ -161,7 +161,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::StudentManagements.Properties.Resources.teacherList_title;
-            this.pictureBox1.Location = new System.Drawing.Point(398, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(398, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(393, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -179,7 +179,6 @@
             this.Controls.Add(this.grd_TeacherList);
             this.Name = "uc_TeacherList";
             this.Size = new System.Drawing.Size(1188, 665);
-            this.Load += new System.EventHandler(this.uc_TeacherList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_TeacherList_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

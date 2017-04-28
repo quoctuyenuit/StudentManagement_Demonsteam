@@ -1,4 +1,4 @@
-﻿namespace StudentManagements.LookUpStudents
+﻿namespace StudentManagements.ScoreBoard
 {
     partial class uc_ScoreBoardOfClass
     {
@@ -59,7 +59,7 @@
             // 
             this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox9.Image = global::StudentManagements.Properties.Resources.scoreBoardListTitle;
-            this.pictureBox9.Location = new System.Drawing.Point(353, 23);
+            this.pictureBox9.Location = new System.Drawing.Point(353, 33);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(482, 44);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,7 +70,7 @@
             // 
             this.labelControl17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.labelControl17.Location = new System.Drawing.Point(490, 92);
+            this.labelControl17.Location = new System.Drawing.Point(490, 102);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(137, 30);
             this.labelControl17.TabIndex = 20;
@@ -82,9 +82,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.grd_ScoreBoard);
-            this.panel1.Location = new System.Drawing.Point(0, 195);
+            this.panel1.Location = new System.Drawing.Point(0, 205);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1188, 471);
+            this.panel1.Size = new System.Drawing.Size(1188, 460);
             this.panel1.TabIndex = 22;
             // 
             // grd_ScoreBoard
@@ -93,7 +93,7 @@
             this.grd_ScoreBoard.Location = new System.Drawing.Point(0, 0);
             this.grd_ScoreBoard.MainView = this.grd_ScoreBoard_View;
             this.grd_ScoreBoard.Name = "grd_ScoreBoard";
-            this.grd_ScoreBoard.Size = new System.Drawing.Size(1188, 471);
+            this.grd_ScoreBoard.Size = new System.Drawing.Size(1188, 460);
             this.grd_ScoreBoard.TabIndex = 0;
             this.grd_ScoreBoard.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grd_ScoreBoard_View});
@@ -115,6 +115,7 @@
             this.grd_ScoreBoard_View.OptionsFind.AlwaysVisible = true;
             this.grd_ScoreBoard_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_ScoreBoard_View.OptionsView.ShowGroupPanel = false;
+            this.grd_ScoreBoard_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_ScoreBoard_View_FocusedRowChanged);
             this.grd_ScoreBoard_View.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grd_ScoreBoard_View_RowUpdated);
             // 
             // gridColumn1
@@ -207,7 +208,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(0, 156);
+            this.btn_Save.Location = new System.Drawing.Point(0, 166);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(91, 33);
             this.btn_Save.TabIndex = 23;
@@ -216,7 +217,7 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(97, 156);
+            this.btn_Delete.Location = new System.Drawing.Point(97, 166);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(91, 33);
             this.btn_Delete.TabIndex = 23;
@@ -231,7 +232,7 @@
             this.cb_SelectSubject.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cb_SelectSubject.FormattingEnabled = true;
             this.cb_SelectSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cb_SelectSubject.Location = new System.Drawing.Point(194, 160);
+            this.cb_SelectSubject.Location = new System.Drawing.Point(194, 170);
             this.cb_SelectSubject.Name = "cb_SelectSubject";
             this.cb_SelectSubject.Size = new System.Drawing.Size(155, 26);
             this.cb_SelectSubject.TabIndex = 25;
@@ -240,7 +241,7 @@
             // labelControl16
             // 
             this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl16.Location = new System.Drawing.Point(194, 139);
+            this.labelControl16.Location = new System.Drawing.Point(194, 149);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(55, 21);
             this.labelControl16.TabIndex = 24;
@@ -250,7 +251,7 @@
             // 
             this.txt_ClassName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_ClassName.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.txt_ClassName.Location = new System.Drawing.Point(633, 92);
+            this.txt_ClassName.Location = new System.Drawing.Point(633, 102);
             this.txt_ClassName.Name = "txt_ClassName";
             this.txt_ClassName.Size = new System.Drawing.Size(57, 30);
             this.txt_ClassName.TabIndex = 20;
@@ -263,7 +264,7 @@
             this.cb_Semester.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(355, 160);
+            this.cb_Semester.Location = new System.Drawing.Point(355, 170);
             this.cb_Semester.Name = "cb_Semester";
             this.cb_Semester.Size = new System.Drawing.Size(104, 26);
             this.cb_Semester.TabIndex = 26;
@@ -272,7 +273,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl1.Location = new System.Drawing.Point(355, 139);
+            this.labelControl1.Location = new System.Drawing.Point(355, 149);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(70, 21);
             this.labelControl1.TabIndex = 24;

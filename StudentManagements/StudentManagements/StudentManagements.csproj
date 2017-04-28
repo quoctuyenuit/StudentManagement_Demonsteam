@@ -60,6 +60,8 @@
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -71,8 +73,33 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\uc_AddClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\uc_AddClass.Designer.cs">
+      <DependentUpon>uc_AddClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\uc_ClassInformation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\uc_ClassInformation.Designer.cs">
+      <DependentUpon>uc_ClassInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\uc_ClassList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\uc_ClassList.Designer.cs">
+      <DependentUpon>uc_ClassList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\uc_Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Report\uc_Report.Designer.cs">
+      <DependentUpon>uc_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rules\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,10 +142,22 @@
     <Compile Include="Rules\uc_ChageRules.Designer.cs">
       <DependentUpon>uc_ChageRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="LookUpStudents\uc_LookUpStudent.cs">
+    <Compile Include="ScoreBoard\uc_ScoreBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LookUpStudents\uc_LookUpStudent.Designer.cs">
+    <Compile Include="ScoreBoard\uc_ScoreBoard.Designer.cs">
+      <DependentUpon>uc_ScoreBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentListToEditClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentListToEditClass.Designer.cs">
+      <DependentUpon>StudentListToEditClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\uc_LookUpStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Students\uc_LookUpStudent.Designer.cs">
       <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\uc_Report_Semester.cs">
@@ -138,6 +177,24 @@
     </Compile>
     <Compile Include="ScoreBoard\uc_ScoreBoardOfClass.Designer.cs">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\uc_AddStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Students\uc_AddStudent.Designer.cs">
+      <DependentUpon>uc_AddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\uc_DetailStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Students\uc_DetailStudent.Designer.cs">
+      <DependentUpon>uc_DetailStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\uc_StudentsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Students\uc_StudentsList.Designer.cs">
+      <DependentUpon>uc_StudentsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Teacher\uc_TeacherDetail.cs">
       <SubType>UserControl</SubType>
@@ -177,6 +234,18 @@
     <Compile Include="TeachingDivision\TeachingDivision.Designer.cs">
       <DependentUpon>TeachingDivision.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Class\uc_AddClass.resx">
+      <DependentUpon>uc_AddClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\uc_ClassInformation.resx">
+      <DependentUpon>uc_ClassInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\uc_ClassList.resx">
+      <DependentUpon>uc_ClassList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\uc_Report.resx">
+      <DependentUpon>uc_Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rules\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,7 +264,13 @@
     <EmbeddedResource Include="Rules\uc_ChageRules.resx">
       <DependentUpon>uc_ChageRules.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LookUpStudents\uc_LookUpStudent.resx">
+    <EmbeddedResource Include="ScoreBoard\uc_ScoreBoard.resx">
+      <DependentUpon>uc_ScoreBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentListToEditClass.resx">
+      <DependentUpon>StudentListToEditClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\uc_LookUpStudent.resx">
       <DependentUpon>uc_LookUpStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\uc_Report_Semester.resx">
@@ -206,6 +281,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScoreBoard\uc_ScoreBoardOfClass.resx">
       <DependentUpon>uc_ScoreBoardOfClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\uc_AddStudent.resx">
+      <DependentUpon>uc_AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\uc_DetailStudent.resx">
+      <DependentUpon>uc_DetailStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\uc_StudentsList.resx">
+      <DependentUpon>uc_StudentsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Teacher\uc_TeacherDetail.resx">
       <DependentUpon>uc_TeacherDetail.cs</DependentUpon>
@@ -277,6 +361,8 @@
     <None Include="STUDENTMANAGEMENT.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\forward_32x32.png" />
+    <None Include="Resources\forward_16x16.png" />
     <Content Include="STUDENTMANAGEMENT_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>STUDENTMANAGEMENT.mdf</DependentUpon>

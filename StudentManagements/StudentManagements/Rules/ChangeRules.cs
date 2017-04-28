@@ -16,8 +16,7 @@ namespace StudentManagements.Rules
         {
             InitializeComponent();
         }
-        public delegate void DcallBack();
-        public DcallBack callBack;
+       
         void Exit()
         {
             this.Close();
@@ -33,8 +32,6 @@ namespace StudentManagements.Rules
 
         private void ChangeRules_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (callBack != null)
-                callBack();
         }
     }
 }

@@ -76,6 +76,7 @@
             // 
             // btn_OK_AddSubjectForm
             // 
+            this.btn_OK_AddSubjectForm.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_OK_AddSubjectForm.Location = new System.Drawing.Point(204, 436);
             this.btn_OK_AddSubjectForm.Name = "btn_OK_AddSubjectForm";
             this.btn_OK_AddSubjectForm.Size = new System.Drawing.Size(72, 39);

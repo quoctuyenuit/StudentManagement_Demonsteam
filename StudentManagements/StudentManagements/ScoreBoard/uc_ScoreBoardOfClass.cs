@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StudentManagements.BLL;
 
-namespace StudentManagements.LookUpStudents
+namespace StudentManagements.ScoreBoard
 {
     public partial class uc_ScoreBoardOfClass : UserControl
     {
@@ -29,14 +29,17 @@ namespace StudentManagements.LookUpStudents
 
         private int MaLop;
         private int MaMH;
-        private int HocKy;
+        public int semester { get; set; }
+
         public uc_ScoreBoardOfClass(string TENLOP, int MALOP)
         {
-            txt_ClassName = new DevExpress.XtraEditors.LabelControl();
+            InitializeComponent();
+
             txt_ClassName.Text = TENLOP;
 
+            this.className = TENLOP;
+
             this.MaLop = MALOP;
-            InitializeComponent();
             DataTable table = ClassBLL.Instance.getSubjectForClass(MALOP);//Take subjects when know ClassID
             cb_SelectSubject.Items.Clear();
             for (int i = 0; i < table.Rows.Count; i++)
@@ -48,11 +51,6 @@ namespace StudentManagements.LookUpStudents
             this.NewRows = new Dictionary<int, Entities.KETQUA>();
             this.cb_Semester.SelectedIndex = 0;
         }
-
-        public delegate void CallBack(bool values);
-        public CallBack setVisible;
-        public delegate void getDelegate(Form1.DgetData getTable, Form1.DgetString className, Form1.DgetString subjectName, Form1.DgetInteger semester);//Truyền một delegate chứa hàm GetTable về cho hàm trong Form1
-        public getDelegate getDelegateData;
 
         void rowUpdatedEvent()
         {
@@ -75,7 +73,7 @@ namespace StudentManagements.LookUpStudents
             catch (Exception ex)
             {
                 int MSHS = (int)grd_ScoreBoard_View.GetListSourceRowCellValue(row, "MSHS");
-                Entities.KETQUA kq = new Entities.KETQUA(MSHS, MaMH, HocKy, MaLop, DiemMieng1, DiemMieng2, Diem15, Diem1Tiet, DiemCuoiKy);
+                Entities.KETQUA kq = new Entities.KETQUA(MSHS, MaMH, semester, MaLop, DiemMieng1, DiemMieng2, Diem15, Diem1Tiet, DiemCuoiKy);
                 this.NewRows.Add(kq.MaKQ, kq);
             }
         }
@@ -85,23 +83,6 @@ namespace StudentManagements.LookUpStudents
             btn_Save.Enabled = true;
         }
 
-        public string geClassName()
-        {
-            return ClassBLL.Instance.getClassName(MaLop);
-        }
-        public string getSubjectName()
-        {
-            return cb_SelectSubject.SelectedItem.ToString();
-        }
-        public int getSemester()
-        {
-            return HocKy;
-        }
-        public DataTable getTable()
-        {
-            return ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
-        }
-
         private void cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
@@ -109,17 +90,15 @@ namespace StudentManagements.LookUpStudents
                 btn_Save.Enabled = false;
                 btn_Delete.Enabled = false;
                 grd_ScoreBoard.DataSource = null;
-                if (setVisible != null)
-                    setVisible(false);
+                this.tableData = null;
                 return;
             }
-            if (setVisible != null)
-                setVisible(true);
-            if (getDelegateData != null)
-                getDelegateData(getTable, geClassName, getSubjectName, getSemester);
 
             this.MaMH = ClassBLL.Instance.getSubjectsID(cb_SelectSubject.SelectedItem.ToString());
-            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
+            
+            this.subjectName = cb_SelectSubject.SelectedItem.ToString();
+
+            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
             btn_Delete.Enabled = true;
             btn_Save.Enabled = true;
         }
@@ -130,7 +109,7 @@ namespace StudentManagements.LookUpStudents
                 return;
             if (MessageBox.Show("Do you want to Change?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
+                grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
                 return;
             }
 
@@ -142,7 +121,7 @@ namespace StudentManagements.LookUpStudents
             {
                 ClassBLL.Instance.insertScoreBoard(kq);
             }
-            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
+            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -161,7 +140,7 @@ namespace StudentManagements.LookUpStudents
 
         private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.HocKy = int.Parse(cb_Semester.SelectedItem.ToString());
+            this.semester = int.Parse(cb_Semester.SelectedItem.ToString());
             if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
             {
                 btn_Save.Enabled = false;
@@ -170,9 +149,24 @@ namespace StudentManagements.LookUpStudents
                 return;
             }
 
-            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, HocKy);
+            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
             btn_Delete.Enabled = true;
             btn_Save.Enabled = true;
         }
+
+        private void grd_ScoreBoard_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            try
+            {
+                this.tableData = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
+            }
+            catch (Exception ex) { }
+        }
+
+        public DataTable tableData { get; set; }
+
+        public string className { get; set; }
+
+        public string subjectName { get; set; }
     }
 }

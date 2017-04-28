@@ -104,6 +104,7 @@
             this.grd_Report_View.Name = "grd_Report_View";
             this.grd_Report_View.OptionsBehavior.Editable = false;
             this.grd_Report_View.OptionsView.ShowGroupPanel = false;
+            this.grd_Report_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_Report_View_FocusedRowChanged);
             // 
             // gridColumn1
             // 

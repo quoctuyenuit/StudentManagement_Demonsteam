@@ -114,6 +114,15 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getAllClass();
         }
 
+        public DataRow getClassFromID(string classID)
+        {
+            DataTable table  = ClassDAL.Instance.getAllClass();
+            foreach (DataRow row in table.Rows)
+                if (row["MALOP"].ToString().Equals(classID))
+                    return row;
+            return null;
+        }
+
         public DataTable getClassAccordingID(int MALOP)
         {
             return ClassDAL.Instance.getClassAccordingID(MALOP);

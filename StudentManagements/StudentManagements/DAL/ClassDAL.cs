@@ -202,7 +202,7 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@EMAIL", SqlDbType.NVarChar).Value = student.Email;
                 command.Parameters.Add("@GIOITINH", SqlDbType.Bit).Value = student.GioiTinh;
                 command.Parameters.Add("@DIACHI", SqlDbType.NVarChar).Value = student.DiaChi;
-                command.Parameters.Add("@ANH", SqlDbType.NVarChar).Value = student.UrlAnh;
+                command.Parameters.Add("@ANH", SqlDbType.NVarChar).Value = (string.IsNullOrEmpty(student.UrlAnh)) ? "" : student.UrlAnh;
                 command.ExecuteNonQuery();
                 check = true;
             }
@@ -1347,7 +1347,7 @@ namespace StudentManagements.DAL
 
         public DataRow getTeacherFromID(int MAGV)
         {
-            string query = "SELECT GV.MAGV, HOTEN, GIOITINH, NGSINH, NAMKINHNGHIEM, HOCHAM FROM GIAOVIEN GV WHERE GV.MAGV = @MAGV";
+            string query = "SELECT GV.MAGV, HOTEN, GIOITINH, NGSINH, NAMKINHNGHIEM, HOCHAM, ANH FROM GIAOVIEN GV WHERE GV.MAGV = @MAGV";
             try
             {
                 connection = dataServices.getConnect();

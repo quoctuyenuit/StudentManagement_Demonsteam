@@ -15,12 +15,13 @@ namespace StudentManagements.Teacher
     public partial class uc_TeacherDetail : UserControl
     {
         DataRow row = null;
+
         private string urlImage;//Đường dẫn của ảnh giáo viên
 
-        public uc_TeacherDetail(DataRow getRow)
+        public uc_TeacherDetail(string teacherID)
         {
             InitializeComponent();
-            row = getRow;
+            this.row = BLL.ClassBLL.Instance.getTeacherFromID(int.Parse(teacherID));
         }
         public uc_TeacherDetail()
         {
@@ -39,7 +40,7 @@ namespace StudentManagements.Teacher
             {
                 txt_TeacherName.Text = row["HOTEN"].ToString();
                 txt_TeacherID.Text = row["MAGV"].ToString();
-                txt_TeacherSex.Text = row["GIOITINH"].ToString();
+                txt_TeacherSex.Text = ((bool)row["GIOITINH"] == true) ? "Nam" : "Nữ";
                 txt_TeacherQualification.Text = row["HOCHAM"].ToString();
                 txt_TeacherExperience.Text = row["NAMKINHNGHIEM"].ToString();
 

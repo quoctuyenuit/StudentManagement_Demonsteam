@@ -110,25 +110,22 @@ namespace StudentManagements.TeachingDivision
             changeSubject();
         }
 
-        public void processData(DataRow row)
-        {
-            //DateTime.ParseExact(row["NGSINH"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture)
-            DateTime NGSINH = (DateTime)row["NGSINH"];
-            int MAGV = int.Parse(row["MAGV"].ToString());
-            string HOTEN = row["HOTEN"].ToString();
-            bool GIOITINH = (row["GIOITINH"].ToString().Equals("Nam")) ? true : false;
-            string HOCHAM = row["HOCHAM"].ToString();
-            int NAMKINHNGHIEM = (int)row["NAMKINHNGHIEM"];
-            this.Teacher = new Entities.GIAOVIEN(MAGV, HOTEN, GIOITINH, NGSINH, HOCHAM, NAMKINHNGHIEM);
-            updateTeacher();
-
-        }
-
         private void link_SelectTeacher_Click(object sender, EventArgs e)
         {
-            TeacherListForm frm = new TeacherListForm();
-            frm.giveData = new TeacherListForm.DgiveData(processData);
-            frm.ShowDialog();
+            using (TeacherListForm frm = new TeacherListForm())
+            {
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    DateTime NGSINH = (DateTime)frm.row["NGSINH"];
+                    int MAGV = int.Parse(frm.row["MAGV"].ToString());
+                    string HOTEN = frm.row["HOTEN"].ToString();
+                    bool GIOITINH = (frm.row["GIOITINH"].ToString().Equals("Nam")) ? true : false;
+                    string HOCHAM = frm.row["HOCHAM"].ToString();
+                    int NAMKINHNGHIEM = (int)frm.row["NAMKINHNGHIEM"];
+                    this.Teacher = new Entities.GIAOVIEN(MAGV, HOTEN, GIOITINH, NGSINH, HOCHAM, NAMKINHNGHIEM);
+                    updateTeacher();
+                }
+            }
         }
 
         private void btn_Close_Click(object sender, EventArgs e)
