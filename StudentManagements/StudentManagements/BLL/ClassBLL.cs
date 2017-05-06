@@ -56,7 +56,7 @@ namespace StudentManagements.BLL
             }
             return true;
         }
-        
+
         public bool IsEmail(string email)
         {
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
@@ -66,8 +66,37 @@ namespace StudentManagements.BLL
             return (regex.IsMatch(email));
         }
 
+        public string formatSchoolYear(string schoolYear)
+        {
+            string[] temp = schoolYear.Split(' ');
+            string result = "";
+            foreach (string t in temp)
+                result += t;
+            return result;
+        }
+
+        public bool checkSchoolYear(string schoolYear)
+        {
+            if (!schoolYear.Contains('-'))
+                return false;
+
+            foreach (char str in schoolYear)
+                if (str != ' ' && !Char.IsDigit(str) && str != '-')
+                    return false;
+
+            string NamHoc = formatSchoolYear(schoolYear);
+            string[] temp = NamHoc.Split('-');
+            int a = int.Parse(temp[0]);
+            int b = int.Parse(temp[1]);
+            if (a > b || b - 1 != a)
+                return false;
+
+            return true;
+        }
         //===================================================================
         //Student
+
+        #region Students
         public DataTable getAllStudents()
         {
             return ClassDAL.Instance.getAllStudents();
@@ -83,9 +112,14 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getStudentForClass(MALOP);
         }
 
-        public DataTable getStudentForLookUp()
+        public DataTable getStudentForLookUp(string NAMHOC)
         {
-            return ClassDAL.Instance.getStudentForLookUp();
+            return ClassDAL.Instance.getStudentForLookUp(NAMHOC);
+        }
+
+        public bool isLearning(int MSHS)
+        {
+            return ClassDAL.Instance.isLearching(MSHS);
         }
 
         public bool deleteStudent(int MSHS)
@@ -95,20 +129,47 @@ namespace StudentManagements.BLL
 
         public bool insertStudent(Entities.HOCSINH student)
         {
+            int age = DateTime.Now.Year - student.NgSinh.Year;
+            DataRow row = ClassDAL.Instance.getRulesStudentAge();
+            int ageMin = (int)row["TuoiToiThieu"];
+            int ageMax = (int)row["TuoiToiDa"];
+
+            if (age < ageMin || age > ageMax)
+            {
+                MessageBox.Show("The age must between " + ageMin + " and " + ageMax + "! Please check again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return ClassDAL.Instance.insertStudent(student);
         }
 
         public bool updateStudent(Entities.HOCSINH student)
         {
+            int age = DateTime.Now.Year - student.NgSinh.Year;
+            DataRow row = ClassDAL.Instance.getRulesStudentAge();
+            int ageMin = (int)row["TuoiToiThieu"];
+            int ageMax = (int)row["TuoiToiDa"];
+
+            if (age < ageMin || age > ageMax)
+            {
+                MessageBox.Show("The age must between " + ageMin + " and " + ageMax + "! Please check again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return ClassDAL.Instance.updateStudent(student);
         }
 
-        public DataTable getStudentForAddClass(int NAMHOC)
+        public DataTable getStudentForAddClass(string NAMHOC)
         {
+
+            NAMHOC = formatSchoolYear(NAMHOC);
+
             return ClassDAL.Instance.getStudentForAddClass(NAMHOC);
         }
+        #endregion
         //===================================================================
         //Class
+        #region Class
         public DataTable getAllClass()
         {
             return ClassDAL.Instance.getAllClass();
@@ -116,7 +177,7 @@ namespace StudentManagements.BLL
 
         public DataRow getClassFromID(string classID)
         {
-            DataTable table  = ClassDAL.Instance.getAllClass();
+            DataTable table = ClassDAL.Instance.getAllClass();
             foreach (DataRow row in table.Rows)
                 if (row["MALOP"].ToString().Equals(classID))
                     return row;
@@ -133,8 +194,10 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getTotalOfClass(MALOP);
         }
 
-        public int getClassID(string TENLOP, int NAMHOC)
+        public int getClassID(string TENLOP, string NAMHOC)
         {
+
+            NAMHOC = formatSchoolYear(NAMHOC);
             return ClassDAL.Instance.getClassID(TENLOP, NAMHOC);
         }
 
@@ -148,7 +211,7 @@ namespace StudentManagements.BLL
             DataTable classTable = getAllClass();
             for (int i = 0; i < classTable.Rows.Count; i++)
             {
-                if (classTable.Rows[i]["TENLOP"].Equals(LOP.TenLop) && (int)classTable.Rows[i]["NAMHOC"] == LOP.NamHoc)
+                if ((int)classTable.Rows[i]["MALOP"] != LOP.MaLop && classTable.Rows[i]["TENLOP"].Equals(LOP.TenLop) && classTable.Rows[i]["NAMHOC"].ToString().Equals(LOP.NamHoc))
                     return false;
             }
             return true;
@@ -174,9 +237,10 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.updateClassTotal(MALOP, SISO);
         }
 
-        public bool updateClassNameAndClassYear(string TENLOP, int NAMHOC, int MALOP)
+        public bool updateClassNameAndClassYear(Entities.LOP lop)
         {
-            return ClassDAL.Instance.updateClassNameAndClassYear(TENLOP, NAMHOC, MALOP);
+            lop.NamHoc = formatSchoolYear(lop.NamHoc);
+            return ClassDAL.Instance.updateClassNameAndClassYear(lop);
         }
 
         public bool deleteClass(int MALOP)
@@ -188,6 +252,23 @@ namespace StudentManagements.BLL
         {
             return ClassDAL.Instance.deleteStudentInClass(MSHS, MALOP);
         }
+
+        public List<string> getSchoolYearList()
+        {
+            List<string> result = new List<string>();
+
+            DataTable table = ClassDAL.Instance.getAllClass();
+
+            foreach (DataRow row in table.Rows)
+            {
+                string schoolYear = row["NAMHOC"].ToString();
+                if (!result.Contains(schoolYear))
+                    result.Add(schoolYear);
+            }
+
+            return result;
+        }
+        #endregion
         //===================================================================
         //Subject
         public int getSubjectsID(string subjectName)
@@ -204,7 +285,7 @@ namespace StudentManagements.BLL
         {
             return ClassDAL.Instance.getAllSubject();
         }
-        
+
         public bool deleteSubjectInClass(int MAMH, int MALOP)
         {
             return ClassDAL.Instance.deleteSubjectInClass(MAMH, MALOP);
@@ -375,7 +456,7 @@ namespace StudentManagements.BLL
         public bool checkUser(Entities.NGUOIDUNG user)
         {
             DataTable table = ClassDAL.Instance.getAllUser();
-            foreach(DataRow row in table.Rows)
+            foreach (DataRow row in table.Rows)
                 if (row["TENDANGNHAP"].ToString().Equals(user.TenDangNhap) && row["MATKHAU"].ToString().Equals(user.MatKhau))
                     return true;
             return false;

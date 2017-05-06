@@ -38,6 +38,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
@@ -103,6 +104,7 @@
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn10,
+            this.gridColumn1,
             this.gridColumn11});
             this.grd_ClassList_View.GridControl = this.grd_ClassList;
             this.grd_ClassList_View.Name = "grd_ClassList_View";
@@ -147,7 +149,16 @@
             this.gridColumn10.OptionsColumn.FixedWidth = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 150;
+            this.gridColumn10.Width = 139;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Giáo viên chủ nhiệm";
+            this.gridColumn1.FieldName = "GVCN";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.Width = 155;
             // 
             // gridColumn11
             // 
@@ -155,8 +166,8 @@
             this.gridColumn11.FieldName = "GHICHU";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 3;
-            this.gridColumn11.Width = 650;
+            this.gridColumn11.VisibleIndex = 4;
+            this.gridColumn11.Width = 554;
             // 
             // uc_ClassList
             // 
@@ -190,5 +201,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

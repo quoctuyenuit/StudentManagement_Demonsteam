@@ -65,6 +65,7 @@
             this.navFrame_Main = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navPageHome = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navPageAction = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.FrameMain = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,6 +73,8 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_Main)).BeginInit();
             this.navFrame_Main.SuspendLayout();
+            this.navPageAction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FrameMain)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -266,12 +269,12 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Forward_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddStudent_Main, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_AddClass_Main);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_LookUpStudent_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_LookUpStudent_Main, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_CreateReport_Main);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_ChangeRules_Main);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_TeachingDivision_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_TeachingDivision_Main, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Permission_Main);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_ExportFile_Main);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_ChangeRules_Main, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.skinButton, true);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
@@ -374,9 +377,20 @@
             // 
             // navPageAction
             // 
+            this.navPageAction.Controls.Add(this.FrameMain);
             this.navPageAction.Name = "navPageAction";
             this.navPageAction.Size = new System.Drawing.Size(1188, 665);
-            this.navPageAction.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.frameMain_ControlAdded);
+            // 
+            // FrameMain
+            // 
+            this.FrameMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.FrameMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FrameMain.Location = new System.Drawing.Point(0, 0);
+            this.FrameMain.Name = "FrameMain";
+            this.FrameMain.Size = new System.Drawing.Size(1188, 665);
+            this.FrameMain.TabIndex = 0;
+            this.FrameMain.Text = "groupControl1";
+            this.FrameMain.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.frameMain_ControlAdded);
             // 
             // Form1
             // 
@@ -401,6 +415,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navFrame_Main)).EndInit();
             this.navFrame_Main.ResumeLayout(false);
+            this.navPageAction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FrameMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,6 +458,7 @@
         private DevExpress.XtraBars.Navigation.NavigationPage navPageHome;
         private DevExpress.XtraBars.Navigation.NavigationPage navPageAction;
         private DevExpress.XtraBars.BarButtonItem btn_Forward_Main;
+        private DevExpress.XtraEditors.GroupControl FrameMain;
     }
 }
 

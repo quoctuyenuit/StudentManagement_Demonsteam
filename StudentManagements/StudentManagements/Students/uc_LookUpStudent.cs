@@ -22,7 +22,14 @@ namespace StudentManagements.Students
         public uc_LookUpStudent()
         {
             InitializeComponent();
-            grd_StudentList.DataSource = BLL.ClassBLL.Instance.getStudentForLookUp();
+
+            cbSchoolYear.Properties.Items.Clear();
+            cbSchoolYear.Properties.Items.Add("-Select School Year-");
+
+            foreach (string str in BLL.ClassBLL.Instance.getSchoolYearList())
+                cbSchoolYear.Properties.Items.Add(str);
+
+            cbSchoolYear.SelectedItem = "-Select School Year-";
         }
 
         private void uc_LookUpStudent_Load(object sender, EventArgs e)
@@ -54,11 +61,27 @@ namespace StudentManagements.Students
             btn_Detail_Click(null, null);
         }
 
-        private void grd_StudentList_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        public DataTable tableData { get; set; }
+
+        private void cbSchoolYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.tableData = BLL.ClassBLL.Instance.getStudentForLookUp();
+            if (cbSchoolYear.SelectedItem.ToString().Equals("-Select School Year-"))
+            {
+                btn_Detail.Enabled = false;
+                btn_Delete.Enabled = false;
+                grd_StudentList.DataSource = null;
+            }
+            else
+            {
+                btn_Detail.Enabled = true;
+                btn_Delete.Enabled = true;
+                grd_StudentList.DataSource = BLL.ClassBLL.Instance.getStudentForLookUp(cbSchoolYear.SelectedItem.ToString());
+            }
         }
 
-        public DataTable tableData { get; set; }
+        private void grd_StudentList_View_DataSourceChanged(object sender, EventArgs e)
+        {
+            this.tableData = (DataTable)grd_StudentList.DataSource;
+        }
     }
 }

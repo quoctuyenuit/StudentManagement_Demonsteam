@@ -13,7 +13,7 @@ namespace StudentManagements.ScoreBoard
 {
     public partial class uc_ScoreBoard : UserControl
     {
-        public delegate void DgetFrameForLookUp(ScoreBoard.uc_ScoreBoardOfClass lookUp);
+        public delegate void DgetFrameForLookUp(Control detail);
         
         public DgetFrameForLookUp getFrameForLookUp;
 

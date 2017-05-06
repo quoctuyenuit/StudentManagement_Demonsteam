@@ -13,7 +13,7 @@ namespace StudentManagements.Class
 {
     public partial class uc_ClassList : UserControl
     {
-        public delegate void DgetFrameForDetail(uc_ClassInformation detail);
+        public delegate void DgetFrameForDetail(Control detail);
 
         public DgetFrameForDetail getFrameForDetail;
 
@@ -42,6 +42,7 @@ namespace StudentManagements.Class
         private void btn_Detail_ClassList_Click(object sender, EventArgs e)
         {
             uc_ClassInformation classInformation = new uc_ClassInformation(grd_ClassList_View.GetDataRow(grd_ClassList_View.GetSelectedRows().First())["MALOP"].ToString());
+            classInformation.getFrameForDetail = new uc_ClassInformation.DgetFrameForDetail(getFrameForDetail);
             if (getFrameForDetail != null)
                 getFrameForDetail(classInformation);
         }

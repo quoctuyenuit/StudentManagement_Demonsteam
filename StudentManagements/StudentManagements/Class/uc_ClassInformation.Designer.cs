@@ -66,6 +66,9 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btn_Edit_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_ClassInformation = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_GVCN = new DevExpress.XtraEditors.LabelControl();
+            this.linkEdit = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_SubjectList_ClassInformation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_SubjectList_ClassInformation_View)).BeginInit();
@@ -181,6 +184,7 @@
             this.grd_StudentList_ClassInformation_View.OptionsView.ShowGroupPanel = false;
             this.grd_StudentList_ClassInformation_View.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.grd_StudentList_ClassInformation_View_SelectionChanged);
             this.grd_StudentList_ClassInformation_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_StudentList_ClassInformation_View_FocusedRowChanged);
+            this.grd_StudentList_ClassInformation_View.DoubleClick += new System.EventHandler(this.grd_StudentList_ClassInformation_View_DoubleClick);
             // 
             // gridColumn12
             // 
@@ -248,7 +252,7 @@
             this.panel7.Controls.Add(this.navFrame_ClassInformation);
             this.panel7.Location = new System.Drawing.Point(-1, 154);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(590, 45);
+            this.panel7.Size = new System.Drawing.Size(646, 45);
             this.panel7.TabIndex = 11;
             // 
             // navFrame_ClassInformation
@@ -262,7 +266,7 @@
             this.navPage_ClassDetail,
             this.navPage_ClassDetail_Edit});
             this.navFrame_ClassInformation.SelectedPage = this.navPage_ClassDetail;
-            this.navFrame_ClassInformation.Size = new System.Drawing.Size(588, 43);
+            this.navFrame_ClassInformation.Size = new System.Drawing.Size(644, 43);
             this.navFrame_ClassInformation.TabIndex = 0;
             this.navFrame_ClassInformation.Text = "navigationFrame1";
             this.navFrame_ClassInformation.TransitionAnimationProperties.FrameCount = 0;
@@ -270,7 +274,6 @@
             // 
             // navPage_ClassDetail
             // 
-            this.navPage_ClassDetail.Caption = "navPage_ClassDetail";
             this.navPage_ClassDetail.Controls.Add(this.txt_Year_ClassInformation);
             this.navPage_ClassDetail.Controls.Add(this.labelControl25);
             this.navPage_ClassDetail.Controls.Add(this.labelControl12);
@@ -278,7 +281,7 @@
             this.navPage_ClassDetail.Controls.Add(this.txt_ClassName_ClassInformation);
             this.navPage_ClassDetail.Controls.Add(this.labelControl10);
             this.navPage_ClassDetail.Name = "navPage_ClassDetail";
-            this.navPage_ClassDetail.Size = new System.Drawing.Size(588, 43);
+            this.navPage_ClassDetail.Size = new System.Drawing.Size(644, 43);
             // 
             // txt_Year_ClassInformation
             // 
@@ -336,7 +339,6 @@
             // 
             // navPage_ClassDetail_Edit
             // 
-            this.navPage_ClassDetail_Edit.Caption = "navPage_ClassDetail_Edit";
             this.navPage_ClassDetail_Edit.Controls.Add(this.txt_Year_ClassInformation_Edit);
             this.navPage_ClassDetail_Edit.Controls.Add(this.txt_ClassTotal_ClassInformation_Edit);
             this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl26);
@@ -344,16 +346,17 @@
             this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl14);
             this.navPage_ClassDetail_Edit.Controls.Add(this.labelControl15);
             this.navPage_ClassDetail_Edit.Name = "navPage_ClassDetail_Edit";
-            this.navPage_ClassDetail_Edit.Size = new System.Drawing.Size(588, 43);
+            this.navPage_ClassDetail_Edit.Size = new System.Drawing.Size(644, 43);
             // 
             // txt_Year_ClassInformation_Edit
             // 
-            this.txt_Year_ClassInformation_Edit.Location = new System.Drawing.Point(471, 9);
+            this.txt_Year_ClassInformation_Edit.Location = new System.Drawing.Point(473, 9);
             this.txt_Year_ClassInformation_Edit.Name = "txt_Year_ClassInformation_Edit";
             this.txt_Year_ClassInformation_Edit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_Year_ClassInformation_Edit.Properties.Appearance.Options.UseFont = true;
-            this.txt_Year_ClassInformation_Edit.Size = new System.Drawing.Size(100, 28);
+            this.txt_Year_ClassInformation_Edit.Size = new System.Drawing.Size(158, 28);
             this.txt_Year_ClassInformation_Edit.TabIndex = 3;
+            this.txt_Year_ClassInformation_Edit.ToolTip = "2015-2016";
             // 
             // txt_ClassTotal_ClassInformation_Edit
             // 
@@ -405,7 +408,7 @@
             // 
             this.btn_AddSubjectsForClass_ClassInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_AddSubjectsForClass_ClassInformation.Image")));
             this.btn_AddSubjectsForClass_ClassInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_AddSubjectsForClass_ClassInformation.Location = new System.Drawing.Point(838, 154);
+            this.btn_AddSubjectsForClass_ClassInformation.Location = new System.Drawing.Point(898, 154);
             this.btn_AddSubjectsForClass_ClassInformation.Name = "btn_AddSubjectsForClass_ClassInformation";
             this.btn_AddSubjectsForClass_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_AddSubjectsForClass_ClassInformation.TabIndex = 17;
@@ -415,7 +418,7 @@
             // 
             this.btn_AddStudentForClass_ClassInformation.Image = global::StudentManagements.Properties.Resources.addStudentIcon;
             this.btn_AddStudentForClass_ClassInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_AddStudentForClass_ClassInformation.Location = new System.Drawing.Point(757, 154);
+            this.btn_AddStudentForClass_ClassInformation.Location = new System.Drawing.Point(817, 154);
             this.btn_AddStudentForClass_ClassInformation.Name = "btn_AddStudentForClass_ClassInformation";
             this.btn_AddStudentForClass_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_AddStudentForClass_ClassInformation.TabIndex = 15;
@@ -425,7 +428,7 @@
             // 
             this.btn_DeleteStudent_ClassInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteStudent_ClassInformation.Image")));
             this.btn_DeleteStudent_ClassInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_DeleteStudent_ClassInformation.Location = new System.Drawing.Point(676, 154);
+            this.btn_DeleteStudent_ClassInformation.Location = new System.Drawing.Point(736, 154);
             this.btn_DeleteStudent_ClassInformation.Name = "btn_DeleteStudent_ClassInformation";
             this.btn_DeleteStudent_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_DeleteStudent_ClassInformation.TabIndex = 14;
@@ -446,7 +449,7 @@
             // 
             this.btn_Edit_ClassInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Edit_ClassInformation.Image")));
             this.btn_Edit_ClassInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Edit_ClassInformation.Location = new System.Drawing.Point(595, 153);
+            this.btn_Edit_ClassInformation.Location = new System.Drawing.Point(655, 153);
             this.btn_Edit_ClassInformation.Name = "btn_Edit_ClassInformation";
             this.btn_Edit_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_Edit_ClassInformation.TabIndex = 13;
@@ -456,21 +459,52 @@
             // 
             this.btn_Save_ClassInformation.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save_ClassInformation.Image")));
             this.btn_Save_ClassInformation.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Save_ClassInformation.Location = new System.Drawing.Point(595, 154);
+            this.btn_Save_ClassInformation.Location = new System.Drawing.Point(655, 154);
             this.btn_Save_ClassInformation.Name = "btn_Save_ClassInformation";
             this.btn_Save_ClassInformation.Size = new System.Drawing.Size(75, 45);
             this.btn_Save_ClassInformation.TabIndex = 12;
             this.btn_Save_ClassInformation.Click += new System.EventHandler(this.btn_Save_ClassInformation_Click);
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl1.Location = new System.Drawing.Point(3, 127);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(48, 21);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "GVCN:";
+            // 
+            // txt_GVCN
+            // 
+            this.txt_GVCN.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_GVCN.Location = new System.Drawing.Point(72, 127);
+            this.txt_GVCN.Name = "txt_GVCN";
+            this.txt_GVCN.Size = new System.Drawing.Size(104, 21);
+            this.txt_GVCN.TabIndex = 0;
+            this.txt_GVCN.Text = "Nguyễn Văn A";
+            // 
+            // linkEdit
+            // 
+            this.linkEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkEdit.Location = new System.Drawing.Point(3, 108);
+            this.linkEdit.Name = "linkEdit";
+            this.linkEdit.Size = new System.Drawing.Size(21, 16);
+            this.linkEdit.TabIndex = 18;
+            this.linkEdit.Text = "edit";
+            this.linkEdit.Click += new System.EventHandler(this.linkEdit_Click);
+            // 
             // uc_ClassInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkEdit);
             this.Controls.Add(this.btn_AddSubjectsForClass_ClassInformation);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.btn_AddStudentForClass_ClassInformation);
             this.Controls.Add(this.btn_DeleteStudent_ClassInformation);
             this.Controls.Add(this.panel8);
+            this.Controls.Add(this.txt_GVCN);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.btn_Edit_ClassInformation);
@@ -495,6 +529,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassName_ClassInformation_Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -537,5 +572,8 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private DevExpress.XtraEditors.SimpleButton btn_Edit_ClassInformation;
         private DevExpress.XtraEditors.SimpleButton btn_Save_ClassInformation;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl txt_GVCN;
+        private DevExpress.XtraEditors.HyperlinkLabelControl linkEdit;
     }
 }

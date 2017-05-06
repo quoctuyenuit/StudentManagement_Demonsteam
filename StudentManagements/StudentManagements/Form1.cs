@@ -36,7 +36,7 @@ namespace StudentManagements
             this.userName = userName;
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Style";
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2016 Colorful";
 
             navFrame_Main.SelectedPage = navPageHome;
         }
@@ -57,9 +57,9 @@ namespace StudentManagements
             navFrame_Main.SelectedPage = navPageAction;
 
             btn_ExportFile_Main.Enabled = false;
-            if (navPageAction.Controls.Count > 0)
+            if (FrameMain.Controls.Count > 0)
             {
-                Control ctrl = navPageAction.Controls[0];
+                Control ctrl = FrameMain.Controls[0];
 
                 if (this.listBack.Count == 0)
                     this.listBack.Push(ctrl);//Thêm userControl đó vào danh sách stack
@@ -72,26 +72,30 @@ namespace StudentManagements
                     btn_ExportFile_Main.Enabled = true;
             }
 
+        }
 
+        void getFrameForDetail(Control ctrl)
+        {
+            if (ctrl is Class.uc_ClassInformation)
+                this.uc_ClassInfor = ctrl as Class.uc_ClassInformation;
+            else if (ctrl is ScoreBoard.uc_ScoreBoardOfClass)
+                this.uc_ScoreBoard = ctrl as ScoreBoard.uc_ScoreBoardOfClass;
+
+            ctrl.Dock = DockStyle.Fill;
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(ctrl);
         }
         //===========================================================================================================
         //===================================================Student=================================================
         #region Students
-        //----------------------------------------------------------------------------
-        void getFrameForDetail(Students.uc_DetailStudent detail)
-        {
-            detail.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(detail);
-        }
 
         public void btn_Students_Actions_Click(object sender, EventArgs e)
         {
             Students.uc_StudentsList students = new Students.uc_StudentsList();
             students.getFrameForDetail = new Students.uc_StudentsList.DgetFrameForDetail(getFrameForDetail);
             students.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(students);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(students);
         }
         //----------------------------------------------------------------------------
         private void btn_LookUpStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -99,16 +103,16 @@ namespace StudentManagements
             uc_lookUp = new Students.uc_LookUpStudent();
             uc_lookUp.Dock = DockStyle.Fill;
             uc_lookUp.getFrameForDetail = new Students.uc_LookUpStudent.DgetFrameForDetail(getFrameForDetail);
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc_lookUp);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(uc_lookUp);
         }
         //----------------------------------------------------------------------------
         private void btn_AddStudent_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Students.uc_AddStudent uc_AddStudent = new Students.uc_AddStudent();
             uc_AddStudent.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc_AddStudent);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(uc_AddStudent);
         }
 
         #endregion
@@ -116,29 +120,21 @@ namespace StudentManagements
         //=====================================================Class=================================================
         #region Class
         //----------------------------------------------------------------------------
-        void getFrameForDetail(Class.uc_ClassInformation detail)
-        {
-            this.uc_ClassInfor = detail;
-            detail.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(detail);
-        }
         private void btn_Class_Actions_Click(object sender, EventArgs e)
         {
             Class.uc_ClassList uc_Class = new Class.uc_ClassList();
             uc_Class.Dock = DockStyle.Fill;
             uc_Class.getFrameForDetail = new Class.uc_ClassList.DgetFrameForDetail(getFrameForDetail);
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc_Class);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(uc_Class);
         }
-
 
         private void btn_AddClass_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Class.uc_AddClass uc_AddClass = new Class.uc_AddClass();
             uc_AddClass.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc_AddClass);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(uc_AddClass);
         }
 
         #endregion
@@ -146,34 +142,19 @@ namespace StudentManagements
         //==================================================ScoreBoard===============================================
         #region ScoreBoard
         //----------------------------------------------------------------------------
-        private void getFrameForDetail(ScoreBoard.uc_ScoreBoardOfClass uc)
-        {
-            this.uc_ScoreBoard = uc;
-            uc.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc);
-        }
-        //--------------------------------------------------------------------------------
         private void btn_ScoreBoard_Actions_Click(object sender, EventArgs e)
         {
             ScoreBoard.uc_ScoreBoard scoreBoard = new ScoreBoard.uc_ScoreBoard();
             scoreBoard.getFrameForLookUp = new ScoreBoard.uc_ScoreBoard.DgetFrameForLookUp(getFrameForDetail);
             scoreBoard.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(scoreBoard);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(scoreBoard);
         }
         //--------------------------------------------------------------------------------
         #endregion
         //===========================================================================================================
         //====================================================Teacher================================================
         #region Teacher
-        //----------------------------------------------------------------------------
-        private void getFrameForDetail(Teacher.uc_TeacherDetail detail)
-        {
-            detail.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(detail);
-        }
 
         private void btn_Teachers_Actions_Click(object sender, EventArgs e)
         {
@@ -181,8 +162,8 @@ namespace StudentManagements
             uc.Dock = DockStyle.Fill;
             uc.getFrameForDetail = new Teacher.uc_TeacherList.DgetFrameForDetail(getFrameForDetail);
 
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(uc);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(uc);
 
         }
 
@@ -196,8 +177,8 @@ namespace StudentManagements
         {
             _uc_Report = new Report.uc_Report();
             _uc_Report.Dock = DockStyle.Fill;
-            navPageAction.Controls.Clear();
-            navPageAction.Controls.Add(_uc_Report);
+            FrameMain.Controls.Clear();
+            FrameMain.Controls.Add(_uc_Report);
         }
 
         #endregion
@@ -206,20 +187,26 @@ namespace StudentManagements
         #region Export To Excel File
         private void btn_ExportFile_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (navPageAction.Controls.Count <= 0)
+            if (FrameMain.Controls.Count <= 0)
                 return;
-            Control control = navPageAction.Controls[0];
+            Control control = FrameMain.Controls[0];
 
             switch (control.Name)
             {
                 case "uc_LookUpStudent":
                     {
-                        DAL.ExportToExcel.Instance.Export_LookUpStudent(uc_lookUp.tableData, "Truy vấn", "DANH SÁCH HỌC SINH");
+                        if (this.uc_lookUp.tableData!=null)
+                            DAL.ExportToExcel.Instance.Export_LookUpStudent(uc_lookUp.tableData, "Truy vấn", "DANH SÁCH HỌC SINH");
+                        else
+                            MessageBox.Show("Data is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
                 case "uc_ClassInformation":
                     {
-                        DAL.ExportToExcel.Instance.Export_ClassInformation(this.uc_ClassInfor.tableData, this.uc_ClassInfor.className, this.uc_ClassInfor.classSize, this.uc_ClassInfor.classYear, "Lớp", "THÔNG TIN CHI TIẾT LỚP");
+                        if(this.uc_ClassInfor.tableData!=null)
+                            DAL.ExportToExcel.Instance.Export_ClassInformation(this.uc_ClassInfor.tableData, this.uc_ClassInfor.className, this.uc_ClassInfor.classSize, this.uc_ClassInfor.classYear, "Lớp", "THÔNG TIN CHI TIẾT LỚP");
+                        else
+                            MessageBox.Show("Data is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
                 case "uc_ScoreBoardOfClass":
@@ -227,9 +214,7 @@ namespace StudentManagements
                         if (this.uc_ScoreBoard.tableData != null)
                             DAL.ExportToExcel.Instance.Export_ScoreBoard(this.uc_ScoreBoard.tableData, this.uc_ScoreBoard.className, this.uc_ScoreBoard.subjectName, this.uc_ScoreBoard.semester, "Bang Điểm", "BẢNG ĐIỂM MÔN HỌC");
                         else
-                        {
                             MessageBox.Show("Data is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
                         break;
                     }
                 case "uc_Report":
@@ -257,7 +242,10 @@ namespace StudentManagements
                     }
                 case "uc_StudentsList":
                     {
-                        DAL.ExportToExcel.Instance.Export_Student(ClassBLL.Instance.getAllStudents(), "Học Sinh", "DANH SÁCH HỌC SINH");
+                        if(ClassBLL.Instance.getAllStudents()!=null)
+                            DAL.ExportToExcel.Instance.Export_Student(ClassBLL.Instance.getAllStudents(), "Học Sinh", "DANH SÁCH HỌC SINH");
+                        else
+                            MessageBox.Show("Data is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
             }
@@ -281,11 +269,11 @@ namespace StudentManagements
             {
                 btn_Forward_Main.Enabled = true;
 
-                navPageAction.Controls.Clear();
+                FrameMain.Controls.Clear();
 
                 this.listForward.Push(this.listBack.Pop());//Xóa phần tử sau cùng vì phần tử này là thể hiện UI hiện tại chứ ko phải là UI cũ
 
-                navPageAction.Controls.Add(this.listBack.Pop());
+                FrameMain.Controls.Add(this.listBack.Pop());
             }
             else
             {
@@ -297,15 +285,16 @@ namespace StudentManagements
                 navFrame_Main.SelectedPage = navPageHome;
                 btn_Back_Main.Enabled = false;
             }
+
         }
 
         private void btn_Forward_Main_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (this.listForward.Count > 0)
             {
-                navPageAction.Controls.Clear();
+                FrameMain.Controls.Clear();
 
-                navPageAction.Controls.Add(this.listForward.Pop());
+                FrameMain.Controls.Add(this.listForward.Pop());
             }
 
             if (this.listForward.Count == 0)

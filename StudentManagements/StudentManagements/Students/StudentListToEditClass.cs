@@ -20,7 +20,7 @@ namespace StudentManagements.Students
 
             this.MaLop = MaLop;
 
-            grd_AddStudentForClass.DataSource = ClassBLL.Instance.getStudentForAddClass((int)BLL.ClassBLL.Instance.getClassFromID(MaLop)["NAMHOC"]);
+            grd_AddStudentForClass.DataSource = ClassBLL.Instance.getStudentForAddClass(BLL.ClassBLL.Instance.getClassFromID(MaLop)["NAMHOC"].ToString());
         }
 
         private void btn_OK_AddStudentForClass_Click(object sender, EventArgs e)

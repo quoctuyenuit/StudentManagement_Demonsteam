@@ -44,15 +44,17 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
-            this.cb_SelectSubject = new System.Windows.Forms.ComboBox();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.txt_ClassName = new DevExpress.XtraEditors.LabelControl();
-            this.cb_Semester = new System.Windows.Forms.ComboBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.cbSubject = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbSemester = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard_View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSubject.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox9
@@ -224,29 +226,6 @@
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
-            // cb_SelectSubject
-            // 
-            this.cb_SelectSubject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cb_SelectSubject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_SelectSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_SelectSubject.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.cb_SelectSubject.FormattingEnabled = true;
-            this.cb_SelectSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cb_SelectSubject.Location = new System.Drawing.Point(194, 170);
-            this.cb_SelectSubject.Name = "cb_SelectSubject";
-            this.cb_SelectSubject.Size = new System.Drawing.Size(155, 26);
-            this.cb_SelectSubject.TabIndex = 25;
-            this.cb_SelectSubject.SelectedIndexChanged += new System.EventHandler(this.cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged);
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl16.Location = new System.Drawing.Point(194, 149);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(55, 21);
-            this.labelControl16.TabIndex = 24;
-            this.labelControl16.Text = "Subject";
-            // 
             // txt_ClassName
             // 
             this.txt_ClassName.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -257,36 +236,61 @@
             this.txt_ClassName.TabIndex = 20;
             this.txt_ClassName.Text = "10A1";
             // 
-            // cb_Semester
+            // cbSubject
             // 
-            this.cb_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Semester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_Semester.Items.AddRange(new object[] {
+            this.cbSubject.Location = new System.Drawing.Point(200, 175);
+            this.cbSubject.Name = "cbSubject";
+            this.cbSubject.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSubject.Properties.Appearance.Options.UseFont = true;
+            this.cbSubject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSubject.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSubject.Size = new System.Drawing.Size(158, 24);
+            this.cbSubject.TabIndex = 27;
+            this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
+            // 
+            // cbSemester
+            // 
+            this.cbSemester.Location = new System.Drawing.Point(364, 175);
+            this.cbSemester.Name = "cbSemester";
+            this.cbSemester.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSemester.Properties.Appearance.Options.UseFont = true;
+            this.cbSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSemester.Properties.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(355, 170);
-            this.cb_Semester.Name = "cb_Semester";
-            this.cb_Semester.Size = new System.Drawing.Size(104, 26);
-            this.cb_Semester.TabIndex = 26;
-            this.cb_Semester.SelectedIndexChanged += new System.EventHandler(this.cb_Semester_SelectedIndexChanged);
+            this.cbSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSemester.Size = new System.Drawing.Size(97, 24);
+            this.cbSemester.TabIndex = 28;
+            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
             // 
-            // labelControl1
+            // labelControl2
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl1.Location = new System.Drawing.Point(355, 149);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(70, 21);
-            this.labelControl1.TabIndex = 24;
-            this.labelControl1.Text = "Semester";
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Location = new System.Drawing.Point(200, 154);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(55, 21);
+            this.labelControl2.TabIndex = 24;
+            this.labelControl2.Text = "Subject";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Location = new System.Drawing.Point(364, 154);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(70, 21);
+            this.labelControl3.TabIndex = 24;
+            this.labelControl3.Text = "Semester";
             // 
             // uc_ScoreBoardOfClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cb_Semester);
-            this.Controls.Add(this.cb_SelectSubject);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.labelControl16);
+            this.Controls.Add(this.cbSemester);
+            this.Controls.Add(this.cbSubject);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.panel1);
@@ -299,6 +303,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ScoreBoard_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSubject.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,12 +328,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
-        private System.Windows.Forms.ComboBox cb_SelectSubject;
-        private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl txt_ClassName;
-        private System.Windows.Forms.ComboBox cb_Semester;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSubject;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSemester;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

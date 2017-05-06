@@ -83,7 +83,7 @@ namespace StudentManagements.Students
             else
             {
                 DataRow r = ClassBLL.Instance.getRulesStudentAge();
-                MessageBox.Show("Insert fail!, Student Age must be between " + r[0] + " and " + r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Update failed!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cb_StudentDateOfBirth_StudentInformation_Edit.DateTime = DateTime.ParseExact(txt_StudentDateOfBirth_StudentInformation_Detail.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
         }

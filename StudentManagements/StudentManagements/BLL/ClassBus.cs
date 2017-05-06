@@ -33,7 +33,7 @@ namespace StudentManagements.BLL
 
         }
 
-        public bool saveAddClass(Panel addClassPanel, TextEdit txt_ClassTotal_AddClass, string className, int year)
+        public bool saveAddClass(Panel addClassPanel, TextEdit txt_ClassTotal_AddClass, string className, string year)
         {
 
             StudentManagements.Entities.LOP newLOP = new Entities.LOP(className, 0, year);

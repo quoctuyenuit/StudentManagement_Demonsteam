@@ -40,16 +40,19 @@ namespace StudentManagements.ScoreBoard
             this.className = TENLOP;
 
             this.MaLop = MALOP;
+            cbSubject.Properties.Items.Clear();
+
+            cbSubject.Properties.Items.Add("-Select Subject-");
+            cbSubject.SelectedItem = "-Select Subject-";
+
             DataTable table = ClassBLL.Instance.getSubjectForClass(MALOP);//Take subjects when know ClassID
-            cb_SelectSubject.Items.Clear();
+
             for (int i = 0; i < table.Rows.Count; i++)
-                cb_SelectSubject.Items.Add(table.Rows[i]["TENMH"]);
-            cb_SelectSubject.Items.Add("--Select subject--");
-            cb_SelectSubject.SelectedItem = "--Select subject--";
+                cbSubject.Properties.Items.Add(table.Rows[i]["TENMH"]);
 
             this.Rows = new Dictionary<int, Entities.KETQUA>();
             this.NewRows = new Dictionary<int, Entities.KETQUA>();
-            this.cb_Semester.SelectedIndex = 0;
+            this.cbSemester.SelectedIndex = 0;
         }
 
         void rowUpdatedEvent()
@@ -80,26 +83,6 @@ namespace StudentManagements.ScoreBoard
         private void grd_ScoreBoard_View_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             rowUpdatedEvent();
-            btn_Save.Enabled = true;
-        }
-
-        private void cb_SelectSubject_ScoreBoardDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
-            {
-                btn_Save.Enabled = false;
-                btn_Delete.Enabled = false;
-                grd_ScoreBoard.DataSource = null;
-                this.tableData = null;
-                return;
-            }
-
-            this.MaMH = ClassBLL.Instance.getSubjectsID(cb_SelectSubject.SelectedItem.ToString());
-            
-            this.subjectName = cb_SelectSubject.SelectedItem.ToString();
-
-            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
-            btn_Delete.Enabled = true;
             btn_Save.Enabled = true;
         }
 
@@ -138,22 +121,6 @@ namespace StudentManagements.ScoreBoard
             }
         }
 
-        private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.semester = int.Parse(cb_Semester.SelectedItem.ToString());
-            if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
-            {
-                btn_Save.Enabled = false;
-                btn_Delete.Enabled = false;
-                grd_ScoreBoard.DataSource = null;
-                return;
-            }
-
-            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
-            btn_Delete.Enabled = true;
-            btn_Save.Enabled = true;
-        }
-
         private void grd_ScoreBoard_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             try
@@ -168,5 +135,41 @@ namespace StudentManagements.ScoreBoard
         public string className { get; set; }
 
         public string subjectName { get; set; }
+
+        private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSubject.SelectedItem.Equals("-Select Subject-"))
+            {
+                btn_Save.Enabled = false;
+                btn_Delete.Enabled = false;
+                grd_ScoreBoard.DataSource = null;
+                this.tableData = null;
+                return;
+            }
+
+            this.MaMH = ClassBLL.Instance.getSubjectsID(cbSubject.SelectedItem.ToString());
+
+            this.subjectName = cbSubject.SelectedItem.ToString();
+
+            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
+            btn_Delete.Enabled = true;
+            btn_Save.Enabled = true;
+        }
+
+        private void cbSemester_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.semester = int.Parse(cbSemester.SelectedItem.ToString());
+            if (cbSubject.SelectedItem.Equals("-Select Subject-"))
+            {
+                btn_Save.Enabled = false;
+                btn_Delete.Enabled = false;
+                grd_ScoreBoard.DataSource = null;
+                return;
+            }
+
+            grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
+            btn_Delete.Enabled = true;
+            btn_Save.Enabled = true;
+        }
     }
 }

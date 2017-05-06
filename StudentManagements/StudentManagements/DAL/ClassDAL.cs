@@ -18,7 +18,7 @@ namespace StudentManagements.DAL
         SqlDataAdapter dataAdapter;
         DataTable table;
         private static ClassDAL instance;
-
+        #region Init
         internal static ClassDAL Instance
         {
             get
@@ -32,9 +32,10 @@ namespace StudentManagements.DAL
         {
             dataServices = new DataServices();
         }
+        #endregion
         //==========================================================================================================
         //Student
-
+        #region Student
         public DataTable getAllStudents()
         {
             WaitDialogForm f = new WaitDialogForm();
@@ -124,7 +125,7 @@ namespace StudentManagements.DAL
             return table;
         }
 
-        public DataTable getStudentForAddClass(int NAMHOC)
+        public DataTable getStudentForAddClass(string NAMHOC)
         {
             WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_SelectHOCSINHTIMLOP";
@@ -136,7 +137,7 @@ namespace StudentManagements.DAL
                 command.Connection = connection;
                 command.CommandText = query;
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
+                command.Parameters.Add("@NAMHOC", SqlDbType.VarChar).Value = NAMHOC;
                 dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = command;
                 table = new DataTable();
@@ -155,7 +156,7 @@ namespace StudentManagements.DAL
             return table;
         }
 
-        public DataTable getStudentForLookUp()
+        public DataTable getStudentForLookUp(string NAMHOC)
         {
             WaitDialogForm f = new WaitDialogForm();
             string query = "prd_HOCSINH_Select_ForLookUpStudent";
@@ -167,6 +168,7 @@ namespace StudentManagements.DAL
                 command.CommandText = query;
                 command.Connection = connection;
                 command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@NAMHOC", SqlDbType.VarChar).Value = NAMHOC;
                 dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = command;
                 table = new DataTable();
@@ -208,7 +210,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
             }
             finally
             {
@@ -220,8 +221,9 @@ namespace StudentManagements.DAL
 
         public bool deleteStudent(int MSHS)
         {
+            //Hàm xóa học sinh khi học sinh đó còn học trong trường
             bool check = false;
-            string query = "prd_HOCSINH_DeleteID";
+            string query = "prd_HOCSINH_DeleteAll";
             try
             {
                 connection = dataServices.getConnect();
@@ -233,6 +235,35 @@ namespace StudentManagements.DAL
                 command.Parameters.Add("@MSHS", SqlDbType.Int).Value = MSHS;
                 command.ExecuteNonQuery();
                 check = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool isLearching(int MSHS)
+        {
+            bool check = false;
+            string query = "prd_ISLEARNING";
+            try
+            {
+                connection = dataServices.getConnect();
+                connection.Open();
+                command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = query;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MSHS", SqlDbType.Int).Value = MSHS;
+                if ((int)command.ExecuteScalar() > 0)
+                    check = true;
+                else
+                    check = false;
             }
             catch (Exception ex)
             {
@@ -270,7 +301,6 @@ namespace StudentManagements.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
                 }
                 finally
                 {
@@ -279,10 +309,10 @@ namespace StudentManagements.DAL
             }
             return check;
         }
-
+        #endregion
         //==========================================================================================================
         //Class
-
+        #region Class
         public DataTable getAllClass()
         {
             WaitDialogForm f = new WaitDialogForm();
@@ -371,7 +401,7 @@ namespace StudentManagements.DAL
             return ss;
         }
 
-        public int getClassID(string TENLOP, int NAMHOC)
+        public int getClassID(string TENLOP, string NAMHOC)
         {
             int MALOP = new int();
             string query = "SELECT LOP.MALOP FROM LOP WHERE TENLOP = @TENLOP AND NAMHOC = @NAMHOC";
@@ -384,7 +414,7 @@ namespace StudentManagements.DAL
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = TENLOP;
-                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
+                command.Parameters.Add("@NAMHOC", SqlDbType.NVarChar).Value = NAMHOC;
                 MALOP = (int)command.ExecuteScalar();
             }
             catch (Exception ex)
@@ -436,7 +466,7 @@ namespace StudentManagements.DAL
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = myClass.TenLop;
                 command.Parameters.Add("@SISO", SqlDbType.Int).Value = myClass.SiSo;
-                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = myClass.NamHoc;
+                command.Parameters.Add("@NAMHOC", SqlDbType.VarChar).Value = myClass.NamHoc;
                 command.Parameters.Add("@GHICHU", SqlDbType.NVarChar).Value = (myClass.GhiChu == null) ? "" : myClass.GhiChu;
                 command.ExecuteNonQuery();
                 check = true;
@@ -533,10 +563,10 @@ namespace StudentManagements.DAL
             return check;
         }
 
-        public bool updateClassNameAndClassYear(string TENLOP, int NAMHOC, int MALOP)
+        public bool updateClassNameAndClassYear(Entities.LOP lop)
         {
             bool check = false;
-            string query = "UPDATE LOP SET TENLOP = @TENLOP, NAMHOC = @NAMHOC WHERE MALOP = @MALOP";
+            string query = "UPDATE LOP SET TENLOP = @TENLOP, NAMHOC = @NAMHOC, MAGVCN = @MAGV WHERE MALOP = @MALOP";
             try
             {
                 connection = dataServices.getConnect();
@@ -545,9 +575,10 @@ namespace StudentManagements.DAL
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
-                command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = TENLOP;
-                command.Parameters.Add("@NAMHOC", SqlDbType.Int).Value = NAMHOC;
-                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = MALOP;
+                command.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = lop.TenLop;
+                command.Parameters.Add("@NAMHOC", SqlDbType.NVarChar).Value = lop.NamHoc;
+                command.Parameters.Add("@MALOP", SqlDbType.Int).Value = lop.MaLop;
+                command.Parameters.Add("@MAGV", SqlDbType.Int).Value = lop.MaGV;
                 command.ExecuteNonQuery();
                 check = true;
             }
@@ -610,9 +641,10 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+        #endregion
         //==========================================================================================================
         //Subjects
-
+        #region Subjects
         public int getSubjectsID(string subjectName)
         {
             string query = "SELECT MH.MAMH FROM MONHOC MH WHERE TENMH = @TENMH";
@@ -799,9 +831,10 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+        #endregion
         //==========================================================================================================
         //ScoreBoard
-
+        #region ScoreBoard
         public DataTable getAllScoreBoard()
         {
             WaitDialogForm f = new WaitDialogForm();
@@ -977,9 +1010,10 @@ namespace StudentManagements.DAL
             }
             return check;
         }
+        #endregion
         //==========================================================================================================
         //Report
-
+        #region Report
         public DataTable getReport_MONHOC(int MAMH, int HOCKY)
         {
             WaitDialogForm f = new WaitDialogForm();
@@ -1042,9 +1076,10 @@ namespace StudentManagements.DAL
             f.Close();
             return table;
         }
-
+        #endregion
         //==========================================================================================================
         //ChangeRules
+        #region ChangeRules
         //
         //Rules StudentAge
         //
@@ -1342,9 +1377,10 @@ namespace StudentManagements.DAL
         //
         //Rules Subjects
         //
+        #endregion
         //==========================================================================================================
         //Teaching
-
+        #region Teaching
         public DataRow getTeacherFromID(int MAGV)
         {
             string query = "SELECT GV.MAGV, HOTEN, GIOITINH, NGSINH, NAMKINHNGHIEM, HOCHAM, ANH FROM GIAOVIEN GV WHERE GV.MAGV = @MAGV";
@@ -1562,9 +1598,10 @@ namespace StudentManagements.DAL
             }
             return check;
         }
-
+        #endregion
         //==========================================================================================================
         //User
+        #region User 
         public DataTable getAllUser()
         {
             string query = "SELECT MAND, TENNGUOIDUNG, TENDANGNHAP, MATKHAU, TENPQ, ND.MAPQ, EMAIL FROM NGUOIDUNG ND, PHANQUYEN PQ WHERE ND.MAPQ = PQ.MAPQ";
@@ -1583,7 +1620,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
             }
             finally
             {
@@ -1611,7 +1647,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -1644,7 +1679,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
             }
             finally
             {
@@ -1676,7 +1710,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -1703,7 +1736,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -1731,7 +1763,6 @@ namespace StudentManagements.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
             }
             finally
             {
@@ -1740,4 +1771,5 @@ namespace StudentManagements.DAL
             return check;
         }
     }
+        #endregion
 }

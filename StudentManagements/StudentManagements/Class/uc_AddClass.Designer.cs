@@ -121,7 +121,7 @@
             // 
             this.btn_AddSubjectsForClass_AddClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_AddSubjectsForClass_AddClass.Image")));
             this.btn_AddSubjectsForClass_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_AddSubjectsForClass_AddClass.Location = new System.Drawing.Point(906, 154);
+            this.btn_AddSubjectsForClass_AddClass.Location = new System.Drawing.Point(938, 154);
             this.btn_AddSubjectsForClass_AddClass.Name = "btn_AddSubjectsForClass_AddClass";
             this.btn_AddSubjectsForClass_AddClass.Size = new System.Drawing.Size(75, 45);
             this.btn_AddSubjectsForClass_AddClass.TabIndex = 17;
@@ -131,7 +131,7 @@
             // 
             this.btn_DeleteStudentInClass_AddClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteStudentInClass_AddClass.Image")));
             this.btn_DeleteStudentInClass_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_DeleteStudentInClass_AddClass.Location = new System.Drawing.Point(744, 155);
+            this.btn_DeleteStudentInClass_AddClass.Location = new System.Drawing.Point(776, 155);
             this.btn_DeleteStudentInClass_AddClass.Name = "btn_DeleteStudentInClass_AddClass";
             this.btn_DeleteStudentInClass_AddClass.Size = new System.Drawing.Size(75, 45);
             this.btn_DeleteStudentInClass_AddClass.TabIndex = 16;
@@ -141,7 +141,7 @@
             // 
             this.btn_AddStudentForClass_AddClass.Image = global::StudentManagements.Properties.Resources.addStudentIcon;
             this.btn_AddStudentForClass_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_AddStudentForClass_AddClass.Location = new System.Drawing.Point(825, 154);
+            this.btn_AddStudentForClass_AddClass.Location = new System.Drawing.Point(857, 154);
             this.btn_AddStudentForClass_AddClass.Name = "btn_AddStudentForClass_AddClass";
             this.btn_AddStudentForClass_AddClass.Size = new System.Drawing.Size(75, 45);
             this.btn_AddStudentForClass_AddClass.TabIndex = 12;
@@ -151,7 +151,7 @@
             // 
             this.btn_Save_AddClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save_AddClass.Image")));
             this.btn_Save_AddClass.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btn_Save_AddClass.Location = new System.Drawing.Point(663, 155);
+            this.btn_Save_AddClass.Location = new System.Drawing.Point(695, 155);
             this.btn_Save_AddClass.Name = "btn_Save_AddClass";
             this.btn_Save_AddClass.Size = new System.Drawing.Size(75, 45);
             this.btn_Save_AddClass.TabIndex = 11;
@@ -268,17 +268,18 @@
             this.addClassPanel.Controls.Add(this.labelControl28);
             this.addClassPanel.Location = new System.Drawing.Point(0, 154);
             this.addClassPanel.Name = "addClassPanel";
-            this.addClassPanel.Size = new System.Drawing.Size(657, 45);
+            this.addClassPanel.Size = new System.Drawing.Size(689, 45);
             this.addClassPanel.TabIndex = 15;
             // 
             // txt_Year_AddClass
             // 
-            this.txt_Year_AddClass.Location = new System.Drawing.Point(531, 8);
+            this.txt_Year_AddClass.Location = new System.Drawing.Point(535, 8);
             this.txt_Year_AddClass.Name = "txt_Year_AddClass";
             this.txt_Year_AddClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txt_Year_AddClass.Properties.Appearance.Options.UseFont = true;
-            this.txt_Year_AddClass.Size = new System.Drawing.Size(114, 28);
+            this.txt_Year_AddClass.Size = new System.Drawing.Size(142, 28);
             this.txt_Year_AddClass.TabIndex = 1;
+            this.txt_Year_AddClass.ToolTip = "2015-2016";
             // 
             // txt_ClassTotal_AddClass
             // 

@@ -16,6 +16,11 @@ namespace StudentManagements.Class
     {
         private string classID;
 
+        public delegate void DgetFrameForDetail(Control detail);
+
+        public DgetFrameForDetail getFrameForDetail;
+        private int MaGV;
+
         public uc_ClassInformation(string classID)
         {
             InitializeComponent();
@@ -24,6 +29,7 @@ namespace StudentManagements.Class
 
             DataRow row = BLL.ClassBLL.Instance.getClassFromID(classID);
 
+            txt_GVCN.Text = row["GVCN"].ToString();
             txt_ClassName_ClassInformation.Text = row["TENLOP"].ToString();
             txt_ClassTotal_ClassInformation.Text = row["SISO"].ToString();
             txt_Year_ClassInformation.Text = row["NAMHOC"].ToString();
@@ -32,6 +38,7 @@ namespace StudentManagements.Class
             btn_DeleteStudent_ClassInformation.Hide();
             btn_AddStudentForClass_ClassInformation.Hide();
             btn_AddSubjectsForClass_ClassInformation.Hide();
+            linkEdit.Hide();
 
             grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;//Set away select for grd_StudentList_ClassInformation
             grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
@@ -57,33 +64,39 @@ namespace StudentManagements.Class
         private void btn_Save_ClassInformation_Click(object sender, EventArgs e)
         {
             if (!ClassBLL.Instance.IsNotEmpty(navPage_ClassDetail_Edit))//If any control Empty => return;
+                return;
+
+            if (!BLL.ClassBLL.Instance.checkSchoolYear(txt_Year_ClassInformation_Edit.Text))
             {
+                MessageBox.Show("The School year is not valid!, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txt_Year_ClassInformation_Edit.Focus();
                 return;
             }
+
+            Entities.LOP lop = new Entities.LOP(int.Parse(classID), txt_ClassName_ClassInformation_Edit.Text, int.Parse(txt_ClassTotal_ClassInformation_Edit.Text), txt_Year_ClassInformation_Edit.Text, this.MaGV);
+            
             //If don't have any change then return
             if (!txt_ClassName_ClassInformation_Edit.Text.Equals(txt_ClassName_ClassInformation.Text) || !txt_Year_ClassInformation_Edit.Text.Equals(txt_Year_ClassInformation.Text))
             {
-                //-----------------------------------------------
                 //If Class already exists then return;
-                Entities.LOP lop = new Entities.LOP(txt_ClassName_ClassInformation_Edit.Text, int.Parse(txt_ClassTotal_ClassInformation_Edit.Text), int.Parse(txt_Year_ClassInformation_Edit.Text));
                 if (!ClassBLL.Instance.checkExistenceClass(lop))
                 {
                     MessageBox.Show("Class already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
-            ClassBLL.Instance.updateClassNameAndClassYear(txt_ClassName_ClassInformation_Edit.Text, int.Parse(txt_Year_ClassInformation_Edit.Text), int.Parse(this.classID));
+            ClassBLL.Instance.updateClassNameAndClassYear(lop);
 
-
-            txt_ClassName_ClassInformation.Text = txt_ClassName_ClassInformation_Edit.Text;
-            txt_Year_ClassInformation.Text = txt_Year_ClassInformation_Edit.Text;
-            txt_ClassTotal_ClassInformation.Text = txt_ClassTotal_ClassInformation_Edit.Text;
+            txt_ClassName_ClassInformation.Text = lop.TenLop;
+            txt_Year_ClassInformation.Text = lop.NamHoc;
+            txt_ClassTotal_ClassInformation.Text = lop.SiSo.ToString();
 
             btn_DeleteStudent_ClassInformation.Hide();
             btn_Save_ClassInformation.Hide();
             btn_Edit_ClassInformation.Show();
             btn_AddStudentForClass_ClassInformation.Hide();
             btn_AddSubjectsForClass_ClassInformation.Hide();
+            linkEdit.Hide();
 
             grd_StudentList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
             grd_SubjectList_ClassInformation_View.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.RowSelect;
@@ -92,12 +105,14 @@ namespace StudentManagements.Class
 
             this.className = txt_ClassName_ClassInformation.Text;
             this.classSize = int.Parse(txt_ClassTotal_ClassInformation.Text);
-            this.classYear = int.Parse(txt_Year_ClassInformation.Text);
+            this.classYear = txt_Year_ClassInformation.Text;
         }
 
         private void btn_Edit_ClassInformation_Click(object sender, EventArgs e)
         {
             navFrame_ClassInformation.SelectedPage = navPage_ClassDetail_Edit;
+
+            linkEdit.Show();
 
             txt_ClassName_ClassInformation_Edit.Text = txt_ClassName_ClassInformation.Text;
             txt_ClassTotal_ClassInformation_Edit.Text = txt_ClassTotal_ClassInformation.Text;
@@ -122,6 +137,8 @@ namespace StudentManagements.Class
 
         private void btn_AddStudentForClass_ClassInformation_Click(object sender, EventArgs e)
         {
+            btn_Save_ClassInformation_Click(null, null);
+
             using (Students.StudentListToEditClass frm = new Students.StudentListToEditClass(this.classID))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -171,6 +188,25 @@ namespace StudentManagements.Class
 
         public int classSize { get; set; }
 
-        public int classYear { get; set; }
+        public string classYear { get; set; }
+
+        private void grd_StudentList_ClassInformation_View_DoubleClick(object sender, EventArgs e)
+        {
+            Students.uc_DetailStudent detail = new Students.uc_DetailStudent(ClassBLL.Instance.getTextFromGridControl(grd_StudentList_ClassInformation_View, "MSHS"));
+            if (getFrameForDetail != null)
+                getFrameForDetail(detail);
+        }
+
+        private void linkEdit_Click(object sender, EventArgs e)
+        {
+            using (TeachingDivision.TeacherListForm frm = new TeachingDivision.TeacherListForm())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    txt_GVCN.Text = frm.row["HOTEN"].ToString();
+                    this.MaGV = (int)frm.row["MAGV"];
+                }
+            }
+        }
     }
 }

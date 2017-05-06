@@ -20,12 +20,11 @@ namespace StudentManagements.TeachingDivision
             InitializeComponent();
         }
 
-        private void getFrameForDetail(Teacher.uc_TeacherDetail detail)
+        private void getFrameForDetail(Control detail)
         {
-            Teacher.uc_TeacherDetail uc = new Teacher.uc_TeacherDetail();
-            uc.Dock = DockStyle.Fill;
+            detail.Dock = DockStyle.Fill;
             this.Controls.Clear();
-            this.Controls.Add(uc);
+            this.Controls.Add(detail);
         }
 
         private void TeacherListForm_Load(object sender, EventArgs e)

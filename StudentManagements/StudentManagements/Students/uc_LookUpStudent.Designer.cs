@@ -39,10 +39,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_Detail = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.cbSchoolYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSchoolYear.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,8 +84,8 @@
             this.grd_StudentList_View.OptionsFind.AlwaysVisible = true;
             this.grd_StudentList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_StudentList_View.OptionsView.ShowGroupPanel = false;
-            this.grd_StudentList_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grd_StudentList_View_FocusedRowChanged);
             this.grd_StudentList_View.DoubleClick += new System.EventHandler(this.grd_StudentList_View_DoubleClick);
+            this.grd_StudentList_View.DataSourceChanged += new System.EventHandler(this.grd_StudentList_View_DataSourceChanged);
             // 
             // gridColumn1
             // 
@@ -158,10 +161,34 @@
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
+            // cbSchoolYear
+            // 
+            this.cbSchoolYear.Location = new System.Drawing.Point(196, 175);
+            this.cbSchoolYear.Name = "cbSchoolYear";
+            this.cbSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSchoolYear.Properties.Appearance.Options.UseFont = true;
+            this.cbSchoolYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSchoolYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSchoolYear.Size = new System.Drawing.Size(194, 24);
+            this.cbSchoolYear.TabIndex = 6;
+            this.cbSchoolYear.SelectedIndexChanged += new System.EventHandler(this.cbSchoolYear_SelectedIndexChanged);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl1.Location = new System.Drawing.Point(196, 151);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(82, 18);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "School Year:";
+            // 
             // uc_LookUpStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.cbSchoolYear);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Detail);
             this.Controls.Add(this.pictureBox1);
@@ -173,7 +200,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSchoolYear.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -190,5 +219,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.SimpleButton btn_Detail;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSchoolYear;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

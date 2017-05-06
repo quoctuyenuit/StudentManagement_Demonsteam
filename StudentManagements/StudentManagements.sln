@@ -5,6 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagements", "StudentManagements\StudentManagements.csproj", "{70187688-C739-40AE-AFBA-35A553E9377E}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "StudentManagementSetup", "StudentManagementSetup\StudentManagementSetup.isproj", "{76CE6F68-2044-4284-AAFE-80898748BF4C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70187688-C739-40AE-AFBA-35A553E9377E} = {70187688-C739-40AE-AFBA-35A553E9377E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -24,6 +29,16 @@ Global
 		{70187688-C739-40AE-AFBA-35A553E9377E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70187688-C739-40AE-AFBA-35A553E9377E}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{70187688-C739-40AE-AFBA-35A553E9377E}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.Debug|Any CPU.ActiveCfg = DVD-5
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.Debug|Any CPU.Build.0 = DVD-5
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.DVD-5|Any CPU.Build.0 = DVD-5
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.Release|Any CPU.ActiveCfg = SingleImage
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.Release|Any CPU.Build.0 = SingleImage
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{76CE6F68-2044-4284-AAFE-80898748BF4C}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

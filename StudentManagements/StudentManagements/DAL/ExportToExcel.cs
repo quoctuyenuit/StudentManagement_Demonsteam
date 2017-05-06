@@ -179,7 +179,7 @@ namespace StudentManagements.DAL
         
         }
 
-        public void Export_ClassInformation(System.Data.DataTable table, string ClassName, int ClassSize, int Year, string sheetName, string title)
+        public void Export_ClassInformation(System.Data.DataTable table, string ClassName, int ClassSize, string Year, string sheetName, string title)
         {
             //Tạo các đối tượng Excel
 

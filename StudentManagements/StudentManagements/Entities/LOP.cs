@@ -11,24 +11,41 @@ namespace StudentManagements.Entities
         int _MaLop;
         string _TenLop;
         int _SiSo;
-        int _NamHoc;
+        string _NamHoc;
+        int _MaGV;
+
+        public int MaGV
+        {
+            get { return _MaGV; }
+            set { _MaGV = value; }
+        }
+
+        public string NamHoc
+        {
+            get { return _NamHoc; }
+            set { _NamHoc = value; }
+        }
         string _GhiChu;
-        public LOP(string TenLop, int SiSo, int NamHoc)
+
+        public LOP(string TenLop, int SiSo, string NamHoc)
         {
             this.TenLop = TenLop;
             this.SiSo = SiSo;
-            this.NamHoc = NamHoc;
+            this.NamHoc = BLL.ClassBLL.Instance.formatSchoolYear(NamHoc);
+        }
+
+        public LOP(int MaLop, string TenLop, int SiSo, string NamHoc, int MaGV)
+        {
+            this.MaLop = MaLop;
+            this.TenLop = TenLop;
+            this.SiSo = SiSo;
+            this.NamHoc = BLL.ClassBLL.Instance.formatSchoolYear(NamHoc);
+            this.MaGV = MaGV;
         }
         public string GhiChu
         {
             get { return _GhiChu; }
             set { _GhiChu = value; }
-        }
-
-        public int NamHoc
-        {
-            get { return _NamHoc; }
-            set { _NamHoc = value; }
         }
 
         public int SiSo

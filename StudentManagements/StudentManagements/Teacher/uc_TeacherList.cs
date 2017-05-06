@@ -20,7 +20,7 @@ namespace StudentManagements.Teacher
             grd_TeacherList.DataSource = BLL.ClassBLL.Instance.getTeacherList();
         }
 
-        public delegate void DgetFrameForDetail(Teacher.uc_TeacherDetail detail);
+        public delegate void DgetFrameForDetail(Control detail);
         public DgetFrameForDetail getFrameForDetail;
 
         public delegate void DreturnData(object sender, EventArgs e);
@@ -48,7 +48,7 @@ namespace StudentManagements.Teacher
 
         private void grd_TeacherList_View_DoubleClick(object sender, EventArgs e)
         {
-            if (returnData != null && btn_Detail.Enabled)//Nếu delegate returnData != null và UI đang ở trong phần tìm giáo viên trong TeachingDivision
+            if (returnData != null && !btn_Detail.Enabled)//Nếu delegate returnData != null và UI đang ở trong phần tìm giáo viên trong TeachingDivision
                 returnData(new object(), new EventArgs());
             else
                 btn_Detail_Click(null, null);

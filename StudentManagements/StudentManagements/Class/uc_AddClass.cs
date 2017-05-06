@@ -40,11 +40,18 @@ namespace StudentManagements.Class
             {
                 return;
             }
-            if (ClassBus.Instance.saveAddClass(addClassPanel, txt_ClassTotal_AddClass, txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text)))
+
+            if (!BLL.ClassBLL.Instance.checkSchoolYear(txt_Year_AddClass.Text))
+            {
+                MessageBox.Show("The School year is not valid!, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (ClassBus.Instance.saveAddClass(addClassPanel, txt_ClassTotal_AddClass, txt_ClassName_AddClass.Text, txt_Year_AddClass.Text))
             {
                 btn_AddStudentForClass_AddClass.Enabled = true;
                 btn_AddSubjectsForClass_AddClass.Enabled = true;
-                this.MaLop = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, int.Parse(txt_Year_AddClass.Text));
+                this.MaLop = ClassBLL.Instance.getClassID(txt_ClassName_AddClass.Text, txt_Year_AddClass.Text);
             }
         }
 

@@ -13,7 +13,7 @@ namespace StudentManagements.Students
 {
     public partial class uc_StudentsList : UserControl
     {
-        public delegate void DgetFrameForDetail(uc_DetailStudent detail);
+        public delegate void DgetFrameForDetail(Control detail);
 
         public DgetFrameForDetail getFrameForDetail;
 
@@ -34,12 +34,27 @@ namespace StudentManagements.Students
         {
             if (MessageBox.Show("Do you want to delete this Student?", "Note", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (ClassBLL.Instance.deleteStudent(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "MSHS"))))
+                int MSHS = int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_StudentList_View, "MSHS"));
+                if (ClassBLL.Instance.isLearning(MSHS))
                 {
-                    grd_StudentList_View.DeleteSelectedRows();
+                    //Nếu học sinh đang theo học trong thời gian hiện tại thì thông báo cho người dùng quyết định có xóa hay không
+                    if (MessageBox.Show("This student is learning in the school! Are you sure you want to delete this Student?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        if (ClassBLL.Instance.deleteStudent(MSHS))
+                            grd_StudentList_View.DeleteSelectedRows();
+                        else
+                            MessageBox.Show("Delete fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                    }
+                    else
+                        return;
                 }
                 else
-                    MessageBox.Show("Delete fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                {
+                    if (ClassBLL.Instance.deleteStudent(MSHS))
+                        grd_StudentList_View.DeleteSelectedRows();
+                    else
+                        MessageBox.Show("Delete fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

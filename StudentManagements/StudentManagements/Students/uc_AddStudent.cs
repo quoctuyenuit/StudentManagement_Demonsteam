@@ -71,7 +71,7 @@ namespace StudentManagements.Students
             else
             {
                 DataRow r = ClassBLL.Instance.getRulesStudentAge();
-                MessageBox.Show("Insert fail!, Student Age must be between " + r[0] + " and " + r[1], "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Insert fail!", "Reponse", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cb_StudentDateOfBirth_AddStudent.Focus();
             }
         }
