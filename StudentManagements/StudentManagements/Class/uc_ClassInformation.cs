@@ -29,6 +29,7 @@ namespace StudentManagements.Class
 
             DataRow row = BLL.ClassBLL.Instance.getClassFromID(classID);
 
+            this.MaGV = (int)row["MAGVCN"];
             txt_GVCN.Text = row["GVCN"].ToString();
             txt_ClassName_ClassInformation.Text = row["TENLOP"].ToString();
             txt_ClassTotal_ClassInformation.Text = row["SISO"].ToString();
