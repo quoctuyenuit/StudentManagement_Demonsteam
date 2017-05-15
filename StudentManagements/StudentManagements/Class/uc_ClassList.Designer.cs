@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_ClassList));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_Delete_ClassList = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Detail_ClassList = new DevExpress.XtraEditors.SimpleButton();
@@ -40,6 +41,7 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnAddClass = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClassList)).BeginInit();
@@ -59,7 +61,8 @@
             // 
             // btn_Delete_ClassList
             // 
-            this.btn_Delete_ClassList.Location = new System.Drawing.Point(97, 165);
+            this.btn_Delete_ClassList.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete_ClassList.Image")));
+            this.btn_Delete_ClassList.Location = new System.Drawing.Point(97, 162);
             this.btn_Delete_ClassList.Name = "btn_Delete_ClassList";
             this.btn_Delete_ClassList.Size = new System.Drawing.Size(91, 33);
             this.btn_Delete_ClassList.TabIndex = 10;
@@ -68,7 +71,8 @@
             // 
             // btn_Detail_ClassList
             // 
-            this.btn_Detail_ClassList.Location = new System.Drawing.Point(0, 165);
+            this.btn_Detail_ClassList.Image = ((System.Drawing.Image)(resources.GetObject("btn_Detail_ClassList.Image")));
+            this.btn_Detail_ClassList.Location = new System.Drawing.Point(0, 162);
             this.btn_Detail_ClassList.Name = "btn_Detail_ClassList";
             this.btn_Detail_ClassList.Size = new System.Drawing.Size(91, 33);
             this.btn_Detail_ClassList.TabIndex = 11;
@@ -81,9 +85,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.grd_ClassList);
-            this.panel4.Location = new System.Drawing.Point(0, 204);
+            this.panel4.Location = new System.Drawing.Point(0, 201);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1188, 458);
+            this.panel4.Size = new System.Drawing.Size(1188, 464);
             this.panel4.TabIndex = 9;
             // 
             // grd_ClassList
@@ -92,7 +96,7 @@
             this.grd_ClassList.Location = new System.Drawing.Point(0, 0);
             this.grd_ClassList.MainView = this.grd_ClassList_View;
             this.grd_ClassList.Name = "grd_ClassList";
-            this.grd_ClassList.Size = new System.Drawing.Size(1188, 458);
+            this.grd_ClassList.Size = new System.Drawing.Size(1188, 464);
             this.grd_ClassList.TabIndex = 1;
             this.grd_ClassList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grd_ClassList_View});
@@ -169,10 +173,21 @@
             this.gridColumn11.VisibleIndex = 4;
             this.gridColumn11.Width = 554;
             // 
+            // btnAddClass
+            // 
+            this.btnAddClass.Image = ((System.Drawing.Image)(resources.GetObject("btnAddClass.Image")));
+            this.btnAddClass.Location = new System.Drawing.Point(194, 162);
+            this.btnAddClass.Name = "btnAddClass";
+            this.btnAddClass.Size = new System.Drawing.Size(110, 33);
+            this.btnAddClass.TabIndex = 12;
+            this.btnAddClass.Text = "Add Class";
+            this.btnAddClass.Click += new System.EventHandler(this.btnAddClass_Click);
+            // 
             // uc_ClassList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAddClass);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btn_Delete_ClassList);
             this.Controls.Add(this.btn_Detail_ClassList);
@@ -202,5 +217,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.SimpleButton btnAddClass;
     }
 }

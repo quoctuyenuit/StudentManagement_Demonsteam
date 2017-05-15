@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_StudentsList));
             this.panel3 = new System.Windows.Forms.Panel();
             this.grd_StudentList = new DevExpress.XtraGrid.GridControl();
             this.grd_StudentList_View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -40,6 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_Delete_StudentList = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Detail_StudentList = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddStudent = new DevExpress.XtraEditors.SimpleButton();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_StudentList_View)).BeginInit();
@@ -159,6 +161,7 @@
             // 
             // btn_Delete_StudentList
             // 
+            this.btn_Delete_StudentList.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete_StudentList.Image")));
             this.btn_Delete_StudentList.Location = new System.Drawing.Point(97, 162);
             this.btn_Delete_StudentList.Name = "btn_Delete_StudentList";
             this.btn_Delete_StudentList.Size = new System.Drawing.Size(91, 33);
@@ -168,6 +171,7 @@
             // 
             // btn_Detail_StudentList
             // 
+            this.btn_Detail_StudentList.Image = ((System.Drawing.Image)(resources.GetObject("btn_Detail_StudentList.Image")));
             this.btn_Detail_StudentList.Location = new System.Drawing.Point(0, 162);
             this.btn_Detail_StudentList.Name = "btn_Detail_StudentList";
             this.btn_Detail_StudentList.Size = new System.Drawing.Size(91, 33);
@@ -175,10 +179,21 @@
             this.btn_Detail_StudentList.Text = "Detail";
             this.btn_Detail_StudentList.Click += new System.EventHandler(this.btn_Detail_StudentList_Click);
             // 
+            // btnAddStudent
+            // 
+            this.btnAddStudent.Image = ((System.Drawing.Image)(resources.GetObject("btnAddStudent.Image")));
+            this.btnAddStudent.Location = new System.Drawing.Point(194, 162);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(119, 33);
+            this.btnAddStudent.TabIndex = 12;
+            this.btnAddStudent.Text = "Add Student";
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
+            // 
             // uc_StudentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAddStudent);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Delete_StudentList);
@@ -207,5 +222,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.SimpleButton btn_Delete_StudentList;
         private DevExpress.XtraEditors.SimpleButton btn_Detail_StudentList;
+        private DevExpress.XtraEditors.SimpleButton btnAddStudent;
     }
 }

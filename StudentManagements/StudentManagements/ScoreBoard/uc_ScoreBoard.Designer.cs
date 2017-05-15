@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_ScoreBoard));
             this.btn_Delete_ScoreBoardList = new DevExpress.XtraEditors.SimpleButton();
             this.btn_LookUp_ScoreBoardList = new DevExpress.XtraEditors.SimpleButton();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -47,6 +48,7 @@
             // 
             // btn_Delete_ScoreBoardList
             // 
+            this.btn_Delete_ScoreBoardList.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete_ScoreBoardList.Image")));
             this.btn_Delete_ScoreBoardList.Location = new System.Drawing.Point(99, 165);
             this.btn_Delete_ScoreBoardList.Name = "btn_Delete_ScoreBoardList";
             this.btn_Delete_ScoreBoardList.Size = new System.Drawing.Size(91, 33);
@@ -56,6 +58,7 @@
             // 
             // btn_LookUp_ScoreBoardList
             // 
+            this.btn_LookUp_ScoreBoardList.Image = ((System.Drawing.Image)(resources.GetObject("btn_LookUp_ScoreBoardList.Image")));
             this.btn_LookUp_ScoreBoardList.Location = new System.Drawing.Point(2, 165);
             this.btn_LookUp_ScoreBoardList.Name = "btn_LookUp_ScoreBoardList";
             this.btn_LookUp_ScoreBoardList.Size = new System.Drawing.Size(91, 33);
@@ -99,6 +102,7 @@
             this.grd_ScoreBoardList_View.OptionsFind.AlwaysVisible = true;
             this.grd_ScoreBoardList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grd_ScoreBoardList_View.OptionsView.ShowGroupPanel = false;
+            this.grd_ScoreBoardList_View.DoubleClick += new System.EventHandler(this.grd_ScoreBoardList_View_DoubleClick);
             // 
             // gridColumn18
             // 

@@ -16,28 +16,23 @@ namespace StudentManagements.Report
         public uc_Report_Semester()
         {
             InitializeComponent();
-            cb_Semester.SelectedIndex = 0;
+            cbSemester.SelectedIndex = 0;
         }
 
-        private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
+        public DataTable tableData { get; set; }
+
+        private void cbSemester_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cb_Semester.SelectedIndex == 0)
+            if (cbSemester.SelectedIndex == 0)
             {
                 grd_Report.DataSource = null;
                 this.tableData = null;
                 return;
             }
-          
-            this.semester = int.Parse(cb_Semester.SelectedItem.ToString());
+
+            this.semester = int.Parse(cbSemester.SelectedItem.ToString());
             grd_Report.DataSource = BLL.ClassBLL.Instance.getReport_HOCKY(semester);
             this.tableData = (DataTable)grd_Report.DataSource;
         }
-
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            this.tableData = (DataTable)grd_Report.DataSource;
-        }
-
-        public DataTable tableData { get; set; }
     }
 }

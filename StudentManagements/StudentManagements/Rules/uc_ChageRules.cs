@@ -32,10 +32,9 @@ namespace StudentManagements.Rules
         }
         private void showRulesClass()
         {
-            lb_ClassList_RulesClass.Items.Clear();
-            foreach (DataRow row in ClassBLL.Instance.getRulesAllClass().Rows)
-                lb_ClassList_RulesClass.Items.Add(row[0]);
-            txt_TotalClass_RulesClass.Text = lb_ClassList_RulesClass.ItemCount.ToString();
+            grdClassList.DataSource = BLL.ClassBLL.Instance.getRulesAllClass();
+
+            txt_TotalClass_RulesClass.Text = grdClassList_View.RowCount.ToString();
             txt_MaxClassSize_RulesClass.Text = ClassBLL.Instance.getRulesClassSize().ToString();
             btn_AddClass_RulesClass.Enabled = false;
             txt_ClassName_RulesClass.Enabled = false;
@@ -44,10 +43,10 @@ namespace StudentManagements.Rules
         }
         private void showRulesSubjects()
         {
-            lb_SubjectList_RulesSubjects.Items.Clear();
-            foreach (DataRow row in ClassBLL.Instance.getAllSubject().Rows)
-                lb_SubjectList_RulesSubjects.Items.Add(row[1]);
-            txt_TotalSubjects_RulesSubjects.Text = lb_SubjectList_RulesSubjects.ItemCount.ToString();
+
+            grdSubjectList.DataSource = BLL.ClassBLL.Instance.getAllSubject();
+
+            txt_TotalSubjects_RulesSubjects.Text = grdSubjectList_View.RowCount.ToString();
             btn_AddSubjects_RulesSubjects.Enabled = false;
             btn_Delete_RulesSubjects.Enabled = false;
             btn_Edit_RulesSubjects.Text = "Edit";
@@ -123,7 +122,7 @@ namespace StudentManagements.Rules
                 {
                     MessageBox.Show("Class Size can't negative numbers");
                 }
-                if (!ClassBLL.Instance.updateRulesClassName(txt_ClassName_RulesClass.Text, lb_ClassList_RulesClass.SelectedItem.ToString()))
+                if (!ClassBLL.Instance.updateRulesClassName(txt_ClassName_RulesClass.Text, grdClassList_View.GetDataRow(grdClassList_View.GetSelectedRows().First())["TENLOP"].ToString()))
                     MessageBox.Show("The class name already exists");
                 showRulesClass();
             }
@@ -142,7 +141,7 @@ namespace StudentManagements.Rules
             {
                 btn_Edit_RulesSubjects.Text = "Edit";
 
-                if (ClassBLL.Instance.updateSubject(txt_SubjectName_RulesSubjets.Text, lb_SubjectList_RulesSubjects.SelectedItem.ToString()))
+                if (ClassBLL.Instance.updateSubject(txt_SubjectName_RulesSubjets.Text, grdSubjectList_View.GetDataRow(grdSubjectList_View.GetSelectedRows().First())["TENMH"].ToString()))
                 {
                     btn_AddSubjects_RulesSubjects.Enabled = false;
                     txt_SubjectName_RulesSubjets.Enabled = false;
@@ -155,17 +154,7 @@ namespace StudentManagements.Rules
                 }
             }
         }
-
-        private void lb_SubjectList_RulesSubjects_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_SubjectName_RulesSubjets.Text = (lb_SubjectList_RulesSubjects.SelectedItem != null) ? lb_SubjectList_RulesSubjects.SelectedItem.ToString() : "";
-        }
-
-        private void lb_ClassList_RulesClass_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txt_ClassName_RulesClass.Text = (lb_ClassList_RulesClass.SelectedItem != null) ? lb_ClassList_RulesClass.SelectedItem.ToString() : "";
-        }
-
+      
         private void btn_SaveAll_Click(object sender, EventArgs e)
         {
             btn_Edit_RulesStudentAge_Click(sender, e);
@@ -205,28 +194,47 @@ namespace StudentManagements.Rules
 
         private void btn_Delete_RulesClass_Click(object sender, EventArgs e)
         {
-            int index = lb_ClassList_RulesClass.SelectedIndex;
-            if (!ClassBLL.Instance.deleteRulesClass(lb_ClassList_RulesClass.SelectedItem.ToString()))
-                MessageBox.Show("Delete failure");
+            try
+            {
+                if (!ClassBLL.Instance.deleteRulesClass(grdClassList_View.GetDataRow(grdClassList_View.GetSelectedRows().First())["MAQD"].ToString()))
+                    MessageBox.Show("Delete failure");
 
-            lb_ClassList_RulesClass.Items.Clear();
-            foreach (DataRow row in ClassBLL.Instance.getRulesAllClass().Rows)
-                lb_ClassList_RulesClass.Items.Add(row[0]);
-            lb_ClassList_RulesClass.SelectedIndex = index;
+                grdClassList_View.DeleteRow(grdClassList_View.GetSelectedRows().First());
+
+                txt_TotalClass_RulesClass.Text = grdClassList_View.RowCount.ToString();
+            }
+            catch (Exception ex) { }
         }
 
         private void btn_Delete_RulesSubjects_Click(object sender, EventArgs e)
         {
-            int index = lb_SubjectList_RulesSubjects.SelectedIndex;
-            if (!ClassBLL.Instance.deleteSubject(lb_SubjectList_RulesSubjects.SelectedItem.ToString()))
-                MessageBox.Show("Delete failure");
+            try
+            {
+                string MAMH = grdSubjectList_View.GetDataRow(grdSubjectList_View.GetSelectedRows().First())["MAMH"].ToString();
+                if (!ClassBLL.Instance.deleteSubject(MAMH))
+                    MessageBox.Show("Delete failure");
 
-            lb_SubjectList_RulesSubjects.Items.Clear();
-            foreach (DataRow row in ClassBLL.Instance.getAllSubject().Rows)
-                lb_SubjectList_RulesSubjects.Items.Add(row[1]);
-            txt_TotalSubjects_RulesSubjects.Text = lb_SubjectList_RulesSubjects.ItemCount.ToString();
+                grdSubjectList_View.DeleteRow(grdSubjectList_View.GetSelectedRows().First());
 
-            lb_SubjectList_RulesSubjects.SelectedIndex = index;
+                txt_TotalSubjects_RulesSubjects.Text = grdSubjectList_View.RowCount.ToString();
+            }
+            catch (Exception ex) { }
+        }
+
+        private void grdSubjectList_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (grdSubjectList_View.RowCount > 0)
+                txt_SubjectName_RulesSubjets.Text = grdSubjectList_View.GetDataRow(grdSubjectList_View.GetSelectedRows().First())["TENMH"].ToString();
+            else
+                txt_SubjectName_RulesSubjets.Text = "";
+        }
+
+        private void grdClassList_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (grdClassList_View.RowCount > 0)
+                txt_ClassName_RulesClass.Text = grdClassList_View.GetDataRow(grdClassList_View.GetSelectedRows().First())["TENLOP"].ToString();
+            else
+                txt_ClassName_RulesClass.Text = "";
         }
     }
 }

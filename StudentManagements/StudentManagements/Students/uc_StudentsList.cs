@@ -63,5 +63,12 @@ namespace StudentManagements.Students
             btn_Detail_StudentList_Click(null, null);
         }
 
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            Students.uc_AddStudent uc_AddStudent = new Students.uc_AddStudent();
+            if (getFrameForDetail != null)
+                getFrameForDetail(uc_AddStudent);
+        }
+
     }
 }

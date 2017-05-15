@@ -23,41 +23,12 @@ namespace StudentManagements.Report
 
         private void uc_Report_Subject_Load(object sender, EventArgs e)
         {
-            DataTable table = ClassBLL.Instance.getAllSubject();
-            cb_SelectSubject.Items.Clear();
-            for (int i = 0; i < table.Rows.Count; i++)
-                cb_SelectSubject.Items.Add(table.Rows[i][1]);
-            cb_SelectSubject.Items.Add("--Select subject--");
-            cb_SelectSubject.SelectedItem = "--Select subject--";
-            cb_Semester.SelectedIndex = 0;
+            cbSubject.Properties.Items.Clear();
+            cbSubject.Properties.Items.Add("--Select subject--");
+            cbSubject.SelectedItem = "--Select subject--";
+            cbSubject.Properties.Items.AddRange(BLL.ClassBLL.Instance.getListSubjectName());
+            cbSemester.SelectedIndex = 0;
             this.semester = 1;
-
-        }
-
-        private void cb_SelectSubject_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
-            {
-                grd_Report.DataSource = null;
-                
-                return;
-            }
-
-            this.MaMH = ClassBLL.Instance.getSubjectsID(cb_SelectSubject.SelectedItem.ToString());
-            grd_Report.DataSource = ClassBLL.Instance.getReport_MONHOC(MaMH, semester);
-            this.subjectName = cb_SelectSubject.SelectedItem.ToString();
-            this.tableData = (DataTable)grd_Report.DataSource;
-        }
-
-        private void cb_Semester_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.semester = int.Parse(cb_Semester.SelectedItem.ToString());
-            if (cb_SelectSubject.SelectedItem.Equals("--Select subject--"))
-            {
-                grd_Report.DataSource = null;
-                return;
-            }
-            grd_Report.DataSource = ClassBLL.Instance.getReport_MONHOC(MaMH, semester);
         }
 
         private void grd_Report_View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -68,5 +39,31 @@ namespace StudentManagements.Report
         public DataTable tableData { get; set; }
 
         public string subjectName { get; set; }
+
+        private void cbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSubject.SelectedItem.Equals("--Select subject--"))
+            {
+                grd_Report.DataSource = null;
+
+                return;
+            }
+
+            this.MaMH = ClassBLL.Instance.getSubjectsID(cbSubject.SelectedItem.ToString());
+            grd_Report.DataSource = ClassBLL.Instance.getReport_MONHOC(MaMH, semester);
+            this.subjectName = cbSubject.SelectedItem.ToString();
+            this.tableData = (DataTable)grd_Report.DataSource;
+        }
+
+        private void cbSemester_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.semester = int.Parse(cbSemester.SelectedItem.ToString());
+            if (cbSubject.SelectedItem.Equals("--Select subject--"))
+            {
+                grd_Report.DataSource = null;
+                return;
+            }
+            grd_Report.DataSource = ClassBLL.Instance.getReport_MONHOC(MaMH, semester);
+        }
     }
 }

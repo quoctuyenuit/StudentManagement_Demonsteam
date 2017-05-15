@@ -45,5 +45,10 @@ namespace StudentManagements.ScoreBoard
             if (getFrameForLookUp != null)
                 getFrameForLookUp(uc);
         }
+
+        private void grd_ScoreBoardList_View_DoubleClick(object sender, EventArgs e)
+        {
+            btn_LookUp_ScoreBoardList_Click(null, null);
+        }
     }
 }

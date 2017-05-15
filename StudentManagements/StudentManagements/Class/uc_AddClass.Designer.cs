@@ -73,9 +73,9 @@
             this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel15.Controls.Add(this.grd_SubjectList_AddClass);
-            this.panel15.Location = new System.Drawing.Point(931, 216);
+            this.panel15.Location = new System.Drawing.Point(930, 205);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(258, 469);
+            this.panel15.Size = new System.Drawing.Size(258, 480);
             this.panel15.TabIndex = 18;
             // 
             // grd_SubjectList_AddClass
@@ -84,7 +84,7 @@
             this.grd_SubjectList_AddClass.Location = new System.Drawing.Point(0, 0);
             this.grd_SubjectList_AddClass.MainView = this.grd_SubjectList_AddClass_View;
             this.grd_SubjectList_AddClass.Name = "grd_SubjectList_AddClass";
-            this.grd_SubjectList_AddClass.Size = new System.Drawing.Size(258, 469);
+            this.grd_SubjectList_AddClass.Size = new System.Drawing.Size(258, 480);
             this.grd_SubjectList_AddClass.TabIndex = 0;
             this.grd_SubjectList_AddClass.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grd_SubjectList_AddClass_View});

@@ -30,16 +30,24 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grdSubjectList = new DevExpress.XtraGrid.GridControl();
+            this.grdSubjectList_View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btn_Delete_RulesSubjects = new DevExpress.XtraEditors.SimpleButton();
             this.txt_SubjectName_RulesSubjets = new DevExpress.XtraEditors.TextEdit();
             this.btn_AddSubjects_RulesSubjects = new DevExpress.XtraEditors.SimpleButton();
-            this.lb_SubjectList_RulesSubjects = new DevExpress.XtraEditors.ListBoxControl();
             this.btn_Edit_RulesSubjects = new DevExpress.XtraEditors.SimpleButton();
             this.txt_TotalSubjects_RulesSubjects = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grdClassList = new DevExpress.XtraGrid.GridControl();
+            this.grdClassList_View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btn_Delete_RulesClass = new DevExpress.XtraEditors.SimpleButton();
             this.txt_ClassName_RulesClass = new DevExpress.XtraEditors.TextEdit();
             this.btn_AddClass_RulesClass = new DevExpress.XtraEditors.SimpleButton();
-            this.lb_ClassList_RulesClass = new DevExpress.XtraEditors.ListBoxControl();
             this.btn_Edit_RulesClass = new DevExpress.XtraEditors.SimpleButton();
             this.txt_TotalClass_RulesClass = new DevExpress.XtraEditors.TextEdit();
             this.txt_MaxClassSize_RulesClass = new DevExpress.XtraEditors.TextEdit();
@@ -57,16 +65,16 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btn_SaveAll = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_Delete_RulesSubjects = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Delete_RulesClass = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSubjectList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSubjectList_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SubjectName_RulesSubjets.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lb_SubjectList_RulesSubjects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TotalSubjects_RulesSubjects.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClassList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClassList_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassName_RulesClass.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lb_ClassList_RulesClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TotalClass_RulesClass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaxClassSize_RulesClass.Properties)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -93,10 +101,10 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.grdSubjectList);
             this.groupBox3.Controls.Add(this.btn_Delete_RulesSubjects);
             this.groupBox3.Controls.Add(this.txt_SubjectName_RulesSubjets);
             this.groupBox3.Controls.Add(this.btn_AddSubjects_RulesSubjects);
-            this.groupBox3.Controls.Add(this.lb_SubjectList_RulesSubjects);
             this.groupBox3.Controls.Add(this.btn_Edit_RulesSubjects);
             this.groupBox3.Controls.Add(this.txt_TotalSubjects_RulesSubjects);
             this.groupBox3.Controls.Add(this.labelControl5);
@@ -108,32 +116,72 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rules about Subjects";
             // 
+            // grdSubjectList
+            // 
+            this.grdSubjectList.Location = new System.Drawing.Point(6, 25);
+            this.grdSubjectList.MainView = this.grdSubjectList_View;
+            this.grdSubjectList.Name = "grdSubjectList";
+            this.grdSubjectList.Size = new System.Drawing.Size(167, 228);
+            this.grdSubjectList.TabIndex = 9;
+            this.grdSubjectList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdSubjectList_View});
+            // 
+            // grdSubjectList_View
+            // 
+            this.grdSubjectList_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.grdSubjectList_View.GridControl = this.grdSubjectList;
+            this.grdSubjectList_View.Name = "grdSubjectList_View";
+            this.grdSubjectList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdSubjectList_View.OptionsView.ShowColumnHeaders = false;
+            this.grdSubjectList_View.OptionsView.ShowDetailButtons = false;
+            this.grdSubjectList_View.OptionsView.ShowGroupPanel = false;
+            this.grdSubjectList_View.OptionsView.ShowIndicator = false;
+            this.grdSubjectList_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdSubjectList_View_FocusedRowChanged);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.FieldName = "MAMH";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Tên MH";
+            this.gridColumn2.FieldName = "TENMH";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
+            // 
+            // btn_Delete_RulesSubjects
+            // 
+            this.btn_Delete_RulesSubjects.Location = new System.Drawing.Point(336, 92);
+            this.btn_Delete_RulesSubjects.Name = "btn_Delete_RulesSubjects";
+            this.btn_Delete_RulesSubjects.Size = new System.Drawing.Size(91, 31);
+            this.btn_Delete_RulesSubjects.TabIndex = 8;
+            this.btn_Delete_RulesSubjects.Text = "Delete";
+            this.btn_Delete_RulesSubjects.Click += new System.EventHandler(this.btn_Delete_RulesSubjects_Click);
+            // 
             // txt_SubjectName_RulesSubjets
             // 
             this.txt_SubjectName_RulesSubjets.Enabled = false;
             this.txt_SubjectName_RulesSubjets.Location = new System.Drawing.Point(188, 58);
             this.txt_SubjectName_RulesSubjets.Name = "txt_SubjectName_RulesSubjets";
-            this.txt_SubjectName_RulesSubjets.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_SubjectName_RulesSubjets.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_SubjectName_RulesSubjets.Properties.Appearance.Options.UseFont = true;
-            this.txt_SubjectName_RulesSubjets.Size = new System.Drawing.Size(239, 28);
+            this.txt_SubjectName_RulesSubjets.Size = new System.Drawing.Size(239, 24);
             this.txt_SubjectName_RulesSubjets.TabIndex = 7;
             // 
             // btn_AddSubjects_RulesSubjects
             // 
-            this.btn_AddSubjects_RulesSubjects.Location = new System.Drawing.Point(239, 220);
+            this.btn_AddSubjects_RulesSubjects.Location = new System.Drawing.Point(233, 220);
             this.btn_AddSubjects_RulesSubjects.Name = "btn_AddSubjects_RulesSubjects";
-            this.btn_AddSubjects_RulesSubjects.Size = new System.Drawing.Size(91, 33);
+            this.btn_AddSubjects_RulesSubjects.Size = new System.Drawing.Size(97, 33);
             this.btn_AddSubjects_RulesSubjects.TabIndex = 6;
             this.btn_AddSubjects_RulesSubjects.Text = "Add Subjects";
             this.btn_AddSubjects_RulesSubjects.Click += new System.EventHandler(this.btn_AddSubjects_RulesSubjects_Click);
-            // 
-            // lb_SubjectList_RulesSubjects
-            // 
-            this.lb_SubjectList_RulesSubjects.Location = new System.Drawing.Point(21, 27);
-            this.lb_SubjectList_RulesSubjects.Name = "lb_SubjectList_RulesSubjects";
-            this.lb_SubjectList_RulesSubjects.Size = new System.Drawing.Size(145, 226);
-            this.lb_SubjectList_RulesSubjects.TabIndex = 5;
-            this.lb_SubjectList_RulesSubjects.SelectedIndexChanged += new System.EventHandler(this.lb_SubjectList_RulesSubjects_SelectedIndexChanged);
             // 
             // btn_Edit_RulesSubjects
             // 
@@ -149,9 +197,9 @@
             this.txt_TotalSubjects_RulesSubjects.Enabled = false;
             this.txt_TotalSubjects_RulesSubjects.Location = new System.Drawing.Point(309, 22);
             this.txt_TotalSubjects_RulesSubjects.Name = "txt_TotalSubjects_RulesSubjects";
-            this.txt_TotalSubjects_RulesSubjects.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_TotalSubjects_RulesSubjects.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_TotalSubjects_RulesSubjects.Properties.Appearance.Options.UseFont = true;
-            this.txt_TotalSubjects_RulesSubjects.Size = new System.Drawing.Size(118, 28);
+            this.txt_TotalSubjects_RulesSubjects.Size = new System.Drawing.Size(118, 24);
             this.txt_TotalSubjects_RulesSubjects.TabIndex = 2;
             // 
             // labelControl5
@@ -166,10 +214,10 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.grdClassList);
             this.groupBox2.Controls.Add(this.btn_Delete_RulesClass);
             this.groupBox2.Controls.Add(this.txt_ClassName_RulesClass);
             this.groupBox2.Controls.Add(this.btn_AddClass_RulesClass);
-            this.groupBox2.Controls.Add(this.lb_ClassList_RulesClass);
             this.groupBox2.Controls.Add(this.btn_Edit_RulesClass);
             this.groupBox2.Controls.Add(this.txt_TotalClass_RulesClass);
             this.groupBox2.Controls.Add(this.txt_MaxClassSize_RulesClass);
@@ -183,14 +231,62 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rules about Class";
             // 
+            // grdClassList
+            // 
+            this.grdClassList.Location = new System.Drawing.Point(6, 18);
+            this.grdClassList.MainView = this.grdClassList_View;
+            this.grdClassList.Name = "grdClassList";
+            this.grdClassList.Size = new System.Drawing.Size(163, 235);
+            this.grdClassList.TabIndex = 9;
+            this.grdClassList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdClassList_View});
+            // 
+            // grdClassList_View
+            // 
+            this.grdClassList_View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4});
+            this.grdClassList_View.GridControl = this.grdClassList;
+            this.grdClassList_View.Name = "grdClassList_View";
+            this.grdClassList_View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdClassList_View.OptionsView.ShowColumnHeaders = false;
+            this.grdClassList_View.OptionsView.ShowGroupPanel = false;
+            this.grdClassList_View.OptionsView.ShowIndicator = false;
+            this.grdClassList_View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdClassList_View_FocusedRowChanged);
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "gridColumn1";
+            this.gridColumn3.FieldName = "MAQD";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Tên MH";
+            this.gridColumn4.FieldName = "TENLOP";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // btn_Delete_RulesClass
+            // 
+            this.btn_Delete_RulesClass.Location = new System.Drawing.Point(332, 140);
+            this.btn_Delete_RulesClass.Name = "btn_Delete_RulesClass";
+            this.btn_Delete_RulesClass.Size = new System.Drawing.Size(91, 31);
+            this.btn_Delete_RulesClass.TabIndex = 8;
+            this.btn_Delete_RulesClass.Text = "Delete";
+            this.btn_Delete_RulesClass.Click += new System.EventHandler(this.btn_Delete_RulesClass_Click);
+            // 
             // txt_ClassName_RulesClass
             // 
             this.txt_ClassName_RulesClass.Enabled = false;
             this.txt_ClassName_RulesClass.Location = new System.Drawing.Point(184, 106);
             this.txt_ClassName_RulesClass.Name = "txt_ClassName_RulesClass";
-            this.txt_ClassName_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_ClassName_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_ClassName_RulesClass.Properties.Appearance.Options.UseFont = true;
-            this.txt_ClassName_RulesClass.Size = new System.Drawing.Size(239, 28);
+            this.txt_ClassName_RulesClass.Size = new System.Drawing.Size(239, 24);
             this.txt_ClassName_RulesClass.TabIndex = 7;
             // 
             // btn_AddClass_RulesClass
@@ -201,14 +297,6 @@
             this.btn_AddClass_RulesClass.TabIndex = 6;
             this.btn_AddClass_RulesClass.Text = "Add Class";
             this.btn_AddClass_RulesClass.Click += new System.EventHandler(this.btn_AddClass_RulesClass_Click);
-            // 
-            // lb_ClassList_RulesClass
-            // 
-            this.lb_ClassList_RulesClass.Location = new System.Drawing.Point(21, 27);
-            this.lb_ClassList_RulesClass.Name = "lb_ClassList_RulesClass";
-            this.lb_ClassList_RulesClass.Size = new System.Drawing.Size(145, 226);
-            this.lb_ClassList_RulesClass.TabIndex = 5;
-            this.lb_ClassList_RulesClass.SelectedIndexChanged += new System.EventHandler(this.lb_ClassList_RulesClass_SelectedIndexChanged);
             // 
             // btn_Edit_RulesClass
             // 
@@ -224,9 +312,9 @@
             this.txt_TotalClass_RulesClass.Enabled = false;
             this.txt_TotalClass_RulesClass.Location = new System.Drawing.Point(305, 24);
             this.txt_TotalClass_RulesClass.Name = "txt_TotalClass_RulesClass";
-            this.txt_TotalClass_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_TotalClass_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_TotalClass_RulesClass.Properties.Appearance.Options.UseFont = true;
-            this.txt_TotalClass_RulesClass.Size = new System.Drawing.Size(118, 28);
+            this.txt_TotalClass_RulesClass.Size = new System.Drawing.Size(118, 24);
             this.txt_TotalClass_RulesClass.TabIndex = 2;
             // 
             // txt_MaxClassSize_RulesClass
@@ -234,9 +322,9 @@
             this.txt_MaxClassSize_RulesClass.Enabled = false;
             this.txt_MaxClassSize_RulesClass.Location = new System.Drawing.Point(305, 71);
             this.txt_MaxClassSize_RulesClass.Name = "txt_MaxClassSize_RulesClass";
-            this.txt_MaxClassSize_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txt_MaxClassSize_RulesClass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_MaxClassSize_RulesClass.Properties.Appearance.Options.UseFont = true;
-            this.txt_MaxClassSize_RulesClass.Size = new System.Drawing.Size(118, 28);
+            this.txt_MaxClassSize_RulesClass.Size = new System.Drawing.Size(118, 24);
             this.txt_MaxClassSize_RulesClass.TabIndex = 2;
             // 
             // labelControl3
@@ -383,24 +471,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btn_Delete_RulesSubjects
-            // 
-            this.btn_Delete_RulesSubjects.Location = new System.Drawing.Point(336, 92);
-            this.btn_Delete_RulesSubjects.Name = "btn_Delete_RulesSubjects";
-            this.btn_Delete_RulesSubjects.Size = new System.Drawing.Size(91, 31);
-            this.btn_Delete_RulesSubjects.TabIndex = 8;
-            this.btn_Delete_RulesSubjects.Text = "Delete";
-            this.btn_Delete_RulesSubjects.Click += new System.EventHandler(this.btn_Delete_RulesSubjects_Click);
-            // 
-            // btn_Delete_RulesClass
-            // 
-            this.btn_Delete_RulesClass.Location = new System.Drawing.Point(332, 140);
-            this.btn_Delete_RulesClass.Name = "btn_Delete_RulesClass";
-            this.btn_Delete_RulesClass.Size = new System.Drawing.Size(91, 31);
-            this.btn_Delete_RulesClass.TabIndex = 8;
-            this.btn_Delete_RulesClass.Text = "Delete";
-            this.btn_Delete_RulesClass.Click += new System.EventHandler(this.btn_Delete_RulesClass_Click);
-            // 
             // uc_ChageRules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -414,13 +484,15 @@
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSubjectList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSubjectList_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SubjectName_RulesSubjets.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lb_SubjectList_RulesSubjects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TotalSubjects_RulesSubjects.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClassList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClassList_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ClassName_RulesClass.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lb_ClassList_RulesClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_TotalClass_RulesClass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_MaxClassSize_RulesClass.Properties)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -441,13 +513,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox3;
         private DevExpress.XtraEditors.SimpleButton btn_AddSubjects_RulesSubjects;
-        private DevExpress.XtraEditors.ListBoxControl lb_SubjectList_RulesSubjects;
         private DevExpress.XtraEditors.SimpleButton btn_Edit_RulesSubjects;
         private DevExpress.XtraEditors.TextEdit txt_TotalSubjects_RulesSubjects;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.GroupBox groupBox2;
         private DevExpress.XtraEditors.SimpleButton btn_AddClass_RulesClass;
-        private DevExpress.XtraEditors.ListBoxControl lb_ClassList_RulesClass;
         private DevExpress.XtraEditors.SimpleButton btn_Edit_RulesClass;
         private DevExpress.XtraEditors.TextEdit txt_TotalClass_RulesClass;
         private DevExpress.XtraEditors.TextEdit txt_MaxClassSize_RulesClass;
@@ -468,5 +538,13 @@
         private DevExpress.XtraEditors.SimpleButton btn_SaveAll;
         private DevExpress.XtraEditors.SimpleButton btn_Delete_RulesSubjects;
         private DevExpress.XtraEditors.SimpleButton btn_Delete_RulesClass;
+        private DevExpress.XtraGrid.GridControl grdSubjectList;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdSubjectList_View;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.GridControl grdClassList;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdClassList_View;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

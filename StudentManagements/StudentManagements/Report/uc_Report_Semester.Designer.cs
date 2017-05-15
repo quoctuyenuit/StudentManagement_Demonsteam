@@ -36,11 +36,12 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cb_Semester = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbSemester = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,7 +78,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // gridColumn1
             // 
@@ -125,21 +125,6 @@
             this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 271;
             // 
-            // cb_Semester
-            // 
-            this.cb_Semester.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cb_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Semester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_Semester.Items.AddRange(new object[] {
-            "--Select--",
-            "1",
-            "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(581, 6);
-            this.cb_Semester.Name = "cb_Semester";
-            this.cb_Semester.Size = new System.Drawing.Size(104, 26);
-            this.cb_Semester.TabIndex = 30;
-            this.cb_Semester.SelectedIndexChanged += new System.EventHandler(this.cb_Semester_SelectedIndexChanged);
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -150,11 +135,29 @@
             this.label2.TabIndex = 29;
             this.label2.Text = "Semester:";
             // 
+            // cbSemester
+            // 
+            this.cbSemester.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbSemester.Location = new System.Drawing.Point(581, 6);
+            this.cbSemester.Name = "cbSemester";
+            this.cbSemester.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSemester.Properties.Appearance.Options.UseFont = true;
+            this.cbSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSemester.Properties.Items.AddRange(new object[] {
+            "->Select<-",
+            "1",
+            "2"});
+            this.cbSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSemester.Size = new System.Drawing.Size(123, 24);
+            this.cbSemester.TabIndex = 31;
+            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
+            // 
             // uc_Report_Semester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cb_Semester);
+            this.Controls.Add(this.cbSemester);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Name = "uc_Report_Semester";
@@ -162,6 +165,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,7 +181,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private System.Windows.Forms.ComboBox cb_Semester;
         private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSemester;
     }
 }

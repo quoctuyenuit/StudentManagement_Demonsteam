@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_LookUpStudent));
             this.panel1 = new System.Windows.Forms.Panel();
             this.grd_StudentList = new DevExpress.XtraGrid.GridControl();
             this.grd_StudentList_View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -145,6 +146,7 @@
             // 
             // btn_Detail
             // 
+            this.btn_Detail.Image = ((System.Drawing.Image)(resources.GetObject("btn_Detail.Image")));
             this.btn_Detail.Location = new System.Drawing.Point(2, 166);
             this.btn_Detail.Name = "btn_Detail";
             this.btn_Detail.Size = new System.Drawing.Size(91, 33);
@@ -154,6 +156,7 @@
             // 
             // btn_Delete
             // 
+            this.btn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete.Image")));
             this.btn_Delete.Location = new System.Drawing.Point(99, 166);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(91, 33);

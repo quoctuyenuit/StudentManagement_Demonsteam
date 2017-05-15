@@ -807,9 +807,9 @@ namespace StudentManagements.DAL
             return check;
         }
 
-        public bool deleteSubject(string TenLop)
+        public bool deleteSubject(string MaMH)
         {
-            string query = "DELETE MONHOC WHERE TENMH = @TenLop";
+            string query = "prd_Delete_Subject";
             bool check = false;
             try
             {
@@ -818,8 +818,8 @@ namespace StudentManagements.DAL
                 command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandText = query;
-                command.CommandType = CommandType.Text;
-                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MaMH", SqlDbType.NVarChar).Value = MaMH;
                 command.ExecuteNonQuery();
                 check = true;
             }
@@ -1227,7 +1227,7 @@ namespace StudentManagements.DAL
 
         public DataTable getRulesAllClass()
         {
-            string query = "SELECT TENLOP FROM QD2_LOP";
+            string query = "SELECT MAQD, TENLOP FROM QD2_LOP";
             try
             {
                 connection = dataServices.getConnect();
@@ -1351,10 +1351,10 @@ namespace StudentManagements.DAL
             return check;
         }
 
-        public bool deleteRulesClass(string TenLop)
+        public bool deleteRulesClass(string MaLop)
         {
             bool check = false;
-            string query = "DELETE QD2_LOP WHERE TenLop = @TenLop";
+            string query = "DELETE QD2_LOP WHERE MAQD = @MaLop";
             try
             {
                 connection = dataServices.getConnect();
@@ -1363,7 +1363,7 @@ namespace StudentManagements.DAL
                 command.Connection = connection;
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
-                command.Parameters.Add("@TenLop", SqlDbType.NVarChar).Value = TenLop;
+                command.Parameters.Add("@MaLop", SqlDbType.NVarChar).Value = MaLop;
                 command.ExecuteNonQuery();
                 check = true;
             }

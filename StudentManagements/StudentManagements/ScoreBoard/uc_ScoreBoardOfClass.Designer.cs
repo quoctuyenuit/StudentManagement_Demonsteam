@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_ScoreBoardOfClass));
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -210,6 +211,7 @@
             // 
             // btn_Save
             // 
+            this.btn_Save.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save.Image")));
             this.btn_Save.Location = new System.Drawing.Point(0, 166);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(91, 33);
@@ -219,6 +221,7 @@
             // 
             // btn_Delete
             // 
+            this.btn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete.Image")));
             this.btn_Delete.Location = new System.Drawing.Point(97, 166);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(91, 33);

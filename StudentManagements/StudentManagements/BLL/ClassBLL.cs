@@ -286,6 +286,14 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.getAllSubject();
         }
 
+        public List<object> getListSubjectName()
+        {
+            List<object> list = new List<object>();
+            foreach (DataRow row in BLL.ClassBLL.Instance.getAllSubject().Rows)
+                list.Add(row["TENMH"]);
+            return list;
+        }
+
         public bool deleteSubjectInClass(int MAMH, int MALOP)
         {
             return ClassDAL.Instance.deleteSubjectInClass(MAMH, MALOP);
@@ -293,6 +301,9 @@ namespace StudentManagements.BLL
 
         public bool insertSubject(string TenMH)
         {
+            foreach (DataRow row in getAllSubject().Rows)
+                if (TenMH.Equals(row["TENMH"].ToString()))
+                    return false;
             return ClassDAL.Instance.insertSubject(TenMH);
         }
 
@@ -301,9 +312,9 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.updateSubject(TenMH1, TenMH2);
         }
 
-        public bool deleteSubject(string TenLop)
+        public bool deleteSubject(string MaMH)
         {
-            return ClassDAL.Instance.deleteSubject(TenLop);
+            return ClassDAL.Instance.deleteSubject(MaMH);
         }
         //===================================================================
         //ScoreBoard
@@ -380,6 +391,9 @@ namespace StudentManagements.BLL
 
         public bool insertRulesClass(string TenLop)
         {
+            foreach (DataRow row in getRulesAllClass().Rows)
+                if (TenLop.Equals(row["TENLOP"].ToString()))
+                    return false;
             return ClassDAL.Instance.insertRulesClass(TenLop);
         }
 
@@ -393,9 +407,9 @@ namespace StudentManagements.BLL
             return ClassDAL.Instance.updateRulesClassSize(classSize);
         }
 
-        public bool deleteRulesClass(string TenLop)
+        public bool deleteRulesClass(string MaLop)
         {
-            return ClassDAL.Instance.deleteRulesClass(TenLop);
+            return ClassDAL.Instance.deleteRulesClass(MaLop);
         }
 
         //==========================================================================================================

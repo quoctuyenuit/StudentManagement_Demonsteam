@@ -114,7 +114,7 @@ namespace StudentManagements.ScoreBoard
                 try
                 {
                     ClassBLL.Instance.deleteScoreBoardCell(int.Parse(ClassBLL.Instance.getTextFromGridControl(grd_ScoreBoard_View, "MAKQ")));
-                    grd_ScoreBoard_View.DeleteSelectedRows();
+                    grd_ScoreBoard.DataSource = ClassBLL.Instance.getScoreBoardAccordingRequire(MaLop, MaMH, semester);
                 }
                 catch(Exception ex)
                 { }

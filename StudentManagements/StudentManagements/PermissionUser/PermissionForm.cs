@@ -32,7 +32,7 @@ namespace StudentManagements.PermissionUser
             grd_User.DataSource = BLL.ClassBLL.Instance.getAllUser();
             
             //Lấy danh sách các phân quyền cho vào Combobox
-            cb_Permission.DataSource = BLL.ClassBLL.Instance.getPermissionName();
+            cbPermission.Properties.Items.AddRange(BLL.ClassBLL.Instance.getPermissionName());
 
             process();
 
@@ -65,7 +65,7 @@ namespace StudentManagements.PermissionUser
 
                 btn_Delete.Hide();
 
-                cb_Permission.Enabled = false;
+                cbPermission.Enabled = false;
 
                 //Cho người dùng tự xem và sửa được mật khẩu của mình
                 if (user.TenDangNhap.Equals(row["TENDANGNHAP"].ToString()))
@@ -101,7 +101,7 @@ namespace StudentManagements.PermissionUser
 
                 btn_Delete.Show();
 
-                cb_Permission.Enabled = true;
+                cbPermission.Enabled = true;
 
                 labelEmail.Show();
 
@@ -116,7 +116,7 @@ namespace StudentManagements.PermissionUser
 
             txt_UserName.Text = row["TENDANGNHAP"].ToString();
 
-            cb_Permission.SelectedItem = row["TENPQ"].ToString();
+            cbPermission.SelectedItem = row["TENPQ"].ToString();
 
             txt_Email.Text = row["EMAIL"].ToString();
 
@@ -144,9 +144,9 @@ namespace StudentManagements.PermissionUser
             }
 
 
-            Entities.NGUOIDUNG _user = new Entities.NGUOIDUNG(int.Parse(grd_User_View.GetDataRow(grd_User_View.GetSelectedRows().First())["MAND"].ToString()), txt_Name.Text, txt_UserName.Text, txt_Password.Text, cb_Permission.Text, txt_Email.Text);
+            Entities.NGUOIDUNG _user = new Entities.NGUOIDUNG(int.Parse(grd_User_View.GetDataRow(grd_User_View.GetSelectedRows().First())["MAND"].ToString()), txt_Name.Text, txt_UserName.Text, txt_Password.Text, cbPermission.Text, txt_Email.Text);
 
-            if (!cb_Permission.Text.Equals(row["TENPQ"].ToString()) && cb_Permission.Text.Equals("Admin") && BLL.ClassBLL.Instance.coutAdmin() == 1)
+            if (!cbPermission.Text.Equals(row["TENPQ"].ToString()) && cbPermission.Text.Equals("Admin") && BLL.ClassBLL.Instance.coutAdmin() == 1)
             {
                 MessageBox.Show("Only one administrator is allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 process();
@@ -166,7 +166,9 @@ namespace StudentManagements.PermissionUser
 
             grd_User.DataSource = BLL.ClassBLL.Instance.getAllUser();
 
-            cb_Permission.DataSource = BLL.ClassBLL.Instance.getPermissionName();
+            cbPermission.Properties.Items.Clear();
+
+            cbPermission.Properties.Items.AddRange(BLL.ClassBLL.Instance.getPermissionName());
 
             process();
 
@@ -179,7 +181,7 @@ namespace StudentManagements.PermissionUser
             BLL.ClassBLL.Instance.formatControls(panel1);
             txt_Name.Enabled = true;
             txt_UserName.Enabled = true;
-            cb_Permission.Enabled = true;
+            cbPermission.Enabled = true;
             txt_Password.Enabled = true;
             txt_Name.Focus();
             isNew = true;

@@ -51,5 +51,13 @@ namespace StudentManagements.Class
         {
             btn_Detail_ClassList_Click(null, null);
         }
+
+        private void btnAddClass_Click(object sender, EventArgs e)
+        {
+            Class.uc_AddClass uc_AddClass = new Class.uc_AddClass();
+            uc_AddClass.Dock = DockStyle.Fill;
+            if (getFrameForDetail != null)
+                getFrameForDetail(uc_AddClass);
+        }
     }
 }

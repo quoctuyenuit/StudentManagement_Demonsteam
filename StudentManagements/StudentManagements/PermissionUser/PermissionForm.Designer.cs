@@ -46,12 +46,12 @@
             this.txt_Password = new DevExpress.XtraEditors.TextEdit();
             this.labelEmail = new DevExpress.XtraEditors.LabelControl();
             this.labelPassword = new DevExpress.XtraEditors.LabelControl();
-            this.cb_Permission = new System.Windows.Forms.ComboBox();
             this.txt_UserName = new DevExpress.XtraEditors.TextEdit();
             this.txt_Name = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cbPermission = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Name.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -197,11 +198,11 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbPermission);
             this.panel1.Controls.Add(this.txt_Email);
             this.panel1.Controls.Add(this.txt_Password);
             this.panel1.Controls.Add(this.labelEmail);
             this.panel1.Controls.Add(this.labelPassword);
-            this.panel1.Controls.Add(this.cb_Permission);
             this.panel1.Controls.Add(this.txt_UserName);
             this.panel1.Controls.Add(this.txt_Name);
             this.panel1.Controls.Add(this.labelControl3);
@@ -248,15 +249,6 @@
             this.labelPassword.TabIndex = 3;
             this.labelPassword.Text = "Mật Khẩu:";
             // 
-            // cb_Permission
-            // 
-            this.cb_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Permission.FormattingEnabled = true;
-            this.cb_Permission.Location = new System.Drawing.Point(177, 72);
-            this.cb_Permission.Name = "cb_Permission";
-            this.cb_Permission.Size = new System.Drawing.Size(236, 24);
-            this.cb_Permission.TabIndex = 1;
-            // 
             // txt_UserName
             // 
             this.txt_UserName.Location = new System.Drawing.Point(177, 108);
@@ -302,6 +294,18 @@
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Tên đăng nhập:";
             // 
+            // cbPermission
+            // 
+            this.cbPermission.Location = new System.Drawing.Point(177, 72);
+            this.cbPermission.Name = "cbPermission";
+            this.cbPermission.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbPermission.Properties.Appearance.Options.UseFont = true;
+            this.cbPermission.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbPermission.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbPermission.Size = new System.Drawing.Size(236, 24);
+            this.cbPermission.TabIndex = 5;
+            // 
             // PermissionForm
             // 
             this.AcceptButton = this.btn_Save;
@@ -327,6 +331,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Name.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -347,7 +352,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private System.Windows.Forms.ComboBox cb_Permission;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.TextEdit txt_Password;
         private DevExpress.XtraEditors.LabelControl labelPassword;
@@ -356,6 +360,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdColumn_Email;
         private DevExpress.XtraEditors.TextEdit txt_Email;
         private DevExpress.XtraEditors.LabelControl labelEmail;
+        private DevExpress.XtraEditors.ComboBoxEdit cbPermission;
 
     }
 }

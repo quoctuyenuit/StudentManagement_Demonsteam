@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_SelectSubject = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grd_Report = new DevExpress.XtraGrid.GridControl();
             this.grd_Report_View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -39,10 +38,13 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.cb_Semester = new System.Windows.Forms.ComboBox();
+            this.cbSubject = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbSemester = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report_View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSubject.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,21 +56,6 @@
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Subject:";
-            // 
-            // cb_SelectSubject
-            // 
-            this.cb_SelectSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cb_SelectSubject.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cb_SelectSubject.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_SelectSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_SelectSubject.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.cb_SelectSubject.FormattingEnabled = true;
-            this.cb_SelectSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cb_SelectSubject.Location = new System.Drawing.Point(452, 5);
-            this.cb_SelectSubject.Name = "cb_SelectSubject";
-            this.cb_SelectSubject.Size = new System.Drawing.Size(162, 26);
-            this.cb_SelectSubject.TabIndex = 26;
-            this.cb_SelectSubject.SelectedIndexChanged += new System.EventHandler(this.cb_SelectSubject_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -162,27 +149,44 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Semester:";
             // 
-            // cb_Semester
+            // cbSubject
             // 
-            this.cb_Semester.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cb_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Semester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_Semester.Items.AddRange(new object[] {
+            this.cbSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbSubject.Location = new System.Drawing.Point(452, 5);
+            this.cbSubject.Name = "cbSubject";
+            this.cbSubject.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSubject.Properties.Appearance.Options.UseFont = true;
+            this.cbSubject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSubject.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSubject.Size = new System.Drawing.Size(162, 24);
+            this.cbSubject.TabIndex = 29;
+            this.cbSubject.SelectedIndexChanged += new System.EventHandler(this.cbSubject_SelectedIndexChanged);
+            // 
+            // cbSemester
+            // 
+            this.cbSemester.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbSemester.Location = new System.Drawing.Point(698, 5);
+            this.cbSemester.Name = "cbSemester";
+            this.cbSemester.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbSemester.Properties.Appearance.Options.UseFont = true;
+            this.cbSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSemester.Properties.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_Semester.Location = new System.Drawing.Point(698, 5);
-            this.cb_Semester.Name = "cb_Semester";
-            this.cb_Semester.Size = new System.Drawing.Size(104, 26);
-            this.cb_Semester.TabIndex = 28;
-            this.cb_Semester.SelectedIndexChanged += new System.EventHandler(this.cb_Semester_SelectedIndexChanged);
+            this.cbSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSemester.Size = new System.Drawing.Size(127, 24);
+            this.cbSemester.TabIndex = 29;
+            this.cbSemester.SelectedIndexChanged += new System.EventHandler(this.cbSemester_SelectedIndexChanged);
             // 
             // uc_Report_Subject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cb_Semester);
+            this.Controls.Add(this.cbSemester);
+            this.Controls.Add(this.cbSubject);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cb_SelectSubject);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "uc_Report_Subject";
@@ -191,6 +195,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Report_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSubject.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSemester.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +205,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cb_SelectSubject;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl grd_Report;
         private DevExpress.XtraGrid.Views.Grid.GridView grd_Report_View;
@@ -209,7 +214,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private System.Windows.Forms.ComboBox cb_Semester;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSubject;
+        private DevExpress.XtraEditors.ComboBoxEdit cbSemester;
 
     }
 }
