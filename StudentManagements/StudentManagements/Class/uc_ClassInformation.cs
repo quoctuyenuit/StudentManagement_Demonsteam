@@ -70,6 +70,7 @@ namespace StudentManagements.Class
             if (!BLL.ClassBLL.Instance.checkSchoolYear(txt_Year_ClassInformation_Edit.Text))
             {
                 MessageBox.Show("The School year is not valid!, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_Year_ClassInformation_Edit.Text = txt_Year_ClassInformation.Text;
                 this.txt_Year_ClassInformation_Edit.Focus();
                 return;
             }
@@ -83,6 +84,8 @@ namespace StudentManagements.Class
                 if (!ClassBLL.Instance.checkExistenceClass(lop))
                 {
                     MessageBox.Show("Class already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_ClassName_ClassInformation_Edit.Text = txt_ClassName_ClassInformation.Text;
+                    txt_Year_ClassInformation_Edit.Text = txt_Year_ClassInformation.Text;
                     return;
                 }
             }

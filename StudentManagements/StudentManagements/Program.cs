@@ -20,7 +20,7 @@ namespace StudentManagements
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new Form1("quoctuyen97"));
+            Application.Run(new Login.LoginForm());
         }
     }
 }

@@ -157,7 +157,16 @@ namespace StudentManagements.PermissionUser
             if (!isNew)
                 BLL.ClassBLL.Instance.updateUserInformation(_user);
             else
+            {
+                if (cbPermission.Text.Equals("Admin") && BLL.ClassBLL.Instance.coutAdmin() == 1)
+                {
+                    MessageBox.Show("Only one administrator is allowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    process();
+                    return;
+                }
+
                 BLL.ClassBLL.Instance.insertUser(_user);
+            }
 
             if (BLL.ClassBLL.Instance.coutAdmin() == 0)//Nếu chưa có ai là admin thì vẫn cho phép người này có quyền admin để thay đổi người khác làm admin
                 this.user.MaPQ = 1;

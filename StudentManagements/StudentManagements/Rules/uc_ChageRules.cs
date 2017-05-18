@@ -70,6 +70,13 @@ namespace StudentManagements.Rules
             }
             else
             {
+                if (string.IsNullOrEmpty(txt_MinAge_RulesStudentAge.Text) || string.IsNullOrEmpty(txt_MaxAge_RulesStudentAge.Text))
+                {
+                    MessageBox.Show("The Data is Null", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showRulesStudentAge();
+                    return;
+                }
+
                 btn_Edit_RulesStudentAge.Text = "Edit";
                 if (!ClassBLL.Instance.updateRulesStudentAge(int.Parse(txt_MinAge_RulesStudentAge.Text), int.Parse(txt_MaxAge_RulesStudentAge.Text)))
                     MessageBox.Show("Error: MinAge > MaxAge");
@@ -90,6 +97,12 @@ namespace StudentManagements.Rules
             }
             else
             {
+                if (string.IsNullOrEmpty(txt_MinScore_RulesScore.Text))
+                {
+                    MessageBox.Show("The Data is Null", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showRulesScore();
+                    return;
+                }
                 btn_Edit_RulesScore.Text = "Edit";
                 if (!ClassBLL.Instance.updateRulesScore(float.Parse(txt_MinScore_RulesScore.Text)))
                     MessageBox.Show("Error: 0< Score < 10 ");
@@ -111,7 +124,6 @@ namespace StudentManagements.Rules
             }
             else
             {
-                btn_Edit_RulesClass.Text = "Edit";
                 if (ClassBLL.Instance.updateRulesClassSize(int.Parse(txt_MaxClassSize_RulesClass.Text)))
                 {
                     txt_MaxClassSize_RulesClass.Enabled = false;
@@ -122,8 +134,15 @@ namespace StudentManagements.Rules
                 {
                     MessageBox.Show("Class Size can't negative numbers");
                 }
+
                 if (!ClassBLL.Instance.updateRulesClassName(txt_ClassName_RulesClass.Text, grdClassList_View.GetDataRow(grdClassList_View.GetSelectedRows().First())["TENLOP"].ToString()))
+                {
                     MessageBox.Show("The class name already exists");
+                    grdClassList_View_FocusedRowChanged(null, null);
+                    return;
+                }
+
+                btn_Edit_RulesClass.Text = "Edit";
                 showRulesClass();
             }
         }
@@ -139,19 +158,22 @@ namespace StudentManagements.Rules
             }
             else
             {
-                btn_Edit_RulesSubjects.Text = "Edit";
 
                 if (ClassBLL.Instance.updateSubject(txt_SubjectName_RulesSubjets.Text, grdSubjectList_View.GetDataRow(grdSubjectList_View.GetSelectedRows().First())["TENMH"].ToString()))
                 {
                     btn_AddSubjects_RulesSubjects.Enabled = false;
                     txt_SubjectName_RulesSubjets.Enabled = false;
-                    showRulesSubjects();
                 }
                 else
                 {
-                    MessageBox.Show("Can't update");
-                    showRulesSubjects();
+                    MessageBox.Show("The Subject is already!, please check again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    grdSubjectList_View_FocusedRowChanged(null, null);
+                    return;
                 }
+
+
+                btn_Edit_RulesSubjects.Text = "Edit";
+                showRulesSubjects();
             }
         }
       

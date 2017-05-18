@@ -42,6 +42,7 @@
             this.btn_NewUser = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbPermission = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txt_Email = new DevExpress.XtraEditors.TextEdit();
             this.txt_Password = new DevExpress.XtraEditors.TextEdit();
             this.labelEmail = new DevExpress.XtraEditors.LabelControl();
@@ -51,7 +52,6 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.cbPermission = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,11 +59,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_User_View)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Email.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Name.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -173,7 +173,7 @@
             this.btn_Delete.Location = new System.Drawing.Point(244, 281);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(75, 35);
-            this.btn_Delete.TabIndex = 4;
+            this.btn_Delete.TabIndex = 2;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
@@ -182,7 +182,7 @@
             this.btn_NewUser.Location = new System.Drawing.Point(325, 281);
             this.btn_NewUser.Name = "btn_NewUser";
             this.btn_NewUser.Size = new System.Drawing.Size(75, 35);
-            this.btn_NewUser.TabIndex = 0;
+            this.btn_NewUser.TabIndex = 1;
             this.btn_NewUser.Text = "New User";
             this.btn_NewUser.Click += new System.EventHandler(this.btn_NewUser_Click);
             // 
@@ -191,7 +191,7 @@
             this.btn_Save.Location = new System.Drawing.Point(406, 281);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 35);
-            this.btn_Save.TabIndex = 2;
+            this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Save";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
@@ -213,6 +213,18 @@
             this.panel1.Size = new System.Drawing.Size(451, 244);
             this.panel1.TabIndex = 3;
             // 
+            // cbPermission
+            // 
+            this.cbPermission.Location = new System.Drawing.Point(177, 72);
+            this.cbPermission.Name = "cbPermission";
+            this.cbPermission.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbPermission.Properties.Appearance.Options.UseFont = true;
+            this.cbPermission.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbPermission.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbPermission.Size = new System.Drawing.Size(236, 24);
+            this.cbPermission.TabIndex = 1;
+            // 
             // txt_Email
             // 
             this.txt_Email.Location = new System.Drawing.Point(177, 144);
@@ -220,7 +232,7 @@
             this.txt_Email.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_Email.Properties.Appearance.Options.UseFont = true;
             this.txt_Email.Size = new System.Drawing.Size(236, 24);
-            this.txt_Email.TabIndex = 4;
+            this.txt_Email.TabIndex = 3;
             // 
             // txt_Password
             // 
@@ -229,7 +241,7 @@
             this.txt_Password.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txt_Password.Properties.Appearance.Options.UseFont = true;
             this.txt_Password.Size = new System.Drawing.Size(236, 24);
-            this.txt_Password.TabIndex = 3;
+            this.txt_Password.TabIndex = 4;
             // 
             // labelEmail
             // 
@@ -294,18 +306,6 @@
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Tên đăng nhập:";
             // 
-            // cbPermission
-            // 
-            this.cbPermission.Location = new System.Drawing.Point(177, 72);
-            this.cbPermission.Name = "cbPermission";
-            this.cbPermission.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.cbPermission.Properties.Appearance.Options.UseFont = true;
-            this.cbPermission.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbPermission.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbPermission.Size = new System.Drawing.Size(236, 24);
-            this.cbPermission.TabIndex = 5;
-            // 
             // PermissionForm
             // 
             this.AcceptButton = this.btn_Save;
@@ -327,11 +327,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_User_View)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Email.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_UserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Name.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPermission.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

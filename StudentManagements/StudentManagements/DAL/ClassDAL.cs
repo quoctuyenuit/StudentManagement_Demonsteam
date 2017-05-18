@@ -1690,7 +1690,7 @@ namespace StudentManagements.DAL
         public bool insertUser(Entities.NGUOIDUNG user)
         {
             bool check = false;
-            string query = "INSERT INTO NGUOIDUNG(TENNGUOIDUNG, TENDANGNHAP, MATKHAU, MAPQ, EMAIL) VALUES(@TENNGUOIDUNG, @TENDANGNHAP, @MATKHAU, (SELECT MAPQ FROM PHANQUYEN WHERE TENPQ = @TENPQ), @EMAIL)";
+            string query = "PRD_NGUOIDUNG_INSERT";
             try
             {
                 connection = dataServices.getConnect();
@@ -1698,12 +1698,11 @@ namespace StudentManagements.DAL
                 command = new SqlCommand();
                 command.Connection = connection;
                 command.CommandText = query;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@TENNGUOIDUNG", SqlDbType.NVarChar).Value = user.TenNguoiDung;
                 command.Parameters.Add("@TENDANGNHAP", SqlDbType.NVarChar).Value = user.TenDangNhap;
-                command.Parameters.Add("@TENPQ", SqlDbType.NVarChar).Value = user.TenPQ;
-                command.Parameters.Add("@MAND", SqlDbType.Int).Value = user.MaND;
                 command.Parameters.Add("@MATKHAU", SqlDbType.NVarChar).Value = user.MatKhau;
+                command.Parameters.Add("@TENPQ", SqlDbType.NVarChar).Value = user.TenPQ;
                 command.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = user.Email;
                 command.ExecuteNonQuery();
                 check = true;
